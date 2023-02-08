@@ -7,10 +7,16 @@
     <option name="transferred" value="true" />
   </component>
   <component name="PHPCodeSnifferOptionsConfiguration">
+<<<<<<< HEAD
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
+=======
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
+>>>>>>> origin/main
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
