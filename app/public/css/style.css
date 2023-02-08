@@ -1,0 +1,22 @@
+body{
+    background-color: aliceblue;
+}
+#company_overview{
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+#card1,#card2,#card3,#card4,#card5,#card6{
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.card{
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+}
+
+
+
