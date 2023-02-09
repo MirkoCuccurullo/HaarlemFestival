@@ -6,9 +6,9 @@ class SMTPServer
     public function sendEmail($receiverEmail, $receiverName, $message, $subject){
 
         //require needed files
-        require 'PHPMailer-master/src/Exception.php';
-        require 'PHPMailer-master/src/PHPMailer.php';
-        require 'PHPMailer-master/src/SMTP.php';
+        require 'PHPMailer/src/Exception.php';
+        require 'PHPMailer/src/PHPMailer.php';
+        require 'PHPMailer/src/SMTP.php';
         require '../config.php';
 
         //initialize client
