@@ -49,4 +49,13 @@ class userRepository extends baseRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function resetUserPassword($id, $newPassword)
+    {
+        $sql = "UPDATE users SET password = :newPassword WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute(['newPassword' => $newPassword, 'id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

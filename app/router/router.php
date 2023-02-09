@@ -11,6 +11,11 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
+
+            case'/resetPassword':
+                require_once("../view/resetPassword/resetPassword.php");
+                break;
+
             default:
                 echo'404';
         }
