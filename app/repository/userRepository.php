@@ -49,4 +49,14 @@ class userRepository extends baseRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function getUserByEmail(string $email)
+    {
+        //change star to field names once we know what they are
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([':email' => $email]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

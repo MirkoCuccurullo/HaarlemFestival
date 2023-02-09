@@ -19,4 +19,16 @@ class userService{
         return $this->userRepo->deleteUser($id);
     }
 
+    public function logUserIn(string $email, string $password)
+    {
+        $user = $this->userRepo->getUserByEmail($email);
+        $savedPassword = $user->getPassword();
+
+        if(!password_verify($password, $savedPassword)){
+            $user = null;
+        }
+
+        return $user;
+    }
+
 }
