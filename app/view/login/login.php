@@ -37,7 +37,7 @@ include __DIR__ . '/../header.php'; ?>
 
         <div class="col">
             <!-- Simple link -->
-            <a href="#!">Forgot password?</a>
+            <a href="/resetPassword">Forgot password?</a>
         </div>
     </div>
 

@@ -16,6 +16,10 @@ class router
                 require_once("../view/resetPassword/resetPassword.php");
                 break;
 
+            case'/manageProfile':
+                require_once("../view/management/manageProfile.php");
+                break;
+
             default:
                 echo'404';
         }
