@@ -60,6 +60,7 @@ class userRepository extends baseRepository
         $stmt->execute([':email' => $email]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
         $result = $stmt->fetch();
+    }
 
 
     public function resetUserPassword($id, $newPassword)
