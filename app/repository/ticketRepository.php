@@ -1,7 +1,7 @@
 <?php
 require_once '../model/ticket.php.php';
 
-include("baseRepository.php");
+include_once("baseRepository.php");
 
 class ticketRepository extends \repository\baseRepository{
 
