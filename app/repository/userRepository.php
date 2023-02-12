@@ -25,11 +25,11 @@ class userRepository extends baseRepository
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
-    public function updateUser($user)
+    public function updateUser($id, $name, $email)
     {
-        $sql = "UPDATE users SET name = :name, email = :email, password = :password, registrationDate = :registrationDate, dateOfBirth = :dateOfBirth WHERE id = :id";
+        $sql = "UPDATE users SET name = :name, email = :email WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute(['name' => $user->name, 'email' => $user->email, 'password' => $user->password, 'dateOfBirth' => $user->dateOfBirth, 'id' => $user->id]);
+        $stmt->execute(['name' => $name, 'email' => $email, 'id' => $id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -51,6 +51,7 @@ class userRepository extends baseRepository
         return $result;
     }
 
+
     public function getUserByEmail(string $email)
     {
         //change star to field names once we know what they are
@@ -59,6 +60,13 @@ class userRepository extends baseRepository
         $stmt->execute([':email' => $email]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
         $result = $stmt->fetch();
+
+    public function resetUserPassword($id, $newPassword)
+    {
+        $sql = "UPDATE users SET password = :newPassword WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute(['newPassword' => $newPassword, 'id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 }

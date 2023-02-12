@@ -12,12 +12,13 @@ class userService{
     public function createUser($user){
         return $this->userRepo->createUser($user);
     }
-    public function updateUser($user){
-        return $this->userRepo->updateUser($user);
+    public function updateUser($id, $name, $email){
+        return $this->userRepo->updateUser($id, $name, $email);
     }
     public function deleteUser($id){
         return $this->userRepo->deleteUser($id);
     }
+
 
     public function logUserIn(string $email, string $password)
     {
@@ -30,6 +31,11 @@ class userService{
         }
 
         return $user;
+
+    public function resetUserPassword($id, $newPassword)
+    {
+        return $this->userRepo->resetUserPassword($id, $newPassword);
+
     }
 
 }

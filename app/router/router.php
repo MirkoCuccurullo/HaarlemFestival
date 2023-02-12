@@ -20,6 +20,7 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
+
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -35,6 +36,16 @@ class router
             case'/afterRegister':
                 require_once("../view/registration/afterRegister.php");
                 break;
+
+
+            case'/resetPassword':
+                require_once("../view/resetPassword/resetPassword.php");
+                break;
+
+            case'/manageProfile':
+                require_once("../view/management/manageProfile.php");
+                break;
+
             default:
                 echo'404';
         }

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +12,11 @@
 </head>
 <body>
 <form method="post" action="/signin">
+
+<?php
+include __DIR__ . '/../header.php'; ?>
+<form>
+
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="email" id="email" name="email" class="form-control" />
@@ -27,7 +33,7 @@
     <div class="row mb-4">
         <div class="col">
             <!-- Simple link -->
-            <a href="#!">Forgot password?</a>
+            <a href="/resetPassword">Forgot password?</a>
         </div>
     </div>
 
@@ -39,5 +45,5 @@
         <p>Not a member? <a href="/register">Register</a></p>
     </div>
 </form>
-</body>
-</html>
+<?php
+include __DIR__ . '/../footer.php'; ?>
