@@ -8,6 +8,10 @@ class router
     public function route($url){
 
         switch ($url){
+            case'/':
+            case'/home':
+                require_once '../view/home/index.php';
+                break;
             case'/login':
                 require_once("../view/login/login.php");
                 break;

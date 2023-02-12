@@ -1,4 +1,7 @@
 <?php
+
+use router\router;
+
 require '../service/userService.php';
 
 class loginController
@@ -12,7 +15,14 @@ class loginController
         $currentUser = $userService->logUserIn($email, $password);
 
         session_start();
-        $_SESSION['current_user'] = $currentUser;
+        if ($currentUser != null){
+            $_SESSION['current_user'] = $currentUser;
+            $router = new router();
+            $router->route('/');
+        }
+        else{
+            echo "user does not exist";
+        }
 
     }
 }
