@@ -9,9 +9,29 @@ class userService{
     public function getUser($id){
         return $this->userRepo->getUser($id);
     }
-    public function createUser($user){
-        return $this->userRepo->createUser($user);
+    public function registerUser(array $data)
+    {
+        $validationResult = $this->validateData($data);
+        if ($validationResult !== true) {
+            return $validationResult;
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+            $preparedData = $this->prepareData($data);
+            $hashedSaltedPassword = password_hash($preparedData['password'], PASSWORD_DEFAULT);
+            //show these messages into a hidden Label !!
+            if ($this->userRepo->insertUserToDatabase($preparedData['name'], $preparedData['email'], $hashedSaltedPassword, $preparedData['date_of_birth'])) {
+                return ["success" => "Data has been processed successfully."];
+            } else {
+                return ["error" => "An error occurred while processing data."];
+            }
+        } else {
+            //add a statement
+            echo "Could not do POST";
+        }
     }
+
+
     public function updateUser($id, $name, $email){
         return $this->userRepo->updateUser($id, $name, $email);
     }
@@ -25,21 +45,46 @@ class userService{
         $user = $this->userRepo->getUserByEmail($email);
         $savedPassword = $user->password;
 
-        if(!password_verify($password, $savedPassword)){
+        if (!password_verify($password, $savedPassword)) {
             $user = null;
         }
 
         return $user;
 
-    public function resetUserPassword($id, $newPassword)
-    {
-        return $this->userRepo->resetUserPassword($id, $newPassword);
-
-
-    public function resetUserPassword($id, $newPassword)
-    {
-        return $this->userRepo->resetUserPassword($id, $newPassword);
-
     }
+    private function validateData(array $data): bool|array
+    {
+        if (empty($data["name"])) {
+            return ["error" => "Name is required"];
+        }
+        if (empty($data["email"])) {
+            return ["error" => "Email is required"];
+        }
+        if (empty($data["password"])) {
+            return ["error" => "Password is required"];
+        }
+        if (empty($data["date_of_birth"])) {
+            return ["error" => "Date of Birth is required"];
+        }
+
+        return true;
+    }
+
+    private function prepareData(array $data): array
+    {
+        return [
+            'name' => htmlspecialchars($data['name']),
+            'email' => htmlspecialchars($data['email']),
+            'date_of_birth' => htmlspecialchars($data['date_of_birth']),
+            'password' => htmlspecialchars($data['password']),
+        ];
+    }
+
+
+    public function resetUserPassword($id, $newPassword)
+    {
+        return $this->userRepo->resetUserPassword($id, $newPassword);
+    }
+
 
 }
