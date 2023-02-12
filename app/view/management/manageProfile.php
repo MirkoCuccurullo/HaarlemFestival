@@ -38,7 +38,7 @@ include __DIR__ . '/../header.php'; ?>
                                     <h2 class="mb-3">Picture placeholder</h2>
 
 
-                                    <button type="submit" class="btn btn-primary" name="edit">Confirm changes</button>
+                                    <button type="submit" class="btn btn-primary" name="editProfile">Confirm changes</button>
                                     <a href="/home/profile" class="btn btn-warning">Cancel</a>
                                     <button type="submit" class="btn btn-danger float-end" name="delete">Delete
                                         profile

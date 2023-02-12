@@ -1,9 +1,9 @@
 <?php
 
-use repository\baseRepository;
-
+require __DIR__ . '/baseRepository.php';
 require_once '../model/user.php';
-class userRepository extends baseRepository
+
+class userRepository extends \repository\baseRepository
 {
 
     public function getUser($id)
