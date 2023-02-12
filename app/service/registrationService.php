@@ -21,7 +21,7 @@ class registrationService{
 
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $preparedData = $this->prepareData($data);
-            $hashedSaltedPassword = $this->hashPassword($preparedData['password']);
+            $hashedSaltedPassword = password_hash($preparedData['password'], PASSWORD_DEFAULT);
             //show these messages into a hidden Label !!
             if ($this->registrationRepository->insertUserToDatabase($preparedData['name'], $preparedData['email'], $hashedSaltedPassword, $preparedData['date_of_birth'])) {
                 return ["success" => "Data has been processed successfully."];
@@ -62,16 +62,6 @@ class registrationService{
             'date_of_birth' => htmlspecialchars($data['date_of_birth']),
             'password' => htmlspecialchars($data['password']),
         ];
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function hashPassword(string $password): string
-    {
-        $salt = bin2hex(random_bytes(48));
-        $saltedPassword = $password . $salt;
-        return password_hash($saltedPassword, PASSWORD_DEFAULT);
     }
 
 

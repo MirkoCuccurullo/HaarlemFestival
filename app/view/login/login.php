@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-<form>
+<form method="post" action="/signin">
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="email" id="email" name="email" class="form-control" />
@@ -32,27 +32,11 @@
     </div>
 
     <!-- Submit button -->
-    <button formmethod="post" formaction="/signin" type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+    <input type="submit" class="btn btn-primary btn-block mb-4" value="login">
 
     <!-- Register buttons -->
     <div class="text-center">
         <p>Not a member? <a href="/register">Register</a></p>
-        <p>or sign up with:</p>
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-twitter"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-github"></i>
-        </button>
     </div>
 </form>
 </body>

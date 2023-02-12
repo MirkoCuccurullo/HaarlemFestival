@@ -3,6 +3,7 @@
 use repository\baseRepository;
 
 require_once '../model/user.php';
+include_once 'baseRepository.php';
 class userRepository extends baseRepository
 {
 
@@ -56,7 +57,8 @@ class userRepository extends baseRepository
         $sql = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([':email' => $email]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+        $result = $stmt->fetch();
         return $result;
     }
 }

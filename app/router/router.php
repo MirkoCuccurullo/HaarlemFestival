@@ -2,6 +2,7 @@
 
 namespace router;
 
+use loginController;
 use registrationController;
 
 class router
@@ -21,8 +22,9 @@ class router
                 break;
             case '/signin':
                 require '../controller/loginController.php';
-                $controller = new \loginController();
+                $controller = new loginController();
                 $controller->login($_POST['email'], $_POST['password']);
+                break;
 
             case'/register':
                 require __DIR__ . '/../controller/registrationController.php';

@@ -1,16 +1,15 @@
 <?php
 
-use Cassandra\Date;
-
 class user
 {
     public int $id;
     public string $password;
-    public $role;
+    public string $email;
+    public string $picture;
 
-    public date $registrationDate;
+    public string $registration_date;
+    public string $role;
+    public string $date_of_birth;
+    public string $name;
 
-public date $dateOfBirth;
-
-//public json $picture;
 }

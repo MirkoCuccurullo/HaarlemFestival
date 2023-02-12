@@ -6,7 +6,11 @@ require '../service/userService.php';
 
 class loginController
 {
-    public function login($postEmail, $postPassword){
+    /**
+     * @throws Exception
+     */
+    public function login($postEmail, $postPassword): void
+    {
 
         $email = htmlspecialchars($postEmail);
         $password = htmlspecialchars($postPassword);
@@ -14,7 +18,6 @@ class loginController
         $userService = new userService();
         $currentUser = $userService->logUserIn($email, $password);
 
-        session_start();
         if ($currentUser != null){
             $_SESSION['current_user'] = $currentUser;
             $router = new router();

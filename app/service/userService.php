@@ -21,8 +21,9 @@ class userService{
 
     public function logUserIn(string $email, string $password)
     {
+        require_once '../model/user.php';
         $user = $this->userRepo->getUserByEmail($email);
-        $savedPassword = $user->getPassword();
+        $savedPassword = $user->password;
 
         if(!password_verify($password, $savedPassword)){
             $user = null;
