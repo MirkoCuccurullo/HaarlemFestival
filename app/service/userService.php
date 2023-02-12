@@ -25,21 +25,17 @@ class userService{
         $user = $this->userRepo->getUserByEmail($email);
         $savedPassword = $user->password;
 
-        if(!password_verify($password, $savedPassword)){
+        if (!password_verify($password, $savedPassword)) {
             $user = null;
         }
 
         return $user;
-
-    public function resetUserPassword($id, $newPassword)
-    {
-        return $this->userRepo->resetUserPassword($id, $newPassword);
-
-
-    public function resetUserPassword($id, $newPassword)
-    {
-        return $this->userRepo->resetUserPassword($id, $newPassword);
-
     }
+
+    public function resetUserPassword($id, $newPassword)
+    {
+        return $this->userRepo->resetUserPassword($id, $newPassword);
+    }
+
 
 }

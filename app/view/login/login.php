@@ -4,14 +4,14 @@ include __DIR__ . '/../header.php'; ?>
 <form>
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="email" id="form2Example1" class="form-control"/>
-        <label class="form-label" for="form2Example1">Email address</label>
+        <input type="email" id="email" name="email" class="form-control"/>
+        <label class="form-label" for="email">Email address</label>
     </div>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-        <input type="password" id="form2Example2" class="form-control"/>
-        <label class="form-label" for="form2Example2">Password</label>
+        <input type="password" id="password" name="password" class="form-control"/>
+        <label class="form-label" for="password">Password</label>
     </div>
 
     <!-- 2 column grid layout for inline styling -->
@@ -31,7 +31,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+    <input type="submit" class="btn btn-primary btn-block mb-4" value="login" formaction="/signin" formmethod="post">
 
     <!-- Register buttons -->
     <div class="text-center">
