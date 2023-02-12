@@ -1,8 +1,8 @@
 <?php
 
 use repository\baseRepository;
-include __DIR__ . '/../repository/baseRepository.php';
-require __DIR__ . '/../model/registration.php';
+include_once __DIR__ . '/../repository/baseRepository.php';
+require_once __DIR__ . '/../model/registration.php';
 
 class registrationRepository extends baseRepository{
 
