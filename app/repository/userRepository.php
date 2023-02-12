@@ -1,9 +1,10 @@
 <?php
 
-require __DIR__ . '/baseRepository.php';
-require_once '../model/user.php';
+use repository\baseRepository;
 
-class userRepository extends \repository\baseRepository
+require_once '../model/user.php';
+include_once 'baseRepository.php';
+class userRepository extends baseRepository
 {
 
     public function getUser($id)
@@ -49,6 +50,18 @@ class userRepository extends \repository\baseRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+
+    public function getUserByEmail(string $email)
+    {
+        //change star to field names once we know what they are
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([':email' => $email]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+        $result = $stmt->fetch();
+    }
+
 
     public function resetUserPassword($id, $newPassword)
     {

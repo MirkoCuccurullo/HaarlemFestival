@@ -2,33 +2,49 @@
 
 namespace router;
 
+use loginController;
+use registrationController;
+
 class router
 {
-
+    /**
+     * @throws \Exception
+     */
     public function route($url){
 
         switch ($url){
-
-            case '/login':
-                require __DIR__ . '/../controller/userController.php';
-                $controller = new \userController();
-                $controller->login();
+            case'/':
+            case'/home':
+                require_once '../view/home/index.php';
+                break;
+            case'/login':
+                require_once("../view/login/login.php");
                 break;
 
-            case '/management/manageProfile':
-                require __DIR__ . '/../controller/userController.php';
-                $controller = new \userController();
-                $controller->manageProfile();
+
+            case '/signin':
+                require '../controller/loginController.php';
+                $controller = new loginController();
+                $controller->login($_POST['email'], $_POST['password']);
+                break;
+
+            case'/register':
+                require __DIR__ . '/../controller/registrationController.php';
+                $data = $_POST;
+                $registrationController = new registrationController();
+                $registrationController->displayRegistrationPage($data);
                 break;
 
             case'/resetPassword':
                 require_once("../view/resetPassword/resetPassword.php");
                 break;
 
+            case'/manageProfile':
+                require_once("../view/management/manageProfile.php");
+                break;
 
             default:
-                http_response_code(404);
-                break;
+                echo'404';
         }
     }
 }

@@ -26,7 +26,7 @@ include __DIR__ . '/../header.php'; ?>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="resetPassword">Confirm changes</button>
+                            <button type="submit" class="btn btn-primary" name="confirm">Confirm changes</button>
                         </form>
                     </div>
                 </div>

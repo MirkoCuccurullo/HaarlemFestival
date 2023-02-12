@@ -1,15 +1,4 @@
-<!--<!doctype html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport"-->
-<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
-<!---->
-<!--    <title>Document</title>-->
-<!--</head>-->
-<!--<body>-->
+
 <?php
 include __DIR__ . '/../header.php'; ?>
 <form>
@@ -46,23 +35,7 @@ include __DIR__ . '/../header.php'; ?>
 
     <!-- Register buttons -->
     <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
-        <p>or sign up with:</p>
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-twitter"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-github"></i>
-        </button>
+        <p>Not a member? <a href="/register">Register</a></p>
     </div>
 </form>
 
@@ -91,7 +64,6 @@ include __DIR__ . '/../header.php'; ?>
         </div>
     </div>
 </form>
-<!--</body>-->
-<!--</html>-->
+
 <?php
 include __DIR__ . '/../footer.php'; ?>
