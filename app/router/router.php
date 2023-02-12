@@ -33,10 +33,6 @@ class router
                 $registrationController = new registrationController();
                 $registrationController->displayRegistrationPage($data);
                 break;
-            case'/afterRegister':
-                require_once("../view/registration/afterRegister.php");
-                break;
-
 
             case'/resetPassword':
                 require_once("../view/resetPassword/resetPassword.php");
