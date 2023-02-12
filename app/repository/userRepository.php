@@ -16,14 +16,17 @@ class userRepository extends baseRepository
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
-    public function createUser($user)
+    public function insertUserToDatabase($name, $email, $hashedSaltedPassword, $date_of_birth): bool
     {
-        //need to add role to user depending on how we decide to do that
-        $sql = "INSERT INTO users (name, email, password, registrationDate, dateOfBirth) VALUES (:name, :email, :password)";
+        $sql = "INSERT INTO users (name, email, password, date_of_birth, registration_date, role) VALUES (:name, :email, :hashedSaltedPassword, :date_of_birth, now(), :role)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute(['name' => $user->name, 'email' => $user->email, 'password' => $user->password, 'registrationDate' => $user->registrationDate, 'dateOfBirth' => $user->dateOfBirth]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":email", $email);
+        $role = " ";
+        $stmt->bindParam(":role", $role);
+        $stmt->bindParam(":hashedSaltedPassword", $hashedSaltedPassword);
+        $stmt->bindParam(":date_of_birth", $date_of_birth);
+        return $stmt->execute();
     }
     public function updateUser($id, $name, $email)
     {
