@@ -19,7 +19,6 @@ class userService{
         return $this->userRepo->deleteUser($id);
     }
 
-
     public function logUserIn(string $email, string $password)
     {
         require_once '../model/user.php';
@@ -31,6 +30,11 @@ class userService{
         }
 
         return $user;
+
+    public function resetUserPassword($id, $newPassword)
+    {
+        return $this->userRepo->resetUserPassword($id, $newPassword);
+
 
     public function resetUserPassword($id, $newPassword)
     {

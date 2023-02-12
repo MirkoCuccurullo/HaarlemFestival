@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,5 +44,6 @@ include __DIR__ . '/../header.php'; ?>
         <p>Not a member? <a href="/register">Register</a></p>
     </div>
 </form>
+
 <?php
 include __DIR__ . '/../footer.php'; ?>

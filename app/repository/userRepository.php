@@ -61,6 +61,7 @@ class userRepository extends baseRepository
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
         $result = $stmt->fetch();
 
+
     public function resetUserPassword($id, $newPassword)
     {
         $sql = "UPDATE users SET password = :newPassword WHERE id = :id";

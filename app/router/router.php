@@ -21,6 +21,7 @@ class router
                 require_once("../view/login/login.php");
                 break;
 
+
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
