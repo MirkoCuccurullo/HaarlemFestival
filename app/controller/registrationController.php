@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../service/registrationService.php';
+require __DIR__ . '/../service/userService.php';
 
 class registrationController {
 
@@ -8,7 +8,7 @@ class registrationController {
 
     public function __construct()
     {
-        $this->registrationService = new registrationService();
+        $this->registrationService = new userService();
     }
 
     /**
