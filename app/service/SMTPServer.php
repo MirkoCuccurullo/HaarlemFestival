@@ -1,6 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 class SMTPServer
 {
     public function sendEmail($receiverEmail, $receiverName, $message, $subject){
