@@ -1,9 +1,14 @@
 <?php
+
+require __DIR__ . '/../service/userService.php';
+require '../service/SMTPServer.php';
+
 use router\router;
 
 
 require_once __DIR__ . '/../service/userService.php';
 require_once '../service/SMTPServer.php';
+
 include_once __DIR__ . '/../model/user.php';
 
 
@@ -32,6 +37,11 @@ class userController
     {
         $user = $this->userService->getUserByEmail($_SESSION['current_user_email']);
         require __DIR__ . '/../view/management/manageProfile.php';
+    }
+
+
+    public function manageAllUsers(){
+        require __DIR__ . '/../view/management/manageUsers.php';
     }
 
     public function updateProfile()
@@ -89,6 +99,7 @@ class userController
 
     public function resetPassword()
     {
+
         if (isset($_POST['resetPassword'])) {
             $id = $_SESSION['current_user_id'];
             $password = htmlspecialchars($_POST['password']);
@@ -100,11 +111,31 @@ class userController
                 $this->userService->resetUserPassword($id, $hashedPassword);
                 $this->login();
             }
+
         }
     }
 
     public function sendResetLink()
     {
+
+        if(isset($_POST['sendResetLink']))
+        {
+            $email = htmlspecialchars($_POST['resetEmail']);
+            $user = $this->userService->getUserByEmail($email);
+            $name = $user->name;
+            $subject = "Password reset link";
+            $message = "Hello " . $name . ", here is the password reset link you have requested: ";
+            $this->smtpServer->sendEmail($email, $name, $message, $subject);
+        }
+    }
+
+    public function editUser(mixed $id)
+    {
+        require_once __DIR__ . '/../model/user.php';
+        $user = $this->userService->getUser($id);
+        require __DIR__ . '/../view/management/editUser.php';
+
+
         if (isset($_POST['sendResetLink'])) {
             $email = htmlspecialchars($_POST['resetEmail']);
             $user = $this->userService->getUserByEmail($email);
@@ -127,4 +158,5 @@ class userController
             unset($_SESSION['err_msg']);
         }
     }
+
 }

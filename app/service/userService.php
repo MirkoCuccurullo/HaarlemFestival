@@ -9,6 +9,10 @@ class userService{
     public function getUser($id){
         return $this->userRepo->getUser($id);
     }
+
+    public function getAllUsers(){
+        return $this->userRepo->getAllUsers();
+    }
     public function registerUser(array $data)
     {
         $validationResult = $this->validateData($data);
@@ -70,10 +74,12 @@ class userService{
         return true;
     }
 
+
     public function getUserByEmail($email)
     {
         return $this->userRepo->getUserByEmail($email);
     }
+
 
     private function prepareData(array $data): array
     {
@@ -89,6 +95,10 @@ class userService{
     public function resetUserPassword($id, $newPassword)
     {
         return $this->userRepo->resetUserPassword($id, $newPassword);
+    }
+
+    public function getUserById(mixed $id)
+    {
     }
 
 

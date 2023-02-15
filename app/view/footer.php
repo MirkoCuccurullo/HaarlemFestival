@@ -1,13 +1,14 @@
+
 </div>
 
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">© 2023 Team Haarlem Design</p>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center bg-success py-3 my-4 border-top">
+        <p class="col-md-4 ml-2 mb-0" style="color: white;">© 2023 Team Haarlem Design</p>
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Test 1</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Test 2</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Test 3</a></li>
+            <li class="nav-item" ><a href="#" class="nav-link" style="color: white;">Test 1</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" style="color: white;">Test 2</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" style="color: white;">Test 3</a></li>
         </ul>
     </footer>
 </div>

@@ -13,7 +13,8 @@ class userRepository extends baseRepository
         $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(['id' => $id]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+        $result = $stmt->fetch();
         return $result;
     }
     public function insertUserToDatabase($name, $email, $hashedSaltedPassword, $date_of_birth): bool
@@ -47,7 +48,7 @@ class userRepository extends baseRepository
 
     public function getAllUsers()
     {
-        $sql = "SELECT name, password, registrationDate, dateOfBirth, role FROM users";
+        $sql = "SELECT * FROM users";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
