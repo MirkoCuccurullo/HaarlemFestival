@@ -32,8 +32,37 @@
     border-radius: 30px;
     width: 100%;
 }
-@media screen and (max-width: 500px) {
-    .card{
-        width: 100%;
+#instafeed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#instafeed img {
+    max-width: 100%;
+    max-height: 200px;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+    #instafeed {
+        flex-direction: column;
+    }
+
+    #instafeed img {
+        max-height: 300px;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    #instafeed img {
+        max-height: 150px;
+    }
+
+}
+    @media screen and (max-width: 500px) {
+        .card {
+            width: 100%;
+        }
+    }
