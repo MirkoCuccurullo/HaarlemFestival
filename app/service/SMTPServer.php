@@ -1,14 +1,25 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
+
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 class SMTPServer
 {
     public function sendEmail($receiverEmail, $receiverName, $message, $subject){
 
         //require needed files
-        require 'PHPMailer/src/Exception.php';
-        require 'PHPMailer/src/PHPMailer.php';
-        require 'PHPMailer/src/SMTP.php';
+//        require realpath($_SERVER["DOCUMENT_ROOT"]) . "/../../vendor/PHPMailer/PHPMailer/src/Exception.php";
+//        require realpath($_SERVER["DOCUMENT_ROOT"]) . "/../../vendor/phpmailer/phpmailer/src/PHPMailer.php";
+//        require realpath('/../../vendor/phpmailer/phpmailer/src/SMTP.php');
+
+//        require_once './vendor/phpmailer/phpmailer/src/Exception.php';
+//        require_once './vendor/phpmailer/phpmailer/src/PHPMailer.php';
+//        require_once './vendor/phpmailer/phpmailer/src/SMTP.php';
+
+        require __DIR__ . '../../vendor/PHPMailer/PHPMailer/src/Exception.php';
+        require __DIR__ . 'PHPMailer/src/PHPMailer.php';
+        require __DIR__ . 'PHPMailer/src/SMTP.php';
         require '../config.php';
 
         //initialize client
