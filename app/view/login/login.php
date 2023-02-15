@@ -1,7 +1,7 @@
 
 <?php
 include __DIR__ . '/../header.php'; ?>
-<form>
+<form class="col-md-6 mx-auto">
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="email" id="email" name="email" class="form-control"/>
@@ -10,7 +10,7 @@ include __DIR__ . '/../header.php'; ?>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-        <input type="password" id="password" name="password" class="form-control"/>
+        <input type="password" id="password" name="password" class="form-control col-6"/>
         <label class="form-label" for="password">Password</label>
     </div>
 
@@ -30,8 +30,11 @@ include __DIR__ . '/../header.php'; ?>
         </div>
     </div>
 
+    <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-primary btn-block mb-4" value="Login" formaction="/signin" formmethod="post" style="width: 95px">
+    </div>
+
     <!-- Submit button -->
-    <input type="submit" class="btn btn-primary btn-block mb-4" value="login" formaction="/signin" formmethod="post">
 
     <!-- Register buttons -->
     <div class="text-center">

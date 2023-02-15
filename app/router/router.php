@@ -41,7 +41,15 @@ class router
                 break;
 
             case'/resetPassword':
-                require_once("../view/resetPassword/resetPassword.php");
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->displayResetPassword();
+                break;
+
+            case'/resetPassword/reset':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->resetPassword();
                 break;
 
             case '/resetPassword/sendLink':
@@ -52,13 +60,13 @@ class router
 
 
             case'/manageProfile':
-                require __DIR__ . '/../controller/userController.php';
+                require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->manageProfile();
                 break;
 
             case'/manageProfile/update':
-                require __DIR__ . '/../controller/userController.php';
+                require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->updateProfile();
                 break;

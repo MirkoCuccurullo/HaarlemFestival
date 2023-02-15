@@ -17,9 +17,9 @@ class SMTPServer
 //        require_once './vendor/phpmailer/phpmailer/src/PHPMailer.php';
 //        require_once './vendor/phpmailer/phpmailer/src/SMTP.php';
 
-        require __DIR__ . '../../vendor/PHPMailer/PHPMailer/src/Exception.php';
-        require __DIR__ . 'PHPMailer/src/PHPMailer.php';
-        require __DIR__ . 'PHPMailer/src/SMTP.php';
+        require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/Exception.php';
+        require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
+        require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/SMTP.php';
         require '../config.php';
 
         //initialize client

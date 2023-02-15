@@ -1,6 +1,9 @@
 <?php
-require __DIR__ . '/../service/userService.php';
-require '../service/SMTPServer.php';
+use router\router;
+
+
+require_once __DIR__ . '/../service/userService.php';
+require_once '../service/SMTPServer.php';
 include_once __DIR__ . '/../model/user.php';
 
 
@@ -34,8 +37,7 @@ class userController
     public function updateProfile()
     {
         $id = $_SESSION['current_user_id'];
-        if(isset($_POST['editProfile']))
-        {
+        if (isset($_POST['editProfile'])) {
             $name = htmlspecialchars($_POST['profileName']);
             $email = htmlspecialchars($_POST['email']);
 
@@ -44,28 +46,30 @@ class userController
             header('location: /home');
             //$message = "Hello " . $name . ", your profile changes have been applied. ";
             //$this->smtpServer->sendEmail($email, $name, $message, "Profile changes");
-        }
-
-        else if(isset($_POST['editPassword']))
-        {
+        } else if (isset($_POST['editPassword'])) {
+            $_SESSION['err_msg'] = "";
             $hashedPassword = $_SESSION['current_user_password'];
             $currentPassword = htmlspecialchars($_POST['currentPassword']);
             $newPassword = htmlspecialchars($_POST['newPassword']);
             $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
-            if(password_verify($currentPassword, $hashedPassword))
-            {
-                if ($currentPassword != $newPassword)
-                {
-                    if($newPassword == $verifyPassword)
-                    {
+            if (password_verify($currentPassword, $hashedPassword)) {
+                if ($currentPassword != $newPassword) {
+                    if ($newPassword == $verifyPassword) {
                         $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
                         $this->userService->resetUserPassword($id, $newHashedPassword);
-                    }
-                }
+                        $_SESSION['err_msg'] = "Your password has been reset!";
+                    } else
+                        $_SESSION['err_msg'] = "The 2 passwords do not match.";
+                } else
+                    $_SESSION['err_msg'] = "The new password is the same as the old one.";
             }
+            else
+                $_SESSION['err_msg'] = "Your password is incorrect";
+
+            $this->manageProfile();
+            unset($_SESSION['err_msg']);
         }
     }
-
 
 
     public function displayResetPassword()
@@ -75,21 +79,29 @@ class userController
 
     public function resetPassword()
     {
-        if(isset($_POST['resetPassword']))
-        {
+        if (isset($_POST['resetPassword'])) {
+            $id = $_SESSION['current_user_id'];
+            $password = htmlspecialchars($_POST['password']);
+            $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
 
+            if($password == $confirmPassword)
+            {
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $this->userService->resetUserPassword($id, $hashedPassword);
+                $this->login();
+            }
         }
     }
 
     public function sendResetLink()
     {
-        if(isset($_POST['sendResetLink']))
-        {
+        if (isset($_POST['sendResetLink'])) {
             $email = htmlspecialchars($_POST['resetEmail']);
             $user = $this->userService->getUserByEmail($email);
+            $_SESSION['current_user_id'] = $user->id;
             $name = $user->name;
             $subject = "Password reset link";
-            $message = "Hello " . $name . ", here is the password reset link you have requested: ";
+            $message = "Hello " . $name . ", here is the password reset link you have requested: " . "<a href='http://localhost/resetPassword'>link</a>";
             $this->smtpServer->sendEmail($email, $name, $message, $subject);
         }
     }
