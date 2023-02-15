@@ -75,6 +75,12 @@ class userService{
     }
 
 
+    public function getUserByEmail($email)
+    {
+        return $this->userRepo->getUserByEmail($email);
+    }
+
+
     private function prepareData(array $data): array
     {
         return [

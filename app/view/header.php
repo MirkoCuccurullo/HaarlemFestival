@@ -23,11 +23,19 @@
                     <a class="nav-link" href="/manageProfile" style="color: white" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>Manage profile</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="#">Test 2</a>
+                    <a class="nav-link" href="/manage/users" style="color: white">Manage users</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout" style="color: white">Logout</a>
+                    <a class="nav-link" href="/logout" style="color: white" <?php if (!isset($_SESSION['current_user']))
+                        echo "hidden" ?>>Logout</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" style="color: white" <?php if (isset($_SESSION['current_user']))
+                        echo "hidden" ?>>Login</a>
                 </li>
             </ul>
         </div>

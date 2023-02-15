@@ -15,7 +15,6 @@ class router
 
         switch ($url){
             case'/':
-
             case'/home':
                 require_once '../view/home/index.php';
                 break;
@@ -23,6 +22,7 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
+
 
             case '/api/users':
                 require("../api/controllers/userControllerAPI.php");
@@ -47,6 +47,12 @@ class router
                     $controller = new \userController();
                     $controller->editUser($_POST['id']);
                     break;
+
+            case'/logout':
+                require_once("../view/login/logout.php");
+                break;
+
+
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -61,8 +67,18 @@ class router
                 break;
 
             case'/resetPassword':
-                require_once("../view/resetPassword/resetPassword.php");
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->displayResetPassword();
                 break;
+
+
+            case'/resetPassword/reset':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->resetPassword();
+                break;
+
 
             case '/resetPassword/sendLink':
                 require __DIR__ . '/../controller/userController.php';
@@ -72,13 +88,15 @@ class router
 
 
             case'/manageProfile':
-                require __DIR__ . '/../controller/userController.php';
+
+                require_once __DIR__ . '/../controller/userController.php';
+
                 $controller = new \userController();
                 $controller->manageProfile();
                 break;
 
             case'/manageProfile/update':
-                require __DIR__ . '/../controller/userController.php';
+                require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->updateProfile();
                 break;
