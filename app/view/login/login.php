@@ -1,7 +1,7 @@
 
 <?php
 include __DIR__ . '/../header.php'; ?>
-<form>
+<form class="col-md-6 mx-auto">
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="email" id="email" name="email" class="form-control"/>
@@ -10,10 +10,13 @@ include __DIR__ . '/../header.php'; ?>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-        <input type="password" id="password" name="password" class="form-control"/>
+        <input type="password" id="password" name="password" class="form-control col-6"/>
         <label class="form-label" for="password">Password</label>
     </div>
 
+    <?php if (isset($_SESSION['err_msg'])){ ?>
+        <label class="m-2 text-danger"><?= $_SESSION['err_msg']?></label>
+    <?php } ?>
     <!-- 2 column grid layout for inline styling -->
     <div class="row mb-4">
         <div class="col d-flex justify-content-center">
@@ -30,8 +33,11 @@ include __DIR__ . '/../header.php'; ?>
         </div>
     </div>
 
+    <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-primary btn-block mb-4" value="Login" formaction="/signin" formmethod="post" style="width: 95px">
+    </div>
+
     <!-- Submit button -->
-    <input type="submit" class="btn btn-primary btn-block mb-4" value="login" formaction="/signin" formmethod="post">
 
     <!-- Register buttons -->
     <div class="text-center">
@@ -39,7 +45,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 </form>
 
-<form action="">
+<form method="post" action="/resetPassword/sendLink">
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -52,13 +58,13 @@ include __DIR__ . '/../header.php'; ?>
                         <div class="form-floating">
                             <input required type="email" class="form-control" id="resetEmail" name="resetEmail"
                                    placeholder="Email address">
-                            <label for="email" class="form-label">Email address</label>
+                            <label for="resetEmail" class="form-label">Email address</label>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="sendResetLink">Save reset link</button>
+                    <button type="submit" class="btn btn-primary" name="sendResetLink">Send reset link</button>
                 </div>
             </div>
         </div>

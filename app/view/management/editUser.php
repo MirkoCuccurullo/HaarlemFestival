@@ -1,9 +1,8 @@
 <?php
 include __DIR__ . '/../header.php';
 include_once __DIR__ . '/../../model/user.php';
-
-
 ?>
+
 <div class="row">
     <div class="col-md-6">
         <form action="/manageProfile/update" method="post">
@@ -95,11 +94,6 @@ include_once __DIR__ . '/../../model/user.php';
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="editPassword">Confirm changes</button>
-
-                                    <?php if (isset($_SESSION['err_msg'])){ ?>
-                                    <label class="m-2 text-<?= $_SESSION['status']?>"><?= $_SESSION['err_msg']?></label>
-                                    <?php } ?>
-
                                 </form>
                             </div>
                         </div>
@@ -111,3 +105,4 @@ include_once __DIR__ . '/../../model/user.php';
 </div>
 <?php
 include __DIR__ . '/../footer.php'; ?>
+
