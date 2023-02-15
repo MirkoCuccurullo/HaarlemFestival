@@ -9,6 +9,10 @@ class userService{
     public function getUser($id){
         return $this->userRepo->getUser($id);
     }
+
+    public function getAllUsers(){
+        return $this->userRepo->getAllUsers();
+    }
     public function registerUser(array $data)
     {
         $validationResult = $this->validateData($data);
@@ -50,6 +54,7 @@ class userService{
         }
 
         return $user;
+
     }
     private function validateData(array $data): bool|array
     {
@@ -78,6 +83,7 @@ class userService{
             'password' => htmlspecialchars($data['password']),
         ];
     }
+
 
     public function resetUserPassword($id, $newPassword)
     {

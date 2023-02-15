@@ -47,7 +47,7 @@ class userRepository extends baseRepository
 
     public function getAllUsers()
     {
-        $sql = "SELECT name, password, registrationDate, dateOfBirth, role FROM users";
+        $sql = "SELECT * FROM users";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
