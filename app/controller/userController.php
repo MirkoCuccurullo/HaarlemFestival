@@ -66,6 +66,10 @@ class userController
         }
     }
 
+    public function manageAllUsers(){
+        require __DIR__ . '/../view/management/manageUsers.php';
+    }
+
 
 
     public function displayResetPassword()
@@ -92,5 +96,12 @@ class userController
             $message = "Hello " . $name . ", here is the password reset link you have requested: ";
             $this->smtpServer->sendEmail($email, $name, $message, $subject);
         }
+    }
+
+    public function editUser(mixed $id)
+    {
+        require_once __DIR__ . '/../model/user.php';
+        $user = $this->userService->getUser($id);
+        require __DIR__ . '/../view/management/editUser.php';
     }
 }

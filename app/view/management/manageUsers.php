@@ -1,8 +1,14 @@
 <?php
 include __DIR__ . '/../header.php'; ?>
 
-<h1 class="text-center mb-3">Doctors</h1>
-<a href="/management/addDoctor" class="btn btn-primary mb-3">Add doctor</a>
+<h1 class="text-center mb-3">Users</h1>
+<select name="role" id="role" class="form-select" oninput="filterUsers()">
+    <option selected value="0"> All Roles</option>
+    <option value="Employee">Employee</option>
+    <option value="Customer">Customer</option>
+    <option value="Administrator">Administrator</option>
+</select>
+
 <div class="table table-responsive">
     <table class="table text-center">
         <thead>
@@ -20,6 +26,23 @@ include __DIR__ . '/../header.php'; ?>
         <tbody class="table-group-divider" id="userTable">
 
         <script>
+            function filterUsers(){
+                const role = document.getElementById("role").value;
+                const table = document.getElementById("userTable");
+                const rows = table.getElementsByTagName("tr");
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i];
+                    const roleCol = row.getElementsByTagName("td")[4];
+                    if (roleCol) {
+                        const roleValue = roleCol.textContent || roleCol.innerText;
+                        if (role === "0" || roleValue === role) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    }
+                }
+            }
             function loadDoctors() {
                 fetch('http://localhost/api/users')
                     .then(result => result.json())
@@ -47,7 +70,7 @@ include __DIR__ . '/../header.php'; ?>
                 const editForm = document.createElement("form");
                 const idInput = document.createElement("input");
                 editForm.method = "POST";
-                editForm.action = "/management/editDoctor";
+                editForm.action = "/edit/user";
 
                 deleteButton.className = "btn btn-danger";
                 editButton.className = "btn btn-warning";
@@ -56,7 +79,7 @@ include __DIR__ . '/../header.php'; ?>
                 idCol.scope = "row";
                 idInput.type = "hidden";
 
-                idInput.name = "doctorId";
+                idInput.name = "id";
                 idInput.value = user.id;
                 idCol.innerHTML = user.id;
                 nameCol.innerHTML = user.name;
@@ -82,10 +105,10 @@ include __DIR__ . '/../header.php'; ?>
 
                 newRow.appendChild(idCol);
                 newRow.appendChild(nameCol);
-                newRow.appendChild(roleCol);
                 newRow.appendChild(emailCol);
                 newRow.appendChild(dateOfBirthCol);
                 newRow.appendChild(regDateCol);
+                newRow.appendChild(roleCol);
                 newRow.appendChild(deleteButtonCol);
                 newRow.appendChild(editButtonCol);
 
@@ -93,10 +116,10 @@ include __DIR__ . '/../header.php'; ?>
                 table.appendChild(newRow);
             }
 
-            function deleteDoctor(doctorId) {
+            function deleteDoctor(userId) {
 
-                const obj = {id: doctorId};
-                fetch('http://localhost/api/doctors', {
+                const obj = {id: userId};
+                fetch('http://localhost/api/delete/user', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(obj),

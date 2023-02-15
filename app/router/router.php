@@ -28,13 +28,25 @@ class router
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
                 $controller->index();
-
-
+                break;
             case'/logout':
                 require_once("../view/login/logout.php");
                 break;
-
-
+            case '/manage/users':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->manageAllUsers();
+                break;
+            case'/api/delete/user':
+                require("../api/controllers/userControllerAPI.php");
+                $controller = new userControllerAPI();
+                $controller->delete();
+                break;
+                case'/edit/user':
+                    require __DIR__ . '/../controller/userController.php';
+                    $controller = new \userController();
+                    $controller->editUser($_POST['id']);
+                    break;
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
