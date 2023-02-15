@@ -14,6 +14,9 @@ include __DIR__ . '/../header.php'; ?>
         <label class="form-label" for="password">Password</label>
     </div>
 
+    <?php if (isset($_SESSION['err_msg'])){ ?>
+        <label class="m-2 text-danger"><?= $_SESSION['err_msg']?></label>
+    <?php } ?>
     <!-- 2 column grid layout for inline styling -->
     <div class="row mb-4">
         <div class="col d-flex justify-content-center">

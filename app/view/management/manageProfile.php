@@ -95,7 +95,7 @@ include_once __DIR__ . '/../../model/user.php';
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="editPassword">Confirm changes</button>
                                     <?php if (isset($_SESSION['err_msg'])){ ?>
-                                    <label class="m-2 text-danger"><?= $_SESSION['err_msg']?></label>
+                                    <label class="m-2 text-<?= $_SESSION['status']?>"><?= $_SESSION['err_msg']?></label>
                                     <?php } ?>
                                 </form>
                             </div>
