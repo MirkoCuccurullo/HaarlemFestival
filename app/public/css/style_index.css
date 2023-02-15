@@ -2,25 +2,38 @@
 
 .btn-primary
 {
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px 16px;
-    gap: 8px;
-    /* color_palette_blue */
-
     background: #0066CC;
-    /* card_shadow */
-
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    padding: 0.5em;
+}
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    min-width: 25%;
+    max-width: 45%;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    padding: 2em;
 }
 .card-body
 {
     background: #9EBAD9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 30px;
+    width: 100%;
+}
+@media screen and (max-width: 500px) {
+    .card{
+        width: 100%;
+    }
 }
