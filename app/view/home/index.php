@@ -52,8 +52,6 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 </div>
 
-
-
     <div id="instafeed"></div>
 
     <h3 style="text-align: center">Instagram:</h3>
@@ -70,5 +68,6 @@ include __DIR__ . '/../header.php'; ?>
     </script>
 
     </div>
+
 <?php
 include __DIR__ . '/../footer.php'; ?>

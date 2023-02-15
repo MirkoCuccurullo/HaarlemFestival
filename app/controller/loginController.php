@@ -20,6 +20,9 @@ class loginController
 
         if ($currentUser != null){
             $_SESSION['current_user'] = $currentUser;
+            $_SESSION['current_user_email'] = $currentUser->email;
+            $_SESSION['current_user_id'] = $currentUser->id;
+            $_SESSION['current_user_password'] = $currentUser->password;
             $router = new router();
             $router->route('/');
         }

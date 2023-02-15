@@ -4,6 +4,7 @@ namespace router;
 
 use loginController;
 use registrationController;
+use userControllerAPI;
 
 class router
 {
@@ -17,8 +18,38 @@ class router
             case'/home':
                 require_once '../view/home/index.php';
                 break;
+
             case'/login':
                 require_once("../view/login/login.php");
+                break;
+
+
+            case '/api/users':
+                require("../api/controllers/userControllerAPI.php");
+                $controller = new userControllerAPI();
+                $controller->index();
+                break;
+            case'/logout':
+                require_once("../view/login/logout.php");
+                break;
+            case '/manage/users':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->manageAllUsers();
+                break;
+            case'/api/delete/user':
+                require("../api/controllers/userControllerAPI.php");
+                $controller = new userControllerAPI();
+                $controller->delete();
+                break;
+                case'/edit/user':
+                    require __DIR__ . '/../controller/userController.php';
+                    $controller = new \userController();
+                    $controller->editUser($_POST['id']);
+                    break;
+
+            case'/logout':
+                require_once("../view/login/logout.php");
                 break;
 
 
@@ -36,11 +67,38 @@ class router
                 break;
 
             case'/resetPassword':
-                require_once("../view/resetPassword/resetPassword.php");
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->displayResetPassword();
                 break;
 
+
+            case'/resetPassword/reset':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->resetPassword();
+                break;
+
+
+            case '/resetPassword/sendLink':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->sendResetLink();
+                break;
+
+
             case'/manageProfile':
-                require_once("../view/management/manageProfile.php");
+
+                require_once __DIR__ . '/../controller/userController.php';
+
+                $controller = new \userController();
+                $controller->manageProfile();
+                break;
+
+            case'/manageProfile/update':
+                require_once __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->updateProfile();
                 break;
 
             default:
