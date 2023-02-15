@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4 sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-success mb-4 sticky-top">
     <div class="container">
         <a class="navbar-brand" href="/" style="color: white">Visit Haarlem</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
