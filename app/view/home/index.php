@@ -1,16 +1,6 @@
 <?php
 include __DIR__ . '/../header.php'; ?>
 
-
-<?php
-
-var_dump($_SESSION);
-//$user = $_SESSION['current_user'];
-//echo $user->email;
-
-include __DIR__ . '/../footer.php'; ?>
-
-
 <head>
     <link href="css/style_index.css" rel="stylesheet">
     <title>Index</title>
