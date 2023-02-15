@@ -6,7 +6,8 @@ include __DIR__ . '/../header.php'; ?>
     <title>Index</title>
 </head>
 
-<div class="card" style="width: 18rem;">
+    <div id="card-container">
+<div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">History Tours in Haarlem</h5>
@@ -17,7 +18,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 </div>
 
-<div class="card" style="width: 18rem;">
+<div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">Music clubs in Haarlem</h5>
@@ -28,7 +29,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Kids events in Haarlem</h5>
@@ -39,7 +40,7 @@ include __DIR__ . '/../header.php'; ?>
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Culinary events in Haarlem</h5>
@@ -49,10 +50,9 @@ include __DIR__ . '/../header.php'; ?>
             <a href="#" class="btn-primary">Culinary</a>
         </div>
     </div>
+</div>
 
-
-</body>
-</html>
+    </div>
 
 <?php
 include __DIR__ . '/../footer.php'; ?>
