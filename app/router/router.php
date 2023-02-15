@@ -4,6 +4,7 @@ namespace router;
 
 use loginController;
 use registrationController;
+use userControllerAPI;
 
 class router
 {
@@ -20,8 +21,11 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
-
-
+            case '/api/users':
+                require("../api/controllers/userControllerAPI.php");
+                $controller = new userControllerAPI();
+                $controller->index();
+                break;
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
