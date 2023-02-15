@@ -39,7 +39,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 </form>
 
-<form action="">
+<form method="post" action="/resetPassword/sendLink">
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -52,13 +52,13 @@ include __DIR__ . '/../header.php'; ?>
                         <div class="form-floating">
                             <input required type="email" class="form-control" id="resetEmail" name="resetEmail"
                                    placeholder="Email address">
-                            <label for="email" class="form-label">Email address</label>
+                            <label for="resetEmail" class="form-label">Email address</label>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="sendResetLink">Save reset link</button>
+                    <button type="submit" class="btn btn-primary" name="sendResetLink">Send reset link</button>
                 </div>
             </div>
         </div>

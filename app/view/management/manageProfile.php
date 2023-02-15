@@ -1,9 +1,12 @@
 <?php
-include __DIR__ . '/../header.php'; ?>
+include __DIR__ . '/../header.php';
+include_once __DIR__ . '/../../model/user.php';
+
+?>
 
 <div class="row">
     <div class="col-md-6">
-        <form action="/home/editProfile" method="post">
+        <form action="/manageProfile/update" method="post">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
@@ -17,7 +20,7 @@ include __DIR__ . '/../header.php'; ?>
                                         <div class="col-md-12">
                                             <div class="form-floating">
                                                 <input required type="text" class="form-control" id="profileName"
-                                                       name="profileName" placeholder="John">
+                                                       name="profileName" placeholder="John" value="<?=$user->name?>">
                                                 <label for="profileName" class="form-label">Name</label>
                                             </div>
                                         </div>
@@ -29,7 +32,7 @@ include __DIR__ . '/../header.php'; ?>
                                         <div class="col-md">
                                             <div class="form-floating">
                                                 <input required type="email" class="form-control" id="email"
-                                                       name="email" placeholder="Email">
+                                                       name="email" placeholder="Email" value="<?=$user->email?>">
                                                 <label for="email" class="form-label">Email</label>
                                             </div>
                                         </div>
@@ -38,8 +41,8 @@ include __DIR__ . '/../header.php'; ?>
                                     <h2 class="mb-3">Picture placeholder</h2>
 
 
-                                    <button type="submit" class="btn btn-primary" name="edit">Confirm changes</button>
-                                    <a href="/home/profile" class="btn btn-warning">Cancel</a>
+                                    <button type="submit" class="btn btn-primary" name="editProfile">Confirm changes</button>
+                                    <a href="/home" class="btn btn-warning">Cancel</a>
                                     <button type="submit" class="btn btn-danger float-end" name="delete">Delete
                                         profile
                                     </button>
@@ -53,7 +56,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 
     <div class="col-md-6">
-        <form action="/home/editProfile" method="post">
+        <form action="/manageProfile/update" method="post">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
@@ -91,7 +94,7 @@ include __DIR__ . '/../header.php'; ?>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" name="edit">Confirm changes</button>
+                                    <button type="submit" class="btn btn-primary" name="editPassword">Confirm changes</button>
                                 </form>
                             </div>
                         </div>

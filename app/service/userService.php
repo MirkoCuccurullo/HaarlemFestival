@@ -54,8 +54,8 @@ class userService{
         }
 
         return $user;
-
     }
+
     private function validateData(array $data): bool|array
     {
         if (empty($data["name"])) {
@@ -72,6 +72,11 @@ class userService{
         }
 
         return true;
+    }
+
+    public function getUserByEmail($email)
+    {
+        return $this->userRepo->getUserByEmail($email);
     }
 
     private function prepareData(array $data): array
