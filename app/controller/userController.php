@@ -39,12 +39,14 @@ class userController
         require __DIR__ . '/../view/management/manageProfile.php';
     }
 
+
+    public function manageAllUsers(){
+        require __DIR__ . '/../view/management/manageUsers.php';
+    }
+
     public function updateProfile()
     {
         $id = $_SESSION['current_user_id'];
-
-
-
         if (isset($_POST['editProfile'])) {
             $name = htmlspecialchars($_POST['profileName']);
             $email = htmlspecialchars($_POST['email']);
@@ -54,35 +56,12 @@ class userController
             header('location: /home');
             //$message = "Hello " . $name . ", your profile changes have been applied. ";
             //$this->smtpServer->sendEmail($email, $name, $message, "Profile changes");
-
         } else if (isset($_POST['editPassword'])) {
             $_SESSION['err_msg'] = "";
-
             $hashedPassword = $_SESSION['current_user_password'];
             $currentPassword = htmlspecialchars($_POST['currentPassword']);
             $newPassword = htmlspecialchars($_POST['newPassword']);
             $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
-
-            if(password_verify($currentPassword, $hashedPassword))
-            {
-                if ($currentPassword != $newPassword)
-                {
-                    if($newPassword == $verifyPassword)
-                    {
-                        $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                        $this->userService->resetUserPassword($id, $newHashedPassword);
-                    }
-                }
-            }
-        }
-    }
-
-    public function manageAllUsers(){
-        require __DIR__ . '/../view/management/manageUsers.php';
-    }
-
-
-
             if (password_verify($currentPassword, $hashedPassword)) {
                 if ($currentPassword != $newPassword) {
                     if ($newPassword == $verifyPassword) {
