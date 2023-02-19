@@ -19,6 +19,12 @@ class router
                 require_once '../view/home/index.php';
                 break;
 
+            case '/home/editor':
+                require __DIR__ . '/../controller/editorController.php';
+                $controller = new \editorController();
+                $controller->displayEditorPage();
+                break;
+
             case'/login':
                 require_once("../view/login/login.php");
                 break;
