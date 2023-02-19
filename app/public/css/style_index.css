@@ -2,25 +2,67 @@
 
 .btn-primary
 {
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px 16px;
-    gap: 8px;
-    /* color_palette_blue */
-
     background: #0066CC;
-    /* card_shadow */
-
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    padding: 0.5em;
+}
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    min-width: 25%;
+    max-width: 45%;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    padding: 2em;
 }
 .card-body
 {
     background: #9EBAD9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 30px;
+    width: 100%;
 }
+#instafeed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#instafeed img {
+    max-width: 100%;
+    max-height: 200px;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+    #instafeed {
+        flex-direction: column;
+    }
+
+    #instafeed img {
+        max-height: 300px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #instafeed img {
+        max-height: 150px;
+    }
+
+}
+    @media screen and (max-width: 500px) {
+        .card {
+            width: 100%;
+        }
+    }
