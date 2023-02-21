@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/../service/userService.php';
-require '../service/SMTPServer.php';
 
 use router\router;
 

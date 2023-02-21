@@ -16,7 +16,9 @@ class router
         switch ($url){
             case'/':
             case'/home':
-                require_once '../view/home/index.php';
+               require_once __DIR__ . '/../controller/homePageController.php';
+                $controller = new \homePageController();
+                $controller->homePage();
                 break;
 
             case '/home/editor':
