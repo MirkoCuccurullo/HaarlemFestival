@@ -1,6 +1,5 @@
 <?php
 
-use Cassandra\Date;
 
 class event{
     public int $id;
