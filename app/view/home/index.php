@@ -15,7 +15,7 @@ include __DIR__ . '/../header.php'; ?>
                 <h5 class="card-title"><?= $item['title'] ?></h5>
                 <p class="card-text"><?= $item['content'] ?></p>
                 <br>
-                <a href="#" class="btn-primary"><?= $item['prompt'] ?></a>
+                <a href="<?= $item['prompt'] ?>" class="btn-primary"><?= $item['prompt'] ?></a>
             </div>
         </div>
     <?php endforeach; ?>
