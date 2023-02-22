@@ -6,7 +6,7 @@ class userService{
     public function __construct(){
         $this->userRepo = new userRepository();
     }
-    public function getUser($id){
+    public function getUserById($id){
         return $this->userRepo->getUser($id);
     }
 
@@ -97,9 +97,6 @@ class userService{
         return $this->userRepo->resetUserPassword($id, $newPassword);
     }
 
-    public function getUserById(mixed $id)
-    {
-    }
 
 
 }

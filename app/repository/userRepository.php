@@ -10,7 +10,7 @@ class userRepository extends baseRepository
     public function getUser($id)
     {
 
-        $sql = "SELECT name, email, password, date_of_birth, registration_date, role FROM users WHERE id = :id";
+        $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(['id' => $id]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');

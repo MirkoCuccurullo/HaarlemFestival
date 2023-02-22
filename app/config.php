@@ -8,7 +8,7 @@ $db_password="secret123";
 
 //Google Mail credentials
 $smtpEmail = "praticissimoissimo@gmail.com";
-$smtpPassword = "fzfcyoucgypzgbuj";
+$smtpPassword = "rubaioagmjpzykyi";
 $smtpPort = 587;
 
 

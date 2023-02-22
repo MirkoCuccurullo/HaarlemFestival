@@ -39,7 +39,7 @@ include_once __DIR__ . '/../../model/user.php';
 
                                     <h2 class="mb-3">Picture placeholder</h2>
 
-
+                                        <input type="text" hidden name="id" value="<?=$user->id?>">
                                     <button type="submit" class="btn btn-primary" name="editProfile">Confirm changes</button>
                                     <a href="/home" class="btn btn-warning">Cancel</a>
                                     <button type="submit" class="btn btn-danger float-end" name="delete">Delete

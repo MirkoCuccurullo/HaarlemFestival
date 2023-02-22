@@ -55,12 +55,6 @@ class router
                     $controller = new \userController();
                     $controller->editUser($_POST['id']);
                     break;
-
-            case'/logout':
-                require_once("../view/login/logout.php");
-                break;
-
-
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -100,13 +94,13 @@ class router
                 require_once __DIR__ . '/../controller/userController.php';
 
                 $controller = new \userController();
-                $controller->manageProfile();
+                $controller->manageProfile($_POST['id']);
                 break;
 
             case'/manageProfile/update':
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
-                $controller->updateProfile();
+                $controller->updateProfile($_POST['id']);
                 break;
 
             default:
