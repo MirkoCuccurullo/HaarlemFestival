@@ -15,7 +15,7 @@ class editorRepository extends baseRepository
 
     public function getAllHome()
     {
-        $sql = "SELECT content FROM editor";
+        $sql = "SELECT id, content FROM editor";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -53,7 +53,7 @@ class router
                 case'/edit/user':
                     require __DIR__ . '/../controller/userController.php';
                     $controller = new \userController();
-                    $controller->editUser($_POST['id']);
+                    $controller->editUser();
                     break;
 
             case'/logout':
@@ -107,6 +107,12 @@ class router
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->updateProfile();
+                break;
+
+            case'/api/homeCards':
+                require_once __DIR__ . '/../api/controllers/editorControllerAPI.php';
+                $controller = new \editorControllerAPI();
+                $controller->index();
                 break;
 
             default:
