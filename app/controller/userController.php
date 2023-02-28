@@ -152,10 +152,6 @@ class userController
                 $this->smtpServer->sendEmail($email, $name, $message, "Password reset");
                 $this->login();
             } else {
-                echo "error";
-                return;
-            }
-            else {
                 $_SESSION['err_msg'] = "The email you entered is not in use.";
                 $_SESSION['status'] = "danger";
             }
