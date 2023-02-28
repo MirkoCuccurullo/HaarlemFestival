@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . '/../header.php'; ?>
 
-<form action="#" method="post">
+<form action="/resetPassword/reset" method="post">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-6 col-sm-12 mx-auto">
@@ -26,7 +26,7 @@ include __DIR__ . '/../header.php'; ?>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="confirm">Confirm changes</button>
+                            <button type="submit" class="btn btn-primary" name="resetPassword">Confirm changes</button>
                         </form>
                     </div>
                 </div>

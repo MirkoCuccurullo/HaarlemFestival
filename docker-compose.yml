@@ -21,6 +21,7 @@ services:
         volumes:
             - ./app:/app
             - ./sql:/docker-entrypoint-initdb.d
+            - ./vendor:/vendor
     mysql:
         image: mariadb:latest
         environment:

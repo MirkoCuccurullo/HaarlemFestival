@@ -24,7 +24,7 @@ class registrationController {
 
                 $response = $_POST['g-recaptcha-response'];
                 if (!empty($response)) { // check if captcha response is not empty
-                    if ($this->userService->verifyCaptchaResponse($response)) {
+                   if ($this->userService->verifyCaptchaResponse($response)) {
                         $email = $_POST['email'];
                         $name = $_POST['name'];
                         $dateOfBirth = $_POST['date_of_birth'];
@@ -48,10 +48,10 @@ class registrationController {
                             $successMessage = "Registration successful!";
                         }
                     }
-                } else {
+               } else {
                     $captchaMessage = "Please, verify that you are not a robot";
                 }
-            }
+           }
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }

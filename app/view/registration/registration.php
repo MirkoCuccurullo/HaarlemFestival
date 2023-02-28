@@ -8,6 +8,7 @@
     <title>Registration</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="/css/registration.css">
+
 </head>
 
 <body>

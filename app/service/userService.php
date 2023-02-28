@@ -6,8 +6,12 @@ class userService{
     public function __construct(){
         $this->userRepo = new userRepository();
     }
-    public function getUser($id){
+    public function getUserById($id){
         return $this->userRepo->getUser($id);
+    }
+
+    public function getAllUsers(){
+        return $this->userRepo->getAllUsers();
     }
     public function registerUser(array $data)
     {
@@ -60,8 +64,13 @@ class userService{
         }
 
         return $user;
-
     }
+
+    public function getUserByEmail($email)
+    {
+        return $this->userRepo->getUserByEmail($email);
+    }
+
 
     private function prepareData(array $data): array
     {
@@ -77,5 +86,4 @@ class userService{
     {
         return $this->userRepo->resetUserPassword($id, $newPassword);
     }
-
 }
