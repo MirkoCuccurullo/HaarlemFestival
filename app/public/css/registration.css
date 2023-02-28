@@ -16,17 +16,14 @@ body {
 
 .container {
     max-width: 700px;
-    width: 100%;
+    width: 80%;
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .container header {
-    font-size: 1.5rem;
-    color: #333;
-    font-weight: 500;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -35,8 +32,17 @@ body {
     margin-top: 20px;
 }
 
-p {
-    margin-top: 15pt;
+#error-msg {
+    color: red;
+    float: right;
+    font-size: 0.8rem;
+}
+
+#registerSuccess {
+    color: limegreen;
+    float: right;
+    font-size: 1.0rem;
+    padding-bottom: 10px;
 }
 
 .form :where(.input-box input) {
@@ -46,19 +52,9 @@ p {
     outline: none;
     font-size: 1rem;
     color: #707070;
-    margin-top: 8px;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 0 15px;
-}
-
-.input-box input:focus {
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-.form .column {
-    display: flex;
-    column-gap: 15px;
 }
 
 .form button {

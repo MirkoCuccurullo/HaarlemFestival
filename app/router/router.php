@@ -21,7 +21,6 @@ class router
                 require_once("../view/login/login.php");
                 break;
 
-
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -30,9 +29,8 @@ class router
 
             case'/register':
                 require __DIR__ . '/../controller/registrationController.php';
-                $data = $_POST;
                 $registrationController = new registrationController();
-                $registrationController->displayRegistrationPage($data);
+                $registrationController->displayRegistration();
                 break;
 
             case'/resetPassword':
