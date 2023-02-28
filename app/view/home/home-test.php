@@ -1,93 +1,232 @@
 <?php
-include('editor.php');
 include __DIR__ . '/../header.php'; ?>
 
 <head>
     <link href="css/style_index.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/q0czso0c6q6ut003t5rj8pm8r2bqy0uo2z23wjdtmavywsxz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/q0czso0c6q6ut003t5rj8pm8r2bqy0uo2z23wjdtmavywsxz/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
     <title>Index</title>
 </head>
-<?php
-foreach ($home as $article) {
-    $html_content = htmlspecialchars_decode($article['content']);
-    echo "<div class='card' style='width: 18rem;'>$html_content</div>";
-}
-?>
+
+
+<div id="card-container">
+    <?php
+    foreach ($homePage as $item): ?>
+        <form onsubmit="sendEditForm(this.id);return false" id="form<?= $item['id'] ?>">
+            <input type="hidden" name="editId" value="<?= $item['id'] ?>" id="edit<?= $item['id'] ?>">
+            <div class="card" id="<?= $item['id'] ?>">
+                <?php
+                echo htmlspecialchars_decode($item['image']);
+                echo htmlspecialchars_decode($item['title']);
+                echo htmlspecialchars_decode($item['content']);
+                echo htmlspecialchars_decode($item['prompt']);
+                ?>
+
+            </div>
+        </form>
+        <button class='btn-primary' onclick='edit(this.id)' id="btn<?= $item['id'] ?>">Edit</button>
+    <?php endforeach; ?>
+</div>
+
+<script>
+    function sendEditForm(formId) {
+        const numericId = formId.substring(4);
+
+        const content = tinymce.get('textarea' + numericId).getContent();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, "text/html");
+
+        const heading = getHeading(doc);
+        //heading.className = 'card-title';
+        const paragraph = getParagraph(doc);
+        //paragraph.className = 'card-text';
+        const link = getLink(doc);
+        //link.className = 'btn-primary';
+        const image = getImage(doc);
+        //image.className = 'card-img-top';
+
+        const obj = {id: numericId, heading: heading, paragraph: paragraph, link: link, image: image};
+
+        fetch('/api/homeCards/update', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(obj),
+        }).then(result => {
+            console.log(result)
+        });
+    }
+
+    function edit(buttonId) {
+        //alert(buttonId);
+        const newId = buttonId.substring(3);
+        const card = document.getElementById(newId);
+        const html = card.innerHTML;
+
+        const textarea = document.createElement('textarea');
+        textarea.id = 'textarea' + newId;
+        textarea.name = 'content';
+        textarea.innerHTML = html;
+        card.parentNode.replaceChild(textarea, card);
+
+        const form = document.getElementById('form' + newId);
+        const saveButton = document.createElement('button');
+        saveButton.type = 'submit';
+        saveButton.className = 'btn-primary';
+        saveButton.innerHTML = 'Save';
+        saveButton.name = 'save';
+
+        const cancelButton = document.createElement('button');
+        cancelButton.type = 'button';
+        cancelButton.className = 'btn-danger';
+        cancelButton.innerHTML = 'Cancel';
+
+        cancelButton.onclick = function () {
+            textarea.parentNode.replaceChild(card, textarea);
+            cancelButton.remove();
+            saveButton.remove();
+            const tinymceEditor = tinymce.get('textarea' + newId);
+            tinymceEditor.remove(tinymceEditor);
+        }
+
+        form.appendChild(saveButton);
+        form.appendChild(cancelButton);
+
+        tinymce.init({
+            selector: '#textarea' + newId,
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                {value: 'First.Name', title: 'First Name'},
+                {value: 'Email', title: 'Email'},
+            ]
+        });
+    }
+</script>
+<!--<div id="card-container">-->
+<!--    <script>-->
+<!--        function appendHomeCard(homeCard){-->
+<!--            const cardContainer = document.getElementById('card-container');-->
+<!--            const card = document.createElement('div');-->
+<!--            const cardImg = document.createElement('img');-->
+<!--            const cardBody = document.createElement('div');-->
+<!--            const cardP = document.createElement('p');-->
+<!--            const cardBtn = document.createElement('button');-->
+<!---->
+<!--            card.className = 'card';-->
+<!--            cardImg.className = 'card-img-top';-->
+<!--            cardBody.className = 'card-body';-->
+<!--            cardP.className = 'card-text';-->
+<!--            cardBtn.className = 'btn-primary';-->
+<!---->
+<!--            //cardP.innerHTML = homeCard.content;-->
+<!--            //cardBody.appendChild(cardP);-->
+<!--            cardBody.appendChild(cardBtn);-->
+<!--            card.appendChild(cardImg);-->
+<!--            card.appendChild(cardBody);-->
+<!--            cardContainer.appendChild(card);-->
+<!--        }-->
+<!---->
+<!--        function getHomeCards(){-->
+<!--            fetch('/api/homeCards')-->
+<!--                .then(result => result.json())-->
+<!--                .then((cards)=>{-->
+<!--                    cards.forEach(homeCard => {-->
+<!--                        appendHomeCard(homeCard);-->
+<!--                    })-->
+<!--                    console.log(cards);-->
+<!--                })-->
+<!--        }-->
+<!---->
+<!--        getHomeCards();-->
+<!--    </script>-->
+<!--</div>-->
+
+
 <h1>Edit Article</h1>
-<form action="/home/editor" method="post">
+<form onsubmit="bruh();return false">
     <div>
        <textarea required name="editor" id="editor">
         Welcome to TinyMCE!
        </textarea>
-        <script>
-            tinymce.init({
-                selector: 'textarea',
-                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-                tinycomments_mode: 'embedded',
-                tinycomments_author: 'Author name',
-                mergetags_list: [
-                    {value: 'First.Name', title: 'First Name'},
-                    {value: 'Email', title: 'Email'},
-                ]
-            });
-        </script>
-        <input type="submit" name="submit" value="Submit"/>
+
+        <input type="submit" name="submit" value="Submit page"/>
     </div>
 </form>
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">History Tours in Haarlem</h5>
-        <p class="card-text">Explore the historical sites of Haarlem. It is one of the oldest cities of the Netherlands,
-            dating back to the 10th century. Join the history events taking place in Haarlem. These events are geared
-            towards everyone, whether they are history enthusiasts, researchers, historians, families, and so forth.
-            Visit us and broaden your horizons.
-        </p>
-        <br>
-        <a href="#" class="btn-primary">History</a>
-    </div>
-</div>
+<button name="submit" value="Submit" onclick="bruh()">Submit</button>
+<script>
+    function bruh() {
+        const content = tinymce.get('editor').getContent();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, "text/html");
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Music clubs in Haarlem</h5>
-        <p class="card-text">Haarlem is a young, bold and very alive city. The vicinity with Amsterdam influences a lot
-            the musical culture of the people here. Although the dimension are smaller as the Dutch capital, in Haarlem
-            it is possible to find the right event for every musical taste, from blues to techno.
-        </p>
-        <br>
-        <a href="#" class="btn-primary">Music</a>
-    </div>
-</div>
+        const heading = getHeading(doc);
+        heading.classList.add('card-title');
+        const paragraph = getParagraph(doc);
+        paragraph.classList.add('card-text');
+        const link = getLink(doc);
+        link.classList.add('btn-primary');
+        const image = getImage(doc);
+        image.classList.add('card-img-top');
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Kids events in Haarlem</h5>
-        <p class="card-text">Haarlem is a young, bold and very alive city. The vicinity with Amsterdam influences a lot
-            the musical culture of the people here. Although the dimension are smaller as the Dutch capital, in Haarlem
-            it is possible to find the right event for every musical taste, from blues to techno.
-        </p>
-        <br>
-        <a href="#" class="btn-primary">Kids</a>
-    </div>
-</div>
+        const headingContent = heading.outerHTML;
+        const paragraphContent = paragraph.outerHTML;
+        const linkContent = link.outerHTML;
+        const imageContent = image.outerHTML;
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Culinary events in Haarlem</h5>
-        <p class="card-text">Haarlem is a young, bold and very alive city, the vicinity with Amsterdam influences a lot
-            the musical culture of the people here, altough the dimension are smaller as the Dutch capital, in Haarlem
-            is possible to find the right event for every musical taste, from blues to techno.
-        </p>
-        <br>
-        <a href="#" class="btn-primary">Culinary</a>
-    </div>
-</div>
+
+        const obj = {heading: headingContent, paragraph: paragraphContent, link: linkContent, image: imageContent};
+
+        fetch('/api/homeCards', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(obj),
+        }).then(result => {
+            console.log(result)
+        });
+
+        //alert(heading + paragraph + link + image);
+    }
+
+    function getHeading(doc) {
+        //return doc.querySelector("h1, h2, h3, h4, h5, h6").outerHTML;
+        return doc.querySelector("h1, h2, h3, h4, h5, h6");
+    }
+
+    function getParagraph(doc) {
+        //return doc.querySelector("p:not(:has(*))").outerHTML;
+        return doc.querySelector("p:not(:has(*))");
+        //return doc.querySelector("p").outerHTML;
+    }
+
+    function getLink(doc) {
+        //return doc.querySelector("a").outerHTML;
+        return doc.querySelector("a");
+    }
+
+    function getImage(doc) {
+        //return doc.querySelector("img").outerHTML;
+        return doc.querySelector("img");
+    }
+</script>
+
+
+<script>
+    tinymce.init({
+        selector: '#editor',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+            {value: 'First.Name', title: 'First Name'},
+            {value: 'Email', title: 'Email'},
+        ]
+    });
+</script>
+
 
 <?php
 include __DIR__ . '/../footer.php'; ?>

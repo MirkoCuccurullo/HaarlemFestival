@@ -10,13 +10,14 @@ class userRepository extends baseRepository
     public function getUser($id)
     {
 
-        $sql = "SELECT name, email, password, date_of_birth, registration_date, role FROM users WHERE id = :id";
+        $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(['id' => $id]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
         $result = $stmt->fetch();
         return $result;
     }
+
     public function insertUserToDatabase($name, $email, $hashedSaltedPassword, $date_of_birth): bool
     {
         $sql = "INSERT INTO users (name, email, password, date_of_birth, registration_date, role) VALUES (:name, :email, :hashedSaltedPassword, :date_of_birth, now(), :role)";
@@ -29,6 +30,17 @@ class userRepository extends baseRepository
         $stmt->bindParam(":date_of_birth", $date_of_birth);
         return $stmt->execute();
     }
+
+    public function isEmailAlreadyInUse($email): bool
+    {
+        $sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return ($count > 0);
+    }
+
     public function updateUser($id, $name, $email)
     {
         $sql = "UPDATE users SET name = :name, email = :email WHERE id = :id";
@@ -37,6 +49,7 @@ class userRepository extends baseRepository
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
     public function deleteUser($id)
     {
         $sql = "DELETE FROM users WHERE id = :id";

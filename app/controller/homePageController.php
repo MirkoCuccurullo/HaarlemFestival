@@ -1,19 +1,21 @@
 <?php
+
+use router\router;
+
+
 require_once __DIR__ . '/../service/homePageService.php';
-require_once __DIR__ . '/../model/homePageCard.php';
 
 class homePageController
 {
-    private homePageService $homePageService;
+    private $homePageService;
 
     public function __construct()
     {
         $this->homePageService = new homePageService();
     }
 
-    public function homePage(): void
+    public function index()
     {
-        $homePage = $this->homePageService->getParagraphInfo();
         require __DIR__ . '/../view/home/index.php';
     }
 }
