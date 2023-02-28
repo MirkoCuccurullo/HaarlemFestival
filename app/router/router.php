@@ -18,13 +18,7 @@ class router
             case'/home':
                require_once __DIR__ . '/../controller/homePageController.php';
                 $controller = new \homePageController();
-                $controller->homePage();
-                break;
-
-            case '/home/editor':
-                require __DIR__ . '/../controller/editorController.php';
-                $controller = new \editorController();
-                $controller->displayEditorPage();
+                $controller->index();
                 break;
 
             case'/login':
@@ -110,9 +104,15 @@ class router
                 break;
 
             case'/api/homeCards':
-                require_once __DIR__ . '/../api/controllers/editorControllerAPI.php';
-                $controller = new \editorControllerAPI();
+                require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
+                $controller = new \homePageControllerAPI();
                 $controller->index();
+                break;
+
+            case'/api/homeCards/update':
+                require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
+                $controller = new \homePageControllerAPI();
+                $controller->updateHomePages();
                 break;
 
             default:

@@ -1,17 +1,20 @@
 <?php
-require_once __DIR__ . '/../repository/homePageRepository.php';
 
-class homePageService
-{
-    private $homePageRepo;
-
-    public function __construct()
-    {
-        $this->homePageRepo = new homePageRepository();
+require_once '../repository/homePageRepository.php';
+class homePageService{
+    private $homePageRepository;
+    public function __construct(){
+        $this->homePageRepository = new homePageRepository();
+    }
+    public function insertHome($title, $image, $content, $prompt){
+        return $this->homePageRepository->insertHome($title, $image, $content, $prompt);
     }
 
-    public function getParagraphInfo()
-    {
-        return $this->homePageRepo->getParagraphInfo();
+    public function getAllHome(){
+        return $this->homePageRepository->getAllHome();
+    }
+
+    public function updateHomePages($id, $title, $image, $content, $prompt){
+        return $this->homePageRepository->updateHomePages($id, $title, $image, $content, $prompt);
     }
 }

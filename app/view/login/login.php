@@ -45,7 +45,7 @@ include __DIR__ . '/../header.php'; ?>
     </div>
 </form>
 
-<form method="post" action="/edit/user">
+<form method="post" action="/resetPassword/sendLink">
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
