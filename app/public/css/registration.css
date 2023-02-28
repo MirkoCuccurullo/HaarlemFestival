@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: lightblue;
+}
+
+.container {
+    max-width: 700px;
+    width: 80%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.container header {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#error-msg {
+    color: red;
+    float: right;
+    font-size: 0.8rem;
+}
+
+#registerSuccess {
+    color: limegreen;
+    float: right;
+    font-size: 1.0rem;
+    padding-bottom: 10px;
+}
+
+.form :where(.input-box input) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.form button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    background: blueviolet;
+}
+
+.form button:hover {
+    background: lightblue;
+}
+
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+}
