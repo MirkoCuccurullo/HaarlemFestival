@@ -37,7 +37,7 @@ class SMTPServer
         $mail->Subject = $subject;
         $content = "<b>$message</b>";
 
-        //$mail->MsgHTML($content);
+        $mail->MsgHTML($content);
 
         //send email
         try {

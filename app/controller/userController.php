@@ -31,9 +31,9 @@ class userController
         require __DIR__ . '/../view/registration/registration.php';
     }
 
-    public function manageProfile()
+    public function manageProfile($id)
     {
-        $user = $this->userService->getUserByEmail($_SESSION['current_user_email']);
+        $user = $this->userService->getUserById($id);
         require __DIR__ . '/../view/management/manageProfile.php';
     }
 
@@ -42,9 +42,8 @@ class userController
         require __DIR__ . '/../view/management/manageUsers.php';
     }
 
-    public function updateProfile()
+    public function updateProfile($id)
     {
-        $id = $_SESSION['current_user_id'];
         if (isset($_POST['editProfile'])) {
             $name = htmlspecialchars($_POST['profileName']);
             $email = htmlspecialchars($_POST['email']);
@@ -146,22 +145,20 @@ class userController
         if (isset($_POST['sendResetLink'])) {
             $email = htmlspecialchars($_POST['resetEmail']);
             $user = $this->userService->getUserByEmail($email);
-            if($user != null) {
-                $_SESSION['current_user_id'] = $user->id;
+            if ($user != null) {
                 $name = $user->name;
-                $subject = "Password reset link";
-                $message = "Hello " . $name . ", here is the password reset link you have requested: " . "<a href='http://localhost/resetPassword'>link</a>";
-                $this->smtpServer->sendEmail($email, $name, $message, $subject);
-                $_SESSION['err_msg'] = "A reset link has been sent to your email.";
-                $_SESSION['status'] = "success";
-            }
-            else {
+                $id = $user->id;
+                $message = "Hello " . $name . ", you have requested a password reset. Please click on the link below to reset your password. http://localhost:8080/resetPassword?id=" . $id;
+                $this->smtpServer->sendEmail($email, $name, $message, "Password reset");
+                $this->login();
+            } else {
                 $_SESSION['err_msg'] = "The email you entered is not in use.";
                 $_SESSION['status'] = "danger";
             }
 
             $this->login();
             unset($_SESSION['err_msg']);
+
         }
     }
 

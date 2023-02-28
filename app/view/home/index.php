@@ -14,7 +14,7 @@ include __DIR__ . '/../header.php'; ?>
             const cardContainer = document.getElementById('card-container2');
 
             const container = document.createElement('div');
-            container.className = 'col-md-6';
+            container.className = 'col-md-6 my-3';
             container.style = 'display: flex; justify-content: center; background-color: #f5f5f5';
             container.id = 'div' + item.id;
 
