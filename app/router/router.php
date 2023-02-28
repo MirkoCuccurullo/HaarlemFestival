@@ -30,8 +30,6 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
-
-
             case '/api/users':
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
@@ -50,11 +48,11 @@ class router
                 $controller = new userControllerAPI();
                 $controller->delete();
                 break;
-                case'/edit/user':
-                    require __DIR__ . '/../controller/userController.php';
-                    $controller = new \userController();
-                    $controller->editUser($_POST['id']);
-                    break;
+            case'/edit/user':
+                require __DIR__ . '/../controller/userController.php';
+                $controller = new \userController();
+                $controller->editUser($_POST['id']);
+                break;
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -63,9 +61,8 @@ class router
 
             case'/register':
                 require __DIR__ . '/../controller/registrationController.php';
-                $data = $_POST;
                 $registrationController = new registrationController();
-                $registrationController->displayRegistrationPage($data);
+                $registrationController->displayRegistration();
                 break;
 
             case'/resetPassword':

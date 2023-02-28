@@ -15,26 +15,36 @@ class userService{
     }
     public function registerUser(array $data)
     {
-        $validationResult = $this->validateData($data);
-        if ($validationResult !== true) {
-            return $validationResult;
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-            $preparedData = $this->prepareData($data);
-            $hashedSaltedPassword = password_hash($preparedData['password'], PASSWORD_DEFAULT);
-            //show these messages into a hidden Label !!
-            if ($this->userRepo->insertUserToDatabase($preparedData['name'], $preparedData['email'], $hashedSaltedPassword, $preparedData['date_of_birth'])) {
-                return ["success" => "Data has been processed successfully."];
-            } else {
-                return ["error" => "An error occurred while processing data."];
-            }
-        } else {
-            //add a statement
-            echo "Could not do POST";
-        }
+        $preparedData = $this->prepareData($data);
+        $hashedSaltedPassword = password_hash($preparedData['password'], PASSWORD_DEFAULT);
+        $this->userRepo->insertUserToDatabase($preparedData['name'], $preparedData['email'], $hashedSaltedPassword, $preparedData['date_of_birth']);
     }
 
+    public function isEmailAlreadyInUse(string $email): bool
+    {
+        return $this->userRepo->isEmailAlreadyInUse($email);
+    }
+
+    public function verifyCaptchaResponse($response) {
+        $secretKey = "6Lf1GqQkAAAAAIHXMnwYENEaoqgabLaD-Zy1As9E";
+        $remoteIp = $_SERVER['REMOTE_ADDR'];
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$remoteIp";
+        $data = file_get_contents($url);
+        $row = json_decode($data, true);
+
+        return $row['success'];
+    }
+
+    public function dateInPast() : bool {
+        $date = $_POST['date_of_birth'];
+        $date = strtotime($date);
+        $date = date('Y-m-d', $date);
+        $today = date('Y-m-d');
+        if ($date > $today) {
+            return false;
+        }
+        return true;
+    }
 
     public function updateUser($id, $name, $email){
         return $this->userRepo->updateUser($id, $name, $email);
@@ -56,25 +66,6 @@ class userService{
         return $user;
     }
 
-    private function validateData(array $data): bool|array
-    {
-        if (empty($data["name"])) {
-            return ["error" => "Name is required"];
-        }
-        if (empty($data["email"])) {
-            return ["error" => "Email is required"];
-        }
-        if (empty($data["password"])) {
-            return ["error" => "Password is required"];
-        }
-        if (empty($data["date_of_birth"])) {
-            return ["error" => "Date of Birth is required"];
-        }
-
-        return true;
-    }
-
-
     public function getUserByEmail($email)
     {
         return $this->userRepo->getUserByEmail($email);
@@ -91,12 +82,8 @@ class userService{
         ];
     }
 
-
     public function resetUserPassword($id, $newPassword)
     {
         return $this->userRepo->resetUserPassword($id, $newPassword);
     }
-
-
-
 }
