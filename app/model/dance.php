@@ -1,9 +1,12 @@
 <?php
 
 class dance extends event{
-    public string $dj;
-    public string $location;
-    public string $time;
-    public $duration;
-    public int $session;
+
+public int $id;
+public string $date;
+public string $price;
+public string $duration;
+public int $location;
+public string $artist;
+
 }
