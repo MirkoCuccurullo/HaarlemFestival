@@ -2,6 +2,8 @@
 
 namespace router;
 
+use danceController;
+use festivalController;
 use loginController;
 use registrationController;
 use userControllerAPI;
@@ -48,10 +50,6 @@ class router
                     $controller = new \userController();
                     $controller->editUser();
                     break;
-
-            case'/logout':
-                require_once("../view/login/logout.php");
-                break;
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -110,7 +108,16 @@ class router
                 $controller = new \homePageControllerAPI();
                 $controller->updateHomePages();
                 break;
-
+            case'/festival':
+                require_once __DIR__ . '/../controller/festivalController.php';
+                $controller = new festivalController();
+                $controller->homepage();
+                break;
+            case'/festival/dance':
+                require_once __DIR__ . '/../controller/danceController.php';
+                $controller = new danceController();
+                $controller->homepage();
+                break;
             default:
                 echo'404';
         }

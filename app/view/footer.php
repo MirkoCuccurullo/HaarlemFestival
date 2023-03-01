@@ -1,6 +1,6 @@
 </div>
 
-<footer class="d-flex flex-wrap justify-content-between align-items-center bg-success py-3 my-4 border-top">
+<footer class="d-flex flex-wrap justify-content-between fixed-bottom align-items-center bg-success py-3 mt-4 border-top">
     <p class="col-md-4 ml-2 mb-0" style="color: white;">© 2023 Team Haarlem Design</p>
 
     <ul class="nav col-md-4 justify-content-end">
