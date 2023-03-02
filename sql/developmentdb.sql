@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 01, 2023 at 05:21 PM
+-- Generation Time: Mar 02, 2023 at 12:07 PM
 -- Server version: 10.11.2-MariaDB-1:10.11.2+maria~ubu2204
 -- PHP Version: 8.1.16
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `dance_artists` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `descirption` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `genre` varchar(255) NOT NULL,
   `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,8 +39,8 @@ CREATE TABLE `dance_artists` (
 -- Dumping data for table `dance_artists`
 --
 
-INSERT INTO `dance_artists` (`id`, `name`, `descirption`, `genre`, `picture`) VALUES
-(1, 'Martin Garrix', 'house dj from netherlands', 'house', '/images/garrix.jpg');
+INSERT INTO `dance_artists` (`id`, `name`, `description`, `genre`, `picture`) VALUES
+(2, 'Martin Garrix', 'Dutch DJ', 'House', '/images/garrix.jpg');
 
 -- --------------------------------------------------------
 
@@ -53,16 +53,17 @@ CREATE TABLE `dance_event` (
   `date` date NOT NULL,
   `location` int(11) NOT NULL,
   `price` varchar(255) NOT NULL,
-  `duration` varchar(255) NOT NULL,
-  `artist` int(11) NOT NULL
+  `start_time` time NOT NULL,
+  `artist` int(11) NOT NULL,
+  `end_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `dance_event`
 --
 
-INSERT INTO `dance_event` (`id`, `date`, `location`, `price`, `duration`, `artist`) VALUES
-(1, '1997-10-05', 1, '100', '30min', 1);
+INSERT INTO `dance_event` (`id`, `date`, `location`, `price`, `start_time`, `artist`, `end_time`) VALUES
+(2, '2023-03-10', 1, '100', '12:17:00', 2, '15:16:00');
 
 -- --------------------------------------------------------
 
@@ -177,13 +178,13 @@ ALTER TABLE `venues`
 -- AUTO_INCREMENT for table `dance_artists`
 --
 ALTER TABLE `dance_artists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dance_event`
 --
 ALTER TABLE `dance_event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `homePage`

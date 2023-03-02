@@ -1,11 +1,12 @@
 <?php
 
-class dance extends event{
+class dance{
 
 public int $id;
 public string $date;
 public string $price;
-public string $duration;
+public string $start_time;
+public string $end_time;
 public int $location;
 public string $artist;
 

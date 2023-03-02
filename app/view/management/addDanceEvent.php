@@ -7,8 +7,12 @@ include __DIR__ . '/../header.php'; ?>
         <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
     </div>
     <div class="form-group">
-        <label for="duration">Duration</label>
-        <input type="text" class="form-control" id="duration" name="duration" placeholder="Enter duration">
+        <label for="start_time">Start Time</label>
+        <input type="time" class="form-control" id="start_time" name="start_time" placeholder="Enter start time">
+    </div>
+    <div class="form-group">
+        <label for="end_time">End Time</label>
+        <input type="time" class="form-control" id="end_time" name="end_time" placeholder="Enter duration">
     </div>
     <div class="form-group">
         <label for="date">Date</label>

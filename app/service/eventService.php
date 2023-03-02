@@ -8,8 +8,8 @@ class eventService
         $this->eventRepo = new eventRepository();
     }
 
-    public function insertEvent($date, $location, $artist, $price, $duration){
-        return $this->eventRepo->insertEvent($date, $price, $duration, $location, $artist);
+    public function insertEvent($date, $location, $artist, $price, $start_time, $end_time){
+        return $this->eventRepo->insertEvent($date, $price, $start_time, $end_time, $location, $artist);
     }
 
     public function getAllEvents(){
@@ -22,6 +22,16 @@ class eventService
 
     public function getArtists(){
         return $this->eventRepo->getArtists();
+    }
+
+    public function getVenueByID($venue_id)
+    {
+        return $this->eventRepo->getVenueByID($venue_id);
+    }
+
+    public function getArtistByID($artist_id)
+    {
+        return $this->eventRepo->getArtistByID($artist_id);
     }
 
 
