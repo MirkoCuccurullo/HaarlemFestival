@@ -24,13 +24,11 @@ p{
     margin: 5px;
 }
 
-img {
-    border-radius: 50%;
-    width: 150px;
-}
 
 img.hover-shadow {
     transition: 0.3s;
+    border-radius: 50%;
+    width: 150px;
 }
 
 .hover-shadow:hover {

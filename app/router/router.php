@@ -96,6 +96,17 @@ class router
                 $controller = new \userController();
                 $controller->updateProfile($_POST['id']);
                 break;
+                case"/add/event":
+                    if (isset($_POST['addDanceEvent'])){
+                        require_once __DIR__ . '/../controller/danceController.php';
+                        $controller = new \danceController();
+                        $controller->addEvent();
+                    }else{
+                        require_once __DIR__ . '/../controller/danceController.php';
+                        $controller = new danceController();
+                        $controller->displayForm();
+                    }
+                    break;
 
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';

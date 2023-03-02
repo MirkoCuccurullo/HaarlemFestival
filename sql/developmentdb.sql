@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Feb 28, 2023 at 11:31 AM
--- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
--- PHP Version: 8.0.25
+-- Generation Time: Mar 02, 2023 at 12:07 PM
+-- Server version: 10.11.2-MariaDB-1:10.11.2+maria~ubu2204
+-- PHP Version: 8.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `developmentdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dance_artists`
+--
+
+CREATE TABLE `dance_artists` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `genre` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dance_artists`
+--
+
+INSERT INTO `dance_artists` (`id`, `name`, `description`, `genre`, `picture`) VALUES
+(2, 'Martin Garrix', 'Dutch DJ', 'House', '/images/garrix.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dance_event`
+--
+
+CREATE TABLE `dance_event` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `location` int(11) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `start_time` time NOT NULL,
+  `artist` int(11) NOT NULL,
+  `end_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dance_event`
+--
+
+INSERT INTO `dance_event` (`id`, `date`, `location`, `price`, `start_time`, `artist`, `end_time`) VALUES
+(2, '2023-03-10', 1, '100', '12:17:00', 2, '15:16:00');
 
 -- --------------------------------------------------------
 
@@ -67,11 +111,46 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `picture`, `registration_date`, `role`, `date_of_birth`, `name`) VALUES
-(3, 'rares.simion08@gmail.com', '$2y$10$Zb8zxK5yjJHEP8AMjC74w.32jaB3Vp8SEkkJcUNv5BhyGM5EioUvK', 'dasdas', '2023-02-13', ' ', '2023-02-22', 'Rares Simion');
+(3, 'rares.simion08@gmail.com', '$2y$10$Zb8zxK5yjJHEP8AMjC74w.32jaB3Vp8SEkkJcUNv5BhyGM5EioUvK', 'dasdas', '2023-02-13', ' ', '2023-02-22', 'Rares Simion'),
+(4, 'mirkocuccurullo@outlook.com', '$2y$10$0h5kiOVhifV.yRC69n9XSOlAIKA5KH8XwrUkA.Ees6iRWOy0127FC', NULL, '2023-02-28', ' ', '1997-10-05', 'Mirko');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `venues`
+--
+
+CREATE TABLE `venues` (
+  `id` int(11) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `venues`
+--
+
+INSERT INTO `venues` (`id`, `address`, `capacity`, `picture`, `name`, `description`) VALUES
+(1, 'Haarlem', 100, '/images/jopen.jpg', 'jopenkerk', 'ex church now brewery');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dance_artists`
+--
+ALTER TABLE `dance_artists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dance_event`
+--
+ALTER TABLE `dance_event`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `homePage`
@@ -86,20 +165,44 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `venues`
+--
+ALTER TABLE `venues`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `dance_artists`
+--
+ALTER TABLE `dance_artists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `dance_event`
+--
+ALTER TABLE `dance_event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `homePage`
 --
 ALTER TABLE `homePage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `venues`
+--
+ALTER TABLE `venues`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
