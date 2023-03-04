@@ -34,5 +34,20 @@ class eventService
         return $this->eventRepo->getArtistByID($artist_id);
     }
 
+    public function deleteEvent($id)
+    {
+        return $this->eventRepo->deleteEvent($id);
+    }
+
+    public function deleteArtist($id)
+    {
+        return $this->eventRepo->deleteArtist($id);
+    }
+
+    public function deleteVenue($id)
+    {
+        return $this->eventRepo->deleteVenue($id);
+    }
+
 
 }

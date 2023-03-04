@@ -3,6 +3,10 @@
 use repository\baseRepository;
 
 include_once 'baseRepository.php';
+require_once __DIR__ . '/../model/artist.php';
+require_once __DIR__ . '/../model/dance.php';
+require_once __DIR__ . '/../model/venues.php';
+
 class eventRepository extends baseRepository
 {
 
@@ -10,7 +14,16 @@ class eventRepository extends baseRepository
         $sql = "SELECT * FROM dance_event";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_CLASS, "dance");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'dance');
+        $result = $stmt->fetchAll();
+        foreach ($result as $dance){
+
+            $artist = $this->getArtistById($dance->artist);
+
+            $dance->artist_name = $artist->name;
+            $venue_name = $this->getVenueById($dance->location)->name;
+            $dance->venue_name = $venue_name;
+        }
         return $result;
     }
 
@@ -48,7 +61,8 @@ class eventRepository extends baseRepository
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":venue_id", $venue_id);
         $stmt->execute();
-        $result = $stmt->fetchObject("venues");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "venues");
+        $result = $stmt->fetch();
         return $result;
     }
 
@@ -58,10 +72,37 @@ class eventRepository extends baseRepository
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":artist_id", $artist_id);
         $stmt->execute();
-        $result = $stmt->fetchObject("artist");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "artist");
+        $result = $stmt->fetch();
         return $result;
     }
 
+    public function deleteEvent($id)
+    {
+        $sql = "DELETE FROM dance_event WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function deleteArtist($id)
+    {
+        $sql = "DELETE FROM dance_artists WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function deleteVenue($id)
+    {
+        $sql = "DELETE FROM venues WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 
 }

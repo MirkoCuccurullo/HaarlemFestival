@@ -3,6 +3,7 @@
 namespace router;
 
 use danceController;
+use danceControllerAPI;
 use festivalController;
 use loginController;
 use registrationController;
@@ -31,6 +32,21 @@ class router
                 $controller = new userControllerAPI();
                 $controller->index();
                 break;
+            case"/api/dance/events":
+                require("../api/controllers/danceControllerAPI.php");
+                $controller = new danceControllerAPI();
+                $controller->index();
+                break;
+            case"/api/dance/artists":
+                require("../api/controllers/artistControllerAPI.php");
+                $controller = new \artistControllerAPI();
+                $controller->index();
+                break;
+            case"/api/dance/venues":
+                require("../api/controllers/venuesControllerAPI.php");
+                $controller = new \venuesControllerAPI();
+                $controller->index();
+                break;
             case'/logout':
                 require_once("../view/login/logout.php");
                 break;
@@ -39,9 +55,40 @@ class router
                 $controller = new \userController();
                 $controller->manageAllUsers();
                 break;
+            case '/manage/dance/events':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->manageAllEvents();
+                break;
+            case '/manage/dance/artists':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->manageArtists();
+                break;
+            case '/manage/dance/venues':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->manageVenues();
+                break;
+
             case'/api/delete/user':
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
+                $controller->delete();
+                break;
+            case'/api/delete/dance/event':
+                require("../api/controllers/danceControllerAPI.php");
+                $controller = new danceControllerAPI();
+                $controller->delete();
+                break;
+            case'/api/delete/dance/venue':
+                require("../api/controllers/venuesControllerAPI.php");
+                $controller = new \venuesControllerAPI();
+                $controller->delete();
+                break;
+            case'/api/delete/dance/artist':
+                require("../api/controllers/artistControllerAPI.php");
+                $controller = new \artistControllerAPI();
                 $controller->delete();
                 break;
 

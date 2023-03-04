@@ -14,8 +14,23 @@ class danceController
         header('Location: /festival/dance');
     }
 
+    public function manageAllEvents()
+    {
+        require __DIR__ . '/../view/management/manageEvents.php';
+    }
+
     public function displayForm()
     {
         require_once __DIR__ . '/../view/management/addDanceEvent.php';
+    }
+
+    public function manageArtists()
+    {
+        require __DIR__ . '/../view/management/manageArtists.php';
+    }
+
+    public function manageVenues()
+    {
+        require __DIR__ . '/../view/management/manageVenues.php';
     }
 }
