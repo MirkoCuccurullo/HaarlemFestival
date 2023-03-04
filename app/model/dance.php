@@ -9,5 +9,7 @@ public string $start_time;
 public string $end_time;
 public int $location;
 public string $artist;
+public string $artist_name = "";
+public string $venue_name = "";
 
 }

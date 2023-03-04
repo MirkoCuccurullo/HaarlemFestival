@@ -34,5 +34,50 @@ class eventService
         return $this->eventRepo->getArtistByID($artist_id);
     }
 
+    public function deleteEvent($id)
+    {
+        return $this->eventRepo->deleteEvent($id);
+    }
+
+    public function deleteArtist($id)
+    {
+        return $this->eventRepo->deleteArtist($id);
+    }
+
+    public function deleteVenue($id)
+    {
+        return $this->eventRepo->deleteVenue($id);
+    }
+
+    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description)
+    {
+        return $this->eventRepo->updateArtist($id, $name, $genre, $description);
+    }
+
+    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity)
+    {
+        return $this->eventRepo->updateVenue($id, $name, $address, $description, $capacity);
+    }
+
+    public function getEventByID(mixed $id)
+    {
+        return $this->eventRepo->getEventByID($id);
+    }
+
+    public function updateEvent(mixed $id, mixed $date, mixed $location, mixed $artist, mixed $price, mixed $start_time, mixed $end_time)
+    {
+        return $this->eventRepo->updateEvent($id, $date, $location, $artist, $price, $start_time, $end_time);
+    }
+
+    public function insertArtist(mixed $name, mixed $genre, mixed $description, mixed $picture)
+    {
+        return $this->eventRepo->insertArtist($name, $genre, $description, $picture);
+    }
+
+    public function insertVenue(mixed $name, mixed $address, mixed $description, mixed $capacity, mixed $picture)
+    {
+        return $this->eventRepo->insertVenue($name, $address, $description, $capacity, $picture);
+    }
+
 
 }
