@@ -169,6 +169,12 @@ class router
                 $controller->manageProfile($_POST['id']);
                 break;
 
+                case"/dance/artist":
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->displayArtist();
+                    break;
+
             case'/manageProfile/update':
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();

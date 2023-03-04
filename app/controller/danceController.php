@@ -107,4 +107,12 @@ class danceController
         $danceService->insertVenue($_POST['name'], $_POST['address'], $_POST['description'], $_POST['capacity'], $_POST['picture']);
         header('Location: /festival/dance/manageVenues');
     }
+
+    public function displayArtist()
+    {
+        require_once __DIR__ . '/../service/eventService.php';
+        $danceService = new eventService();
+        $artist = $danceService->getArtistByID($_POST['id']);
+        require __DIR__ . '/../view/dance/dance_artist.php';
+    }
 }
