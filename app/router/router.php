@@ -97,6 +97,37 @@ class router
                     $controller = new \userController();
                     $controller->editUser();
                     break;
+            case'/edit/artist':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->updateArtist();
+                break;
+            case'/edit/venue':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->updateVenue();
+                break;
+            case'/edit/event':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->updateEvent();
+                break;
+
+                case'/edit/dance/artist':
+                    require __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->editArtist();
+                    break;
+            case'/edit/dance/venue':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->editVenue();
+                break;
+            case'/edit/dance/event':
+                require __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->editEvent();
+                break;
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -151,9 +182,31 @@ class router
                     }else{
                         require_once __DIR__ . '/../controller/danceController.php';
                         $controller = new danceController();
-                        $controller->displayForm();
+                        $controller->displayFormEvent();
                     }
                     break;
+            case"/add/artist":
+                if (isset($_POST['addDanceArtist'])){
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->addArtist();
+                }else{
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new danceController();
+                    $controller->displayFormArtist();
+                }
+                break;
+            case"/add/venue":
+                if (isset($_POST['addDanceVenue'])){
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->addVenue();
+                }else{
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new danceController();
+                    $controller->displayFormVenue();
+                }
+                break;
 
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';

@@ -104,5 +104,76 @@ class eventRepository extends baseRepository
         return $result;
     }
 
+    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description)
+    {
+        $sql = "UPDATE dance_artists SET name = :name, genre = :genre, description = :description WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":genre", $genre);
+        $stmt->bindParam(":description", $description);
+        return $stmt->execute();
+    }
+
+    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity)
+    {
+        $sql = "UPDATE venues SET name = :name, address = :address, description = :description, capacity = :capacity WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":address", $address);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":capacity", $capacity);
+        return $stmt->execute();
+    }
+
+    public function getEventByID(mixed $id)
+    {
+        $sql = "SELECT * FROM dance_event WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "dance");
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function updateEvent(mixed $id, mixed $date, mixed $location, mixed $artist, mixed $price, mixed $start_time, mixed $end_time)
+    {
+        $sql = "UPDATE dance_event SET date = :date, location = :location, artist = :artist, price = :price, start_time = :start_time, end_time = :end_time WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":date", $date);
+        $stmt->bindParam(":location", $location);
+        $stmt->bindParam(":artist", $artist);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":start_time", $start_time);
+        $stmt->bindParam(":end_time", $end_time);
+        return $stmt->execute();
+    }
+
+    public function insertArtist(mixed $name, mixed $genre, mixed $description, mixed $picture)
+    {
+        $sql = "INSERT INTO dance_artists (name, genre, description, picture) VALUES (:name, :genre, :description, :picture)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":genre", $genre);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":picture", $picture);
+        return $stmt->execute();
+    }
+
+    public function insertVenue(mixed $name, mixed $address, mixed $description, mixed $capacity, mixed $picture)
+    {
+        $sql = "INSERT INTO venues (name, address, description, capacity, picture) VALUES (:name, :address, :description, :capacity, :picture)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":address", $address);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":capacity", $capacity);
+        $stmt->bindParam(":picture", $picture);
+        return $stmt->execute();
+    }
+
 
 }
