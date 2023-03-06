@@ -111,16 +111,10 @@ class router
                 $controller->updateHomePages();
                 break;
 
-            case'/api/homeCards':
-                require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
-                $controller = new \homePageControllerAPI();
+            case '/shoppingCart':
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
                 $controller->index();
-                break;
-
-            case'/api/homeCards/update':
-                require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
-                $controller = new \homePageControllerAPI();
-                $controller->updateHomePages();
                 break;
 
             default:

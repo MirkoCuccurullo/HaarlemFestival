@@ -37,6 +37,12 @@
                     <a class="nav-link" href="/login" style="color: white" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Login</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/shoppingCart">
+                        <img src="shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
