@@ -1,4 +1,5 @@
 <?php
+require_once '../repository/orderRepository.php';
 
 class orderService
 {

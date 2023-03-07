@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-success mb-4 sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark mb-4 sticky-top" style="background-color: #9DE2BD">
     <div class="container">
-        <a class="navbar-brand" href="/" style="color: white">Visit Haarlem</a>
+        <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,21 +20,21 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/manageProfile" style="color: white" <?php if (!isset($_SESSION['current_user']))
+                    <a class="nav-link" href="/manageProfile" style="color: black" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>Manage profile</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/manage/users" style="color: white">Manage users</a>
+                    <a class="nav-link" href="/manage/users" style="color: black">Manage users</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout" style="color: white" <?php if (!isset($_SESSION['current_user']))
+                    <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>Logout</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/login" style="color: white" <?php if (isset($_SESSION['current_user']))
+                    <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Login</a>
                 </li>
 

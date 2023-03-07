@@ -95,7 +95,7 @@ class router
                 case'/edit/user':
                     require __DIR__ . '/../controller/userController.php';
                     $controller = new \userController();
-                    $controller->editUser();
+                    $controller->editUser($_POST['id']);
                     break;
             case'/edit/artist':
                 require __DIR__ . '/../controller/danceController.php';
@@ -164,15 +164,14 @@ class router
             case'/manageProfile':
 
                 require_once __DIR__ . '/../controller/userController.php';
-
                 $controller = new \userController();
-                $controller->manageProfile($_POST['id']);
+                $controller->manageProfile($_SESSION['current_user_id']);
                 break;
 
             case'/manageProfile/update':
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
-                $controller->updateProfile($_POST['id']);
+                $controller->updateProfile($_SESSION['current_user_id']);
                 break;
                 case"/add/event":
                     if (isset($_POST['addDanceEvent'])){
@@ -223,6 +222,13 @@ class router
             case '/shoppingCart':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
+                require_once __DIR__ . '/../model/dance.php';
+                require_once __DIR__ . '/../model/order.php';
+                require_once __DIR__ . '/../service/eventService.php';
+                if (session_status() === PHP_SESSION_NONE) {
+                    require_once __DIR__ . '/../../vendor/autoload.php';
+                    session_start();
+                }
                 $controller->index();
                 break;
 

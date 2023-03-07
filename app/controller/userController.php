@@ -51,8 +51,8 @@ class userController
             $this->userService->updateUser($id, $name, $email);
             $_SESSION['current_user_email'] = $email;
             header('location: /home');
-            //$message = "Hello " . $name . ", your profile changes have been applied. ";
-            //$this->smtpServer->sendEmail($email, $name, $message, "Profile changes");
+            $message = "Hello " . $name . ", your profile changes have been applied. ";
+            $this->smtpServer->sendEmail($email, $name, $message, "Profile changes");
         } else if (isset($_POST['editPassword'])) {
             $_SESSION['err_msg'] = "";
             $hashedPassword = $_SESSION['current_user_password'];
@@ -83,7 +83,7 @@ class userController
                 $_SESSION['status'] = "danger";
             }
 
-            $this->manageProfile();
+            $this->manageProfile($id);
             unset($_SESSION['err_msg']);
         }
     }
@@ -137,11 +137,11 @@ class userController
         }
     }
 
-    public function editUser()
+    public function editUser($id)
     {
-        //require_once __DIR__ . '/../model/user.php';
-        //$user = $this->userService->getUser($id);
-        //require __DIR__ . '/../view/management/editUser.php';
+        require_once __DIR__ . '/../model/user.php';
+        $user = $this->userService->getUserById($id);
+        require __DIR__ . '/../view/management/editUser.php';
         if (isset($_POST['sendResetLink'])) {
             $email = htmlspecialchars($_POST['resetEmail']);
             $user = $this->userService->getUserByEmail($email);
