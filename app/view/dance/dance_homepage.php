@@ -5,33 +5,21 @@ include __DIR__ . '/../header_dance.php'; ?>
     <h2><b><p class="mt-3">Lineup</p></b></h2>
     <div id="lineup" class="row my-5">
         <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>
-        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>
-        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>
-        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>
-        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
-        </div>        <div class="column">
-            <img src="/images/huge_avatar.jpg" class="hover-shadow">
-            <p class="text-center"> Martin Garrix </p>
+            <?php
+            require_once __DIR__ . "/../../model/artist.php";
+            require_once __DIR__ . "/../../service/eventService.php";
+
+            $eventService = new EventService();
+            $artists = $eventService->getArtists();
+            foreach ($artists as $artist) { ?>
+                <form>
+                    <button formmethod="post" style="background: #363636; border-radius: 50%; width: 150px;" name="id" value="<?=$artist->id?>" formaction="/dance/artist">
+                        <img src="<?= $artist->picture ?>" class="hover-shadow">
+                    </button>
+                    <p class="text-center"><?= $artist->name ?></p>
+                </form>
+
+            <?php } ?>
         </div>
     </div>
     <h2><b><p class="mt-3">All-Access-Passes</p></b></h2>
