@@ -43,6 +43,9 @@
                         <img src="shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/yummy" style="">Yummy </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -250,6 +250,33 @@ class router
                 $controller->homepage();
                 break;
 
+
+            case'/food':
+            case '/restaurant':
+            case '/festival/food':
+            case '/yummy':
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayFoodPage();
+                break;
+
+            case'/festival/manage-sessions':
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->manageSessions();
+                break;
+            case 'api/sessions':
+                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
+                $controller = new \sessionsControllerAPI();
+                $controller->index();
+                break;
+            case 'api/sessions/delete':
+                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
+                $controller = new \sessionsControllerAPI();
+                $controller->delete();
+                break;
+
+
             default:
                 echo'404';
         }
