@@ -6,5 +6,5 @@ class restaurant extends event{
     public array $sessions;
     public string $cuisines;
     public string $dietary;
-    public string $image;
+    public string $photo;
 }

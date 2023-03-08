@@ -5,8 +5,7 @@ include __DIR__ . '/../header.php'; ?>
 <select name="restaurants" id="restaurants" class="form-select" oninput="filterUsers()">
     <option selected value="0"> All Restaurants</option>
     <option value="Employee">get these from database</option>
-    <option value="Customer">Customer</option>
-    <option value="Administrator">Administrator</option>
+
 </select>
 
 <div class="table table-responsive">
@@ -24,7 +23,7 @@ include __DIR__ . '/../header.php'; ?>
 
         </tr>
         </thead>
-        <tbody class="table-group-divider" id="userTable">
+        <tbody class="table-group-divider" id="sessionTable">
 
         <script>
             function filterRestaurants(){
@@ -44,18 +43,18 @@ include __DIR__ . '/../header.php'; ?>
                     }
                 }
             }
-            function loadDoctors() {
+            function loadSessions() {
                 fetch('http://localhost/api/sessions')
                     .then(result => result.json())
                     .then((sessions)=>{
-                        sessions.forEach(session => {
-                            appendDoctor(sessions);
+                        sessions.forEach(sessions => {
+                            appendSessions(sessions);
                         })
-                        console.log(session);
+                        console.log(sessions);
                     })
             }
 
-            function appendDoctor(session)
+            function appendSessions(session)
             {
                 const newRow = document.createElement("tr");
                 const idCol = document.createElement("th");
@@ -95,7 +94,7 @@ include __DIR__ . '/../header.php'; ?>
 
                 deleteButton.addEventListener('click', function ()
                 {
-                    deleteDoctor(session.id);
+                    deleteSession(session.id);
                     table.removeChild(newRow);
                 })
 
@@ -104,6 +103,7 @@ include __DIR__ . '/../header.php'; ?>
 
                 deleteButtonCol.appendChild(deleteButton);
                 editButtonCol.appendChild(editForm);
+
                 newRow.appendChild(idCol);
                 newRow.appendChild(startTimeCol);
                 newRow.appendChild(endTimeCol);
@@ -118,7 +118,7 @@ include __DIR__ . '/../header.php'; ?>
                 table.appendChild(newRow);
             }
 
-            function deleteDoctor(sessionId) {
+            function deleteSession(sessionId) {
 
                 const obj = {id: sessionId};
                 fetch('http://localhost/api/delete/session', {
@@ -130,8 +130,12 @@ include __DIR__ . '/../header.php'; ?>
                 });
             }
 
-            loadDoctors();
+            loadSessions();
         </script>
         </tbody>
     </table>
 </div>
+
+
+<?php
+include __DIR__ . '/../footer.php'; ?>

@@ -1,9 +1,12 @@
 <?php
 
 class session{
+    public  int $id;
     public time $startTime;
     public time $endTime;
-    public date $date;
     public int $capacity;
-    public int $reservationPrice;
+    public float $reservationPrice;
+    public float $sessionPrice;
+    public int $restaurantId;
+
 }
