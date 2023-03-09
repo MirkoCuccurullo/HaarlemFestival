@@ -69,9 +69,9 @@ class eventService
         return $this->eventRepo->updateEvent($id, $date, $location, $artist, $price, $start_time, $end_time);
     }
 
-    public function insertArtist(mixed $name, mixed $genre, mixed $description, mixed $picture)
+    public function insertArtist(mixed $name, mixed $genre, mixed $description, mixed $picture, $spotify)
     {
-        return $this->eventRepo->insertArtist($name, $genre, $description, $picture);
+        return $this->eventRepo->insertArtist($name, $genre, $description, $picture, $spotify);
     }
 
     public function insertVenue(mixed $name, mixed $address, mixed $description, mixed $capacity, mixed $picture)
