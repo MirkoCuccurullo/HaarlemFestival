@@ -19,6 +19,10 @@ include __DIR__ . '/../header.php'; ?>
         <label for="date">Description</label>
         <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
     </div>
+    <div class="form-group">
+        <label for="spotify">Spotify Link</label>
+        <input type="text" class="form-control" id="spotify" name="spotify" placeholder="Enter spotify link to the artist">
+    </div>
 
     <button type="submit" name="addDanceArtist" class="btn btn-primary">Submit</button>
 </form>

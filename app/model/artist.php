@@ -7,4 +7,5 @@ public string $name;
 public string $picture;
 public string $description;
 public string $genre;
+public string $spotify;
 }
