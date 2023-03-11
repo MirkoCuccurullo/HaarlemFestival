@@ -37,4 +37,5 @@ class sessionControllerAPI
             $this->restaurantService->deleteSession($obj->id);
         }
     }
+
 }

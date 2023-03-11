@@ -22,7 +22,7 @@ include __DIR__ . '/../header.php'; ?>
         <tbody class="table-group-divider" id="restaurantTable">
 
         <script>
-            function filterRestaurants(){
+            function filterRestaurants() {
                 const role = document.getElementById("restaurants").value;
                 const table = document.getElementById("restaurantTable");
                 const rows = table.getElementsByTagName("tr");
@@ -37,94 +37,98 @@ include __DIR__ . '/../header.php'; ?>
                             row.style.display = "none";
                         }
                     }
+                }
             }
+
+
+
                 function loadRestaurants() {
-                fetch('http://localhost/api/restaurants')
-                    .then(result => result.json())
-                    .then((restaurants)=>{
-                        restaurants.forEach(restaurants => {
-                            appendRestaurants(restaurants);
-                        })
-                        console.log(restaurants);
-                    })
-            }
-                function appendRestaurants(restaurant)
-                {
-
-                    const newRow = document.createElement("tr");
-                    const idCol = document.createElement("th");
-                    const nameCol = document.createElement("td");
-                    const addressCol = document.createElement("td");
-                    const descriptionCol = document.createElement("td");
-                    const cuisinesCol = document.createElement("td");
-                    const dietaryCol = document.createElement("td");
-                    const photosCol = document.createElement("td");
-                    const deleteButtonCol = document.createElement("td");
-                    const editButtonCol = document.createElement("td");
-                    const deleteButton = document.createElement("button")
-                    const editButton = document.createElement("button")
-                    const editForm = document.createElement("form");
-                    const idInput = document.createElement("input");
-
-                    deleteButton.className = "btn btn-danger";
-                    editButton.className = "btn btn-warning";
-                    deleteButton.type = "button";
-                    editButton.type = "submit";
-                    idCol.scope = "row";
-                    idInput.type = "hidden";
-
-                    idInput.name = "id";
-                    idInput.value = restaurant.id;
-                    idCol.innerHTML = restaurant.id;
-                    nameCol.innerHTML = restaurant.name;
-                    addressCol.innerHTML = restaurant.address;
-                    descriptionCol.innerHTML = restaurant.description;
-                    cuisinesCol.innerHTML = restaurant.cuisines;
-                    dietaryCol.innerHTML = restaurant.dietary;
-                    photosCol.innerHTML = restaurant.photos;
-                    deleteButton.innerHTML = "Delete";
-                    editButton.innerHTML = "Edit";
-
-                    deleteButton.addEventListener('click', function ()
-                    {
-                        deleteRestaurant(restaurant.id);
-                        table.removeChild(newRow);
-                    })
-
-                    editForm.appendChild(editButton);
-                    editForm.appendChild(idInput);
-
-                    deleteButtonCol.appendChild(deleteButton);
-                    editButtonCol.appendChild(editForm);
-
-                    newRow.appendChild(idCol);
-                    newRow.appendChild(nameCol);
-                    newRow.appendChild(addressCol);
-                    newRow.appendChild(descriptionCol);
-                    newRow.appendChild(cuisinesCol);
-                    newRow.appendChild(dietaryCol);
-                    newRow.appendChild(photosCol);
-                    newRow.appendChild(deleteButtonCol);
-                    newRow.appendChild(editButtonCol);
-
-                    const table = document.getElementById("restaurantTable");
-                    table.appendChild(newRow);
-                }
-                function deleteRestaurant(id)
-                {
-                    fetch('http://localhost/api/restaurants/' + id, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
+                    fetch('http://localhost/api/restaurant')
                         .then(result => result.json())
-                        .then((data)=>{
-                            console.log(data);
+                        .then((restaurants)=>{
+                            restaurants.forEach(restaurant => {
+                                appendRestaurants(restaurant);
+                            })
+                            console.log(restaurants);
                         })
                 }
-                loadRestaurants();
+
+            function deleteRestaurant(eventId) {
+
+                const obj = {id: eventId};
+                fetch('http://localhost/api/delete/restaurant', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(obj),
+                }).then(result => {
+                    console.log(result)
+                });
             }
+            function appendRestaurants(restaurant)
+            {
+
+                const newRow = document.createElement("tr");
+                const idCol = document.createElement("th");
+                const nameCol = document.createElement("td");
+                const addressCol = document.createElement("td");
+                const descriptionCol = document.createElement("td");
+                const cuisinesCol = document.createElement("td");
+                const dietaryCol = document.createElement("td");
+                const photosCol = document.createElement("td");
+                const deleteButtonCol = document.createElement("td");
+                const editButtonCol = document.createElement("td");
+                const deleteButton = document.createElement("button")
+                const editButton = document.createElement("button")
+                const editForm = document.createElement("form");
+                const idInput = document.createElement("input");
+                editForm.action = '/edit/restaurant';
+                editForm.method = 'post';
+
+                deleteButton.className = "btn btn-danger";
+                editButton.className = "btn btn-warning";
+                deleteButton.type = "button";
+                editButton.type = "submit";
+                idCol.scope = "row";
+                idInput.type = "hidden";
+
+                idInput.name = "id";
+                idInput.value = restaurant.id;
+                idCol.innerHTML = restaurant.id;
+                nameCol.innerHTML = restaurant.name;
+                addressCol.innerHTML = restaurant.address;
+                descriptionCol.innerHTML = restaurant.description;
+                cuisinesCol.innerHTML = restaurant.cuisines;
+                dietaryCol.innerHTML = restaurant.dietary;
+                photosCol.innerHTML = restaurant.photos;
+                deleteButton.innerHTML = "Delete";
+                editButton.innerHTML = "Edit";
+
+                deleteButton.addEventListener('click', function ()
+                {
+                    deleteRestaurant(restaurant.id);
+                    table.removeChild(newRow);
+                })
+
+                editForm.appendChild(editButton);
+                editForm.appendChild(idInput);
+
+                deleteButtonCol.appendChild(deleteButton);
+                editButtonCol.appendChild(editForm);
+
+                newRow.appendChild(idCol);
+                newRow.appendChild(nameCol);
+                newRow.appendChild(addressCol);
+                newRow.appendChild(descriptionCol);
+                newRow.appendChild(cuisinesCol);
+                newRow.appendChild(dietaryCol);
+                newRow.appendChild(photosCol);
+                newRow.appendChild(deleteButtonCol);
+                newRow.appendChild(editButtonCol);
+
+                const table = document.getElementById("restaurantTable");
+                table.appendChild(newRow);
+            }
+            loadRestaurants();
         </script>
     </table>
 </div>

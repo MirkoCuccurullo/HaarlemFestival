@@ -255,10 +255,11 @@ class router
             case'/food':
             case '/restaurant':
             case '/festival/food':
+            case '/api/restaurant':
             case '/yummy':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->displayFoodPage();
+                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
+                $controller = new \restaurantControllerAPI();
+                $controller->index();
                 break;
             case '/festival/manage-restaurants':
             case '/manage/restaurant':
@@ -278,25 +279,54 @@ class router
                 $controller = new \sessionControllerAPI();
                 $controller->index();
                 break;
-            case '/api/session/delete':
+            case '/api/delete/session':
                 require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
                 $controller = new \sessionControllerAPI();
                 $controller->delete();
                 break;
-            case '/api/restaurant':
-                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
-                $controller = new \restaurantControllerAPI();
-                $controller->index();
-                break;
-            case '/api/restaurant/delete':
+            case '/api/delete/restaurant':
                 require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
                 $controller = new \restaurantControllerAPI();
                 $controller->delete();
                 break;
+
             case '/add/restaurant':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
-                $controller->displayFormRestaurant();
+                if (isset($_POST['addRestaurant'])) {
+                    $controller->addRestaurant();
+                } else {
+                    $controller->displayFormRestaurant();
+                }
+                break;
+
+            case '/edit/restaurant':
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                if (isset($_POST['editRestaurant'])) {
+                    $controller->updateRestaurant();
+                } else {
+                    $controller->editRestaurant();
+                }
+
+                break;
+            case '/add/session':
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                if (isset($_POST['addSession'])) {
+                    $controller->addSession();
+                } else {
+                    $controller->displayFormSession();
+                }
+                break;
+            case '/edit/session':
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                if (isset($_POST['editSession'])) {
+                    $controller->updateSession();
+                } else {
+                    $controller->editSession();
+                }
                 break;
 
             default:

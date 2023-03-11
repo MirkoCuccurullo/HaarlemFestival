@@ -28,7 +28,7 @@ class restaurantController
         require __DIR__ . '/../view/management/manageRestaurants.php';
     }
 
-    public function displayFormRestaurant()
+    public function displayFormRestaurant(): void
     {
         require __DIR__ . '/../view/management/addRestaurant.php';
     }
@@ -39,13 +39,13 @@ class restaurantController
     }
     public function editRestaurant(): void
     {
-        $this->restaurantService->getRestaurantByID($_POST['id']);
+        $restaurant = $this->restaurantService->getRestaurantByID($_POST['id']);
         require __DIR__ . '/../view/management/editRestaurant.php';
     }
     public function updateRestaurant(): void
     {
         $this->restaurantService->updateRestaurant($_POST['id'], $_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'],$_POST['photo']);
-        header('Location: /festival/yummy');
+        header('Location: /manage/restaurant');
     }
 
     public function editSession(): void
@@ -55,25 +55,15 @@ class restaurantController
     }
     public function updateSession(): void
     {
-        $this->restaurantService->updateSession($_POST['id'], $_POST['startTime'], $_POST['endTime'], $_POST['capacity'], $_POST['reservationPrice'], $_POST['sessionPrice'],$_POST['restaurantId']);
-        header('Location: /festival/yummy');
+        $this->restaurantService->updateSession($_POST['id'], $_POST['startTime'], $_POST['endTime'], $_POST['date'], $_POST['capacity'], $_POST['reservationPrice'], $_POST['sessionPrice'],$_POST['restaurantId']);
+
     }
    public function addSession(): void
    {
-         $this->restaurantService->addSession($_POST['startTime'], $_POST['endTime'], $_POST['capacity'], $_POST['reservationPrice'], $_POST['sessionPrice'],$_POST['restaurantId']);
-         header('Location: /festival/yummy');
+         $this->restaurantService->addSession($_POST['startTime'], $_POST['endTime'], $_POST['date'], $_POST['capacity'], $_POST['reservationPrice'], $_POST['sessionPrice'],$_POST['restaurantId']);
+            header('Location: /manage/session');
     }
-     public function deleteRestaurant(): void
-     {
-          $this->restaurantService->deleteRestaurant($_POST['id']);
-          header('Location: /festival/yummy');
-     }
-     public function deleteSession()
-     {
-          $this->restaurantService->deleteSession($_POST['id']);
-          header('Location: /festival/yummy');
-     }
-     public function displayFormSession()
+     public function displayFormSession(): void
      {
           require __DIR__ . '/../view/management/addSession.php';
      }
