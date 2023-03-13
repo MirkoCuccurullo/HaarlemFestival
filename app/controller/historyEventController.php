@@ -2,7 +2,8 @@
 
 use router\router;
 
-
+include_once __DIR__ . '/../model/historyPageCard.php';
+include_once __DIR__ . '/../model/historyPageContent.php';
 require_once __DIR__ . '/../service/historyEventService.php';
 
 class historyEventController
@@ -14,8 +15,20 @@ class historyEventController
         $this->historyEventService = new historyEventService();
     }
 
-    public function index()
+    public function historyMainPage()
     {
-        require __DIR__ . '/../view/home/index.php';
+        $locations = $this->historyEventService->getAllHistoryCard();
+        $content = $this->historyEventService->getHistoryPageContent();
+        $historyTourTimetable = $this->historyEventService->getHistoryTourTimetable();
+
+        include __DIR__ . '/../view/historyHeader.php';
+        require __DIR__ . "/../view/history/history.php";
+    }
+
+    public function historyCartPage(){
+        $id = $_GET['id'];
+        $ticketById = $this->historyEventService->getHistoryTicketById($id);
+
+        require __DIR__ . '/../view/history/historyCart.php';
     }
 }

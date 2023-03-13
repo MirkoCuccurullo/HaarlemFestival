@@ -54,10 +54,14 @@ class router
                 break;
 
             case'/history':
-                require __DIR__ . '/../view/history/history.php';
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->historyMainPage();
                 break;
             case'/historyCart':
-            require __DIR__ . '/../view/history/historyCart.php';
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->historyCartPage();
             break;
 
             case '/signin':
