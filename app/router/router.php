@@ -328,7 +328,32 @@ class router
                     $controller->editSession();
                 }
                 break;
-
+            case '/manage/reservation':
+            case '/manageReservation':
+            case '/manage-reservation':
+                require_once __DIR__ . '/../controller/reservationController.php';
+                $controller = new \reservationController();
+                $controller->manageReservation();
+                break;
+            case '/api/reservation':
+                require_once __DIR__ . '/../api/controllers/reservationControllerAPI.php';
+                $controller = new \reservationControllerAPI();
+                $controller->index();
+                break;
+            case '/edit/reservation':
+                require_once __DIR__ . '/../controller/reservationController.php';
+                $controller = new \reservationController();
+                if (isset($_POST['editReservation'])) {
+                    $controller->updateReservation();
+                } else {
+                    $controller->editReservation();
+                }
+                break;
+            case '/deactivate/reservation':
+                require_once __DIR__ . '/../controller/reservationController.php';
+                $controller = new \reservationController();
+                $controller->deactivateReservation();
+                break;
             default:
                 echo '404';
         }

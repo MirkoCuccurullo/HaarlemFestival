@@ -7,6 +7,9 @@ class session{
     public int $capacity;
     public float $reservationPrice;
     public float $sessionPrice;
+
+    //for children under 12
+    public float $reducedPrice;
     public int $restaurantId;
     public $date;
 
