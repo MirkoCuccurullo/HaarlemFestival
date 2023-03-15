@@ -8,6 +8,8 @@ include __DIR__ . '/../header.php'; ?>
     <title>Index</title>
 </head>
 
+<img src="../../public/images/haarlem.png" alt="welcome to Haarlem">
+
 <div id="card-container2" class="row">
     <script>
         function appendCard(item){
