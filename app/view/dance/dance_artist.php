@@ -10,6 +10,10 @@ require_once __DIR__ . '/../../model/dance.php';
     </p>
 </h2>
 
+<div id="fb-root m-3"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="3xLLnuP1"></script>
+<div class="fb-share-button m-3" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
 <form action="/festival/dance" method="post">
     <button type="submit" class="btn btn-outline-light m-3 ">Back</button>
 </form>
