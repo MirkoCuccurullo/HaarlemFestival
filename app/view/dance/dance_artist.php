@@ -48,6 +48,9 @@ require_once __DIR__ . '/../../model/dance.php';
                <?php
                $scheduledEvents = $artist->getScheduledEvents();
                foreach ($scheduledEvents as $scheduledEvent) {?>
+                       <div class="col-4">
+
+
                        <h3><p><?= $artist->name . " @ " . $scheduledEvent->venue_name ?></p></h3>
                <p>
                    Date:  <?php echo $scheduledEvent->date; ?>
@@ -58,6 +61,8 @@ require_once __DIR__ . '/../../model/dance.php';
                 <p>
                     Price: <?php echo $scheduledEvent->price; ?>
                 </p>
+                           <button class="btn btn-primary"> Add to cart</button>
+                       </div>
                <?php }?>
            </div>
        </div>
@@ -69,11 +74,8 @@ require_once __DIR__ . '/../../model/dance.php';
         changeFooterToDanceStyle();
         function changeFooterToDanceStyle() {
             document.getElementById("undernavbar").remove();
-            document.getElementById("footer").style.backgroundColor = "#363636";
-            document.getElementById("company_name").style.color = "white";
-            document.getElementById("facebook").style.color = "white";
-            document.getElementById("instagram").style.color = "white";
-            document.getElementById("linkedin").style.color = "white";
+            document.getElementById("footer").style.backgroundColor = "#d9d9d9";
+
         }
     </script>
 
