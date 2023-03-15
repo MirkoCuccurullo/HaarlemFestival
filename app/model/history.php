@@ -1,4 +1,6 @@
 <?php
+use model\event;
+require_once __DIR__ . '/event.php';
 
 class history extends event{
     public string $language;
