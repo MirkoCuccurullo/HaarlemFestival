@@ -22,32 +22,13 @@ include __DIR__ . '/../header.php'; ?>
         <tbody class="table-group-divider" id="restaurantTable">
 
         <script>
-            function filterRestaurants() {
-                const role = document.getElementById("restaurants").value;
-                const table = document.getElementById("restaurantTable");
-                const rows = table.getElementsByTagName("tr");
-                for (let i = 0; i < rows.length; i++) {
-                    const row = rows[i];
-                    const roleCol = row.getElementsByTagName("td")[4];
-                    if (roleCol) {
-                        const roleValue = roleCol.textContent || roleCol.innerText;
-                        if (role === "0" || roleValue === role) {
-                            row.style.display = "";
-                        } else {
-                            row.style.display = "none";
-                        }
-                    }
-                }
-            }
-
-
 
                 function loadRestaurants() {
                     fetch('http://localhost/api/restaurant')
                         .then(result => result.json())
                         .then((restaurants)=>{
                             restaurants.forEach(restaurant => {
-                                appendRestaurants(restaurant);
+                                appendRestaurant(restaurant);
                             })
                             console.log(restaurants);
                         })
@@ -64,7 +45,7 @@ include __DIR__ . '/../header.php'; ?>
                     console.log(result)
                 });
             }
-            function appendRestaurants(restaurant)
+            function appendRestaurant(restaurant)
             {
 
                 const newRow = document.createElement("tr");
