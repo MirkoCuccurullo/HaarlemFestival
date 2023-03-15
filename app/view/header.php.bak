@@ -37,7 +37,7 @@
                     <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Login</a>
                 </li>
-
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="/yummy" style="color: white" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Yummy!</a>
@@ -52,9 +52,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/yummy" style="">Yummy </a>
-                </li>
             </ul>
         </div>
     </div>

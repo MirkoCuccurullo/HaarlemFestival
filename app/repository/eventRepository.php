@@ -152,14 +152,15 @@ class eventRepository extends baseRepository
         return $stmt->execute();
     }
 
-    public function insertArtist(mixed $name, mixed $genre, mixed $description, mixed $picture)
+    public function insertArtist(mixed $name, mixed $genre, mixed $description, mixed $picture, mixed $spotify)
     {
-        $sql = "INSERT INTO dance_artists (name, genre, description, picture) VALUES (:name, :genre, :description, :picture)";
+        $sql = "INSERT INTO dance_artists (name, genre, description, picture, spotify) VALUES (:name, :genre, :description, :picture, :spotify)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":genre", $genre);
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":picture", $picture);
+        $stmt->bindParam(":spotify", $spotify);
         return $stmt->execute();
     }
 
