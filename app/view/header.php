@@ -7,6 +7,7 @@
     <title>Visit Haarlem</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/header_style.css">
 </head>
 <body>
 
@@ -27,6 +28,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/manage/users" style="color: black">Manage users</a>
                 </li>
+
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Admin Management </a>
+                    <ul class="dropdown-menu">
+                        <li> <a class="dropdown-item" href="#"> DANCE &raquo; </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Artists</a></li>
+                                <li><a class="dropdown-item" href="#">Venues</a></li>
+<!--                                <li><a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>-->
+<!--                                    <ul class="submenu dropdown-menu">-->
+<!--                                        <li><a class="dropdown-item" href="#">Multi level 1</a></li>-->
+<!--                                        <li><a class="dropdown-item" href="#">Multi level 2</a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+                                <li><a class="dropdown-item" href="#">Events</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
+                    </ul>
+                </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
