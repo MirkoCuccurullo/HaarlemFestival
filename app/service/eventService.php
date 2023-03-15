@@ -79,5 +79,10 @@ class eventService
         return $this->eventRepo->insertVenue($name, $address, $description, $capacity, $picture);
     }
 
+    public function getEventsByArtist(int $id)
+    {
+        return $this->eventRepo->getEventsByArtist($id);
+    }
+
 
 }
