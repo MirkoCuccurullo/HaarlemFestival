@@ -20,7 +20,7 @@ require_once __DIR__ . '/../../model/dance.php';
 
 <div class="row">
     <div class="col-md-6">
-        <img src="<?php echo $artist->picture; ?>" alt="artist picture" class="img-fluid m-3">
+        <img src="<?php echo $artist->picture; ?>" alt="artist picture" style="height: 250px; width: 250px;" class="img-fluid m-3">
     </div>
     <div class="col-md-6">
         <p>

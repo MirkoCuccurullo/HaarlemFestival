@@ -4,7 +4,7 @@ include __DIR__ . '/../header_dance.php'; ?>
 <div class="container">
     <h2><b><p class="mt-3">Lineup</p></b></h2>
     <div id="lineup" class="row my-5">
-        <div class="column">
+
             <?php
             require_once __DIR__ . "/../../model/artist.php";
             require_once __DIR__ . "/../../service/eventService.php";
@@ -12,15 +12,16 @@ include __DIR__ . '/../header_dance.php'; ?>
             $eventService = new EventService();
             $artists = $eventService->getArtists();
             foreach ($artists as $artist) { ?>
+                <div class="col-2">
                 <form>
-                    <button formmethod="post" style="background: #363636; border-radius: 50%; width: 150px;" name="id" value="<?=$artist->id?>" formaction="/dance/artist">
+                    <button formmethod="post" style="background: #363636; border-style: hidden; border-radius: 50%; width: 150px;" name="id" value="<?=$artist->id?>" formaction="/dance/artist">
                         <img src="<?= $artist->picture ?>" class="hover-shadow">
+                        <p class="text-center"><?= $artist->name ?></p>
                     </button>
-                    <p class="text-center"><?= $artist->name ?></p>
                 </form>
-
+                </div>
             <?php } ?>
-        </div>
+
     </div>
     <h2><b><p class="mt-3">All-Access-Passes</p></b></h2>
     <div id="all_access" class="row">
@@ -56,7 +57,7 @@ include __DIR__ . '/../header_dance.php'; ?>
     <h2><b><p class="mt-3">Tickets</p></b></h2>
     <div id="tickets" class="row">
 
-        <div class="card border-light my-7" style="width: 18rem;">
+
 
         <?php
             require_once __DIR__ . '/../../model/dance.php';
@@ -71,6 +72,8 @@ include __DIR__ . '/../header_dance.php'; ?>
                 $venue = $eventService->getVenueByID($event->location);
                 $artist = $eventService->getArtistByID($event->artist);
                 ?>
+                    <div class="col-3">
+        <div class="card border-light my-7" style="width: 18rem;">
                 <img src="<?= $venue->picture ?>" class="card-img" alt="...">
                 <div class="card-body ">
                     <h5 class="card-title"><p><?php echo $artist->name . " @ " . $venue->name; ?></p></h5>
@@ -79,15 +82,17 @@ include __DIR__ . '/../header_dance.php'; ?>
                     <li class="list-group-item">Date: <?= $event->date ?> </li>
                     <li class="list-group-item">From: <?= $event->start_time ?></li>
                     <li class="list-group-item">To: <?= $event->end_time ?></li>
-                    <li class="list-group-item">Price: <?= $event->price ?> $</li>
+                    <li class="list-group-item">Price: <?= $event->price ?> €</li>
                 </ul>
                 <div class="card-body">
                     <button formaction="/addToChart" class="btn btn-primary">Add to cart</button>
                 </div>
+        </div>
+                    </div>
             <?php
             }
         ?>
-        </div>
+
     </div>
 
 

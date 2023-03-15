@@ -92,7 +92,7 @@ class danceController
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
         $danceService->insertArtist(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['genre']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['picture']), htmlspecialchars($_POST['spotify']));
-        header('Location: /festival/dance/manageArtists');
+        header('Location: /manage/dance/artists');
     }
 
     public function displayFormVenue()
