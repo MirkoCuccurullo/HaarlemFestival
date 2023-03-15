@@ -13,7 +13,7 @@ include __DIR__ . '/../header.php'; ?>
     <table class="table text-center">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
             <th scope="col">Date</th>
@@ -21,6 +21,7 @@ include __DIR__ . '/../header.php'; ?>
             <th scope="col">Restaurant ID</th>
             <th scope="col">Reservation Price</th>
             <th scope="col">Session Price</th>
+            <th scope="col">Reduced Price</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
 
@@ -68,6 +69,7 @@ include __DIR__ . '/../header.php'; ?>
                 const restaurantCol = document.createElement("td");
                 const reservationPriceCol = document.createElement("td");
                 const sessionPriceCol = document.createElement("td");
+                const reducedPriceCol = document.createElement("td");
                 const deleteButtonCol = document.createElement("td");
                 const editButtonCol = document.createElement("td");
                 const deleteButton = document.createElement("button")
@@ -88,6 +90,7 @@ include __DIR__ . '/../header.php'; ?>
                 idInput.name = "id";
                 idInput.value = session.id;
                 idCol.innerHTML = session.id;
+
                 startTimeCol.innerHTML = session.startTime;
                 endTimeCol.innerHTML = session.endTime;
                 dateCol.innerHTML = session.date;
@@ -95,6 +98,7 @@ include __DIR__ . '/../header.php'; ?>
                 restaurantCol.innerHTML = session.restaurantId;
                 reservationPriceCol.innerHTML = session.reservationPrice;
                 sessionPriceCol.innerHTML = session.sessionPrice;
+                reducedPriceCol.innerHTML = session.reducedPrice;
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
 
@@ -118,6 +122,7 @@ include __DIR__ . '/../header.php'; ?>
                 newRow.appendChild(restaurantCol);
                 newRow.appendChild(reservationPriceCol);
                 newRow.appendChild(sessionPriceCol);
+                newRow.appendChild(reducedPriceCol);
                 newRow.appendChild(deleteButtonCol);
                 newRow.appendChild(editButtonCol);
 
@@ -125,7 +130,7 @@ include __DIR__ . '/../header.php'; ?>
                 table.appendChild(newRow);
             }
 
-            function deleteSession(sessionId) {
+            function deleteSession(sessionId){
 
                 const obj = {id: sessionId};
                 fetch('http://localhost/api/delete/session', {

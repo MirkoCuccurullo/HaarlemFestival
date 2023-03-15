@@ -85,7 +85,8 @@ class restaurantRepository extends baseRepository
     }
     public function updateSession(session $session)
     {
-        $stmt = $this->connection->prepare("UPDATE sessionRestaurant SET startTime = :startTime, endTime = :endTime, date=:date, reservationPrice = :rPrice, sessionPrice = :sPrice, reducedPrice= :reducedPrice, capacity = :capacity WHERE restaurantId = :id");
+        $stmt = $this->connection->prepare("UPDATE sessionRestaurant SET startTime = :startTime, endTime = :endTime, date=:date, reservationPrice = :rPrice, sessionPrice = :sPrice, reducedPrice= :reducedPrice, capacity = :capacity, restaurantId= :restaurantId WHERE id = :id");
+        $stmt->bindParam( ":id", $session->id);
         $stmt->bindParam( ":startTime", $session->startTime);
         $stmt->bindParam( ":endTime", $session->endTime);
         $stmt->bindParam( ":date", $session->date);
@@ -93,7 +94,7 @@ class restaurantRepository extends baseRepository
         $stmt->bindParam( ":sPrice", $session->sessionPrice);
         $stmt->bindParam( ":reducedPrice", $session->reducedPrice);
         $stmt->bindParam( ":capacity", $session->capacity);
-        $stmt->bindParam( ":id", $session->restaurantId);
+        $stmt->bindParam( ":restaurantId", $session->restaurantId);
         $stmt->execute();
     }
 
@@ -113,7 +114,7 @@ class restaurantRepository extends baseRepository
 
     public function addSession(session $session)
     {
-        $stmt = $this->connection->prepare("INSERT INTO sessionRestaurant (restaurantId, startTime, endTime, date, reservationPrice, sessionPrice, reducedPrice capacity) VALUES (:id, :startTime, :endTime,:date, :reservationPrice, :sessionPrice,:reducedPrice, :capacity)");
+        $stmt = $this->connection->prepare("INSERT INTO sessionRestaurant (restaurantId, startTime, endTime, date, reservationPrice, sessionPrice, reducedPrice, capacity) VALUES (:id, :startTime, :endTime,:date, :reservationPrice, :sessionPrice,:reducedPrice, :capacity)");
         //restaurant id is a foreign key in the table, so it's needed to reference
         $stmt->bindParam( ":id", $session->restaurantId);
         $stmt->bindParam( ":startTime", $session->startTime);
@@ -142,6 +143,16 @@ class restaurantRepository extends baseRepository
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function getSessionById($id)
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM sessionRestaurant WHERE id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'session');
         $result = $stmt->fetch();
         return $result;
     }
