@@ -3,6 +3,7 @@ require_once __DIR__ . '/../service/restaurantService.php';
 require_once __DIR__ . '/../model/restaurant.php';
 require_once __DIR__ . '/../model/session.php';
 
+
 class restaurantController
 {
     private restaurantService $restaurantService;
@@ -22,6 +23,7 @@ class restaurantController
     {
         require __DIR__ . '/../view/management/manageSessions.php';
     }
+
 
     public function manageRestaurants(): void
     {
@@ -67,6 +69,4 @@ class restaurantController
      {
           require __DIR__ . '/../view/management/addSession.php';
      }
-
-
 }
