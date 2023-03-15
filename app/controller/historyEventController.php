@@ -25,10 +25,14 @@ class historyEventController
         require __DIR__ . "/../view/history/history.php";
     }
 
-    public function historyCartPage(){
-        $id = $_GET['id'];
+    public function historyCartPage($id){
         $ticketById = $this->historyEventService->getHistoryTicketById($id);
 
         require __DIR__ . '/../view/history/historyCart.php';
+    }
+    public function historyLocationDetailPage($id) {
+        $locationDetailById = $this->historyEventService->getLocationDetailById($id);
+
+        require __DIR__ . '/../view/history/historyLocationDetail.php';
     }
 }

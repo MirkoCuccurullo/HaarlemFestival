@@ -44,4 +44,15 @@ class historyEventRepository extends baseRepository
         return $result;
     }
 
+    public function getLocationDetailById($id)
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM historyEventDetails WHERE id=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+
 }

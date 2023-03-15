@@ -24,5 +24,9 @@ class historyEventService{
         return $this->historyEventRepository->getHistoryTicketById($id);
     }
 
+    public function getLocationDetailById($id)
+    {
+        return $this->historyEventRepository->getLocationDetailById($id);
+    }
 
 }

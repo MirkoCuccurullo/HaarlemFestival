@@ -31,7 +31,9 @@
             <h3><?= $location->title?></h3>
             <p><?= $location->content?></p>
             <div class="cardButton">
-                <button id="learnMoreButton">Learn More</button>
+                <form action="locationDetail" method="POST" >
+                    <td><button id="learnMoreButton" name="id" value="<?= $location->id?>">Learn More</button></td>
+                </form>
             </div>
         </div>
     <?php } ?>
@@ -64,7 +66,9 @@ if (isset($historyTourTimetable)) {
             <tbody>
             <tr>
                 <th scope="row"><?php if(isset($time)) echo $time?></th>
-                <td><a href="/historyCart?id=<?php echo $timetable['id'];?>"><button id="tickbut"><?php if(isset($ticketAmount)) echo $ticketAmount?> tickets available</button></a></td>
+                <form action="historyCart" method="POST" >
+                    <td><button id="tickbut" name="id" value="<?= $timetable['id'];?>"><?php if(isset($ticketAmount)) echo $ticketAmount?> tickets available</button></td>
+                </form>
             </tr>
             </tbody>
         </table>
