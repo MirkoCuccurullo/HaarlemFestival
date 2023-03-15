@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-success sticky-top">
+<nav style="background-color: #363636; border-style: solid; border-bottom-color: white; " class="navbar navbar-expand-md navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="/" style="color: white">Visit Haarlem</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -42,7 +42,7 @@
         </div>
     </div>
 </nav>
-<nav class="navbar navbar-expand-md navbar-dark bg-primary" style="height: 20px">
+<nav id="undernavbar" class="navbar navbar-expand-md navbar-dark bg-primary" style="height: 20px">
     <div class="container">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item active">

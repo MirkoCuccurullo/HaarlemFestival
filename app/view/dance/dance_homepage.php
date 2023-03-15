@@ -93,3 +93,14 @@ include __DIR__ . '/../header_dance.php'; ?>
 
 <?php
 include __DIR__ . '/../footer.php'; ?>
+
+    <script>
+        changeFooterToDanceStyle();
+        function changeFooterToDanceStyle() {
+            document.getElementById("footer").style.backgroundColor = "#363636";
+            document.getElementById("company_name").style.color = "white";
+            document.getElementById("facebook").style.color = "white";
+            document.getElementById("instagram").style.color = "white";
+            document.getElementById("linkedin").style.color = "white";
+        }
+    </script>
