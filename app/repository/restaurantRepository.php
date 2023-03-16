@@ -8,28 +8,20 @@ include_once 'baseRepository.php';
 class restaurantRepository extends baseRepository
 {
 	
-include_once 'baseRepository.php';
-class restaurantRepository extends baseRepository
-{
-    public function getRestaurantinfo(): array
-    {
-        $sql = "SELECT r.Name, ep.Image, r.Cuisines, r.dietary, s.startTime, s.endTime, s.date, s.capacity, s.reservationPrice 
-                              FROM restaurants r JOIN EventPhotos ep ON r.ID = ep.referenceID 
-                              JOIN sessionRestaurant s ON r.restaurantId = s.restaurantId
-                              WHERE ep.Type = 'Restaurant'";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($name, $image, $cuisines, $dietary, $startTime, $endTime, $date, $capacity, $reservationPrice);
 
-        $restaurants = array();
-        while ($stmt->fetch()) {
-            $restaurant = array("Name" => $name, "Image" => "todo" . $image, "Cuisines" => $cuisines, "Dietary" => $dietary);
-            $session = array("startTime" => $startTime, "endTime" => $endTime, "date" => $date, "capacity" => $capacity, "reservationPrice" => $reservationPrice);
-            $restaurant["sessions"][] = $session;
-            $restaurants[] = $restaurant;
+   public function getRestaurantInfo(): array
+    {
+        $sql = "SELECT id, name, description, address, cuisines, dietary, photo  FROM restaurant";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
+        $result = $stmt->fetchAll();
+
+        foreach ($result as $restaurant) {
+            $restaurant->sessions = $this->getSessionsByRestaurantId($restaurant->id);
         }
-        return $restaurants;
+        return $result;
+
 
     }
 
@@ -38,13 +30,13 @@ class restaurantRepository extends baseRepository
         try {
      
             $stmt = $this->connection->prepare("UPDATE restaurant SET name = :name, description = :description, address = :address, cuisines = :cuisine, dietary = :dietary, photo = :photo WHERE id = :id");
-             $stmt->bindParam(":address", $restaurant->address);
+            $stmt->bindParam(":id", $restaurant->id);
+            $stmt->bindParam(":address", $restaurant->address);
             $stmt->bindParam(":cuisine", $restaurant->cuisines);
             $stmt->bindParam(":dietary", $restaurant->dietary);
             $stmt->bindParam(":name", $restaurant->name);
             $stmt->bindParam(":description", $restaurant->description);
             $stmt->bindParam(":photo", $restaurant->photo);
-            $stmt->bindParam(":id", $restaurant->id);
 
             $stmt->execute();
 
