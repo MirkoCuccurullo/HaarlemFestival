@@ -80,7 +80,7 @@ include __DIR__ . '/../header.php'; ?>
                 descriptionCol.innerHTML = restaurant.description;
                 cuisinesCol.innerHTML = restaurant.cuisines;
                 dietaryCol.innerHTML = restaurant.dietary;
-                photosCol.innerHTML = restaurant.photos;
+                photosCol.innerHTML = restaurant.photo;
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
 

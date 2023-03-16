@@ -36,7 +36,7 @@ class restaurantController
     public function addRestaurant(): void
     {
         $this->restaurantService->addRestaurant($_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'], $_POST['photo']);
-        header('Location: /festival/yummy');
+        header('Location: /manage/restaurant');
     }
 
     public function editRestaurant(): void
