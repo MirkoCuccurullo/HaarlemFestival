@@ -28,13 +28,14 @@ class restaurantRepository extends baseRepository
         try {
             // Update the restaurant table
             $stmt = $this->connection->prepare("UPDATE restaurant SET name = :name, description = :description, address = :address, cuisines = :cuisine, dietary = :dietary, photo = :photo WHERE id = :id");
-             $stmt->bindParam(":address", $restaurant->address);
+            $stmt->bindParam(":id", $restaurant->id);
+            $stmt->bindParam(":address", $restaurant->address);
             $stmt->bindParam(":cuisine", $restaurant->cuisines);
             $stmt->bindParam(":dietary", $restaurant->dietary);
             $stmt->bindParam(":name", $restaurant->name);
             $stmt->bindParam(":description", $restaurant->description);
             $stmt->bindParam(":photo", $restaurant->photo);
-            $stmt->bindParam(":id", $restaurant->id);
+
             $stmt->execute();
 
         } catch (PDOException $e) {
