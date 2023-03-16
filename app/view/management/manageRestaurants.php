@@ -7,7 +7,7 @@ include __DIR__ . '/../header.php'; ?>
     <table class="table text-center">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">Description</th>
