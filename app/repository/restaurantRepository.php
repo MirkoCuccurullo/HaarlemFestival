@@ -7,7 +7,9 @@ require_once __DIR__ . '/../model/session.php';
 include_once 'baseRepository.php';
 class restaurantRepository extends baseRepository
 {
-    public function getRestaurantInfo(): array
+	
+
+   public function getRestaurantInfo(): array
     {
         $sql = "SELECT id, name, description, address, cuisines, dietary, photo  FROM restaurant";
         $stmt = $this->connection->prepare($sql);
@@ -23,10 +25,10 @@ class restaurantRepository extends baseRepository
 
     }
 
-    public function updateRestaurant($restaurant)
+    public function updateRestaurant(restaurant $restaurant)
     {
         try {
-            // Update the restaurant table
+     
             $stmt = $this->connection->prepare("UPDATE restaurant SET name = :name, description = :description, address = :address, cuisines = :cuisine, dietary = :dietary, photo = :photo WHERE id = :id");
             $stmt->bindParam(":id", $restaurant->id);
             $stmt->bindParam(":address", $restaurant->address);
@@ -38,6 +40,9 @@ class restaurantRepository extends baseRepository
 
             $stmt->execute();
 
+            // Set success flag
+            $success = true;
+
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to update restaurant: " . $e->getMessage());
@@ -45,13 +50,20 @@ class restaurantRepository extends baseRepository
 
     }
 
-    public function deleteRestaurant(int $id)
+    public function deleteRestaurant(restaurant $restaurant)
     {
         try {
-            //delete from restaurant table
-            $stmt = $this->connection->prepare("DELETE FROM restaurant WHERE id = :id");
-            $stmt->bindParam(":id", $id);
+            //delete from event table
+            $stmt = $this->conn->prepare("DELETE FROM event WHERE id = :id");
+            $stmt->bind_param(":id", $restaurant->eventId);
             $stmt->execute();
+            $stmt->store_result();
+
+            //delete from restaurant table
+            $stmt = $this->conn->prepare("DELETE FROM restaurant WHERE restaurantId = :id");
+            $stmt->bind_param(":id", $restaurant->id);
+            $stmt->execute();
+            $stmt->store_result();
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to delete restaurant: " . $e->getMessage());
@@ -69,6 +81,7 @@ class restaurantRepository extends baseRepository
             $stmt->bindParam(":dietary", $restaurant->dietary);
             $stmt->bindParam(":photo", $restaurant->photo);
             $stmt->execute();
+
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to add restaurant: " . $e->getMessage());
@@ -147,6 +160,70 @@ class restaurantRepository extends baseRepository
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
         $result = $stmt->fetch();
         return $result;
+
+    public function getSessionsByRestaurantId(int $id): array
+    {
+        $stmt = $this->conn->prepare("SELECT startTime, endTime, date, capacity, reservationPrice FROM sessionRestaurant WHERE restaurantId = :id");
+        $stmt->bind_param(":id", $id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($id, $startTime, $endTime, $date, $capacity, $reservationPrice);
+
+        $sessions = array();
+        while ($stmt->fetch()) {
+            $session = new session($id, $startTime, $endTime, $date, $capacity, $reservationPrice);
+            $sessions[] = $session;
+        }
+        return $sessions;
+    }
+    public function editSession(session $session)
+    {
+        $stmt = $this->conn->prepare("UPDATE sessionRestaurant SET startTime = :startTime, endTime = :endTime, reservationPrice = :price, capacity = :capacity WHERE restaurantId = :id");
+        $stmt->bind_param( ":startTime", $session->startTime);
+        $stmt->bind_param( ":endTime", $session->endTime);
+        $stmt->bind_param( ":price", $session->reservationPrice);
+        $stmt->bind_param( ":capacity", $session->capacity);
+        $stmt->bind_param( ":id", $session->id);
+        $stmt->execute();
+        $stmt->store_result();
+    }
+
+    public function deleteSession(session $session)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM sessionRestaurant WHERE restaurantId = :id");
+        $stmt->bind_param( ":id", $session->id);
+        $stmt->execute();
+        $stmt->store_result();
+    }
+
+    public function addSession(session $session, int $restaurantId)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO sessionRestaurant (restaurantId, startTime, endTime, reservationPrice, capacity) VALUES (:id, :startTime, :endTime, :price, :capacity)");
+        //restaurant id is a foreign key in the table, so it's needed to reference
+        $stmt->bind_param( ":id", $restaurantId);
+        $stmt->bind_param( ":startTime", $session->startTime);
+        $stmt->bind_param( ":endTime", $session->endTime);
+        $stmt->bind_param( ":price", $session->reservationPrice);
+        $stmt->bind_param( ":capacity", $session->capacity);
+        $stmt->execute();
+        $stmt->store_result();
+    }
+
+    public function getAllSessions()
+    {
+        $stmt = $this->conn->prepare("SELECT sessionId, startTime, endTime, date, capacity, reservationPrice FROM sessionRestaurant");
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($id, $startTime, $endTime, $date, $capacity, $reservationPrice);
+
+        $sessions = array();
+        while ($stmt->fetch()) {
+            $session = new session($id, $startTime, $endTime, $date, $capacity, $reservationPrice);
+            $sessions[] = $session;
+        }
+        return $sessions;
+
+
     }
 
     public function getSessionById($id)

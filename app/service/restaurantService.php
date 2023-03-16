@@ -6,6 +6,10 @@ class restaurantService
 {
     private restaurantRepository $restaurantRepository;
 
+class restaurantService
+{
+    private $restaurantRepository;
+
     public function __construct()
     {
         $this->restaurantRepository = new restaurantRepository();
@@ -91,9 +95,19 @@ class restaurantService
         $this->restaurantRepository->addSession($session);
     }
 
+
     public function getSessionById($id)
     {
         return $this->restaurantRepository->getSessionById($id);
     }
 
 }
+
+}
+
+    public function getAllSessions()
+    {
+        return $this->restaurantRepository->getAllSessions();
+    }
+}
+

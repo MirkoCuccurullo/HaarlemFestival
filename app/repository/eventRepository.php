@@ -176,5 +176,23 @@ class eventRepository extends baseRepository
         return $stmt->execute();
     }
 
+    public function getEventsByArtist(int $id)
+    {
+        $sql = "SELECT * FROM dance_event WHERE artist = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_CLASS, "dance");
+        foreach ($result as $dance){
+
+            $artist = $this->getArtistById($dance->artist);
+
+            $dance->artist_name = $artist->name;
+            $venue_name = $this->getVenueById($dance->location)->name;
+            $dance->venue_name = $venue_name;
+        }
+        return $result;
+    }
+
 
 }

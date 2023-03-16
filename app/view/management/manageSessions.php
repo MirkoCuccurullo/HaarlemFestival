@@ -2,6 +2,7 @@
 include __DIR__ . '/../header.php'; ?>
 
 <h1 class="text-center mb-3">Manage Sessions</h1>
+
 <select name="restaurants" id="restaurants" class="form-select" oninput="filterSession()">
     <option selected value="0"> All Restaurants</option>
     //TODO: To do dynamically from the database
@@ -27,19 +28,34 @@ include __DIR__ . '/../header.php'; ?>
 
         </tr>
         </thead>
+
         <tbody class="table-group-divider" id="sessionTable">
 
         <script>
             function filterSession(){
                 const restaurant = document.getElementById("restaurants").value;
+
+        <tbody class="table-group-divider" id="userTable">
+
+        <script>
+            function filterRestaurants(){
+                const role = document.getElementById("restaurants").value;
+
                 const table = document.getElementById("sessionTable");
                 const rows = table.getElementsByTagName("tr");
                 for (let i = 0; i < rows.length; i++) {
                     const row = rows[i];
+
                     const restaurantCol = row.getElementsByTagName("td")[4];
                     if (restaurantCol) {
                         const restaurantValue = restaurantCol.textContent || restaurantCol.innerText;
                         if (restaurant === "0" || restaurantValue === restaurant) {
+
+                    const roleCol = row.getElementsByTagName("td")[4];
+                    if (roleCol) {
+                        const roleValue = roleCol.textContent || roleCol.innerText;
+                        if (role === "0" || roleValue === role) {
+
                             row.style.display = "";
                         } else {
                             row.style.display = "none";
@@ -47,6 +63,7 @@ include __DIR__ . '/../header.php'; ?>
                     }
                 }
             }
+
             function loadSessions() {
                 fetch('http://localhost/api/session')
                     .then(result => result.json())
@@ -59,6 +76,20 @@ include __DIR__ . '/../header.php'; ?>
             }
 
             function appendSessions(session)
+
+            function loadDoctors() {
+                fetch('http://localhost/api/sessions')
+                    .then(result => result.json())
+                    .then((sessions)=>{
+                        sessions.forEach(session => {
+                            appendDoctor(sessions);
+                        })
+                        console.log(session);
+                    })
+            }
+
+            function appendDoctor(session)
+
             {
                 const newRow = document.createElement("tr");
                 const idCol = document.createElement("th");
@@ -68,8 +99,11 @@ include __DIR__ . '/../header.php'; ?>
                 const capacityCol = document.createElement("td");
                 const restaurantCol = document.createElement("td");
                 const reservationPriceCol = document.createElement("td");
+
                 const sessionPriceCol = document.createElement("td");
+
                 const reducedPriceCol = document.createElement("td");
+
                 const deleteButtonCol = document.createElement("td");
                 const editButtonCol = document.createElement("td");
                 const deleteButton = document.createElement("button")
@@ -86,7 +120,6 @@ include __DIR__ . '/../header.php'; ?>
                 idCol.scope = "row";
                 idInput.type = "hidden";
 
-
                 idInput.name = "id";
                 idInput.value = session.id;
                 idCol.innerHTML = session.id;
@@ -97,14 +130,20 @@ include __DIR__ . '/../header.php'; ?>
                 capacityCol.innerHTML = session.capacity;
                 restaurantCol.innerHTML = session.restaurantId;
                 reservationPriceCol.innerHTML = session.reservationPrice;
+
                 sessionPriceCol.innerHTML = session.sessionPrice;
                 reducedPriceCol.innerHTML = session.reducedPrice;
+
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
 
                 deleteButton.addEventListener('click', function ()
                 {
+
                     deleteSession(session.id);
+
+                    deleteDoctor(session.id);
+
                     table.removeChild(newRow);
                 })
 
@@ -113,7 +152,6 @@ include __DIR__ . '/../header.php'; ?>
 
                 deleteButtonCol.appendChild(deleteButton);
                 editButtonCol.appendChild(editForm);
-
                 newRow.appendChild(idCol);
                 newRow.appendChild(startTimeCol);
                 newRow.appendChild(endTimeCol);
@@ -121,8 +159,11 @@ include __DIR__ . '/../header.php'; ?>
                 newRow.appendChild(capacityCol);
                 newRow.appendChild(restaurantCol);
                 newRow.appendChild(reservationPriceCol);
+
                 newRow.appendChild(sessionPriceCol);
+
                 newRow.appendChild(reducedPriceCol);
+
                 newRow.appendChild(deleteButtonCol);
                 newRow.appendChild(editButtonCol);
 
@@ -131,6 +172,12 @@ include __DIR__ . '/../header.php'; ?>
             }
 
             function deleteSession(sessionId){
+
+
+            function deleteSession(sessionId) {
+
+            function deleteDoctor(sessionId) {
+
 
                 const obj = {id: sessionId};
                 fetch('http://localhost/api/delete/session', {
@@ -151,3 +198,9 @@ include __DIR__ . '/../header.php'; ?>
 
 <?php
 include __DIR__ . '/../footer.php'; ?>
+
+            loadDoctors();
+        </script>
+        </tbody>
+    </table>
+</div>
