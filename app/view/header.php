@@ -39,10 +39,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/yummy" style="color: white" <?php if (isset($_SESSION['current_user']))
-                        echo "hidden" ?>>Yummy!</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/festival/manage-sessions" style="color: white" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Manage Sessions</a>
 
