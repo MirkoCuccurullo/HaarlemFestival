@@ -23,16 +23,16 @@ include __DIR__ . '/../header.php'; ?>
 
         <script>
 
-                function loadRestaurants() {
-                    fetch('http://localhost/api/restaurant')
-                        .then(result => result.json())
-                        .then((restaurants)=>{
-                            restaurants.forEach(restaurant => {
-                                appendRestaurant(restaurant);
-                            })
-                            console.log(restaurants);
+            function loadRestaurants() {
+                fetch('http://localhost/api/restaurant')
+                    .then(result => result.json())
+                    .then((restaurants)=>{
+                        restaurants.forEach(restaurant => {
+                            appendRestaurant(restaurant);
                         })
-                }
+                        console.log(restaurants);
+                    })
+            }
 
             function deleteRestaurant(eventId) {
 
@@ -116,4 +116,3 @@ include __DIR__ . '/../header.php'; ?>
 
 <?php
 include __DIR__ . '/../footer.php'; ?>
-
