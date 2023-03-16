@@ -36,19 +36,16 @@ class restaurantRepository extends baseRepository
     public function updateRestaurant(restaurant $restaurant)
     {
         try {
-            // Update the event table
-            $stmt = $this->conn->prepare("UPDATE event SET name=:name, description=:description WHERE id=:id");
-            $stmt->bindParam(":name", $restaurant->name);
-            $stmt->bindParam(":description", $restaurant->description);
-            $stmt->bindParam(":id", $restaurant->eventId);
-            $stmt->execute();
-
-            // Update the restaurant table
-            $stmt = $this->conn->prepare("UPDATE restaurant SET address=:address, cuisines=:cuisine, dietary=:dietary WHERE restaurantId=:restaurant_id");
-            $stmt->bindParam(":address", $restaurant->address);
+     
+            $stmt = $this->connection->prepare("UPDATE restaurant SET name = :name, description = :description, address = :address, cuisines = :cuisine, dietary = :dietary, photo = :photo WHERE id = :id");
+             $stmt->bindParam(":address", $restaurant->address);
             $stmt->bindParam(":cuisine", $restaurant->cuisines);
             $stmt->bindParam(":dietary", $restaurant->dietary);
-            $stmt->bindParam(":restaurant_id", $restaurant->restaurantId);
+            $stmt->bindParam(":name", $restaurant->name);
+            $stmt->bindParam(":description", $restaurant->description);
+            $stmt->bindParam(":photo", $restaurant->photo);
+            $stmt->bindParam(":id", $restaurant->id);
+
             $stmt->execute();
 
             // Set success flag
@@ -84,24 +81,14 @@ class restaurantRepository extends baseRepository
     public function addRestaurant(restaurant $restaurant)
     {
         try{
-
-        // Insert into the event table
-        $stmt = $this->conn->prepare("INSERT INTO event (name, description) VALUES (:name, :description)");
-        $stmt->bindParam(":name", $restaurant->name);
-        $stmt->bindParam(":description", $restaurant->description);
-        $stmt->execute();
-
-// Get the ID of the event that was just inserted
-        $event_id = $this->conn->lastInsertId();
-
-// Insert into the restaurant table
-        $stmt = $this->conn->prepare("INSERT INTO restaurant (address, cuisines, dietary, restaurantId) VALUES (:address, :cuisine, :dietary, :event_id)");
-        $stmt->bindParam(":address", $restaurant->address);
-        $stmt->bindParam(":cuisine", $restaurant->cuisines);
-        $stmt->bindParam(":dietary", $restaurant->dietary);
-        $stmt->bindParam(":event_id", $event_id);
-        $stmt->execute();
-        $stmt->store_result();
+            $stmt = $this->connection->prepare("INSERT INTO restaurant (name, description, address, cuisines, dietary, photo) VALUES (:name, :description, :address, :cuisine, :dietary, :photo)");
+            $stmt->bindParam(":name", $restaurant->name);
+            $stmt->bindParam(":description", $restaurant->description);
+            $stmt->bindParam(":address", $restaurant->address);
+            $stmt->bindParam(":cuisine", $restaurant->cuisines);
+            $stmt->bindParam(":dietary", $restaurant->dietary);
+            $stmt->bindParam(":photo", $restaurant->photo);
+            $stmt->execute();
 
         } catch (PDOException $e) {
             // Log the error and return failure status
