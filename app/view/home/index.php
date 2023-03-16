@@ -3,10 +3,12 @@ include __DIR__ . '/../header.php'; ?>
 
 <head>
     <link href="css/style_index.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/q0czso0c6q6ut003t5rj8pm8r2bqy0uo2z23wjdtmavywsxz/tinymce/6/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/ea8dl2qwcc0ubif5iugpqvomh1a1ftv5skra68xzeys1qabb/tinymce/6/tinymce.min.js"
             referrerpolicy="origin"></script>
     <title>Index</title>
 </head>
+
+<img src="../../public/images/haarlem.png" alt="welcome to Haarlem">
 
 <div id="card-container2" class="row">
     <script>
@@ -176,18 +178,52 @@ include __DIR__ . '/../header.php'; ?>
     }
 </script>
 
+<button class="btn-primary" onclick="displayEditor()">Add card</button>
+<button class="btn-danger" onclick="hideEditor()" id="addCardCancelButton" hidden>Cancel</button>
+
+<div class="container" id="addCardContainer" hidden>
 <h1>Add card</h1>
 <form onsubmit="addCard();return false">
     <div>
        <textarea required name="editor" id="editor">
-        Welcome to TinyMCE!
+
        </textarea>
 
         <input type="submit" class="btn-primary mx-auto mt-3" name="submit" value="Submit card"/>
     </div>
 </form>
+</div>
 
 <script>
+    function hideEditor(){
+        const addCardContainer = document.getElementById('addCardContainer');
+        addCardContainer.hidden = true;
+
+        const cancelButton = document.getElementById('addCardCancelButton');
+        cancelButton.hidden = true;
+
+        tinymce.remove();
+    }
+
+    function displayEditor(){
+        const addCardContainer = document.getElementById('addCardContainer');
+        addCardContainer.hidden = false;
+
+        const cancelButton = document.getElementById('addCardCancelButton');
+        cancelButton.hidden = false;
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                {value: 'First.Name', title: 'First Name'},
+                {value: 'Email', title: 'Email'},
+            ]
+        });
+    }
+
     function addCard() {
         const content = tinymce.get('editor').getContent();
         const parser = new DOMParser();

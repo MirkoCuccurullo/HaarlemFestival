@@ -1,12 +1,12 @@
 </div>
 
-<footer class="d-flex flex-wrap justify-content-between align-items-center bg-success py-3 my-4 border-top">
-    <p class="col-md-4 ml-2 mb-0" style="color: white;">© 2023 Team Haarlem Design</p>
+<footer id="footer" style="background-color: #9DE2BD" class="d-flex flex-wrap justify-content-between  align-items-center py-3 mt-4 border-top">
+    <p id="company_name" class="col-md-4 ml-2 mb-0" style="color: black;">© 2023 Team Haarlem Design</p>
 
     <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link" style="color: white;">Test 1</a></li>
-        <li class="nav-item"><a href="#" class="nav-link" style="color: white;">Test 2</a></li>
-        <li class="nav-item"><a href="#" class="nav-link" style="color: white;">Test 3</a></li>
+        <li class="nav-item"><a id="facebook" href="#" class="nav-link" style="color: black;">Facebook</a></li>
+        <li class="nav-item"><a id="instagram" href="#" class="nav-link" style="color: black;">Instagram</a></li>
+        <li class="nav-item"><a id="linkedin" href="#" class="nav-link" style="color: black;">Linkedin</a></li>
     </ul>
 </footer>
 
