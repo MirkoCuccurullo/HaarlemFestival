@@ -1,6 +1,7 @@
 <?php
 
 class session{
+
     public  int $id;
     public string $startTime;
     public string $endTime;

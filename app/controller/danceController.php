@@ -10,7 +10,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->insertEvent($_POST['date'], $_POST['location'], $_POST['artist'], $_POST['price'], $_POST['start_time'],$_POST['end_time']);
+        $danceService->insertEvent(htmlspecialchars($_POST['date']), htmlspecialchars($_POST['location']), htmlspecialchars($_POST['artist']), htmlspecialchars($_POST['price']), htmlspecialchars($_POST['start_time']),htmlspecialchars($_POST['end_time']));
         header('Location: /festival/dance');
     }
 
@@ -38,7 +38,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $artist = $danceService->getArtistByID($_POST['id']);
+        $artist = $danceService->getArtistByID(htmlspecialchars($_POST['id']));
         require __DIR__ . '/../view/management/editArtist.php';
     }
 
@@ -46,7 +46,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->updateArtist($_POST['id'], $_POST['name'], $_POST['genre'], $_POST['description']);
+        $danceService->updateArtist(htmlspecialchars($_POST['id']), htmlspecialchars($_POST['name']), htmlspecialchars($_POST['genre']), htmlspecialchars($_POST['description']));
         header('Location: /festival/dance/manageArtists');
     }
 
@@ -54,7 +54,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $venue = $danceService->getVenueByID($_POST['id']);
+        $venue = $danceService->getVenueByID(htmlspecialchars($_POST['id']));
         require __DIR__ . '/../view/management/editVenue.php';
     }
 
@@ -62,7 +62,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->updateVenue($_POST['id'], $_POST['name'], $_POST['address'], $_POST['description'], $_POST['capacity']);
+        $danceService->updateVenue(htmlspecialchars($_POST['id']), htmlspecialchars($_POST['name']), htmlspecialchars($_POST['address']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['capacity']));
         header('Location: /festival/dance/manageVenues');
     }
 
@@ -70,7 +70,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $event = $danceService->getEventByID($_POST['id']);
+        $event = $danceService->getEventByID(htmlspecialchars($_POST['id']));
         require __DIR__ . '/../view/management/editEvent.php';
     }
 
@@ -78,7 +78,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->updateEvent($_POST['id'], $_POST['date'], $_POST['location'], $_POST['artist'], $_POST['price'], $_POST['start_time'],$_POST['end_time']);
+        $danceService->updateEvent(htmlspecialchars($_POST['id']), htmlspecialchars($_POST['date']), htmlspecialchars($_POST['location']), htmlspecialchars($_POST['artist']), htmlspecialchars($_POST['price']), htmlspecialchars($_POST['start_time']),htmlspecialchars($_POST['end_time']));
         header('Location: /festival/dance/manageAllEvents');
     }
 
@@ -91,8 +91,8 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->insertArtist($_POST['name'], $_POST['genre'], $_POST['description'], $_POST['picture'], $_POST['spotify']);
-        header('Location: /festival/dance/manageArtists');
+        $danceService->insertArtist(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['genre']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['picture']), htmlspecialchars($_POST['spotify']));
+        header('Location: /manage/dance/artists');
     }
 
     public function displayFormVenue()
@@ -104,7 +104,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->insertVenue($_POST['name'], $_POST['address'], $_POST['description'], $_POST['capacity'], $_POST['picture']);
+        $danceService->insertVenue(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['address']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['capacity']), htmlspecialchars($_POST['picture']));
         header('Location: /festival/dance/manageVenues');
     }
 
@@ -112,7 +112,7 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $artist = $danceService->getArtistByID($_POST['id']);
+        $artist = $danceService->getArtistByID(htmlspecialchars($_POST['id']));
         require __DIR__ . '/../view/dance/dance_artist.php';
     }
 }
