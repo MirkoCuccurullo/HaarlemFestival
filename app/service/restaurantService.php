@@ -11,7 +11,7 @@ class restaurantService
         $this->restaurantRepository = new restaurantRepository();
     }
 
-    public function getRestaurantInfo(): array
+    public function getAllRestaurants(): array
     {
         return $this->restaurantRepository->getRestaurantInfo();
     }
