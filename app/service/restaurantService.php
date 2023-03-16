@@ -6,16 +6,12 @@ class restaurantService
 {
     private restaurantRepository $restaurantRepository;
 
-class restaurantService
-{
-    private $restaurantRepository;
-
     public function __construct()
     {
         $this->restaurantRepository = new restaurantRepository();
     }
 
-    public function getRestaurantInfo(): array
+    public function getAllRestaurants(): array
     {
         return $this->restaurantRepository->getRestaurantInfo();
     }
@@ -101,13 +97,5 @@ class restaurantService
         return $this->restaurantRepository->getSessionById($id);
     }
 
-}
-
-}
-
-    public function getAllSessions()
-    {
-        return $this->restaurantRepository->getAllSessions();
-    }
 }
 
