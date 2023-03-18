@@ -11,4 +11,8 @@ $smtpEmail = "praticissimoissimo@gmail.com";
 $smtpPassword = "rubaioagmjpzykyi";
 $smtpPort = 587;
 
+//API secret key
+
+$secretKey = "secret123!";
+
 

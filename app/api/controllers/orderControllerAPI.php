@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/../../service/orderService.php';
 require_once __DIR__ . '/../../model/order.php';
-class orderControllerAPI
+require_once __DIR__ . '/controller.php';
+class orderControllerAPI extends controller
 {
     private $orderService;
 
@@ -13,53 +14,79 @@ class orderControllerAPI
 
     public function getAll()
     {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: *');
-        header('Access-Control-Allow-Methods: *');
-
-        // Respond to a GET request to /api/article
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
-            // your code here
-            $cards = $this->orderService->getAllOrders();
-            header('Content-Type: application/json');
-            echo json_encode($cards);
-            // return all articles in the database as JSON
-
+        $token = $this->checkForJwt();
+        if (!$token){
+            return;
         }
+
+        $offset = NULL;
+        $limit = NULL;
+
+        if (isset($_GET["offset"]) && is_numeric($_GET["offset"])) {
+            $offset = $_GET["offset"];
+        }
+        if (isset($_GET["limit"]) && is_numeric($_GET["limit"])) {
+            $limit = $_GET["limit"];
+        }
+
+        $appointments = $this->orderService->getAllOrders($offset, $limit);
+
+        $this->respond($appointments);
 
     }
 
-    public function delete()
+    public function getOne($id)
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // your code here
-            $body = file_get_contents('php://input');
-            $obj = json_decode($body);
-            $this->orderService->deleteOrder($obj->id);
+        $token = $this->checkForJwt();
+        if (!$token) {
+            return;
         }
+        $appointment = $this->orderService->getOrder($id);
+
+        // we might need some kind of error checking that returns a 404 if the product is not found in the DB
+        if (!$appointment) {
+            $this->respondWithError(404, "Appointment not found");
+            return;
+        }
+
+        $this->respond($appointment);
+
+    }
+
+    public function delete($id)
+    {
+        $token = $this->checkForJwt();
+        if (!$token) {
+            return;
+        }
+        $appointment = $this->orderService->deleteOrder($id);
+
+        $this->respond($appointment);
     }
 
     public function add()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // your code here
-            $body = file_get_contents('php://input');
-            $obj = json_decode($body);
-            $this->orderService->createOrder($obj);
+        $token = $this->checkForJwt();
+        if (!$token) {
+            return;
         }
+        $data = $this->createObjectFromPostedJson("Models\\Appointment");
+
+        $appointment = $this->orderService->createOrder($data);
+
+        $this->respond($appointment);
     }
 
-    public function update()
+    public function update($id)
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // your code here
-            $body = file_get_contents('php://input');
-            $obj = json_decode($body);
-            $this->orderService->updateOrder($obj);
+        $token = $this->checkForJwt();
+        if (!$token) {
+            return;
         }
+        $data = $this->createObjectFromPostedJson("Models\\Appointment");
+
+        $appointment = $this->orderService->updateOrder($data, $id);
+
+        $this->respond($appointment);
     }
 }
