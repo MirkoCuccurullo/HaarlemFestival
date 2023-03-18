@@ -10,9 +10,9 @@ class order{
 
     public function __construct()
     {
-        $this->no_of_items = 0;
-        $this->total_price = 0;
-        $this->user_id = $_SESSION['current_user_id'];
+//        $this->no_of_items = 0;
+//        $this->total_price = 0;
+        //$this->user_id = $_SESSION['current_user_id'];
         $this->dance_events = array();
     }
 

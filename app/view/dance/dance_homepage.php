@@ -103,12 +103,12 @@ include __DIR__ . '/../header_dance.php'; ?>
                 $venue = $eventService->getVenueByID($event->location);
                 $artist = $eventService->getArtistByID($event->artist);
                 ?>
-                    <div class="col-3">
-        <div class="card border-light my-7" id="ticket_card" style="width: 18rem;">
+                    <div class="col-3 m-3">
+        <div class="card border-light my-3" id="ticket_card" style="width: 18rem;">
                 <img id="ticket_image" src="<?= $artist->picture ?>" class="card-img m-3" alt="...">
                 <div class="card-body ">
                     <h5 class="card-title"><p><?php echo $artist->name . " @ " . $venue->name; ?></p></h5>
-                </div>
+
                 <ul id="ticket_text" class="list-group list-group-flush">
                     <li class="list-group-item">Date: <?= $event->date ?> </li>
                     <li class="list-group-item">From: <?= $event->start_time ?></li>
@@ -116,11 +116,14 @@ include __DIR__ . '/../header_dance.php'; ?>
                     <li class="list-group-item">Session: <?= $event->session?></li>
                     <li class="list-group-item">Price: <?= $event->price ?> €</li>
                 </ul>
+                </div>
                 <div class="card-body">
                     <button formaction="/addToChart" class="btn btn-primary">Add to cart</button>
                 </div>
         </div>
                     </div>
+
+
             <?php
             }
         ?>

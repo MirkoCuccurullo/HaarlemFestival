@@ -108,7 +108,9 @@ class router
             case'/generate/token':
                 require("../api/controllers/JwtGeneratorController.php");
                 $controller = new \JwtGeneratorController();
-                $controller->generateToken();
+                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                    $controller->generateToken();
+                }
                 break;
 
             case'/api/delete/dance/event':

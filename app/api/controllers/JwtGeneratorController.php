@@ -25,7 +25,7 @@ class JwtGeneratorController extends controller
     }
 
     public function generateJwt() {
-        $secret_key = "YOUR_SECRET_KEY";
+        $secret_key = "secret123!";
 
         $issuer = "THE_ISSUER"; // this can be the domain/servername that issues the token
         $audience = "THE_AUDIENCE"; // this can be the domain/servername that checks the token

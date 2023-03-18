@@ -5,6 +5,8 @@
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 
 
 class controller
@@ -24,8 +26,8 @@ class controller
 
 
         // Decode JWT
-        require_once __DIR__ . '/../../config.php';
-        $secret_key = $secretKey;
+
+        $secret_key = 'secret123!';
 
         if ($jwt) {
             try {
