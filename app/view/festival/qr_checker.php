@@ -19,7 +19,7 @@
         var link = document.createElement("a");
         link.href = decodedText;
         link.innerHTML = "Click here";
-        link_div.innerHTML = "Link: " + link;
+        link_div.appendChild(link);
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
         "qr-reader", { fps: 10, qrbox: 250 });
