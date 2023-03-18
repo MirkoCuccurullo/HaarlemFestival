@@ -1,6 +1,6 @@
 <?php
+namespace Models;
 require_once __DIR__ . '/../model/dance.php';
-
 class order{
     public int $id;
     public int $user_id;

@@ -12,7 +12,9 @@ class orderRepository extends baseRepository{
         $stmt->bindParam(":user_id", $order->user_id);
         $stmt->bindParam(":no_of_items", $order->no_of_items);
         $stmt->bindParam(":total_price", $order->total_price);
-        return $this->getOrder($this->connection->lastInsertId());
+        $stmt->execute();
+        $last_id = $this->connection->lastInsertId();
+        return $this->getOrder($last_id);
     }
     public function updateOrder($order, $id){
         $sql = "UPDATE orders SET user_id = :user_id, no_of_items = :no_of_items, total_price = :total_price WHERE id = :id";
@@ -37,7 +39,7 @@ class orderRepository extends baseRepository{
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'order');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\order');
         $result = $stmt->fetchAll();
         return $result;
 
@@ -46,7 +48,7 @@ class orderRepository extends baseRepository{
         $sql = "SELECT * FROM orders";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'order');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\order');
         $result = $stmt->fetchAll();
         return $result;
     }
