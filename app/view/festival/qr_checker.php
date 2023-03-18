@@ -14,18 +14,22 @@
 
 </div>
 <script>
+    var wasScanned = false;
     function onScanSuccess(decodedText, decodedResult) {
         var link_div = document.getElementById("qr_link");
         var link = document.createElement("a");
         link.href = decodedText;
         link.innerHTML = "Click here";
         link_div.appendChild(link);
+        wasScanned = true;
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
         "qr-reader", { fps: 10, qrbox: 250 });
-    html5QrcodeScanner.render(onScanSuccess);
 
-
+    if (!wasScanned) {
+        html5QrcodeScanner.render(onScanSuccess);
+    }
+    
 </script>
 </body>
 </html>
