@@ -12,26 +12,26 @@ class orderService
 
     public function createOrder($order)
     {
-        $this->orderRepository->createOrder($order);
+        return $this->orderRepository->createOrder($order);
     }
 
-    public function updateOrder($order)
+    public function updateOrder($order, $id)
     {
-        $this->orderRepository->updateOrder($order);
+        return $this->orderRepository->updateOrder($order, $id);
     }
 
     public function deleteOrder($id)
     {
-        $this->orderRepository->deleteOrder($id);
+        return $this->orderRepository->deleteOrder($id);
     }
 
     public function getOrder($id)
     {
-        $this->orderRepository->getOrder($id);
+        return $this->orderRepository->getOrder($id);
     }
 
-    public function getAllOrders()
+    public function getAllOrders($offset = NULL, $limit = NULL)
     {
-        return $this->orderRepository->getAllOrders();
+        return $this->orderRepository->getAllOrders($offset, $limit);
     }
 }
