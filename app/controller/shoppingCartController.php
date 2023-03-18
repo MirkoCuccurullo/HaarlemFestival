@@ -44,4 +44,31 @@ class shoppingCartController
         }
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
+
+    public function addDanceEvent()
+    {
+        if (isset($_POST['addDanceEvent'])) {
+
+            $eventService = new EventService();
+            $events = $eventService->getAllEvents();
+
+            if (isset($_SESSION['order']))
+                $order = $_SESSION['order'];
+            else
+            {
+                $order = new Order();
+                $order->user_id = $_SESSION['current_user_id'];
+                $order->no_of_items = 0;
+                $order->total_price = 0;
+            }
+
+            foreach ($events as $event) {
+                $order->addDanceEvent($event);
+            }
+
+            $_SESSION['order'] = $order;
+        }
+        $router = new Router();
+        $router->route('/home');
+    }
 }

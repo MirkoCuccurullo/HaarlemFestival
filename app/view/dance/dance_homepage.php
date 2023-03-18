@@ -107,7 +107,7 @@ include __DIR__ . '/../header_dance.php'; ?>
                 </ul>
                 </div>
                 <div class="card-body">
-                    <button formaction="/addToChart" class="btn btn-primary">Add to cart</button>
+                    <button formaction="/shoppingCart/add" class="btn btn-primary">Add to cart</button>
                 </div>
         </div>
                     </div>
