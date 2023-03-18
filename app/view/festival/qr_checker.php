@@ -1,62 +1,41 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Open webcam using JavaScript.</title>
-    }
-    #videoCam {
-    width: 630px;
-    height: 300px;
-    margin-left: 0px;
-    <style>
-        *{
-            background-color: #658EA9;
-            border: 3px solid #ccc;
-            background: black;
-        }
-        #startBtn {
-            margin-left: 280px;
-            width: 120px;
-            height: 45px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        #startBtn:hover{
-            background-color: #647C90;
-            color: red;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<h1>Open WebCam Using JavaScript</h1>
-<br/>
-<video id="videoCam"></video>
-<br/><br/>
-<button id="startBtn" onclick="openCam()">Open Camera</button>
+<div id="enhancerUIContainer" style="height: 100vh;"></div>
+<script src="https://unpkg.com/dynamsoft-camera-enhancer@2.1.0/dist/dce.js"></script>
 <script>
-    function openCam(){
-        let All_mediaDevices=navigator.mediaDevices
-        if (!All_mediaDevices || !All_mediaDevices.getUserMedia) {
-            console.log("getUserMedia() not supported.");
-            return;
+    let enhancer = null;
+    (async () => {
+        enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+        document.getElementById("enhancerUIContainer").appendChild(enhancer.getUIElement());
+        await enhancer.open(true);
+    })();
+</script>
+<button id="capture">Capture</button>
+<script>
+    document.getElementById('capture').onclick = () => {
+        if (enhancer) {
+            let frame = enhancer.getFrame();
+
+            let width = screen.availWidth;
+            let height = screen.availHeight;
+            let popW = 640, popH = 640;
+            let left = (width - popW) / 2;
+            let top = (height - popH) / 2;
+
+            popWindow = window.open('', 'popup', 'width=' + popW + ',height=' + popH +
+                ',top=' + top + ',left=' + left + ', scrollbars=yes');
+
+            popWindow.document.body.appendChild(frame.canvas);
         }
-        All_mediaDevices.getUserMedia({
-            audio: true,
-            video: true
-        })
-            .then(function(vidStream) {
-                var video = document.getElementById('videoCam');
-                if ("srcObject" in video) {
-                    video.srcObject = vidStream;
-                } else {
-                    video.src = window.URL.createObjectURL(vidStream);
-                }
-                video.onloadedmetadata = function(e) {
-                    video.play();
-                };
-            })
-            .catch(function(e) {
-                console.log(e.name + ": " + e.message);
-            });
-    }
+    };
 </script>
 </body>
 </html>
