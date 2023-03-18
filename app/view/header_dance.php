@@ -12,7 +12,7 @@
 <body>
 
 <div class="sticky-top">
-    <nav id="navbar" style="background-color: #d9d9d9 " class="navbar navbar-expand-md navbar-dark">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #d9d9d9">
         <div class="container">
             <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -21,15 +21,76 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/manageProfile" style="color: black" <?php if (!isset($_SESSION['current_user']))
-                            echo "hidden" ?>>Manage profile</a>
+                        <a class="nav-link" href="/home" style="color: black">
+                            <img class="header-icon" src="../images/home-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            Home
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/manage/users" style="color: black">Manage users</a>
+                        <a class="nav-link" href="/history" style="color: black">
+                            <img class="header-icon" src="../images/history-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            History
+                        </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/music" style="color: black">
+                            <img class="header-icon" src="../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            Music
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kids" style="color: black">
+                            <img class="header-icon" src="../images/kids-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            Kids
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/festival" style="color: black">
+                            <img class="header-icon" src="../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            Festival
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black"> Admin Management </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="/manage/users">Users</a>
+                            </li>
+
+
+                            <li> <a class="dropdown-item" href="#"> DANCE &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Artists</a></li>
+                                    <li><a class="dropdown-item" href="#">Venues</a></li>
+                                    <li><a class="dropdown-item" href="#">Events</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a class="dropdown-item" href="#"> Yummy! &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="/festival/manage-sessions">Sessions</a></li>
+                                    <li><a class="dropdown-item" href="#">Restaurants</a></li>
+                                    <li><a class="dropdown-item" href="#">Reservations</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li><a class="dropdown-item" href="#"> A Stroll Through History </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+                <ul class="nav col-md-4 justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
                             echo "hidden" ?>>Logout</a>
@@ -38,6 +99,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
                             echo "hidden" ?>>Login</a>
+                    </li>
+                    <li class="nav-item" <?php if (!isset($_SESSION['current_user']))
+                        echo "hidden" ?>>
+                        <a class="nav-link" href="/manageProfile">
+                            <img src="../images/profile-menu-bar.svg" alt="Profile picture" style="width: 32px; height: 32px">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shoppingCart">
+                            <img src="../images/shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
+                        </a>
                     </li>
                 </ul>
             </div>

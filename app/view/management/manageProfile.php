@@ -38,8 +38,21 @@ include_once __DIR__ . '/../../model/user.php';
                                         </div>
                                     </div>
 
-                                    <h2 class="mb-3">Picture placeholder</h2>
-
+                                    <h2 class="mb-3">Picture</h2>
+                                    <div class="row mb-3">
+                                        <div class="col-md">
+                                            <img src="<?= $user->picture ?>">
+                                        </div>
+                                    </div>
+<!--                                    <div class="row mb-3">-->
+<!--                                        <div class="col-md">-->
+<!--                                            <div class="form-floating">-->
+<!--                                                <input required type="image" alt="ProfilePicture" src="/images/def.jpg" class="form-control" id="image"-->
+<!--                                                       name="image" placeholder="Image">-->
+<!--                                                <label for="image" class="form-label">Image</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <button type="submit" class="btn btn-primary" name="editProfile">Confirm changes</button>
                                     <a href="/home" class="btn btn-warning">Cancel</a>
