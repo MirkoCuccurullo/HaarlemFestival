@@ -12,12 +12,12 @@
 <body>
 
 <div class="sticky-top">
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #d9d9d9">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #d9d9d9">
         <div class="container">
             <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            <button class="navbar-toggler" style="color: black" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" style="color: black;"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
