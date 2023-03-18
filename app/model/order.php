@@ -8,6 +8,11 @@ class order{
     public float $total_price;
     public $dance_events = array();
 
+//    public function __construct()
+//    {
+//        $this->dance_events = array();
+//    }
+
     public function addDanceEvent($danceEvent){
         $this->dance_events[] = $danceEvent;
         $this->no_of_items++;

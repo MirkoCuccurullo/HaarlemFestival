@@ -107,7 +107,10 @@ include __DIR__ . '/../header_dance.php'; ?>
                 </ul>
                 </div>
                 <div class="card-body">
-                    <button formaction="/shoppingCart/add" class="btn btn-primary">Add to cart</button>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="danceEventId" value="<?= $event->id ?>">
+                        <button class="btn btn-primary" name="addDanceEvent">Add to cart</button>
+                    </form>
                 </div>
         </div>
                     </div>
