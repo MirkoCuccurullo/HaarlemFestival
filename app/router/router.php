@@ -17,6 +17,8 @@ class router
     public function route($url)
     {
 
+        error_reporting(E_ALL ^ E_WARNING);
+
         switch ($url) {
             case'/':
             case'/home':
@@ -82,7 +84,7 @@ class router
                     $controller->add();
                 }
                 break;
-            case'/api/orders?id=$id':
+            case'/api/orders?id=' . $_GET['id']:
                 require("../api/controllers/orderControllerAPI.php");
                 $controller = new \orderControllerAPI();
                 $id = $_GET['id'];

@@ -70,7 +70,7 @@ class orderControllerAPI extends controller
         if (!$token) {
             return;
         }
-        $data = $this->createObjectFromPostedJson("Models\\Appointment");
+        $data = $this->createObjectFromPostedJson("Models\\order");
 
         $appointment = $this->orderService->createOrder($data);
 
@@ -83,7 +83,7 @@ class orderControllerAPI extends controller
         if (!$token) {
             return;
         }
-        $data = $this->createObjectFromPostedJson("Models\\Appointment");
+        $data = $this->createObjectFromPostedJson("Models\\order");
 
         $appointment = $this->orderService->updateOrder($data, $id);
 
