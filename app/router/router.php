@@ -17,8 +17,6 @@ class router
     public function route($url)
     {
 
-        error_reporting(E_ALL ^ E_WARNING);
-
         switch ($url) {
             case'/':
             case'/home':
@@ -84,22 +82,7 @@ class router
                     $controller->add();
                 }
                 break;
-            case'/api/orders?id=' . $_GET['id']:
-                require("../api/controllers/orderControllerAPI.php");
-                $controller = new \orderControllerAPI();
-                $id = $_GET['id'];
-                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
-                    $controller->delete($id);
-                }
 
-                if($_SERVER["REQUEST_METHOD"] == "PUT"){
-                    $controller->update($id);
-                }
-
-                if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                    $controller->getOne($id);
-                }
-                break;
 
 
             case'/api/delete/user':
@@ -416,6 +399,22 @@ class router
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
+                break;
+            case'/api/orders?id=' . $_GET['id']:
+                require("../api/controllers/orderControllerAPI.php");
+                $controller = new \orderControllerAPI();
+                $id = $_GET['id'];
+                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+                    $controller->delete($id);
+                }
+
+                if($_SERVER["REQUEST_METHOD"] == "PUT"){
+                    $controller->update($id);
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getOne($id);
+                }
                 break;
             default:
                 echo '404';
