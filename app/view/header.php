@@ -49,11 +49,24 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/festival" style="color: black">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: black">
                         <img class="header-icon" src="../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Festival
                     </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="/festival/dance">DANCE</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/festival/yummy">YUMMY!</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/festival/history">A Stroll Through History</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item dropdown" >
