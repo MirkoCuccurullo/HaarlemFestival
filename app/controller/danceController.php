@@ -3,6 +3,15 @@
 class danceController
 {
     public function homepage(){
+        require_once __DIR__ . '/../model/dance.php';
+        require_once __DIR__ . '/../model/venues.php';
+        require_once __DIR__ . '/../model/artist.php';
+        require_once __DIR__ . '/../service/eventService.php';
+
+        $eventService = new EventService();
+        $events = $eventService->getAllEvents();
+        $venues = $eventService->getVenues();
+        $artists = $eventService->getArtists();
         require"../view/dance/dance_homepage.php";
     }
 

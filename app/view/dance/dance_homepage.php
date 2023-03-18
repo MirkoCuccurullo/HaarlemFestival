@@ -56,17 +56,6 @@ include __DIR__ . '/../header_dance.php'; ?>
     </div>
     <h2><b><p class="mt-3">Tickets</p></b></h2>
 
-    <?php
-    require_once __DIR__ . '/../../model/dance.php';
-    require_once __DIR__ . '/../../model/venues.php';
-    require_once __DIR__ . '/../../model/artist.php';
-    require_once __DIR__ . '/../../service/eventService.php';
-
-    $eventService = new EventService();
-    $events = $eventService->getAllEvents();
-    $venues = $eventService->getVenues();
-    $artists = $eventService->getArtists();?>
-
         <div class="card border-light my-4">
             <div class="row m-3">
                 <div class="col-3">
