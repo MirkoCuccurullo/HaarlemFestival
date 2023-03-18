@@ -2,6 +2,7 @@
 
 namespace router;
 
+use controller\qrController;
 use danceController;
 use danceControllerAPI;
 use festivalController;
@@ -18,6 +19,11 @@ class router
     {
 
         switch ($url) {
+            case'/qr':
+                require_once __DIR__ . '/../controller/qrController.php';
+                $controller = new qrController();
+                $controller->index();
+                break;
             case'/':
             case'/home':
                 require_once __DIR__ . '/../controller/homePageController.php';
