@@ -6,16 +6,12 @@ class restaurantService
 {
     private restaurantRepository $restaurantRepository;
 
-class restaurantService
-{
-    private $restaurantRepository;
-
     public function __construct()
     {
         $this->restaurantRepository = new restaurantRepository();
     }
 
-    public function getRestaurantInfo(): array
+    public function getAllRestaurants(): array
     {
         return $this->restaurantRepository->getRestaurantInfo();
     }
@@ -61,13 +57,13 @@ class restaurantService
         $this->restaurantRepository->deleteRestaurant($id);
     }
 
-    public function updateSession($id, $startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice, $restaurantId): void
+    public function updateSession($id, $startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice,$reducedPrice, $restaurantId): void
     {
-        $session=$this->setSession($id, $startTime, $endTime,$date, $capacity, $reservationPrice, $sessionPrice, $restaurantId);
+        $session=$this->setSession($id, $startTime, $endTime,$date, $capacity, $reservationPrice, $sessionPrice,$reducedPrice, $restaurantId);
         $this->restaurantRepository->updateSession($session);
     }
 
-    private function setSession( $id, $startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice, $restaurantId): session
+    private function setSession( $id, $startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice,$reducedPrice, $restaurantId): session
     {
         $session = new session();
         if (isset($id)) {
@@ -79,6 +75,7 @@ class restaurantService
         $session->capacity = $capacity;
         $session->reservationPrice = $reservationPrice;
         $session->sessionPrice = $sessionPrice;
+        $session->reducedPrice = $reducedPrice;
         $session->restaurantId = $restaurantId;
         return $session;
     }
@@ -88,17 +85,17 @@ class restaurantService
         $this->restaurantRepository->deleteSession($id);
     }
 
-    public function addSession($startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice, $restaurantId): void
+    public function addSession($startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice, $reducedPrice, $restaurantId): void
     {
-        $session=$this->setSession(null, $startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice, $restaurantId);
+        $session=$this->setSession(null, $startTime, $endTime, $date, $capacity, $reservationPrice, $sessionPrice,$reducedPrice, $restaurantId);
         $this->restaurantRepository->addSession($session);
     }
 
-}
 
-    public function getAllSessions()
+    public function getSessionById($id)
     {
-        return $this->restaurantRepository->getAllSessions();
+        return $this->restaurantRepository->getSessionById($id);
     }
+
 }
 

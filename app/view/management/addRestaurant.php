@@ -26,7 +26,7 @@ include __DIR__ . '/../header.php';
     </div>
     <div class="form-group">
         <label for="photo">Photo Path</label>
-        <input type="text" class="form-control" id="photo" name="photo" placeholder="Enter photo path">
+        <input type="text" class="form-control" id="photo" name="photo" placeholder="Enter photo path, for multiple paths use comma to separate">
     </div>
     <br>
     <button type="submit" name="addRestaurant" class="btn btn-primary">Submit</button>
