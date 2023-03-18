@@ -11,8 +11,10 @@ $smtpEmail = "praticissimoissimo@gmail.com";
 $smtpPassword = "rubaioagmjpzykyi";
 $smtpPort = 587;
 
-//API secret key
+//Mollie API Key
 
-$secretKey = "secret123!";
+$Mollie_Key='test_GSqhHfd3ardk7AkHQVmPjt5yFu4Qaw';
+
+
 
 

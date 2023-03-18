@@ -14,6 +14,7 @@ class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
         ),
         'M' => 
         array (
+            'Mollie\\Api\\' => 11,
             'Masterminds\\' => 12,
         ),
         'F' => 
@@ -25,6 +26,10 @@ class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
         array (
             'Dompdf\\' => 7,
         ),
+        'C' => 
+        array (
+            'Composer\\CaBundle\\' => 18,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -35,6 +40,10 @@ class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
         'Sabberworm\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
+        'Mollie\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mollie/mollie-api-php/src',
         ),
         'Masterminds\\' => 
         array (
@@ -51,6 +60,10 @@ class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
         'Dompdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
+        ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
         ),
     );
 
