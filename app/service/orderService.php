@@ -32,6 +32,6 @@ class orderService
 
     public function getAllOrders()
     {
-        $this->orderRepository->getAllOrders();
+        return $this->orderRepository->getAllOrders();
     }
 }

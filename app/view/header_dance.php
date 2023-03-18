@@ -46,17 +46,14 @@
     <nav id="undernavbar" class="navbar navbar-expand-md navbar-dark bg-primary" style="height: 20px">
         <div class="container">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="topFunction()">Lineup</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" onclick="middleFunction()">All Access</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" onclick="bottomFunction()">Tickets</a>
                 </li>
             </ul>
         </div>
