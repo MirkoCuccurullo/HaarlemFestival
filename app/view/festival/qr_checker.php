@@ -15,9 +15,11 @@
 </div>
 <script>
     function onScanSuccess(decodedText, decodedResult) {
-        console.log(`Code scanned = ${decodedText}`, decodedResult);
         var link_div = document.getElementById("qr_link");
-        link_div.innerHTML = "Link: " + decodedText;
+        var link = document.createElement("a");
+        link.href = decodedText;
+        link.innerHTML = "Click here";
+        link_div.innerHTML = "Link: " + link;
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
         "qr-reader", { fps: 10, qrbox: 250 });
