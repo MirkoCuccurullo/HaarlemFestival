@@ -11,52 +11,52 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-success sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="/" style="color: white">Visit Haarlem</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+<div class="sticky-top">
+    <nav id="navbar" style="background-color: #d9d9d9 " class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/manageProfile" style="color: black" <?php if (!isset($_SESSION['current_user']))
+                            echo "hidden" ?>>Manage profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/manage/users" style="color: black">Manage users</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
+                            echo "hidden" ?>>Logout</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
+                            echo "hidden" ?>>Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav id="undernavbar" class="navbar navbar-expand-md navbar-dark bg-primary" style="height: 20px">
+        <div class="container">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/manageProfile" style="color: white" <?php if (!isset($_SESSION['current_user']))
-                        echo "hidden" ?>>Manage profile</a>
+                    <a class="nav-link" onclick="topFunction()">Lineup</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/manage/users" style="color: white">Manage users</a>
+                    <a class="nav-link" onclick="middleFunction()">All Access</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout" style="color: white" <?php if (!isset($_SESSION['current_user']))
-                        echo "hidden" ?>>Logout</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/login" style="color: white" <?php if (isset($_SESSION['current_user']))
-                        echo "hidden" ?>>Login</a>
+                    <a class="nav-link" onclick="bottomFunction()">Tickets</a>
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
-<nav class="navbar navbar-expand-md navbar-dark bg-primary" style="height: 20px">
-    <div class="container">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    </nav>
+</div>
+

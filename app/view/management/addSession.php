@@ -28,6 +28,10 @@ include __DIR__ . '/../header.php';
         <input type="number" class="form-control" id="sessionPrice" name="sessionPrice" placeholder="Enter session price">
     </div>
     <div class="form-group">
+        <label for="reducedPrice">Reduced Price</label>
+        <input type="number" class="form-control" id="reducedPrice" name="reducedPrice" placeholder="Enter reduced price">
+    </div>
+    <div class="form-group">
         <label for="restaurantId">Restaurant ID</label>
         <input type="number" class="form-control" id="restaurantId" name="restaurantId" placeholder="Enter restaurant ID">
     </div>

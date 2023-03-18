@@ -1,8 +1,8 @@
 
 <?php
 include __DIR__ . '/../header.php'; ?>
+<form>
 
-<form method="post" action="/add/artist">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
@@ -24,7 +24,7 @@ include __DIR__ . '/../header.php'; ?>
         <input type="text" class="form-control" id="spotify" name="spotify" placeholder="Enter spotify link to the artist">
     </div>
 
-    <button type="submit" name="addDanceArtist" class="btn btn-primary">Submit</button>
+    <button type="submit" formmethod="post" formaction="/add/artist" name="addDanceArtist" class="btn btn-primary">Submit</button>
 </form>
 <?php
 include __DIR__ . '/../footer.php'; ?>

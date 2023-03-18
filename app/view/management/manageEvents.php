@@ -2,6 +2,9 @@
 include __DIR__ . '/../header.php'; ?>
 
 <h1 class="text-center mb-3">Dance Events</h1>
+<form action="/add/event" class="my-2">
+    <button formmethod="post" class="btn btn-primary"> Add Event </button>
+</form>
 <select name="role" id="role" class="form-select" oninput="filterUsers()">
     <option selected value="0"> All Roles</option>
     <option value="Employee">Employee</option>
