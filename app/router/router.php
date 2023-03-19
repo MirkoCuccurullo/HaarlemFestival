@@ -2,6 +2,7 @@
 
 namespace router;
 
+use controller\qrController;
 use danceController;
 use danceControllerAPI;
 use festivalController;
@@ -18,6 +19,11 @@ class router
     {
 
         switch ($url) {
+            case'/qr':
+                require_once __DIR__ . '/../controller/qrController.php';
+                $controller = new qrController();
+                $controller->index();
+                break;
             case'/':
             case'/home':
                 require_once __DIR__ . '/../controller/homePageController.php';
@@ -71,12 +77,33 @@ class router
                 $controller = new \danceController();
                 $controller->manageVenues();
                 break;
+            case'/api/orders':
+                require("../api/controllers/orderControllerAPI.php");
+                    $controller = new \orderControllerAPI();
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getAll();
+                }
+
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controller->add();
+                }
+                break;
+
+
 
             case'/api/delete/user':
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
                 $controller->delete();
                 break;
+            case'/generate/token':
+                require("../api/controllers/JwtGeneratorController.php");
+                $controller = new \JwtGeneratorController();
+                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                    $controller->generateToken();
+                }
+                break;
+
             case'/api/delete/dance/event':
                 require("../api/controllers/danceControllerAPI.php");
                 $controller = new danceControllerAPI();
@@ -365,6 +392,22 @@ class router
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
+                break;
+            case'/api/orders?id=' . $_GET['id']:
+                require("../api/controllers/orderControllerAPI.php");
+                $controller = new \orderControllerAPI();
+                $id = $_GET['id'];
+                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+                    $controller->delete($id);
+                }
+
+                if($_SERVER["REQUEST_METHOD"] == "PUT"){
+                    $controller->update($id);
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getOne($id);
+                }
                 break;
             default:
                 echo '404';

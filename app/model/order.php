@@ -1,6 +1,6 @@
 <?php
+namespace Models;
 require_once __DIR__ . '/../model/dance.php';
-
 class order{
     public int $id;
     public int $user_id;
@@ -10,9 +10,9 @@ class order{
 
     public function __construct()
     {
-        $this->no_of_items = 0;
-        $this->total_price = 0;
-        $this->user_id = $_SESSION['current_user_id'];
+//        $this->no_of_items = 0;
+//        $this->total_price = 0;
+        //$this->user_id = $_SESSION['current_user_id'];
         $this->dance_events = array();
     }
 

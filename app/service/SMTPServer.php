@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class SMTPServer
 {
-    public function sendEmail($receiverEmail, $receiverName, $message, $subject){
+    public function sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf = null){
 
 
         require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/Exception.php';
@@ -38,6 +38,10 @@ class SMTPServer
         $content = "<b>$message</b>";
 
         $mail->MsgHTML($content);
+
+        if($pdf != null){
+            $mail->AddAttachment($pdf);
+        }
 
         //send email
         try {

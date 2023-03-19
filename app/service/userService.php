@@ -86,4 +86,9 @@ class userService{
     {
         return $this->userRepo->resetUserPassword($id, $newPassword);
     }
+
+    public function checkUsernamePassword($email, $password)
+    {
+        return $this->userRepo->checkUsernamePassword($email, $password);
+    }
 }
