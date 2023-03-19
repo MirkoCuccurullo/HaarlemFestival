@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/festival/manage-sessions" style="color: white" <?php if (isset($_SESSION['current_user']))
+                    <a class="nav-link" href="/manage/session" style="color: white" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Manage Sessions</a>
 
                 <li class="nav-item">
