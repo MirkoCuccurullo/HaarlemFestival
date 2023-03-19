@@ -4,9 +4,8 @@ require_once __DIR__ . '/../../model/session.php';
 
 class sessionControllerAPI
 {
-    private $restaurantService;
+    private restaurantService $restaurantService;
 
-    // initialize services
     function __construct()
     {
         $this->restaurantService = new restaurantService();

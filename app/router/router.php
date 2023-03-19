@@ -304,13 +304,11 @@ class router
                 $controller->delete();
                 break;
 
-
-                break;
-            case '/festival/manage-restaurants':
+            case '/manage-restaurant':
             case '/manage/restaurant':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
-                $controller->manageRestaurants();
+                $controller->manageRestaurant();
                 break;
 
             case '/api/session':
@@ -393,6 +391,7 @@ class router
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
                 break;
+
             case'/api/orders?id=' . $_GET['id']:
                 require("../api/controllers/orderControllerAPI.php");
                 $controller = new \orderControllerAPI();
