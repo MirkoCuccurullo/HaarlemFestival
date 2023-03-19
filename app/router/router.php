@@ -245,10 +245,10 @@ class router
             case '/restaurant':
             case '/festival/food':
             case '/yummy':
-                        require_once __DIR__ . '/../controller/restaurantController.php';
-                        $controller = new \restaurantController();
-                        $controller->displayFoodPage();
-                        break;
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayFoodPage();
+                break;
 
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
@@ -286,8 +286,9 @@ class router
                 $controller = new danceController();
                 $controller->homepage();
                 break;
-				
-                case'/festival/manage-sessions':
+
+            case'/manage-session':
+            case '/manage/session':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->manageSessions();
@@ -304,14 +305,6 @@ class router
                 break;
 
 
-            case'/food':
-            case '/restaurant':
-            case '/festival/food':
-            case '/api/restaurant':
-            case '/yummy':
-                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
-                $controller = new \restaurantControllerAPI();
-                $controller->index();
                 break;
             case '/festival/manage-restaurants':
             case '/manage/restaurant':
@@ -320,12 +313,6 @@ class router
                 $controller->manageRestaurants();
                 break;
 
-            case'/festival/manage-sessions':
-            case '/manage/session':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->manageSessions();
-                break;
             case '/api/session':
                 require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
                 $controller = new \sessionControllerAPI();

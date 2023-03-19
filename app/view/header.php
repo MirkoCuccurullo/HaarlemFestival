@@ -50,6 +50,7 @@
                 </li>
 
                 <li class="nav-item">
+
                     <a class="nav-link" href="/festival" style="color: black">
                         <img class="header-icon" src="../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Festival
@@ -74,9 +75,9 @@
 
                         <li><a class="dropdown-item" href="#"> Yummy! &raquo; </a>
                             <ul class="submenu dropdown-menu">
-                                <li><a class="dropdown-item" href="/festival/manage-sessions">Sessions</a></li>
-                                <li><a class="dropdown-item" href="#">Restaurants</a></li>
-                                <li><a class="dropdown-item" href="#">Reservations</a></li>
+                                <li><a class="dropdown-item" href="/manage/session">Sessions</a></li>
+                                <li><a class="dropdown-item" href="/manage/restaurant">Restaurants</a></li>
+                                <li><a class="dropdown-item" href="/manage/reservation">Reservations</a></li>
                             </ul>
                         </li>
 
@@ -94,6 +95,7 @@
                     <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>Logout</a>
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
