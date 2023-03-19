@@ -30,7 +30,6 @@ class restaurantControllerAPI
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // your code here
             $body = file_get_contents('php://input');
             $obj = json_decode($body);
             $this->restaurantService->deleteRestaurant($obj->id);

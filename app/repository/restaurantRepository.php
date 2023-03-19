@@ -43,11 +43,11 @@ class restaurantRepository extends baseRepository
 
     }
 
-    public function deleteRestaurant(restaurant $restaurant)
+    public function deleteRestaurant(int $id)
     {
         try {
             $stmt = $this->connection->prepare("DELETE FROM restaurant WHERE id = :id");
-            $stmt->bindParam(":id", $restaurant->id);
+            $stmt->bindParam(":id", $id);
             $stmt->execute();
         } catch (PDOException $e) {
             // Log the error and return failure status

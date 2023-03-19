@@ -293,16 +293,6 @@ class router
                 $controller = new \restaurantController();
                 $controller->manageSessions();
                 break;
-            case 'api/sessions':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionsControllerAPI();
-                $controller->index();
-                break;
-            case 'api/sessions/delete':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionsControllerAPI();
-                $controller->delete();
-                break;
 
             case '/manage-restaurant':
             case '/manage/restaurant':
@@ -335,6 +325,12 @@ class router
                 } else {
                     $controller->displayFormRestaurant();
                 }
+                break;
+
+                case '/api/restaurant':
+                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
+                $controller = new \restaurantControllerAPI();
+                $controller->index();
                 break;
 
             case '/edit/restaurant':
