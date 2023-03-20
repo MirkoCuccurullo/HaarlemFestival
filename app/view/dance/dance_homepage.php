@@ -28,28 +28,75 @@ include __DIR__ . '/../header_dance.php'; ?>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-                    <p> this is a pass</p>
+                    <h1 class="card-title" style="color: #FFFFFF">All-days pass</h1>
+                    <p>Enjoy all three days of the DANCE! music festival</p>
+                    <p>Price: €250</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="1">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-
+                    <h1 class="card-title" style="color: #FFFFFF">Day-1 pass</h1>
+                    <p>Access to all day one events</p>
+                    <p>Artists performing on day one:</p>
+                    <ul style="color: #FFFFFF">
+                        <li>Afrojack B2B Nicky Romero</li>
+                        <li>Tiesto</li>
+                        <li>Hardwell</li>
+                        <li>Armin van Buuren</li>
+                        <li>Martin Garrix</li>
+                    </ul>
+                    <p>Price: €150</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="2">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-
+                    <h1 class="card-title" style="color: #FFFFFF">Day-2 pass</h1>
+                    <p>Access to all day two events</p>
+                    <p>Artists performing on day two:</p>
+                    <ul style="color: #FFFFFF">
+                        <li>Martin Garrix B2B Armin van Buuren B2B Hardwell</li>
+                        <li>Armin van Buuren</li>
+                        <li>Afrojack</li>
+                        <li>Nicky Romero</li>
+                    </ul>
+                    <p>Price: €150</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="3">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-
+                    <h1 class="card-title" style="color: #FFFFFF">Day-3 pass</h1>
+                    <p>Access to all day three events</p>
+                    <p>Artists performing on day three:</p>
+                    <ul style="color: #FFFFFF">
+                        <li>Afrojack B2B Tiesto B2B Armin van Buuren</li>
+                        <li>Tiesto</li>
+                        <li>Hardwell</li>
+                        <li>Armin van Buuren</li>
+                        <li>Martin Garrix</li>
+                    </ul>
+                    <p>Price: €150</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="4">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>

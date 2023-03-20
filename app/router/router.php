@@ -287,6 +287,12 @@ class router
                 $controller->removeDanceEvent();
                 break;
 
+            case '/shoppingCart/submit':
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->submitOrder();
+                break;
+
             case'/festival':
                 require_once __DIR__ . '/../controller/festivalController.php';
                 $controller = new festivalController();

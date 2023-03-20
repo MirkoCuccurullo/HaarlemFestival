@@ -22,7 +22,10 @@ include __DIR__ . '/../header.php'; ?>
 
                     <div class="col-7">
                         <h3><?php
-                            echo $dance_event->artist_name . " @ " . $dance_event->venue_name;
+                            if($dance_event instanceof dance)
+                                echo $dance_event->artist_name . " @ " . $dance_event->venue_name;
+                            else
+                                $dance_event->displayPass($dance_event->id);
                             ?></h3>
                     </div>
 
@@ -57,7 +60,7 @@ include __DIR__ . '/../header.php'; ?>
             </div>
         </div>
 
-        <form action="shoppingCart" method="post">
+        <form action="/shoppingCart/submit" method="post">
             <div class="row m-3">
                 <button class="btn-primary fs-3" name="submitOrder">Continue to secure payment</button>
             </div>

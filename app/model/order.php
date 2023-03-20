@@ -3,7 +3,7 @@ namespace Models;
 require_once __DIR__ . '/../model/dance.php';
 class order{
     public int $id;
-    public int $user_id;
+    public ?int $user_id;
     public int $no_of_items;
     public float $total_price;
     public $dance_events = array();
