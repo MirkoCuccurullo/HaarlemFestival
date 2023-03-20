@@ -2,6 +2,7 @@
 
 namespace router;
 
+use controller\qrController;
 use danceController;
 use danceControllerAPI;
 use festivalController;
@@ -17,9 +18,12 @@ class router
     public function route($url)
     {
 
-        error_reporting(E_ALL ^ E_WARNING);
-
         switch ($url) {
+            case'/qr':
+                require_once __DIR__ . '/../controller/qrController.php';
+                $controller = new qrController();
+                $controller->index();
+                break;
             case'/':
             case'/home':
                 require_once __DIR__ . '/../controller/homePageController.php';
@@ -84,22 +88,7 @@ class router
                     $controller->add();
                 }
                 break;
-            case'/api/orders?id=' . $_GET['id']:
-                require("../api/controllers/orderControllerAPI.php");
-                $controller = new \orderControllerAPI();
-                $id = $_GET['id'];
-                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
-                    $controller->delete($id);
-                }
 
-                if($_SERVER["REQUEST_METHOD"] == "PUT"){
-                    $controller->update($id);
-                }
-
-                if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                    $controller->getOne($id);
-                }
-                break;
 
 
             case'/api/delete/user':
@@ -256,10 +245,10 @@ class router
             case '/restaurant':
             case '/festival/food':
             case '/yummy':
-                        require_once __DIR__ . '/../controller/restaurantController.php';
-                        $controller = new \restaurantController();
-                        $controller->displayFoodPage();
-                        break;
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayFoodPage();
+                break;
 
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
@@ -309,8 +298,9 @@ class router
                 $controller = new danceController();
                 $controller->homepage();
                 break;
-				
-                case'/festival/manage-sessions':
+
+            case'/manage-session':
+            case '/manage/session':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->manageSessions();
@@ -327,14 +317,6 @@ class router
                 break;
 
 
-            case'/food':
-            case '/restaurant':
-            case '/festival/food':
-            case '/api/restaurant':
-            case '/yummy':
-                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
-                $controller = new \restaurantControllerAPI();
-                $controller->index();
                 break;
             case '/festival/manage-restaurants':
             case '/manage/restaurant':
@@ -343,12 +325,6 @@ class router
                 $controller->manageRestaurants();
                 break;
 
-            case'/festival/manage-sessions':
-            case '/manage/session':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->manageSessions();
-                break;
             case '/api/session':
                 require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
                 $controller = new \sessionControllerAPI();
@@ -428,6 +404,22 @@ class router
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
+                break;
+            case'/api/orders?id=' . $_GET['id']:
+                require("../api/controllers/orderControllerAPI.php");
+                $controller = new \orderControllerAPI();
+                $id = $_GET['id'];
+                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+                    $controller->delete($id);
+                }
+
+                if($_SERVER["REQUEST_METHOD"] == "PUT"){
+                    $controller->update($id);
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getOne($id);
+                }
                 break;
             default:
                 echo '404';
