@@ -43,23 +43,25 @@
             <?php if(isset($locations)) foreach ($locations as $location) {?>
                 <tr>
                     <form action="/historyManagement" method="POST">
-                        <td name="id" contenteditable="false"><input type="hidden" name="id" value="<?= $location->id ?>"><?=$location->id?></td>
-                        <td name="id" contenteditable="false"><input type="text" name="title" value="<?= $location->title ?>"></td>
-                        <td name="id" contenteditable="false"><input type="text" name="image" value="<?= $location->image ?>"></td>
-                        <td name="id" contenteditable="false"><input type="text" name="content" value="<?= $location->content ?>"></td>
+                        <input type="hidden" name="id" value="<?= $location->id ?>">
+                        <td name="id" contenteditable="false"><?= $location->id ?></td>
+                        <td name="id" contenteditable="true"><input type="text" name="title" value="<?= $location->title ?>"></td>
+                        <td name="id" contenteditable="true"><input type="text" name="image" value="<?= $location->image ?>"></td>
+                        <td name="id" contenteditable="true"><input type="text" name="content" value="<?= $location->content ?>"></td>
                         <td>
-                            <button name="update"><i class="fas fa-edit"> </button>
-                        </td>
-                        <td>
-                            <form action="/historyManagement" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $location->id ?>">
-                                <button type="submit" name="delete"><i class="fas fa-trash-alt"></i></button>
-                            </form>
+                            <button type="submit" name="update"><i class="fas fa-edit"></i></button>
                         </td>
                     </form>
+                    <td>
+                        <form action="/historyManagement" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $location->id ?>">
+                            <button type="submit" name="delete"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
                 </tr>
             <?php } ?>
             </tbody>
+
         </table>
     </div>
 </div>

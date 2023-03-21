@@ -16,3 +16,27 @@ body {
     float: right;
     font-size: 0.8rem;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#mytable td[name='content'] {
+    /* CSS styles go here */
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    background-color: #BAC127;
+}
+
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+input[type=text] {
+    border: none;
+    padding: 0;
+    width: 100%;
+}
