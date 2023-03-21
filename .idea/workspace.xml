@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end">
-      <change afterPath="$PROJECT_DIR$/app/model/historyPageCard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/historyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/historyEventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/registration.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/historyEventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/historyEventRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/ticketRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/ticketRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/historyEventService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/historyEventService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/history/history.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/history/history.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/developmentdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/developmentdb.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-    </list>
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,6 +149,7 @@
       <workItem from="1678273816380" duration="9507000" />
       <workItem from="1678366856192" duration="10847000" />
       <workItem from="1678454722455" duration="16000" />
+      <workItem from="1679394353466" duration="929000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>

@@ -3,6 +3,7 @@ require_once __DIR__ . '/../model/order.php';
 require_once __DIR__ . '/../service/eventService.php';
 require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../service/accessPassService.php';
+require_once __DIR__ . '/../service/MollieService.php';
 
 use router\router;
 
@@ -76,12 +77,15 @@ class shoppingCartController
         }
         else {
             if (isset($_POST['submitOrder'])) {
-                $order = $_SESSION['order'];
-                $orderService = new OrderService();
-                $orderService->createOrder($order);
-                unset($_SESSION['order']);
-                $router = new Router();
-                $router->route('/');
+//                $order = $_SESSION['order'];
+//                $orderService = new OrderService();
+//                $orderService->createOrder($order);
+//                unset($_SESSION['order']);
+//                $router = new Router();
+//                $router->route('/');
+                $amount = $_SESSION['order']->total_price;
+                $mollieService = new MollieService();
+                $mollieService->pay($amount);
             }
         }
     }
