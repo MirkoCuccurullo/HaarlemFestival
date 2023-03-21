@@ -1,5 +1,5 @@
 <?php
-require_once '../model/ticket.php.php';
+require_once '../model/ticket.php';
 
 include_once("baseRepository.php");
 

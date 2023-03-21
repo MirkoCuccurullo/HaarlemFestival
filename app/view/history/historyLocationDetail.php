@@ -13,14 +13,17 @@
 
 <body>
 <br>
-<?php
 
-if(isset($locationDetailById)) { ?>
+<div class="container">
+    <?php if(isset($locationDetailById)) { ?>
+    <img id="locationImg" src="<?php echo $locationDetailById->image;?>" alt="Location Image">
     <h3><?= $locationDetailById->title?></h3>
     <p><?= $locationDetailById->additionalContent?></p>
 <?php } ?>
+</div>
+
 </body>
 
 </html>
 
-<?php //include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../footer.php'; ?>

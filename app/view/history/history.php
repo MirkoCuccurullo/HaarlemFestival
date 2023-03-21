@@ -11,7 +11,7 @@
 
 <body>
 <div class="image-container">
-    <img id="mainImg" alt="main image" src="1.jpg">
+    <img id="mainImg" alt="main image" src="/images/stbavokerk.jpg">
     <h1 class="img-txt"><?php if(isset($content[0]->mainImageHeader)) echo $content[0]->mainImageHeader?></h1>
     <div class="tour-card">
         <div class="card-body">
@@ -27,11 +27,11 @@
 <div class="card-container">
     <?php if (isset($locations)) foreach($locations as $location) { ?>
         <div class="card">
-            <img id="cardImg" src="1.jpg" alt="">
+            <img id="cardImg" src="<?php echo $location->image;?>" alt="">
             <h3><?= $location->title?></h3>
             <p><?= $location->content?></p>
             <div class="cardButton">
-                <form action="locationDetail" method="POST" >
+                <form action="historyLocationDetail" method="POST" >
                     <td><button id="learnMoreButton" name="id" value="<?= $location->id?>">Learn More</button></td>
                 </form>
             </div>
