@@ -12,7 +12,7 @@
 }
 .img-txt {
     COLOR: white;
-    position: absolute;top: 17px;left: 20px;
+    position: absolute;top: 30px;left: 20px;
 }
 
 /*card under image*/
@@ -23,12 +23,16 @@
     position: absolute;
     bottom: -10%;
     left: 65%;
+    padding: 20px;
 }
 .card-text {
     font-style: italic;
 }
 .btn {
-    background-color: #3D1A78; color: white; margin: 0 10px 0 10px; padding: 8px;
+    background-color: #3D1A78;
+    color: white;
+    margin: 0 10px 0 10px;
+    padding: 8px;
 }
 .heading {
     margin-top: 8%;
@@ -42,21 +46,9 @@
 body{
     overflow-x: hidden;
 }
-/*.card-container {*/
-/*    display: flex;*/
-/*    overflow-x: auto;*/
-/*    scroll-snap-type: x mandatory;*/
-/*}*/
-/*.card {*/
-/*    width: 300px;*/
-/*    height: 300px;*/
-/*    margin-right: 20px;*/
-/*    background-color: #fff;*/
-/*    box-shadow: 0 2px 8px rgba(0,0,0,0.1);*/
-/*    scroll-snap-align: center;*/
-/*    transition: transform 0.3s ease-in-out;*/
-/*}*/
+
 /*-------------------------------*/
+
 .card:hover {
     transform: scale(1.05);
 }
@@ -114,7 +106,9 @@ body{
     color: white;
     padding: 5px;
 }
+
 /*--------------------------------*/
+
 th,
 td {
     border: 2px solid black;
@@ -130,7 +124,9 @@ th[scope="col"] {
 td + td {
     border-left: 1px solid black;
 }
+
 /*--------------------------------*/
+
 .schedule {
     margin-top: 6%;
     margin-left: -15.2%;
@@ -158,7 +154,9 @@ td + td {
 a {
     text-decoration: none;
 }
+
 /*--------------------------------*/
+
 .event-date {
     color: #3D1A78;
     font-size: 1.5rem;

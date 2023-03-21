@@ -1,5 +1,3 @@
-<?php include __DIR__ . '/../historyHeader.php'; ?>
-
 <!Doctype html>
 <html lang="en">
 <head>

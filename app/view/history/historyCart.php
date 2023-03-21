@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../historyHeader.php'; ?>
+<?php include __DIR__ . '/../header_history.php'; ?>
 
 <!Doctype html>
 <html lang="en">

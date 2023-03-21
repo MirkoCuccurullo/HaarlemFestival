@@ -21,17 +21,23 @@ class historyEventController
         $content = $this->historyEventService->getHistoryPageContent();
         $historyTourTimetable = $this->historyEventService->getHistoryTourTimetable();
 
-        include __DIR__ . '/../view/historyHeader.php';
+        include __DIR__ . '/../view/header_history.php';
         require __DIR__ . "/../view/history/history.php";
+        include __DIR__ . '/../view/footer.php';
     }
 
     public function historyCartPage($id){
         $ticketById = $this->historyEventService->getHistoryTicketById($id);
+        include __DIR__ . '/../view/header_history.php';
         require __DIR__ . '/../view/history/historyCart.php';
+        include __DIR__ . '/../view/footer.php';
+
     }
     public function historyLocationDetailPage($id) {
         $locationDetailById = $this->historyEventService->getLocationDetailById($id);
+        include __DIR__ . '/../view/header_history.php';
         require __DIR__ . '/../view/history/historyLocationDetail.php';
+        include __DIR__ . '/../view/footer.php';
     }
     public function historyManagement($addError) {
 
@@ -43,6 +49,7 @@ class historyEventController
         }
         $locations = $this->historyEventService->getAllHistoryCard();
         require __DIR__ . '/../view/history/historyAdmin/historyManagement.php';
+
     }
 
     public function deleteContent($id)

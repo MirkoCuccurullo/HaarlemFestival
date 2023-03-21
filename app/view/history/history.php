@@ -1,12 +1,12 @@
 <!Doctype html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="/css/history.css">
-        <title>History Event</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/history.css">
+    <title>History Event</title>
 </head>
 
 <body>
@@ -82,4 +82,4 @@ if (isset($historyTourTimetable)) {
 </html>
 
 
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php //include __DIR__ . '/../footer.php'; ?>
