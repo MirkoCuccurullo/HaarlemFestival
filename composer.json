@@ -1,8 +1,7 @@
 {
   "require": {
     "phpmailer/phpmailer": "^6.7.1",
-    "ext-dom": "*",
-    "ext-pdo": "*"
+    "ext-dom": "*"
   },
 
   "extra":{

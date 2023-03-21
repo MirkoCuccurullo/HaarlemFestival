@@ -34,11 +34,13 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
+
             case '/api/users':
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
                 $controller->index();
                 break;
+
             case"/api/dance/events":
                 require("../api/controllers/danceControllerAPI.php");
                 $controller = new danceControllerAPI();
@@ -57,6 +59,7 @@ class router
             case'/logout':
                 require_once("../view/login/logout.php");
                 break;
+
             case '/manage/users':
                 require __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
@@ -123,6 +126,7 @@ class router
             case'/edit/user':
                 require __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
+//                $controller->editUser();
                 $controller->editUser($_POST['id']);
                 break;
             case'/edit/artist':
@@ -156,6 +160,23 @@ class router
                 $controller = new \danceController();
                 $controller->editEvent();
                 break;
+
+            case'/history':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->historyMainPage();
+                break;
+            case'/historyCart':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->historyCartPage($_POST['id']);
+            break;
+            case '/locationDetail':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->historyLocationDetailPage($_POST['id']);
+            break;
+
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -174,13 +195,11 @@ class router
                 $controller->displayResetPassword();
                 break;
 
-
             case'/resetPassword/reset':
                 require __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->resetPassword();
                 break;
-
 
             case '/resetPassword/sendLink':
                 require __DIR__ . '/../controller/userController.php';
@@ -189,8 +208,34 @@ class router
                 break;
 
 
-            case'/manageProfile':
+            case '/history':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->historyMainPage();
+                break;
+            case '/historyCart':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $id = $_POST['id'];
+                $controller->historyCartPage($id);
+                break;
+            case '/historyLocationDetail':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $id = $_POST['id'];
+                $controller->historyLocationDetailPage($id);
+                break;
+            case '/historyManagement':
+                require __DIR__ . '/../controller/historyEventController.php';
+                $controller = new \historyEventController();
+                $controller->displayAddedContent();
+                break;
+            case '/historyManagement/add':
+                require __DIR__ . '/../view/history/historyAdmin/addContent.php';
+                break;
 
+
+            case'/manageProfile':
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->manageProfile($_SESSION['current_user_id']);
@@ -304,6 +349,7 @@ class router
                 $controller = new danceController();
                 $controller->homepage();
                 break;
+
 
             case'/manage-session':
             case '/manage/session':
