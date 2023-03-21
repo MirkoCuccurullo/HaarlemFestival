@@ -25,9 +25,9 @@ class restaurantController
     }
 
 
-    public function manageRestaurants(): void
+    public function manageRestaurant(): void
     {
-        require __DIR__ . '/../view/management/manageRestaurants.php';
+        require __DIR__ . '/../view/management/manageRestaurant.php';
     }
 
     public function displayFormRestaurant(): void

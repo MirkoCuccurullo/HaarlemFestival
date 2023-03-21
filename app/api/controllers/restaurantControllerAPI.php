@@ -16,7 +16,7 @@ class restaurantControllerAPI
         header('Access-Control-Allow-Headers: *');
         header('Access-Control-Allow-Methods: *');
 
-        // Respond to a GET request to /api/reservation
+        // Respond to a GET request to /api/restaurant with a list of all restaurants
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             $restaurants = $this->restaurantService->getAllRestaurants();
@@ -30,7 +30,6 @@ class restaurantControllerAPI
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // your code here
             $body = file_get_contents('php://input');
             $obj = json_decode($body);
             $this->restaurantService->deleteRestaurant($obj->id);

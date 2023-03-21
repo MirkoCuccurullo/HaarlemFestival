@@ -7,11 +7,9 @@ require_once __DIR__ . '/../model/session.php';
 include_once 'baseRepository.php';
 class restaurantRepository extends baseRepository
 {
-	
-
-   public function getRestaurantInfo(): array
+    public function getRestaurantInfo(): array
     {
-        $sql = "SELECT id, name, description, address, cuisines, dietary, photo  FROM restaurant";
+        $sql = "SELECT *  FROM restaurant";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
@@ -21,14 +19,12 @@ class restaurantRepository extends baseRepository
             $restaurant->sessions = $this->getSessionsByRestaurantId($restaurant->id);
         }
         return $result;
-
-
     }
 
     public function updateRestaurant(restaurant $restaurant)
     {
         try {
-     
+
             $stmt = $this->connection->prepare("UPDATE restaurant SET name = :name, description = :description, address = :address, cuisines = :cuisine, dietary = :dietary, photo = :photo WHERE id = :id");
             $stmt->bindParam(":id", $restaurant->id);
             $stmt->bindParam(":address", $restaurant->address);
@@ -40,9 +36,6 @@ class restaurantRepository extends baseRepository
 
             $stmt->execute();
 
-            // Set success flag
-            $success = true;
-
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to update restaurant: " . $e->getMessage());
@@ -50,20 +43,12 @@ class restaurantRepository extends baseRepository
 
     }
 
-    public function deleteRestaurant(restaurant $restaurant)
+    public function deleteRestaurant(int $id)
     {
         try {
-            //delete from event table
-            $stmt = $this->conn->prepare("DELETE FROM event WHERE id = :id");
-            $stmt->bind_param(":id", $restaurant->eventId);
+            $stmt = $this->connection->prepare("DELETE FROM restaurant WHERE id = :id");
+            $stmt->bindParam(":id", $id);
             $stmt->execute();
-            $stmt->store_result();
-
-            //delete from restaurant table
-            $stmt = $this->conn->prepare("DELETE FROM restaurant WHERE restaurantId = :id");
-            $stmt->bind_param(":id", $restaurant->id);
-            $stmt->execute();
-            $stmt->store_result();
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to delete restaurant: " . $e->getMessage());
@@ -86,7 +71,6 @@ class restaurantRepository extends baseRepository
             // Log the error and return failure status
             error_log("Failed to add restaurant: " . $e->getMessage());
         }
-
     }
 
     public function getSessionsByRestaurantId($id): array

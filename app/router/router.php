@@ -311,24 +311,12 @@ class router
                 $controller = new \restaurantController();
                 $controller->manageSessions();
                 break;
-            case 'api/sessions':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionsControllerAPI();
-                $controller->index();
-                break;
-            case 'api/sessions/delete':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionsControllerAPI();
-                $controller->delete();
-                break;
 
-
-                break;
-            case '/festival/manage-restaurants':
+            case '/manage-restaurant':
             case '/manage/restaurant':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
-                $controller->manageRestaurants();
+                $controller->manageRestaurant();
                 break;
 
             case '/api/session':
@@ -355,6 +343,12 @@ class router
                 } else {
                     $controller->displayFormRestaurant();
                 }
+                break;
+
+                case '/api/restaurant':
+                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
+                $controller = new \restaurantControllerAPI();
+                $controller->index();
                 break;
 
             case '/edit/restaurant':
@@ -411,6 +405,7 @@ class router
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
                 break;
+
             case'/api/orders?id=' . $_GET['id']:
                 require("../api/controllers/orderControllerAPI.php");
                 $controller = new \orderControllerAPI();
