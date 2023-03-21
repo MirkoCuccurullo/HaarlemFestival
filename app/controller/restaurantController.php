@@ -15,7 +15,7 @@ class restaurantController
 
     public function displayFoodPage(): void
     {
-        $restaurantInfo = $this->restaurantService->getAllRestaurants();
+        $restaurants = $this->restaurantService->getAllRestaurants();
         require __DIR__ . '/../view/yummy/yummy_homepage.php';
     }
 
@@ -25,9 +25,9 @@ class restaurantController
     }
 
 
-    public function manageRestaurants(): void
+    public function manageRestaurant(): void
     {
-        require __DIR__ . '/../view/management/manageRestaurants.php';
+        require __DIR__ . '/../view/management/manageRestaurant.php';
     }
 
     public function displayFormRestaurant(): void
