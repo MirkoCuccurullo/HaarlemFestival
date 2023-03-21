@@ -3,7 +3,7 @@ include __DIR__ . '/../header.php'; ?>
 
 <head>
     <link href="css/style_index.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/q0czso0c6q6ut003t5rj8pm8r2bqy0uo2z23wjdtmavywsxz/tinymce/6/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/ea8dl2qwcc0ubif5iugpqvomh1a1ftv5skra68xzeys1qabb/tinymce/6/tinymce.min.js"
             referrerpolicy="origin"></script>
     <title>Index</title>
 </head>

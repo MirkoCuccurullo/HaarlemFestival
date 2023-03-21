@@ -2,6 +2,7 @@
 
 namespace router;
 
+use controller\qrController;
 use danceController;
 use danceControllerAPI;
 use festivalController;
@@ -18,6 +19,11 @@ class router
     {
 
         switch ($url) {
+            case'/qr':
+                require_once __DIR__ . '/../controller/qrController.php';
+                $controller = new qrController();
+                $controller->index();
+                break;
             case'/':
             case'/home':
                 require_once __DIR__ . '/../controller/homePageController.php';
@@ -74,12 +80,33 @@ class router
                 $controller = new \danceController();
                 $controller->manageVenues();
                 break;
+            case'/api/orders':
+                require("../api/controllers/orderControllerAPI.php");
+                    $controller = new \orderControllerAPI();
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getAll();
+                }
+
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controller->add();
+                }
+                break;
+
+
 
             case'/api/delete/user':
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
                 $controller->delete();
                 break;
+            case'/generate/token':
+                require("../api/controllers/JwtGeneratorController.php");
+                $controller = new \JwtGeneratorController();
+                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                    $controller->generateToken();
+                }
+                break;
+
             case'/api/delete/dance/event':
                 require("../api/controllers/danceControllerAPI.php");
                 $controller = new danceControllerAPI();
@@ -263,10 +290,10 @@ class router
             case '/restaurant':
             case '/festival/food':
             case '/yummy':
-                        require_once __DIR__ . '/../controller/restaurantController.php';
-                        $controller = new \restaurantController();
-                        $controller->displayFoodPage();
-                        break;
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayFoodPage();
+                break;
 
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
@@ -293,6 +320,24 @@ class router
                 $controller->index();
                 break;
 
+            case '/shoppingCart/add':
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->addDanceEvent();
+                break;
+
+            case '/shoppingCart/remove':
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->removeDanceEvent();
+                break;
+
+            case '/shoppingCart/submit':
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->submitOrder();
+                break;
+
             case'/festival':
                 require_once __DIR__ . '/../controller/festivalController.php';
                 $controller = new festivalController();
@@ -305,45 +350,21 @@ class router
                 $controller->homepage();
                 break;
 
-                case'/festival/manage-sessions':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->manageSessions();
-                break;
-            case 'api/sessions':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionsControllerAPI();
-                $controller->index();
-                break;
-            case 'api/sessions/delete':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionsControllerAPI();
-                $controller->delete();
-                break;
 
-
-            case'/food':
-            case '/restaurant':
-            case '/festival/food':
-            case '/api/restaurant':
-            case '/yummy':
-                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
-                $controller = new \restaurantControllerAPI();
-                $controller->index();
-                break;
-            case '/festival/manage-restaurants':
-            case '/manage/restaurant':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->manageRestaurants();
-                break;
-
-            case'/festival/manage-sessions':
+            case'/manage-session':
             case '/manage/session':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->manageSessions();
                 break;
+
+            case '/manage-restaurant':
+            case '/manage/restaurant':
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->manageRestaurant();
+                break;
+
             case '/api/session':
                 require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
                 $controller = new \sessionControllerAPI();
@@ -368,6 +389,12 @@ class router
                 } else {
                     $controller->displayFormRestaurant();
                 }
+                break;
+
+                case '/api/restaurant':
+                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
+                $controller = new \restaurantControllerAPI();
+                $controller->index();
                 break;
 
             case '/edit/restaurant':
@@ -423,6 +450,23 @@ class router
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
+                break;
+
+            case'/api/orders?id=' . $_GET['id']:
+                require("../api/controllers/orderControllerAPI.php");
+                $controller = new \orderControllerAPI();
+                $id = $_GET['id'];
+                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+                    $controller->delete($id);
+                }
+
+                if($_SERVER["REQUEST_METHOD"] == "PUT"){
+                    $controller->update($id);
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getOne($id);
+                }
                 break;
             default:
                 echo '404';

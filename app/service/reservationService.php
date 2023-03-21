@@ -16,8 +16,18 @@ class reservationService
         return $this->reservationRepository->getAllReservations();
     }
 
-    public function updateReservation($reservation): void
+    public function updateReservation($id, $restaurantName, $session, $status, $numberOfAdults, $numberOfUnder12, $reservationPrice, $customerEmail, $comment): void
     {
+        $reservation = new reservation();
+        $reservation->id = $id;
+        $reservation->restaurantName = $restaurantName;
+        $reservation->session = $session;
+        $reservation->status = $status;
+        $reservation->numberOfAdults = $numberOfAdults;
+        $reservation->numberOfUnder12 = $numberOfUnder12;
+        $reservation->reservationPrice = $reservationPrice;
+        $reservation->customerEmail = $customerEmail;
+        $reservation->comment = $comment;
         $this->reservationRepository->updateReservation($reservation);
     }
 

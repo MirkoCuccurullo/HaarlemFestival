@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/session.php';
 require_once __DIR__ . '/event.php';
-class restaurant extends event{
+class restaurant {
 
     public int $id;
+    public string $name;
     public string $address;
     public array $sessions;
 
