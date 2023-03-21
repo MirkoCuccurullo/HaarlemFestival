@@ -1,10 +1,10 @@
 <?php
 
 //MySQL credentials
-$db_host="mysql";
+$db_host="festproject.database.windows.net";
 $db_name="developmentdb";
-$db_username="root";
-$db_password="secret123";
+$db_username="rares@festproject";
+$db_password="secret123!";
 
 //Google Mail credentials
 $smtpEmail = "praticissimoissimo@gmail.com";

@@ -7,7 +7,7 @@ include __DIR__ . '/../header.php'; ?>
     <table class="table text-center">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">Description</th>
@@ -22,36 +22,17 @@ include __DIR__ . '/../header.php'; ?>
         <tbody class="table-group-divider" id="restaurantTable">
 
         <script>
-            function filterRestaurants() {
-                const role = document.getElementById("restaurants").value;
-                const table = document.getElementById("restaurantTable");
-                const rows = table.getElementsByTagName("tr");
-                for (let i = 0; i < rows.length; i++) {
-                    const row = rows[i];
-                    const roleCol = row.getElementsByTagName("td")[4];
-                    if (roleCol) {
-                        const roleValue = roleCol.textContent || roleCol.innerText;
-                        if (role === "0" || roleValue === role) {
-                            row.style.display = "";
-                        } else {
-                            row.style.display = "none";
-                        }
-                    }
-                }
-            }
 
-
-
-                function loadRestaurants() {
-                    fetch('http://localhost/api/restaurant')
-                        .then(result => result.json())
-                        .then((restaurants)=>{
-                            restaurants.forEach(restaurant => {
-                                appendRestaurants(restaurant);
-                            })
-                            console.log(restaurants);
+            function loadRestaurants() {
+                fetch('http://localhost/api/restaurant')
+                    .then(result => result.json())
+                    .then((restaurants)=>{
+                        restaurants.forEach(restaurant => {
+                            appendRestaurant(restaurant);
                         })
-                }
+                        console.log(restaurants);
+                    })
+            }
 
             function deleteRestaurant(eventId) {
 
@@ -64,7 +45,7 @@ include __DIR__ . '/../header.php'; ?>
                     console.log(result)
                 });
             }
-            function appendRestaurants(restaurant)
+            function appendRestaurant(restaurant)
             {
 
                 const newRow = document.createElement("tr");
@@ -99,7 +80,7 @@ include __DIR__ . '/../header.php'; ?>
                 descriptionCol.innerHTML = restaurant.description;
                 cuisinesCol.innerHTML = restaurant.cuisines;
                 dietaryCol.innerHTML = restaurant.dietary;
-                photosCol.innerHTML = restaurant.photos;
+                photosCol.innerHTML = restaurant.photo;
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
 
@@ -135,4 +116,3 @@ include __DIR__ . '/../header.php'; ?>
 
 <?php
 include __DIR__ . '/../footer.php'; ?>
-

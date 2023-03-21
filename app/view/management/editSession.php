@@ -78,6 +78,19 @@ include_once __DIR__ . '/../../model/session.php';
                                         </div>
                                     </div>
 
+                                        <h2 class="mb-3">Price for Under 12</h2>
+                                        <div class="row mb-3">
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <input required type="number" class="form-control" id="reducedPrice"
+                                                           name="reducedPrice" placeholder="reducedPrice" value="<?=$session->reducedPrice?>">
+                                                    <label for="reducedPrice" class="form-label">Price for Under 12</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     <h2 class="mb-3">Restaurant ID</h2>
                                     <div class="row mb-3">
                                         <div class="col-md">

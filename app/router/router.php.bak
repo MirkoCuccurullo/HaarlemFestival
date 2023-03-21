@@ -14,13 +14,12 @@ class router
     /**
      * @throws \Exception
      */
-    public function route($url)
-    {
+    public function route($url){
 
-        switch ($url) {
+        switch ($url){
             case'/':
             case'/home':
-                require_once __DIR__ . '/../controller/homePageController.php';
+               require_once __DIR__ . '/../controller/homePageController.php';
                 $controller = new \homePageController();
                 $controller->index();
                 break;
@@ -28,13 +27,11 @@ class router
             case'/login':
                 require_once("../view/login/login.php");
                 break;
-
             case '/api/users':
                 require("../api/controllers/userControllerAPI.php");
                 $controller = new userControllerAPI();
                 $controller->index();
                 break;
-
             case"/api/dance/events":
                 require("../api/controllers/danceControllerAPI.php");
                 $controller = new danceControllerAPI();
@@ -53,7 +50,6 @@ class router
             case'/logout':
                 require_once("../view/login/logout.php");
                 break;
-
             case '/manage/users':
                 require __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
@@ -96,12 +92,11 @@ class router
                 $controller->delete();
                 break;
 
-            case'/edit/user':
-                require __DIR__ . '/../controller/userController.php';
-                $controller = new \userController();
-//                $controller->editUser();
-                $controller->editUser($_POST['id']);
-                break;
+                case'/edit/user':
+                    require __DIR__ . '/../controller/userController.php';
+                    $controller = new \userController();
+                    $controller->editUser($_POST['id']);
+                    break;
             case'/edit/artist':
                 require __DIR__ . '/../controller/danceController.php';
                 $controller = new \danceController();
@@ -118,11 +113,11 @@ class router
                 $controller->updateEvent();
                 break;
 
-            case'/edit/dance/artist':
-                require __DIR__ . '/../controller/danceController.php';
-                $controller = new \danceController();
-                $controller->editArtist();
-                break;
+                case'/edit/dance/artist':
+                    require __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->editArtist();
+                    break;
             case'/edit/dance/venue':
                 require __DIR__ . '/../controller/danceController.php';
                 $controller = new \danceController();
@@ -133,23 +128,6 @@ class router
                 $controller = new \danceController();
                 $controller->editEvent();
                 break;
-
-            case'/history':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyMainPage();
-                break;
-            case'/historyCart':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyCartPage($_POST['id']);
-            break;
-            case '/locationDetail':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyLocationDetailPage($_POST['id']);
-            break;
-
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -168,11 +146,13 @@ class router
                 $controller->displayResetPassword();
                 break;
 
+
             case'/resetPassword/reset':
                 require __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->resetPassword();
                 break;
+
 
             case '/resetPassword/sendLink':
                 require __DIR__ . '/../controller/userController.php';
@@ -181,78 +161,52 @@ class router
                 break;
 
 
-            case '/history':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyMainPage();
-                break;
-            case '/historyCart':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $id = $_POST['id'];
-                $controller->historyCartPage($id);
-                break;
-            case '/historyLocationDetail':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $id = $_POST['id'];
-                $controller->historyLocationDetailPage($id);
-                break;
-            case '/historyManagement':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->displayAddedContent();
-                break;
-            case '/historyManagement/add':
-                require __DIR__ . '/../view/history/historyAdmin/addContent.php';
-                break;
-
-
             case'/manageProfile':
+
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->manageProfile($_SESSION['current_user_id']);
                 break;
 
-            case"/dance/artist":
-                require_once __DIR__ . '/../controller/danceController.php';
-                $controller = new \danceController();
-                $controller->displayArtist();
-                break;
+                case"/dance/artist":
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->displayArtist();
+                    break;
 
             case'/manageProfile/update':
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
                 $controller->updateProfile($_SESSION['current_user_id']);
                 break;
-            case"/add/event":
-                if (isset($_POST['addDanceEvent'])) {
-                    require_once __DIR__ . '/../controller/danceController.php';
-                    $controller = new \danceController();
-                    $controller->addEvent();
-                } else {
-                    require_once __DIR__ . '/../controller/danceController.php';
-                    $controller = new danceController();
-                    $controller->displayFormEvent();
-                }
-                break;
+                case"/add/event":
+                    if (isset($_POST['addDanceEvent'])){
+                        require_once __DIR__ . '/../controller/danceController.php';
+                        $controller = new \danceController();
+                        $controller->addEvent();
+                    }else{
+                        require_once __DIR__ . '/../controller/danceController.php';
+                        $controller = new danceController();
+                        $controller->displayFormEvent();
+                    }
+                    break;
             case"/add/artist":
-                if (isset($_POST['addDanceArtist'])) {
+                if (isset($_POST['addDanceArtist'])){
                     require_once __DIR__ . '/../controller/danceController.php';
                     $controller = new \danceController();
                     $controller->addArtist();
-                } else {
+                }else{
                     require_once __DIR__ . '/../controller/danceController.php';
                     $controller = new danceController();
                     $controller->displayFormArtist();
                 }
                 break;
             case"/add/venue":
-                if (isset($_POST['addDanceVenue'])) {
+                if (isset($_POST['addDanceVenue'])){
                     require_once __DIR__ . '/../controller/danceController.php';
                     $controller = new \danceController();
                     $controller->addVenue();
-                } else {
+                }else{
                     require_once __DIR__ . '/../controller/danceController.php';
                     $controller = new danceController();
                     $controller->displayFormVenue();
@@ -305,6 +259,7 @@ class router
                 $controller->homepage();
                 break;
 
+<<<<<<< HEAD
                 case'/festival/manage-sessions':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
@@ -320,112 +275,10 @@ class router
                 $controller = new \sessionsControllerAPI();
                 $controller->delete();
                 break;
-
-
-            case'/food':
-            case '/restaurant':
-            case '/festival/food':
-            case '/api/restaurant':
-            case '/yummy':
-                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
-                $controller = new \restaurantControllerAPI();
-                $controller->index();
-                break;
-            case '/festival/manage-restaurants':
-            case '/manage/restaurant':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->manageRestaurants();
-                break;
-
-            case'/festival/manage-sessions':
-            case '/manage/session':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->manageSessions();
-                break;
-            case '/api/session':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionControllerAPI();
-                $controller->index();
-                break;
-            case '/api/delete/session':
-                require_once __DIR__ . '/../api/controllers/sessionControllerAPI.php';
-                $controller = new \sessionControllerAPI();
-                $controller->delete();
-                break;
-            case '/api/delete/restaurant':
-                require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
-                $controller = new \restaurantControllerAPI();
-                $controller->delete();
-                break;
-
-            case '/add/restaurant':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                if (isset($_POST['addRestaurant'])) {
-                    $controller->addRestaurant();
-                } else {
-                    $controller->displayFormRestaurant();
-                }
-                break;
-
-            case '/edit/restaurant':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                if (isset($_POST['editRestaurant'])) {
-                    $controller->updateRestaurant();
-                } else {
-                    $controller->editRestaurant();
-                }
-
-                break;
-            case '/add/session':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                if (isset($_POST['addSession'])) {
-                    $controller->addSession();
-                } else {
-                    $controller->displayFormSession();
-                }
-                break;
-            case '/edit/session':
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                if (isset($_POST['editSession'])) {
-                    $controller->updateSession();
-                } else {
-                    $controller->editSession();
-                }
-                break;
-            case '/manage/reservation':
-            case '/manageReservation':
-            case '/manage-reservation':
-                require_once __DIR__ . '/../controller/reservationController.php';
-                $controller = new \reservationController();
-                $controller->manageReservation();
-                break;
-            case '/api/reservation':
-                require_once __DIR__ . '/../api/controllers/reservationControllerAPI.php';
-                $controller = new \reservationControllerAPI();
-                $controller->index();
-                break;
-            case '/edit/reservation':
-                require_once __DIR__ . '/../controller/reservationController.php';
-                $controller = new \reservationController();
-                if (isset($_POST['editReservation'])) {
-                    $controller->updateReservation();
-                } else {
-                    $controller->editReservation();
-                }
-                break;
-            case '/deactivate/reservation':
-                require_once __DIR__ . '/../controller/reservationController.php';
-                $controller = new \reservationController();
-                $controller->deactivateReservation();
-                break;
+=======
+>>>>>>> main
             default:
-                echo '404';
+                echo'404';
         }
     }
 }

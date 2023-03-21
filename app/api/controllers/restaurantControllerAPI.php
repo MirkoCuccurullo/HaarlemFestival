@@ -16,10 +16,10 @@ class restaurantControllerAPI
         header('Access-Control-Allow-Headers: *');
         header('Access-Control-Allow-Methods: *');
 
-        // Respond to a GET request to /api/session
+        // Respond to a GET request to /api/reservation
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-            $restaurants = $this->restaurantService->getRestaurantInfo();
+            $restaurants = $this->restaurantService->getAllRestaurants();
             header('Content-Type: application/json');
             echo json_encode($restaurants);
 
