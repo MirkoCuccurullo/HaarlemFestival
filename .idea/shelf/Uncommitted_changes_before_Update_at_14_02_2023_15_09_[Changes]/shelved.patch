@@ -1,0 +1,382 @@
+Index: app/view/registration/registration.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <title>Registration</title>\r\n    <link rel=\"stylesheet\" href=\"/css/registration.css\">\r\n</head>\r\n\r\n<body>\r\n<section class=\"container\">\r\n    <header>Registration Form</header>\r\n    <form action=\"\" method=\"POST\" class=\"form\">\r\n        <div class=\"input-box\">\r\n            <label>Name</label>\r\n            <input type=\"text\" name=\"name\" placeholder=\"Enter name\" required />\r\n        </div>\r\n\r\n        <div class=\"input-box\">\r\n            <label>Email</label>\r\n            <input type=\"text\" name=\"email\" placeholder=\"Enter email address\" required />\r\n        </div>\r\n\r\n        <div class=\"input-box\">\r\n            <label>Password</label>\r\n            <input type=\"password\" name=\"password\" placeholder=\"Enter password\" required />\r\n        </div>\r\n\r\n        <div class=\"input-box\">\r\n            <label>Birth Date</label>\r\n            <input type=\"date\" name=\"date_of_birth\" placeholder=\"Enter birth date\" required />\r\n        </div>\r\n\r\n        <p>Already have an account? <a href=\"/login\"> Login</a></p>\r\n\r\n        <button id=\"submit\" name=\"submit\">Submit</button>\r\n    </form>\r\n</section>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/view/registration/registration.php b/app/view/registration/registration.php
+--- a/app/view/registration/registration.php	
++++ b/app/view/registration/registration.php	
+@@ -12,7 +12,7 @@
+ <body>
+ <section class="container">
+     <header>Registration Form</header>
+-    <form action="" method="POST" class="form">
++    <form action="" method="POST" class="form" id="registrationForm">
+         <div class="input-box">
+             <label>Name</label>
+             <input type="text" name="name" placeholder="Enter name" required />
+@@ -36,6 +36,11 @@
+         <p>Already have an account? <a href="/login"> Login</a></p>
+ 
+         <button id="submit" name="submit">Submit</button>
++        <script>
++            if ("submit"){
++                createRegistrationLabel()
++            }
++            </script>
+     </form>
+ </section>
+ </body>
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	
++++ /dev/null	
+@@ -1,8 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+-# Editor-based HTTP Client requests
+-/httpRequests/
+-# Datasource local storage ignored files
+-/dataSources/
+-/dataSources.local.xml
+Index: .idea/HaarlemFestival.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"WEB_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/HaarlemFestival.iml b/.idea/HaarlemFestival.iml
+--- a/.idea/HaarlemFestival.iml	
++++ b/.idea/HaarlemFestival.iml	
+@@ -1,7 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="WEB_MODULE" version="4">
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
++    </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+Index: app/view/captcha/phpTextClass.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/view/captcha/phpTextClass.php b/app/view/captcha/phpTextClass.php
+new file mode 100644
+--- /dev/null	
++++ b/app/view/captcha/phpTextClass.php	
+@@ -0,0 +1,79 @@
++<?php
++
++class phpTextClass
++{
++    public function phpcaptcha($textColor,$backgroundColor,$imgWidth,$imgHeight,$noiceLines=0,$noiceDots=0,$noiceColor='#162453')
++    {
++        /* Settings */
++        $text=$this->random();
++        $font = './font/monofont.ttf';/* font */
++        $textColor=$this->hexToRGB($textColor);
++        $fontSize = $imgHeight * 0.75;
++
++        $im = imagecreatetruecolor($imgWidth, $imgHeight);
++        $textColor = imagecolorallocate($im, $textColor['r'],$textColor['g'],$textColor['b']);
++
++        $backgroundColor = $this->hexToRGB($backgroundColor);
++        $backgroundColor = imagecolorallocate($im, $backgroundColor['r'],$backgroundColor['g'],$backgroundColor['b']);
++
++        /* generating lines randomly in background of image */
++        if($noiceLines>0){
++            $noiceColor=$this->hexToRGB($noiceColor);
++            $noiceColor = imagecolorallocate($im, $noiceColor['r'],$noiceColor['g'],$noiceColor['b']);
++            for( $i=0; $i<$noiceLines; $i++ ) {
++                imageline($im, mt_rand(0,$imgWidth), mt_rand(0,$imgHeight),
++                    mt_rand(0,$imgWidth), mt_rand(0,$imgHeight), $noiceColor);
++            }}
++
++        if($noiceDots>0){/* generating the dots randomly in background */
++            for( $i=0; $i<$noiceDots; $i++ ) {
++                imagefilledellipse($im, mt_rand(0,$imgWidth),
++                    mt_rand(0,$imgHeight), 3, 3, $textColor);
++            }}
++
++        imagefill($im,0,0,$backgroundColor);
++        list($x, $y) = $this->ImageTTFCenter($im, $text, $font, $fontSize);
++        imagettftext($im, $fontSize, 0, $x, $y, $textColor, $font, $text);
++
++        imagejpeg($im,NULL,90);/* Showing image */
++        header('Content-Type: image/jpeg');/* defining the image type to be shown in browser widow */
++        imagedestroy($im);/* Destroying image instance */
++        if(isset($_SESSION)){
++            $_SESSION['captcha_code'] = $text;/* set random text in session for captcha validation*/
++        }
++    }
++
++    /*function to convert hex value to rgb array*/
++    protected function hexToRGB($colour)
++    {
++        if ( $colour[0] == '#' ) {
++            $colour = substr( $colour, 1 );
++        }
++        if ( strlen( $colour ) == 6 ) {
++            list( $r, $g, $b ) = array( $colour[0] . $colour[1], $colour[2] . $colour[3], $colour[4] . $colour[5] );
++        } elseif ( strlen( $colour ) == 3 ) {
++            list( $r, $g, $b ) = array( $colour[0] . $colour[0], $colour[1] . $colour[1], $colour[2] . $colour[2] );
++        } else {
++            return false;
++        }
++        $r = hexdec( $r );
++        $g = hexdec( $g );
++        $b = hexdec( $b );
++        return array( 'r' => $r, 'g' => $g, 'b' => $b );
++    }
++
++
++    /*function to get center position on image*/
++    protected function ImageTTFCenter($image, $text, $font, $size, $angle = 8)
++    {
++        $xi = imagesx($image);
++        $yi = imagesy($image);
++        $box = imagettfbbox($size, $angle, $font, $text);
++        $xr = abs(max($box[2], $box[4]))+5;
++        $yr = abs(max($box[5], $box[7]));
++        $x = intval(($xi - $xr) / 2);
++        $y = intval(($yi + $yr) / 2);
++        return array($x, $y);
++    }
++
++}
+Index: app/view/captcha/captcha.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/view/captcha/captcha.php b/app/view/captcha/captcha.php
+new file mode 100644
+--- /dev/null	
++++ b/app/view/captcha/captcha.php	
+@@ -0,0 +1,9 @@
++<?php
++session_start();
++include("./phptextClass.php");
++
++/*create class object*/
++$phptextObj = new phptextClass();
++/*phptext function to genrate image with text*/
++$phptextObj->phpcaptcha('#162453','#fff',120,40,10,25);
++?>
+\ No newline at end of file
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"MessDetectorOptionsConfiguration\">\r\n    <option name=\"transferred\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PHPCSFixerOptionsConfiguration\">\r\n    <option name=\"transferred\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PHPCodeSnifferOptionsConfiguration\">\r\n    <option name=\"highlightLevel\" value=\"WARNING\" />\r\n    <option name=\"transferred\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PhpIncludePathManager\">\r\n    <include_path>\r\n      <path value=\"$PROJECT_DIR$/vendor/phpmailer/phpmailer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\r\n    </include_path>\r\n  </component>\r\n  <component name=\"PhpProjectSharedConfiguration\" php_language_level=\"7.4\" />\r\n  <component name=\"PhpStanOptionsConfiguration\">\r\n    <option name=\"transferred\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PsalmOptionsConfiguration\">\r\n    <option name=\"transferred\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/php.xml b/.idea/php.xml
+--- a/.idea/php.xml	
++++ b/.idea/php.xml	
+@@ -12,11 +12,13 @@
+   </component>
+   <component name="PhpIncludePathManager">
+     <include_path>
+-      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+       <path value="$PROJECT_DIR$/vendor/composer" />
++      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+     </include_path>
+   </component>
+-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
++  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
++    <option name="suggestChangeDefaultLanguageLevel" value="false" />
++  </component>
+   <component name="PhpStanOptionsConfiguration">
+     <option name="transferred" value="true" />
+   </component>
+Index: app/view/captcha/validateCaptcha.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/view/captcha/validateCaptcha.php b/app/view/captcha/validateCaptcha.php
+new file mode 100644
+--- /dev/null	
++++ b/app/view/captcha/validateCaptcha.php	
+@@ -0,0 +1,34 @@
++<?php session_start();
++
++if(isset($_POST['Submit'])){
++    // code for check server side validation
++    if(empty($_SESSION['captcha_code'] ) || strcasecmp($_SESSION['captcha_code'], $_POST['captcha_code']) != 0){
++        $msg="<span style='color:red'>The Validation code does not match!</span>";// Captcha verification is incorrect.
++    }else{// Captcha verification is Correct. Final Code Execute here!
++        $msg="<span style='color:green'>The Validation code has been matched.</span>";
++    }
++}
++?>
++
++<form action="" method="post" name="form1" id="form1" >
++    <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="table">
++        <?php if(isset($msg)){?>
++            <tr>
++                <td colspan="2" align="center" valign="top"><?php echo $msg;?></td>
++            </tr>
++        <?php } ?>
++        <tr>
++            <td align="right" valign="top"> Validation code:</td>
++            <td><img src="captcha.php?rand=<?php echo rand();?>" id='captchaimg'><br>
++                <label for='message'>Enter the code above here :</label>
++                <br>
++                <input id="captcha_code" name="captcha_code" type="text">
++                <br>
++                Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh.</td>
++        </tr>
++        <tr>
++            <td> </td>
++            <td><input name="Submit" type="submit" onclick="return validate();" value="Submit" class="button1"></td>
++        </tr>
++    </table>
++</form>
+\ No newline at end of file
+Index: app/model/user.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nuse Cassandra\\Date;\r\n\r\nclass user\r\n{\r\n    public int $id;\r\n    public string $password;\r\n    public $role;\r\n\r\n    public date $registrationDate;\r\n\r\npublic date $dateOfBirth;\r\n\r\n//public json $picture;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/model/user.php b/app/model/user.php
+--- a/app/model/user.php	
++++ b/app/model/user.php	
+@@ -8,9 +8,9 @@
+     public string $password;
+     public $role;
+ 
+-    public date $registrationDate;
++    public string $registrationDate;
+ 
+-public date $dateOfBirth;
++    public string $dateOfBirth;
+ 
+-//public json $picture;
++    //public json $picture;
+ }
+\ No newline at end of file
+Index: .idea/sqldialects.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"SqlDialectMappings\">\r\n    <file url=\"file://$PROJECT_DIR$/app/repository/ticketRepository.php\" dialect=\"GenericSQL\" />\r\n    <file url=\"file://$PROJECT_DIR$/app/repository/userRepository.php\" dialect=\"GenericSQL\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/sqldialects.xml b/.idea/sqldialects.xml
+--- a/.idea/sqldialects.xml	
++++ b/.idea/sqldialects.xml	
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="SqlDialectMappings">
+-    <file url="file://$PROJECT_DIR$/app/repository/ticketRepository.php" dialect="GenericSQL" />
+-    <file url="file://$PROJECT_DIR$/app/repository/userRepository.php" dialect="GenericSQL" />
++    <file url="file://$PROJECT_DIR$/app/repository/registrationRepository.php" dialect="GenericSQL" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/public/js/registration.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/public/js/registration.js b/app/public/js/registration.js
+new file mode 100644
+--- /dev/null	
++++ b/app/public/js/registration.js	
+@@ -0,0 +1,15 @@
++    function createRegistrationLabel(){
++        const registrationLabel = document.createElement('label');
++        registrationLabel.setAttribute('id', 'registrationLabel');
++        // registrationLabel.style.display = "none";
++
++    }
++
++    function eventListenerToSubmitEvent(){
++        const form = document.getElementById('registrationForm');
++
++        form.addEventListener('submit', function(event) {
++            event.preventDefault();
++            createRegistrationLabel();
++        });
++    }
+Index: vendor/composer/installed.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php return array(\r\n    'root' => array(\r\n        'name' => '__root__',\r\n        'pretty_version' => 'dev-main',\r\n        'version' => 'dev-main',\r\n        'reference' => 'deb8c694aa0a115bdb1b8430001f87b8405cf323',\r\n        'type' => 'library',\r\n        'install_path' => __DIR__ . '/../../',\r\n        'aliases' => array(),\r\n        'dev' => true,\r\n    ),\r\n    'versions' => array(\r\n        '__root__' => array(\r\n            'pretty_version' => 'dev-main',\r\n            'version' => 'dev-main',\r\n            'reference' => 'deb8c694aa0a115bdb1b8430001f87b8405cf323',\r\n            'type' => 'library',\r\n            'install_path' => __DIR__ . '/../../',\r\n            'aliases' => array(),\r\n            'dev_requirement' => false,\r\n        ),\r\n        'phpmailer/phpmailer' => array(\r\n            'pretty_version' => 'v6.7.1',\r\n            'version' => '6.7.1.0',\r\n            'reference' => '49cd7ea3d2563f028d7811f06864a53b1f15ff55',\r\n            'type' => 'library',\r\n            'install_path' => __DIR__ . '/../phpmailer/phpmailer',\r\n            'aliases' => array(),\r\n            'dev_requirement' => false,\r\n        ),\r\n    ),\r\n);\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/vendor/composer/installed.php b/vendor/composer/installed.php
+--- a/vendor/composer/installed.php	
++++ b/vendor/composer/installed.php	
+@@ -3,7 +3,7 @@
+         'name' => '__root__',
+         'pretty_version' => 'dev-main',
+         'version' => 'dev-main',
+-        'reference' => 'deb8c694aa0a115bdb1b8430001f87b8405cf323',
++        'reference' => 'a68b2dfb6d9ab89991e3ec7cdc7233824e745ac1',
+         'type' => 'library',
+         'install_path' => __DIR__ . '/../../',
+         'aliases' => array(),
+@@ -13,7 +13,7 @@
+         '__root__' => array(
+             'pretty_version' => 'dev-main',
+             'version' => 'dev-main',
+-            'reference' => 'deb8c694aa0a115bdb1b8430001f87b8405cf323',
++            'reference' => 'a68b2dfb6d9ab89991e3ec7cdc7233824e745ac1',
+             'type' => 'library',
+             'install_path' => __DIR__ . '/../../',
+             'aliases' => array(),
+Index: app/service/registrationService.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nrequire __DIR__ . '/../repository/registrationRepository.php';\r\n\r\nclass registrationService{\r\n    private $registrationRepository;\r\n\r\n    public function __construct(){\r\n        $this->registrationRepository = new registrationRepository();\r\n    }\r\n\r\n    /**\r\n     * @throws Exception\r\n     */\r\n    public function registerUser(array $data): array\r\n    {\r\n        $validationResult = $this->validateData($data);\r\n        if ($validationResult !== true) {\r\n            return $validationResult;\r\n        }\r\n\r\n        if ($_SERVER[\"REQUEST_METHOD\"] == 'POST') {\r\n            $preparedData = $this->prepareData($data);\r\n            $hashedSaltedPassword = $this->hashPassword($preparedData['password']);\r\n            //show these messages into a hidden Label !!\r\n            if ($this->registrationRepository->insertUserToDatabase($preparedData['name'], $preparedData['email'], $hashedSaltedPassword, $preparedData['date_of_birth'])) {\r\n                return [\"success\" => \"Data has been processed successfully.\"];\r\n            } else {\r\n                return [\"error\" => \"An error occurred while processing data.\"];\r\n            }\r\n        }\r\n        else{\r\n            //add a statement\r\n            echo \"Could not do POST\";\r\n        }\r\n\r\n    }\r\n\r\n    private function validateData(array $data): bool|array\r\n    {\r\n        if (empty($data[\"name\"])) {\r\n            return [\"error\" => \"Name is required\"];\r\n        }\r\n        if (empty($data[\"email\"])) {\r\n            return [\"error\" => \"Email is required\"];\r\n        }\r\n        if (empty($data[\"password\"])) {\r\n            return [\"error\" => \"Password is required\"];\r\n        }\r\n        if (empty($data[\"date_of_birth\"])) {\r\n            return [\"error\" => \"Date of Birth is required\"];\r\n        }\r\n\r\n        return true;\r\n    }\r\n\r\n    private function prepareData(array $data): array\r\n    {\r\n        return [\r\n            'name' => htmlspecialchars($data['name']),\r\n            'email' => htmlspecialchars($data['email']),\r\n            'date_of_birth' => htmlspecialchars($data['date_of_birth']),\r\n            'password' => htmlspecialchars($data['password']),\r\n        ];\r\n    }\r\n\r\n    /**\r\n     * @throws Exception\r\n     */\r\n    private function hashPassword(string $password): string\r\n    {\r\n        $salt = bin2hex(random_bytes(48));\r\n        $saltedPassword = $password . $salt;\r\n        return password_hash($saltedPassword, PASSWORD_DEFAULT);\r\n    }\r\n\r\n\r\n\r\n    // Later: maybe use in registerUser method and give out label msg\r\n    public function emailInUse($email){\r\n        return $this->registrationRepository->emailInUse($email);\r\n    }\r\n\r\n\r\n    //    public function registerNewUser($name, $email, $hashedSaltedPassword, $date_of_birth): bool\r\n//    {\r\n//        return $this->registrationRepository->registerUser($name, $email, $hashedSaltedPassword, $date_of_birth);\r\n//    }\r\n}
+===================================================================
+diff --git a/app/service/registrationService.php b/app/service/registrationService.php
+--- a/app/service/registrationService.php	
++++ b/app/service/registrationService.php	
+@@ -33,7 +33,7 @@
+             //add a statement
+             echo "Could not do POST";
+         }
+-
++        return false;
+     }
+ 
+     private function validateData(array $data): bool|array
+@@ -74,14 +74,11 @@
+         return password_hash($saltedPassword, PASSWORD_DEFAULT);
+     }
+ 
+-
+-
+     // Later: maybe use in registerUser method and give out label msg
+     public function emailInUse($email){
+         return $this->registrationRepository->emailInUse($email);
+     }
+ 
+-
+     //    public function registerNewUser($name, $email, $hashedSaltedPassword, $date_of_birth): bool
+ //    {
+ //        return $this->registrationRepository->registerUser($name, $email, $hashedSaltedPassword, $date_of_birth);

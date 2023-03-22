@@ -1,0 +1,18 @@
+.bg-mynav {
+    background-color: #BAC127;
+}
+
+body {
+    font-size: 1rem;
+    background-color: #ffffff;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+#error-msg {
+    color: red;
+    float: right;
+    font-size: 0.8rem;
+}

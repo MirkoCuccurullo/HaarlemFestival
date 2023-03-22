@@ -4,9 +4,8 @@ require_once __DIR__ . '/../../model/session.php';
 
 class sessionControllerAPI
 {
-    private $restaurantService;
+    private restaurantService $restaurantService;
 
-    // initialize services
     function __construct()
     {
         $this->restaurantService = new restaurantService();
@@ -20,9 +19,9 @@ class sessionControllerAPI
         // Respond to a GET request to /api/session
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-            $appointments = $this->restaurantService->getAllSessions();
+            $sessions = $this->restaurantService->getAllSessions();
             header('Content-Type: application/json');
-            echo json_encode($appointments);
+            echo json_encode($sessions);
 
         }
     }
@@ -31,7 +30,6 @@ class sessionControllerAPI
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // your code here
             $body = file_get_contents('php://input');
             $obj = json_decode($body);
             $this->restaurantService->deleteSession($obj->id);

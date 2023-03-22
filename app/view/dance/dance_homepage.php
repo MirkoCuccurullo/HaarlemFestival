@@ -31,28 +31,75 @@ include __DIR__ . '/../header_dance.php'; ?>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-                    <p> this is a pass</p>
+                    <h1 class="card-title" style="color: #FFFFFF">All-days pass</h1>
+                    <p>Enjoy all three days of the DANCE! music festival</p>
+                    <p>Price: €250</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="1">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-
+                    <h1 class="card-title" style="color: #FFFFFF">Day-1 pass</h1>
+                    <p>Access to all day one events</p>
+                    <p>Artists performing on day one:</p>
+                    <ul style="color: #FFFFFF">
+                        <li>Afrojack B2B Nicky Romero</li>
+                        <li>Tiesto</li>
+                        <li>Hardwell</li>
+                        <li>Armin van Buuren</li>
+                        <li>Martin Garrix</li>
+                    </ul>
+                    <p>Price: €150</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="2">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-
+                    <h1 class="card-title" style="color: #FFFFFF">Day-2 pass</h1>
+                    <p>Access to all day two events</p>
+                    <p>Artists performing on day two:</p>
+                    <ul style="color: #FFFFFF">
+                        <li>Martin Garrix B2B Armin van Buuren B2B Hardwell</li>
+                        <li>Armin van Buuren</li>
+                        <li>Afrojack</li>
+                        <li>Nicky Romero</li>
+                    </ul>
+                    <p>Price: €150</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="3">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-light">
                 <div class="card-body">
-
+                    <h1 class="card-title" style="color: #FFFFFF">Day-3 pass</h1>
+                    <p>Access to all day three events</p>
+                    <p>Artists performing on day three:</p>
+                    <ul style="color: #FFFFFF">
+                        <li>Afrojack B2B Tiesto B2B Armin van Buuren</li>
+                        <li>Tiesto</li>
+                        <li>Hardwell</li>
+                        <li>Armin van Buuren</li>
+                        <li>Martin Garrix</li>
+                    </ul>
+                    <p>Price: €150</p>
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="accessPassId" value="4">
+                        <button class="btn btn-primary" name="addAccessPass">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -90,6 +137,38 @@ include __DIR__ . '/../header_dance.php'; ?>
 
     <div id="tickets" class="row">
 
+        <?php
+            foreach ($events as $event) {
+                $venue = $eventService->getVenueByID($event->location);
+                $artist = $eventService->getArtistByID($event->artist);
+                ?>
+                    <div class="col-3 m-3">
+        <div class="card border-light my-3" id="ticket_card" style="width: 18rem;">
+                <img id="ticket_image" src="<?= $artist->picture ?>" class="card-img m-3" alt="...">
+                <div class="card-body ">
+                    <h5 class="card-title"><p><?php echo $artist->name . " @ " . $venue->name; ?></p></h5>
+
+                <ul id="ticket_text" class="list-group list-group-flush">
+                    <li class="list-group-item">Date: <?= $event->date ?> </li>
+                    <li class="list-group-item">From: <?= $event->start_time ?></li>
+                    <li class="list-group-item">To: <?= $event->end_time ?></li>
+                    <li class="list-group-item">Session: <?= $event->session?></li>
+                    <li class="list-group-item">Price: <?= $event->price ?> €</li>
+                </ul>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/shoppingCart/add">
+                        <input type="hidden" name="danceEventId" value="<?= $event->id ?>">
+                        <button class="btn btn-primary" name="addDanceEvent">Add to cart</button>
+                    </form>
+                </div>
+        </div>
+                    </div>
+
+
+            <?php
+            }
+        ?>
 
     </div>
 

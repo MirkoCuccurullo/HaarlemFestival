@@ -18,7 +18,7 @@ class reservationController
 
     public function updateReservation(): void
     {
-        $this->reservationService->updateReservation($_POST['id'], $_POST['startTime'], $_POST['endTime'], $_POST['date'], $_POST['capacity'], $_POST['reservationPrice'], $_POST['sessionPrice'],$_POST['restaurantId']);
+        $this->reservationService->updateReservation($_POST['id'], $_POST['restaurantName'],  $_POST['session'], $_POST['status'], $_POST['numberOfAdults'], $_POST['numberOfUnder12'], $_POST['reservationPrice'], $_POST['customerEmail'], $_POST['comment']);
         header('Location: /manage/reservation');
     }
 
@@ -28,7 +28,7 @@ class reservationController
         require __DIR__ . '/../view/management/manageReservation.php';
     }
 
-    public function deactivateReservation()
+    public function deactivateReservation(): void
     {
         $this->reservationService->deactivateReservation($_POST['id']);
         header('Location: /manage/reservation');
