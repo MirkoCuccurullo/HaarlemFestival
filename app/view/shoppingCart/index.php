@@ -1,12 +1,8 @@
 <?php
-//require_once __DIR__ . '/../../model/order.php';
+require_once __DIR__ . '/../../model/order.php';
 
 include __DIR__ . '/../header.php'; ?>
 
-
-<form action="shoppingCart" method="post">
-    <button type="submit" class="btn-primary fs-4" name="addDanceEvent">Add dance events</button>
-</form>
 
 <div class="row">
     <div class="col mx-auto" style="background-color: #9EBAD9">
@@ -20,13 +16,16 @@ include __DIR__ . '/../header.php'; ?>
                 foreach ($_SESSION['order']->dance_events as $key => $dance_event) {
                     ?>
 
-                    <div class="col-1">
-                        <img src="doge.jpg" alt="doge" style="width: 50px; height: 50px">
+                    <div class="col-1 mb-3">
+                        <img src="../images/order-dance-event.svg" alt="music" style="width: 50px; height: 50px">
                     </div>
 
-                    <div class="col-7 text-center">
+                    <div class="col-7">
                         <h3><?php
-                            echo $dance_event->artist_name . " @ " . $dance_event->venue_name;
+                            if($dance_event instanceof dance)
+                                echo $dance_event->artist_name . " @ " . $dance_event->venue_name;
+                            else
+                                $dance_event->displayPass($dance_event->id);
                             ?></h3>
                     </div>
 
@@ -35,7 +34,7 @@ include __DIR__ . '/../header.php'; ?>
                     </div>
 
                     <div class="col-1">
-                        <form action="shoppingCart" method="post">
+                        <form action="/shoppingCart/remove" method="post">
                             <input hidden type="text" name="remove_item_key" value="<?php echo $key; ?>">
                             <button type="submit" class="btn-danger" style="width: 6em">X</button>
                         </form>
@@ -61,7 +60,7 @@ include __DIR__ . '/../header.php'; ?>
             </div>
         </div>
 
-        <form action="shoppingCart" method="post">
+        <form action="/shoppingCart/submit" method="post">
             <div class="row m-3">
                 <button class="btn-primary fs-3" name="submitOrder">Continue to secure payment</button>
             </div>

@@ -61,7 +61,10 @@ require_once __DIR__ . '/../../model/dance.php';
                 <p>
                     Price: <?php echo $scheduledEvent->price; ?>
                 </p>
-                           <button class="btn btn-primary"> Add to cart</button>
+                           <form method="post" action="/shoppingCart/add">
+                               <input type="hidden" name="danceEventId" value="<?= $scheduledEvent->id ?>">
+                               <button class="btn btn-primary" name="addDanceEvent">Add to cart</button>
+                           </form>
                        </div>
                <?php }?>
            </div>

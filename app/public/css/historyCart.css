@@ -1,0 +1,105 @@
+.heading {
+    margin-left: -15.2%;
+    display: inline-flex;
+    border: 1px solid ;
+    background-color: #584650;
+    color: white;
+    padding: 10px;
+    margin-bottom: 1%;
+}
+#datendayHeading {
+    margin-bottom: 3%;
+    margin-top: -8%;
+}
+#languageHeading {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+#noOfTicketsSelectedHeading {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+#timeBut {
+    width: 10%;
+    padding: 7px;
+    margin: 20px 0 20px 0;
+    margin-left: -5%;
+}
+/*#timeBut:hover {*/
+/*    background-color: #BAC127;*/
+/*    color: white;*/
+/*}*/
+
+#minus-btn:hover, #plus-btn:hover {
+    background-color: #BAC127;
+    color: white;
+
+}
+
+#languageBut {
+    width: 10%;
+    padding: 7px;
+    margin: 20px 0 20px 0;
+    margin-left: -5%;
+}
+/*#languageBut:hover {*/
+/*    background-color: #BAC127;*/
+/*    color: white;*/
+/*}*/
+/*--------------------------------*/
+
+th,
+td {
+    border: 2px solid black;
+    padding: 10px;
+    width: 30%;
+}
+
+th[scope="col"] {
+    color: #000000;
+    background-color: #9EBAD9;
+}
+
+td + td {
+    border-left: 1px solid black;
+}
+
+#addToCartBut {
+    margin-top: 5%;
+    margin-left: 47%;
+    margin-bottom: 15%;
+    width: 10%;
+    padding: 7px;
+    background-color: #ffffff;
+}
+#addToCartBut:hover {
+    background-color: #BAC127;
+    color: white;
+}
+.table-wrapper {
+    display: flex; /* use flexbox to arrange items */
+    justify-content: space-between; /* evenly distribute items along the main axis */
+    align-items: flex-start; /* align items to the top of the container */
+}
+
+table {
+    /*border-collapse: collapse;*/
+    width: 50%; /* each table will take up half of the container */
+    margin-left: 5%;
+}
+/*---------------------------*/
+
+.ticket-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.ticket-box input[type="text"] {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+}
+
