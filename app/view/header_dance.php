@@ -80,17 +80,17 @@
 
                             <li> <a class="dropdown-item" href="#"> DANCE &raquo; </a>
                                 <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Artists</a></li>
-                                    <li><a class="dropdown-item" href="#">Venues</a></li>
-                                    <li><a class="dropdown-item" href="#">Events</a></li>
+                                    <li><a class="dropdown-item" href="/manage/dance/artists">Artists</a></li>
+                                    <li><a class="dropdown-item" href="/manage/dance/venues">Venues</a></li>
+                                    <li><a class="dropdown-item" href="/manage/dance/events">Events</a></li>
                                 </ul>
                             </li>
 
                             <li><a class="dropdown-item" href="#"> Yummy! &raquo; </a>
                                 <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item" href="/festival/manage-sessions">Sessions</a></li>
-                                    <li><a class="dropdown-item" href="#">Restaurants</a></li>
-                                    <li><a class="dropdown-item" href="#">Reservations</a></li>
+                                    <li><a class="dropdown-item" href="/manage/session">Sessions</a></li>
+                                    <li><a class="dropdown-item" href="/manage/restaurant">Restaurants</a></li>
+                                    <li><a class="dropdown-item" href="/manage/reservation">Reservations</a></li>
                                 </ul>
                             </li>
 
