@@ -143,6 +143,9 @@ class restaurantRepository extends baseRepository
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
         $result = $stmt->fetch();
+        foreach ($result as $restaurant) {
+            $restaurant->sessions = $this->getSessionsByRestaurantId($restaurant->id);
+        }
         return $result;
     }
 
