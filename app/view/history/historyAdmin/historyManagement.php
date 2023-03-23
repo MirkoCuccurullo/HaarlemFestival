@@ -10,12 +10,6 @@
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-mynav">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/history">History</a>
-    </div>
-</nav>
-
 <div class="container">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>History Management</div>

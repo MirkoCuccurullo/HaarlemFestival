@@ -65,7 +65,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item" href="/festival/history">A Stroll Through History</a>
+                            <a class="dropdown-item" href="/history">A Stroll Through History</a>
                         </li>
                     </ul>
                 </li>
@@ -95,7 +95,7 @@
                         </li>
 
 
-                        <li><a class="dropdown-item" href="#"> A Stroll Through History </a>
+                        <li><a class="dropdown-item" href="/historyManagement"> A Stroll Through History </a>
                         </li>
                     </ul>
                 </li>

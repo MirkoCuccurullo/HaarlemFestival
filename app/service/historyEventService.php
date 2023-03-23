@@ -10,17 +10,17 @@ class historyEventService{
     }
 
     /*                  CRUD METHODS                 */
-    public function addContent(array $data)
+    public function addCardContent(array $data)
     {
         $preparedData = $this->prepareData($data);
-        $this->historyEventRepository->insertHistoryContent($preparedData['title'], $preparedData['image'], $preparedData['content']);
+        $this->historyEventRepository->insertHistoryCardContent($preparedData['title'], $preparedData['image'], $preparedData['content']);
     }
-    public function deleteContent($id) {
-        $this->historyEventRepository->deleteHistoryContent($id);
+    public function deleteCardContent($id) {
+        $this->historyEventRepository->deleteHistoryCardContent($id);
     }
 
-    public function updateContent($id, $title, $image, $content) {
-        return $this->historyEventRepository->updateHistoryContent($id, $title, $image, $content);
+    public function updateCardContent($id, $title, $image, $content) {
+        return $this->historyEventRepository->updateHistoryCardContent($id, $title, $image, $content);
     }
     private function prepareData(array $data): array
     {

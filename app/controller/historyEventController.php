@@ -42,29 +42,30 @@ class historyEventController
     public function historyManagement($addError) {
 
         if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['delete'])){
-            $this->deleteContent($_POST['id']);
+            $this->deleteCardContent($_POST['id']);
         }
         if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['update'])){
-            $this->updateContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
+            $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
         }
         $locations = $this->historyEventService->getAllHistoryCard();
+        include __DIR__ . '/../view/header_history.php';
         require __DIR__ . '/../view/history/historyAdmin/historyManagement.php';
 
     }
 
-    public function deleteContent($id)
+    public function deleteCardContent($id)
     {
-        $this->historyEventService->deleteContent($id);
+        $this->historyEventService->deleteCardContent($id);
     }
 
-    public function updateContent($id, $title, $image, $content) {
-        $this->historyEventService->updateContent($id, $title, $image, $content);
+    public function updateCardContent($id, $title, $image, $content) {
+        $this->historyEventService->updateCardContent($id, $title, $image, $content);
     }
 
     public function displayAddedContent() : void {
         try {
             if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submit'])) {
-                $this->addContent($_POST);
+                $this->addCardContent($_POST);
                 $addError = "Content added";
             } else {
                 $addError = "Could not add content";
@@ -78,9 +79,9 @@ class historyEventController
     /**
      * @throws Exception
      */
-    public function addContent($data) :void {
+    public function addCardContent($data) :void {
         try {
-            $this->historyEventService->addContent($data);
+            $this->historyEventService->addCardContent($data);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }

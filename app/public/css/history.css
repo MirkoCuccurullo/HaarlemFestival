@@ -27,6 +27,8 @@
 }
 .card-text {
     font-style: italic;
+    margin-bottom: 12px;
+    margin-top: 12px;
 }
 .btn {
     background-color: #3D1A78;
