@@ -31,6 +31,12 @@ class router
                 $controller->index();
                 break;
 
+            case'/home/test':
+                require_once __DIR__ . '/../controller/homePageController.php';
+                $controller = new \homePageController();
+                $controller->index2();
+                break;
+
             case'/login':
                 require_once("../view/login/login.php");
                 break;
