@@ -152,7 +152,7 @@ include __DIR__ . '/../header_dance.php'; ?>
             var eventDiv = document.getElementById('tickets');
             var eventCol = document.createElement('div');
 
-            eventCol.className = 'col-3 m-3';
+            eventCol.className = 'col-3 m-1';
             var eventCard = document.createElement('div');
             eventCard.className = 'card border-light my-3';
             eventCard.style.width = '18rem';
