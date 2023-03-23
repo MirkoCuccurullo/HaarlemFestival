@@ -9,11 +9,6 @@ include __DIR__ . '/../header_dance.php'; ?>
     <div id="lineup" class="row my-5">
 
             <?php
-            require_once __DIR__ . "/../../model/artist.php";
-            require_once __DIR__ . "/../../service/eventService.php";
-
-            $eventService = new EventService();
-            $artists = $eventService->getArtists();
             foreach ($artists as $artist) { ?>
                 <div class="col-2">
                 <form>
