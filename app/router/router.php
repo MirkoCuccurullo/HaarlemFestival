@@ -287,8 +287,7 @@ class router
                 break;
 
             case'/food':
-            case '/restaurant':
-            case '/festival/food':
+            case '/festival/yummy':
             case '/yummy':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
@@ -467,6 +466,12 @@ class router
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
                 }
+                break;
+
+            case"/restaurant":
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayRestaurant();
                 break;
             default:
                 echo '404';

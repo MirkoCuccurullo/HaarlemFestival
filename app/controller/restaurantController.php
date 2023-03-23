@@ -78,4 +78,10 @@ class restaurantController
         require __DIR__ . '/../view/management/addSession.php';
     }
 
+    public function displayRestaurant(): void
+    {
+        $restaurant = $this->restaurantService->getRestaurantByID(htmlspecialchars($_POST['id']));
+        require __DIR__ . '/../view/yummy/view_restaurant.php';
+    }
+
 }
