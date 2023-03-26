@@ -17,8 +17,7 @@
         <div class="card-body">
             <h5 class="card-title"><?php if(isset($content[0]->tourCardHeader)) echo $content[0]->tourCardHeader?></h5>
             <p class="card-text"> <?php if(isset($content[0]->tourCardParagraph)) echo $content[0]->tourCardParagraph?></p>
-            <a href="#" class="btn"><?php if(isset($content[0]->tourCardButtonText)) echo $content[0]->tourCardButtonText?></a>
-            <a href="#schedule" class="btn"><?php if(isset($content[1]->tourCardButtonText)) echo $content[1]->tourCardButtonText?></a>
+            <a href="#schedule" class="btn"><?php if(isset($content[0]->tourCardButtonText)) echo $content[0]->tourCardButtonText?></a>
         </div>
     </div>
 </div>

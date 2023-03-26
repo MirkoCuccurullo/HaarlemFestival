@@ -14,7 +14,7 @@
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Location Card Management</div>
         <button type="button" style="background-color: #3D1A78">
-            <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Content</a>
+            <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Card Content</a>
         </button>
     </div>
 
@@ -35,10 +35,10 @@
                 <tr>
                     <form action="/historyManagement" method="POST">
                         <input type="hidden" name="id" value="<?= $location->id ?>">
-                        <td name="id" contenteditable="false"><?= $location->id ?></td>
-                        <td name="id" contenteditable="true"><input type="text" name="title" value="<?= $location->title ?>"></td>
-                        <td name="id" contenteditable="true"><input type="text" name="image" value="<?= $location->image ?>"></td>
-                        <td name="id" contenteditable="true"><input type="text" name="content" value="<?= $location->content ?>"></td>
+                        <td name="id"> <?= $location->id ?></td>
+                        <td name="id"> <input type="text" name="title" value="<?= $location->title ?>" required></td>
+                        <td name="id"> <input type="text" name="image" value="<?= $location->image ?>" required></td>
+                        <td name="id"> <input type="text" name="content" value="<?= $location->content ?>" required></td>
                         <td>
                             <button type="submit" name="update"><i class="fas fa-edit"></i></button>
                         </td>
@@ -61,7 +61,7 @@
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Schedule Management</div>
         <button type="button" style="background-color: #3D1A78">
-            <a href="/historyManagement/addScheduleContent" style="color:white; text-decoration:none;">Add Content</a>
+            <a href="/historyManagement/addScheduleContent" style="color:white; text-decoration:none;">Add Schedule Content</a>
         </button>
     </div>
 
@@ -82,22 +82,62 @@
             <?php if(isset($historyTourTimetable)) foreach ($historyTourTimetable as $timetable) {?>
                 <tr>
                     <form action="/historyManagement" method="POST">
-                        <input type="hidden" name="tableId" value="<?= $timetable['id'] ?>">
-                        <td name="tableId" contenteditable="false"><?= $timetable['id'] ?></td>
-                        <td name="dateAndDay" contenteditable="true"><input type="text" name="title" value="<?= $timetable['dateAndDay']; ?>"></td>
-                        <td name="time" contenteditable="true"><input type="text" name="image" value="<?= $timetable['time']; ?>"></td>
-                        <td name="language" contenteditable="true"><input type="text" name="content" value="<?= $timetable['language']; ?>"></td>
-                        <td name="ticketAmount" contenteditable="true"><input type="text" name="content" value="<?= $timetable['ticketAmount']; ?>"></td>
+                        <input type="hidden" name="id" value="<?= $timetable['id'] ?>">
+                        <td name="id"> <?= $timetable['id'] ?></td>
+                        <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $timetable['dateAndDay']; ?>"></td>
+                        <td name="time"> <input type="text" name="time" value="<?= $timetable['time']; ?>"></td>
+                        <td name="language"> <input type="text" name="language" value="<?= $timetable['language']; ?>"></td>
+                        <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $timetable['ticketAmount']; ?>"></td>
                         <td>
                             <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
                         </td>
                     </form>
                     <td>
                         <form action="/historyManagement" method="POST">
-                            <input type="hidden" name="tableId" value="<?php echo $timetable['id'] ?>">
+                            <input type="hidden" name="id" value="<?php echo $timetable['id'] ?>">
                             <button type="submit" name="deleteSchedule"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+<div class="container2" style=" margin-top: 30px">
+    <div class="d-flex bd-highlight mb-3">
+        <div class="me-auto p-2 bd-highlight" id="header"><h2>Main Content Management</div>
+    </div>
+
+    <div class="table-container" style="height: 400px; overflow-y: scroll;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Main Image Header</th>
+                <th scope="col">Tour Card Header</th>
+                <th scope="col">Tour Card Paragraph</th>
+                <th scope="col">Tour Card Button Text</th>
+                <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody id="mytable">
+            <?php if(isset($content)) foreach ($content as $c) {?>
+                <tr>
+                    <form action="/historyManagement" method="POST">
+                        <input type="hidden" name="id" value="<?= $content[0]->id ?>">
+                        <td name="id"> <?= $timetable['id'] ?></td>
+                        <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $content[0]->mainImageHeader ?>"></td>
+                        <td name="time"> <input type="text" name="time" value="<?= $content[0]->tourCardHeader ?>"></td>
+                        <td name="language"> <input type="text" name="language" value="<?= $content[0]->tourCardParagraph ?>"></td>
+                        <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $content[0]->tourCardButtonText ?>"></td>
+                        <td>
+                            <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
+                        </td>
+                    </form>
                 </tr>
             <?php } ?>
             </tbody>

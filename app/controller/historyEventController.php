@@ -50,10 +50,11 @@ class historyEventController
         if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['update'])){
             $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
-            $this->updateScheduleContent($_POST['tableId'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
+            $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
         }
         $locations = $this->historyEventService->getAllHistoryCard();
         $historyTourTimetable = $this->historyEventService->getHistoryTourTimetable();
+        $content = $this->historyEventService->getHistoryPageContent();
         include __DIR__ . '/../view/header_history.php';
         require __DIR__ . '/../view/history/historyAdmin/historyManagement.php';
 
@@ -75,6 +76,7 @@ class historyEventController
     public function updateCardContent($id, $title, $image, $content) {
         $this->historyEventService->updateCardContent($id, $title, $image, $content);
     }
+
     public function displayAddedContent() : void {
         try {
             if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submit'])) {

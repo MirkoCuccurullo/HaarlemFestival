@@ -215,7 +215,7 @@ class router
                 $controller->displayAddedContent();
                 break;
             case '/historyManagement/add':
-                require __DIR__ . '/../view/history/historyAdmin/addContent.php';
+                require __DIR__ . '/../view/history/historyAdmin/addCardContent.php';
                 break;
             case '/historyManagement/addScheduleContent':
                 require __DIR__ . '/../view/history/historyAdmin/addScheduleContent.php';
