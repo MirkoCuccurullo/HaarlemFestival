@@ -31,7 +31,7 @@
             <label for="content" class="form-label">Ticket Amount</label>
             <input type="text" class="form-control" id="ticketAmount" name="content" placeholder="ticket amount">
         </div>
-        <button type="submit" class="btn btn-primary" id="submitSchedule" value="submitSchedule" name="submitSchedule">Add</button>
+        <button type="submit" class="btn btn-primary" id="submitSchedule" value="submitSchedule" name="submitSchedule" style="margin-top: 20px;">Add</button>
         <div class="error"> <?php if (isset($addError)){ ?> <span id="error-msg"> <?=$addError?> </span> <?php } ?> </div>
     </form>
 </div>

@@ -7,6 +7,21 @@ require_once '../model/historyPageCard.php';
 
 class historyEventRepository extends baseRepository
 {
+    // Main Content CRUD
+    public function updateMainContent($mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText) {
+        $stmt = $this->connection->prepare("UPDATE historyPageContent SET mainImageHeader=:mainImageHeader, tourCardHeader=:tourCardHeader, tourCardParagraph=:tourCardParagraph, tourCardButtonText=:tourCardButtonText WHERE id=1");
+        $stmt->bindParam(':mainImageHeader', $mainImageHeader);
+        $stmt->bindParam(':tourCardHeader', $tourCardHeader);
+        $stmt->bindParam(':tourCardParagraph', $tourCardParagraph);
+        $stmt->bindParam(':tourCardButtonText', $tourCardButtonText);
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+
     // Schedule Content CRUD
     public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount) : bool {
         $stmt = $this->connection->prepare("INSERT INTO historyTourTimetable (dateAndDay, time, language, ticketAmount) VALUES (:dateAndDay, :time, :language, :ticketAmount)");

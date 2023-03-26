@@ -51,10 +51,15 @@ class historyEventController
             $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
             $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
+        } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateMainContent'])) {
+            $this->updateMainContent($_POST['mainImageHeader'], $_POST['tourCardHeader'], $_POST['tourCardParagraph'], $_POST['tourCardButtonText']);
         }
+
+        //used get data from db to the view
         $locations = $this->historyEventService->getAllHistoryCard();
         $historyTourTimetable = $this->historyEventService->getHistoryTourTimetable();
         $content = $this->historyEventService->getHistoryPageContent();
+
         include __DIR__ . '/../view/header_history.php';
         require __DIR__ . '/../view/history/historyAdmin/historyManagement.php';
 
@@ -76,6 +81,11 @@ class historyEventController
     public function updateCardContent($id, $title, $image, $content) {
         $this->historyEventService->updateCardContent($id, $title, $image, $content);
     }
+
+    public function updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
+        return $this->historyEventService->updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
+    }
+
 
     public function displayAddedContent() : void {
         try {

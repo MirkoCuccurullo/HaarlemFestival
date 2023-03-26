@@ -35,6 +35,10 @@ class historyEventService{
     public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
         return $this->historyEventRepository->updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount);
     }
+    public function updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
+        return $this->historyEventRepository->updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
+    }
+
 
     private function prepareCardContentData(array $data): array
     {

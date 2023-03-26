@@ -12,7 +12,7 @@
 
 <div class="container1">
     <div class="d-flex bd-highlight mb-3">
-        <div class="me-auto p-2 bd-highlight" id="header"><h2>Location Card Management</div>
+        <div class="me-auto p-2 bd-highlight" id="header" style="color: #3D1A78"><h2>Location Card Management</div>
         <button type="button" style="background-color: #3D1A78">
             <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Card Content</a>
         </button>
@@ -57,7 +57,7 @@
     </div>
 </div>
 
-<div class="container2" style=" margin-top: 30px">
+<div class="container2" style=" margin-top: 70px; color: #3D1A78">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Schedule Management</div>
         <button type="button" style="background-color: #3D1A78">
@@ -107,12 +107,12 @@
 </div>
 
 
-<div class="container2" style=" margin-top: 30px">
+<div class="container2" style=" margin-top: 70px; color: #3D1A78">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Main Content Management</div>
     </div>
 
-    <div class="table-container" style="height: 400px; overflow-y: scroll;">
+    <div class="table-container">
         <table class="table">
             <thead>
             <tr>
@@ -128,12 +128,12 @@
             <?php if(isset($content)) foreach ($content as $c) {?>
                 <tr>
                     <form action="/historyManagement" method="POST">
-                        <input type="hidden" name="id" value="<?= $content[0]->id ?>">
-                        <td name="id"> <?= $timetable['id'] ?></td>
-                        <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $content[0]->mainImageHeader ?>"></td>
-                        <td name="time"> <input type="text" name="time" value="<?= $content[0]->tourCardHeader ?>"></td>
-                        <td name="language"> <input type="text" name="language" value="<?= $content[0]->tourCardParagraph ?>"></td>
-                        <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $content[0]->tourCardButtonText ?>"></td>
+                        <input type="hidden" name="id" value="<?= $c->id ?>">
+                        <td name="id"> <?= $c->id ?></td>
+                        <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $c->mainImageHeader ?>"></td>
+                        <td name="time"> <input type="text" name="time" value="<?= $c->tourCardHeader ?>"></td>
+                        <td name="language"> <input type="text" name="language" value="<?= $c->tourCardParagraph ?>"></td>
+                        <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $c->tourCardButtonText ?>"></td>
                         <td>
                             <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
                         </td>
@@ -148,4 +148,6 @@
 
 </body>
 </html>
+
+<?php include __DIR__ . '/../../footer.php'; ?>
 

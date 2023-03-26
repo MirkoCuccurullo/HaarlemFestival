@@ -11,14 +11,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-mynav">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Add Content</a>
-    </div>
-</nav>
-
 <div class="container">
-    <div class="me-auto p-2 bd-highlight" id="header" style="margin-top: 20px"><h2>Add Content</div>
+    <div class="me-auto p-2 bd-highlight" id="header" style="margin-top: 20px; margin-bottom: 20px"><h2>Add Content</div>
     <form action="/historyManagement" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -32,7 +26,7 @@
             <label for="content" class="form-label">Content</label>
             <input type="text" class="form-control" id="content" name="content" placeholder="Content">
         </div>
-        <button type="submit" class="btn btn-primary" id="submit" value="submit" name="submit">Add</button>
+        <button type="submit" class="btn btn-primary" id="submit" value="submit" name="submit" style="margin-top: 20px;">Add</button>
         <div class="error"> <?php if (isset($addError)){ ?> <span id="error-msg"> <?=$addError?> </span> <?php } ?> </div>
     </form>
 </div>
