@@ -8,7 +8,7 @@ require_once '../model/historyPageCard.php';
 class historyEventRepository extends baseRepository
 {
     // Schedule Content CRUD
-    public function insertHistorySchedule($title, $image, $content) : bool {
+    public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount) : bool {
         $stmt = $this->connection->prepare("INSERT INTO historyTourTimetable (dateAndDay, time, language, ticketAmount) VALUES (:dateAndDay, :time, :language, :ticketAmount)");
         $stmt->bindParam(':dateAndDay', $dateAndDay);
         $stmt->bindParam(':time', $time);
@@ -22,7 +22,7 @@ class historyEventRepository extends baseRepository
         $stmt->execute();
 
     }
-    public function updateHistorySchedule($id, $title, $image, $content) {
+    public function updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount) {
         $stmt = $this->connection->prepare("UPDATE historyTourTimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':title', $title);

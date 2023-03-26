@@ -217,6 +217,9 @@ class router
             case '/historyManagement/add':
                 require __DIR__ . '/../view/history/historyAdmin/addContent.php';
                 break;
+            case '/historyManagement/addScheduleContent':
+                require __DIR__ . '/../view/history/historyAdmin/addScheduleContent.php';
+                break;
 
 
             case'/manageProfile':

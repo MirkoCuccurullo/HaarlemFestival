@@ -16,9 +16,6 @@
         <button type="button" style="background-color: #3D1A78">
             <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Content</a>
         </button>
-        <button type="button" name="update" style="background-color: #3D1A78; margin-left: 10px; color: white" >
-            Update Content
-        </button>
     </div>
 
     <div class="table-container">
@@ -64,10 +61,7 @@
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Schedule Management</div>
         <button type="button" style="background-color: #3D1A78">
-            <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Content</a>
-        </button>
-        <button type="button" name="update" style="background-color: #3D1A78; margin-left: 10px; color: white" >
-            Update Content
+            <a href="/historyManagement/addScheduleContent" style="color:white; text-decoration:none;">Add Content</a>
         </button>
     </div>
 
@@ -88,20 +82,20 @@
             <?php if(isset($historyTourTimetable)) foreach ($historyTourTimetable as $timetable) {?>
                 <tr>
                     <form action="/historyManagement" method="POST">
-                        <input type="hidden" name="id" value="<?= $timetable['id'] ?>">
-                        <td name="id" contenteditable="false"><?= $timetable['id'] ?></td>
+                        <input type="hidden" name="tableId" value="<?= $timetable['id'] ?>">
+                        <td name="tableId" contenteditable="false"><?= $timetable['id'] ?></td>
                         <td name="dateAndDay" contenteditable="true"><input type="text" name="title" value="<?= $timetable['dateAndDay']; ?>"></td>
                         <td name="time" contenteditable="true"><input type="text" name="image" value="<?= $timetable['time']; ?>"></td>
                         <td name="language" contenteditable="true"><input type="text" name="content" value="<?= $timetable['language']; ?>"></td>
                         <td name="ticketAmount" contenteditable="true"><input type="text" name="content" value="<?= $timetable['ticketAmount']; ?>"></td>
                         <td>
-                            <button type="submit" name="update"><i class="fas fa-edit"></i></button>
+                            <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
                         </td>
                     </form>
                     <td>
                         <form action="/historyManagement" method="POST">
-                            <input type="hidden" name="id" value="<?php echo $timetable['id'] ?>">
-                            <button type="submit" name="delete"><i class="fas fa-trash-alt"></i></button>
+                            <input type="hidden" name="tableId" value="<?php echo $timetable['id'] ?>">
+                            <button type="submit" name="deleteSchedule"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>

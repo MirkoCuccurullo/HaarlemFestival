@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/../../header_history.php'; ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="/css/addContent.css" rel="stylesheet">
-    <title>CRUD</title>
+    <title>Card Content CRUD</title>
 </head>
 <body>
 

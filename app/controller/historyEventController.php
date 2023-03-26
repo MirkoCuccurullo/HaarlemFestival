@@ -43,19 +43,30 @@ class historyEventController
 
         if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['delete'])){
             $this->deleteCardContent($_POST['id']);
+        } elseif (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['deleteSchedule'])){
+            $this->deleteScheduleContent($_POST['tableId']);
         }
+
         if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['update'])){
             $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
-        } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['update'])) {
-
+        } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
+            $this->updateScheduleContent($_POST['tableId'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
         }
         $locations = $this->historyEventService->getAllHistoryCard();
         $historyTourTimetable = $this->historyEventService->getHistoryTourTimetable();
-
         include __DIR__ . '/../view/header_history.php';
         require __DIR__ . '/../view/history/historyAdmin/historyManagement.php';
 
     }
+
+    public function deleteScheduleContent($id)
+    {
+        $this->historyEventService->deleteScheduleContent($id);
+    }
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
+        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount);
+    }
+
 
     public function deleteCardContent($id)
     {
@@ -68,6 +79,9 @@ class historyEventController
         try {
             if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submit'])) {
                 $this->addCardContent($_POST);
+                $addError = "Content added";
+            } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submitSchedule'])) {
+                $this->addScheduleContent($_POST);
                 $addError = "Content added";
             } else {
                 $addError = "Could not add content";
@@ -84,6 +98,13 @@ class historyEventController
     public function addCardContent($data) :void {
         try {
             $this->historyEventService->addCardContent($data);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+    public function addScheduleContent($data) :void {
+        try {
+            $this->historyEventService->addScheduleContent($data);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
