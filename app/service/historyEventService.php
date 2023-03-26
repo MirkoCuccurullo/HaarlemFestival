@@ -10,6 +10,7 @@ class historyEventService{
     }
 
     /*                  CRUD METHODS                 */
+    // Add methods
     public function addCardContent(array $data)
     {
         $preparedData = $this->prepareCardContentData($data);
@@ -21,7 +22,7 @@ class historyEventService{
         $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'], $preparedData['language'], $preparedData['ticketAmount']);
     }
 
-
+    // Delete methods
     public function deleteCardContent($id) {
         $this->historyEventRepository->deleteHistoryCardContent($id);
     }
@@ -29,6 +30,7 @@ class historyEventService{
         $this->historyEventRepository->deleteHistorySchedule($id);
     }
 
+    // Update methods
     public function updateCardContent($id, $title, $image, $content) {
         return $this->historyEventRepository->updateHistoryCardContent($id, $title, $image, $content);
     }
@@ -39,7 +41,25 @@ class historyEventService{
         return $this->historyEventRepository->updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
     }
 
+    // Get methods
+    public function getAllHistoryCard() {
+        return $this->historyEventRepository->getAllHistoryCard();
+    }
+    public function getHistoryPageContent() {
+        return $this->historyEventRepository->getHistoryPageContent();
+    }
+    public function getHistoryTourTimetable() {
+        return $this->historyEventRepository->getHistoryTourTimetable();
+    }
+    public function getHistoryTicketById($id){
+        return $this->historyEventRepository->getHistoryTicketById($id);
+    }
+    public function getLocationDetailById($id)
+    {
+        return $this->historyEventRepository->getLocationDetailById($id);
+    }
 
+    // Prepare methods
     private function prepareCardContentData(array $data): array
     {
         $title = isset($data['title']) && !empty($data['title']) ? htmlspecialchars($data['title']) : null;
@@ -76,22 +96,6 @@ class historyEventService{
     }
 
 
-    /*                  GET METHODS                 */
-    public function getAllHistoryCard() {
-        return $this->historyEventRepository->getAllHistoryCard();
-    }
-    public function getHistoryPageContent() {
-        return $this->historyEventRepository->getHistoryPageContent();
-    }
-    public function getHistoryTourTimetable() {
-        return $this->historyEventRepository->getHistoryTourTimetable();
-    }
-    public function getHistoryTicketById($id){
-        return $this->historyEventRepository->getHistoryTicketById($id);
-    }
-    public function getLocationDetailById($id)
-    {
-        return $this->historyEventRepository->getLocationDetailById($id);
-    }
+
 
 }

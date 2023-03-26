@@ -16,20 +16,22 @@
     <form action="/historyManagement" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
-            <input type="text" class="form-control" id="image" name="image" placeholder="Image">
+            <input type="text" class="form-control" id="image" name="image" placeholder="Image" required>
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <input type="text" class="form-control" id="content" name="content" placeholder="Content">
+            <input type="text" class="form-control" id="content" name="content" placeholder="Content" required>
         </div>
         <button type="submit" class="btn btn-primary" id="submit" value="submit" name="submit" style="margin-top: 20px;">Add</button>
         <div class="error"> <?php if (isset($addError)){ ?> <span id="error-msg"> <?=$addError?> </span> <?php } ?> </div>
     </form>
 </div>
-
+<script>
+    console.log($addError);
+</script>
 </body>
 </html>
