@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container1">
     <div class="d-flex bd-highlight mb-3">
-        <div class="me-auto p-2 bd-highlight" id="header"><h2>History Management</div>
+        <div class="me-auto p-2 bd-highlight" id="header"><h2>Location Card Management</div>
         <button type="button" style="background-color: #3D1A78">
             <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Content</a>
         </button>
@@ -49,6 +49,58 @@
                     <td>
                         <form action="/historyManagement" method="POST">
                             <input type="hidden" name="id" value="<?php echo $location->id ?>">
+                            <button type="submit" name="delete"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="container2" style=" margin-top: 30px">
+    <div class="d-flex bd-highlight mb-3">
+        <div class="me-auto p-2 bd-highlight" id="header"><h2>Schedule Management</div>
+        <button type="button" style="background-color: #3D1A78">
+            <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Content</a>
+        </button>
+        <button type="button" name="update" style="background-color: #3D1A78; margin-left: 10px; color: white" >
+            Update Content
+        </button>
+    </div>
+
+    <div class="table-container" style="height: 400px; overflow-y: scroll;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Day and Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Language</th>
+                <th scope="col">Ticket Amount</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody id="mytable">
+            <?php if(isset($historyTourTimetable)) foreach ($historyTourTimetable as $timetable) {?>
+                <tr>
+                    <form action="/historyManagement" method="POST">
+                        <input type="hidden" name="id" value="<?= $timetable['id'] ?>">
+                        <td name="id" contenteditable="false"><?= $timetable['id'] ?></td>
+                        <td name="dateAndDay" contenteditable="true"><input type="text" name="title" value="<?= $timetable['dateAndDay']; ?>"></td>
+                        <td name="time" contenteditable="true"><input type="text" name="image" value="<?= $timetable['time']; ?>"></td>
+                        <td name="language" contenteditable="true"><input type="text" name="content" value="<?= $timetable['language']; ?>"></td>
+                        <td name="ticketAmount" contenteditable="true"><input type="text" name="content" value="<?= $timetable['ticketAmount']; ?>"></td>
+                        <td>
+                            <button type="submit" name="update"><i class="fas fa-edit"></i></button>
+                        </td>
+                    </form>
+                    <td>
+                        <form action="/historyManagement" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $timetable['id'] ?>">
                             <button type="submit" name="delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>

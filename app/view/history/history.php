@@ -75,6 +75,7 @@ if (isset($historyTourTimetable)) {
         <?php
     }
 }
+
 ?>
 
 </body>
@@ -82,4 +83,3 @@ if (isset($historyTourTimetable)) {
 </html>
 
 
-<?php //include __DIR__ . '/../footer.php'; ?>

@@ -161,22 +161,6 @@ class router
                 $controller->editEvent();
                 break;
 
-            case'/history':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyMainPage();
-                break;
-            case'/historyCart':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyCartPage($_POST['id']);
-            break;
-            case '/locationDetail':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyLocationDetailPage($_POST['id']);
-            break;
-
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
