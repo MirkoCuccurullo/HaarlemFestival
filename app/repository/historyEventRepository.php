@@ -8,8 +8,9 @@ require_once '../model/historyPageCard.php';
 class historyEventRepository extends baseRepository
 {
     // Main Content CRUD
-    public function updateMainContent($mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText) {
-        $stmt = $this->connection->prepare("UPDATE historyPageContent SET mainImageHeader=:mainImageHeader, tourCardHeader=:tourCardHeader, tourCardParagraph=:tourCardParagraph, tourCardButtonText=:tourCardButtonText WHERE id=1");
+    public function updateMainContent($id, $mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText) {
+        $stmt = $this->connection->prepare("UPDATE historyPageContent SET mainImageHeader=:mainImageHeader, tourCardHeader=:tourCardHeader, tourCardParagraph=:tourCardParagraph, tourCardButtonText=:tourCardButtonText WHERE id=:id");
+        $stmt->bindParam(':id', $id);
         $stmt->bindParam(':mainImageHeader', $mainImageHeader);
         $stmt->bindParam(':tourCardHeader', $tourCardHeader);
         $stmt->bindParam(':tourCardParagraph', $tourCardParagraph);
@@ -40,9 +41,10 @@ class historyEventRepository extends baseRepository
     public function updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount) {
         $stmt = $this->connection->prepare("UPDATE historyTourTimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount WHERE id=:id");
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':image', $image);
-        $stmt->bindParam(':content', $content);
+        $stmt->bindParam(':dateAndDay', $dateAndDay);
+        $stmt->bindParam(':time', $time);
+        $stmt->bindParam(':language', $language);
+        $stmt->bindParam(':ticketAmount', $ticketAmount);
         $stmt->execute();
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);

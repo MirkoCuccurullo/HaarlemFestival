@@ -6,7 +6,6 @@ require_once __DIR__ . '/../service/accessPassService.php';
 
 use router\router;
 
-
 class shoppingCartController
 {
     public function index()

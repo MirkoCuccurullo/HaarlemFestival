@@ -37,8 +37,8 @@ class historyEventService{
     public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
         return $this->historyEventRepository->updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount);
     }
-    public function updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
-        return $this->historyEventRepository->updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
+    public function updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
+        return $this->historyEventRepository->updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
     }
 
     // Get methods
@@ -82,10 +82,6 @@ class historyEventService{
         $time = isset($data['$time']) && !empty($data['$time']) ? htmlspecialchars($data['$time']) : null;
         $language = isset($data['$language']) && !empty($data['$language']) ? htmlspecialchars($data['$language']) : null;
         $ticketAmount = isset($data['$ticketAmount']) && !empty($data['$ticketAmount']) ? htmlspecialchars($data['$ticketAmount']) : null;
-
-        if (empty($dateAndDay) || empty($time) || empty($language) || empty($ticketAmount)) {
-            $addError = ('All fields must be filled');
-        }
 
         return [
             'dateAndDay' => $dateAndDay,

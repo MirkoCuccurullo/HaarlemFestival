@@ -52,10 +52,10 @@ class historyEventController
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
             $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateMainContent'])) {
-            $this->updateMainContent($_POST['mainImageHeader'], $_POST['tourCardHeader'], $_POST['tourCardParagraph'], $_POST['tourCardButtonText']);
+            $this->updateMainContent($_POST['id'], $_POST['mainImageHeader'], $_POST['tourCardHeader'], $_POST['tourCardParagraph'], $_POST['tourCardButtonText']);
         }
 
-        //used get data from db to the view
+        //used to get data from db to the view
         $locations = $this->historyEventService->getAllHistoryCard();
         $historyTourTimetable = $this->historyEventService->getHistoryTourTimetable();
         $content = $this->historyEventService->getHistoryPageContent();
@@ -69,23 +69,20 @@ class historyEventController
     {
         $this->historyEventService->deleteScheduleContent($id);
     }
-    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
-        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount);
-    }
-
-
     public function deleteCardContent($id)
     {
         $this->historyEventService->deleteCardContent($id);
     }
+
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
+        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount);
+    }
     public function updateCardContent($id, $title, $image, $content) {
         $this->historyEventService->updateCardContent($id, $title, $image, $content);
     }
-
-    public function updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
-        return $this->historyEventService->updateMainContent($mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
+    public function updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
+        return $this->historyEventService->updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
     }
-
 
     public function displayAddedContent() : void {
         try {
@@ -100,10 +97,11 @@ class historyEventController
             }
             $this->historyManagement($addError);
         } catch (Exception $e) {
-            echo $e;
-            throw new Exception($e->getMessage());
+//            echo $e;
+            throw new Exception($e->getLine());
         }
     }
+
     /**
      * @throws Exception
      */

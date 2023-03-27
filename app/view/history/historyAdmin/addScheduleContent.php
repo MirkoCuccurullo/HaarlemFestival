@@ -15,20 +15,20 @@
     <div class="me-auto p-2 bd-highlight" id="header" style="margin-top: 20px; margin-bottom: 20px"><h2>Add Schedule Content</div>
     <form action="/historyManagement" method="POST">
         <div class="mb-3">
-            <label for="title" class="form-label">Date and Day</label>
-            <input type="date" class="form-control" id="dateAndDay" name="title" placeholder="date and day" required>
+            <label for="dateAndDay" class="form-label">Date and Day</label>
+            <input type="date" class="form-control" id="dateAndDay" name="title" placeholder="date and day" >
             <p id="selectedDay"></p>
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Time </label>
+            <label for="time" class="form-label">Time </label>
             <input type="time" class="form-control" id="time" name="image" placeholder="time" required>
         </div>
         <div class="mb-3">
-            <label for="content" class="form-label">Language</label>
+            <label for="language" class="form-label">Language</label>
             <input type="text" class="form-control" id="language" name="content" placeholder="language" required>
         </div>
         <div class="mb-3">
-            <label for="content" class="form-label">Ticket Amount</label>
+            <label for="ticketAmount" class="form-label">Ticket Amount</label>
             <input type="number" class="form-control" id="ticketAmount" name="content" placeholder="ticket amount" required>
         </div>
         <button type="submit" class="btn btn-primary" id="submitSchedule" value="submitSchedule" name="submitSchedule" style="margin-top: 20px;">Add</button>
@@ -45,6 +45,7 @@
         const selectedDayText = daysOfWeek[date.getDay()];
         selectedDay.textContent = selectedDayText;
     });
+
 </script>
 </body>
 </html>

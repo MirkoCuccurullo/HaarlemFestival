@@ -130,12 +130,12 @@
                     <form action="/historyManagement" method="POST">
                         <input type="hidden" name="id" value="<?= $c->id ?>">
                         <td name="id"> <?= $c->id ?></td>
-                        <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $c->mainImageHeader ?>"></td>
-                        <td name="time"> <input type="text" name="time" value="<?= $c->tourCardHeader ?>"></td>
-                        <td name="language"> <input type="text" name="language" value="<?= $c->tourCardParagraph ?>"></td>
-                        <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $c->tourCardButtonText ?>"></td>
+                        <td name="mainImageHeader"> <input type="text" name="mainImageHeader" value="<?= $c->mainImageHeader ?>"></td>
+                        <td name="tourCardHeader"> <input type="text" name="tourCardHeader" value="<?= $c->tourCardHeader ?>"></td>
+                        <td name="tourCardParagraph"> <input type="text" name="tourCardParagraph" value="<?= $c->tourCardParagraph ?>"></td>
+                        <td name="tourCardButtonText"> <input type="text" name="tourCardButtonText" value="<?= $c->tourCardButtonText ?>"></td>
                         <td>
-                            <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
+                            <button type="submit" name="updateMainContent"><i class="fas fa-edit"></i></button>
                         </td>
                     </form>
                 </tr>
