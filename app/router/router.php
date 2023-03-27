@@ -344,6 +344,12 @@ class router
                 $controller->submitOrder();
                 break;
 
+            case '/shoppingCart/update':
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->updateOrderStatus();
+                break;
+
             case'/festival':
                 require_once __DIR__ . '/../controller/festivalController.php';
                 $controller = new festivalController();
@@ -473,6 +479,13 @@ class router
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
                 }
+                break;
+
+            case '/api/tickets/scan?id=' . $_GET['id']:
+                require("../api/controllers/ticketControllerAPI.php");
+                $controller = new \ticketControllerAPI();
+                $id = $_GET['id'];
+                $controller->scanTicket($id);
                 break;
             default:
                 echo '404';

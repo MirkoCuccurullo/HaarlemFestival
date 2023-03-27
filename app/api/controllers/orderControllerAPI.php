@@ -14,10 +14,10 @@ class orderControllerAPI extends controller
 
     public function getAll()
     {
-        $token = $this->checkForJwt();
-        if (!$token){
-            return;
-        }
+//        $token = $this->checkForJwt();
+//        if (!$token){
+//            return;
+//        }
 
         $offset = NULL;
         $limit = NULL;
@@ -66,13 +66,20 @@ class orderControllerAPI extends controller
 
     public function add()
     {
-        $token = $this->checkForJwt();
-        if (!$token) {
-            return;
-        }
+//        $token = $this->checkForJwt();
+//        if (!$token) {
+//            return;
+//        }
+//        $json = file_get_contents('php://input');
+//        $data = json_decode($json);
+//        $order = new \Models\order();
+//        $order->user_id = $data['user_id'];
+//        $order->no_of_items = $data['no_of_items'];
+//        $order->total_price = $data['total_price'];
+
         $data = $this->createObjectFromPostedJson("Models\\order");
 
-        $appointment = $this->orderService->createOrder($data);
+        $appointment = $this->orderService->createOrder($order);
 
         $this->respond($appointment);
     }

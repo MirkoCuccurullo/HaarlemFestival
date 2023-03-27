@@ -15,9 +15,9 @@ class orderService
         return $this->orderRepository->createOrder($order);
     }
 
-    public function updateOrder($order, $id)
+    public function updateOrderStatus($order_id, $status)
     {
-        return $this->orderRepository->updateOrder($order, $id);
+        return $this->orderRepository->updateOrderStatus($order_id, $status);
     }
 
     public function deleteOrder($id)
