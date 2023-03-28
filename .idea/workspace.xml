@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Quite a bit of front end but need to work on adding a Reservation and showing the restaurant">
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="jlgvwlkebkfqjòkbnrejk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/homePageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/homePageRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/SMTPServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/SMTPServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +34,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="cd0fa6af-c6ab-43a7-8444-6cc79c07a443" />
+        <option name="accountId" value="09b6758f-a11b-4e0b-8a86-446ddd171d4d" />
         <option name="url" value="https://github.com/MirkoCuccurullo/HaarlemFestival.git" />
       </UrlAndAccount>
     </option>
@@ -179,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010466747</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010466747</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +216,8 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
+    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
+    <option name="LAST_COMMIT_MESSAGE" value="jlgvwlkebkfqjòkbnrejk" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

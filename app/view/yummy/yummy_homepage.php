@@ -5,10 +5,13 @@
     <title>Index</title>
 </head>
 
-<body>
+<body style="background-color: #49111C; color:white;">
 <div id="restaurant-container">
     <?php foreach ($restaurants as $restaurant): ?>
-        <div class="row" id="restaurantCard">
+        <div class="row" id="restaurantCard" style="   border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;">
             <!-- Restaurant name and photo -->
             <div class="col-md-3" id="restaurantNameAndPhoto">
                 <h3><?= $restaurant->name ?></h3>

@@ -289,6 +289,7 @@ class router
             case'/food':
             case '/festival/yummy':
             case '/yummy':
+                case '/culinary':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayFoodPage();
