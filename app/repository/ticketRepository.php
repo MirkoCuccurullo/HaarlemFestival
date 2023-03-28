@@ -108,4 +108,21 @@ class ticketRepository extends \repository\baseRepository{
 //            return $result;
             return true;
         }
+
+        public function updateQuery($ticket){
+            $sql='';
+            if(isset($ticket->dance_event_id)){
+                $sql .= "dance_event_id, ";
+            }
+            else if(isset($ticket->yummy_event_id)){
+                $sql .= "yummy_event_id, ";
+            }
+            else if(isset($ticket->history_event_id)){
+                $sql .= "history_event_id, ";
+            }
+            else if(isset($ticket->access_pass_id)){
+                $sql .= "access_pass_id, ";
+            }
+            return $sql;
+        }
 }
