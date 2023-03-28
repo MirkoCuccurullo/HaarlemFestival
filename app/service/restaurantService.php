@@ -97,7 +97,7 @@ class restaurantService
         return $this->restaurantRepository->getSessionById($id);
     }
 
-    public function getSessionsByRestaurantId($id)
+    public function getSessionsByRestaurantId($id): array
     {
         return $this->restaurantRepository->getSessionsByRestaurantId($id);
     }

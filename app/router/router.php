@@ -469,7 +469,7 @@ class router
                 }
                 break;
 
-            case"/restaurant":
+            case "/restaurant":
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();
