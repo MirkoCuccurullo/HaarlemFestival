@@ -45,4 +45,17 @@ class reservationService
     {
         $this->reservationRepository->deactivateReservation($id);
     }
+
+    public function getAvailableSpacesPerSession(int $sessionId): int
+    {
+        $session = $this->reservationRepository->getSessionById($sessionId);
+        $reservations = $this->reservationRepository->getReservationsBySessionId($sessionId);
+
+        $spacesBooked = 0;
+        foreach ($reservations as $reservation) {
+            $spacesBooked += $reservation->numberOfUnder12;
+            $spacesBooked += $reservation->numberOfAdults;
+        }
+        return $session->capacity - $spacesBooked;
+    }
 }
