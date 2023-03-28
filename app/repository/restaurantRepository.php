@@ -75,7 +75,7 @@ class restaurantRepository extends baseRepository
 
     public function getSessionsByRestaurantId($id): array
     {
-        $stmt = $this->connection->prepare("SELECT * FROM sessionRestaurant WHERE restaurantId = :id");
+        $stmt = $this->connection->prepare("SELECT * FROM sessionrestaurant WHERE restaurantId = :id");
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'session');
@@ -84,7 +84,7 @@ class restaurantRepository extends baseRepository
     }
     public function updateSession(session $session)
     {
-        $stmt = $this->connection->prepare("UPDATE sessionRestaurant SET startTime = :startTime, endTime = :endTime, date=:date, reservationPrice = :rPrice, sessionPrice = :sPrice, reducedPrice= :reducedPrice, capacity = :capacity, restaurantId= :restaurantId WHERE id = :id");
+        $stmt = $this->connection->prepare("UPDATE sessionrestaurant SET startTime = :startTime, endTime = :endTime, date=:date, reservationPrice = :rPrice, sessionPrice = :sPrice, reducedPrice= :reducedPrice, capacity = :capacity, restaurantId= :restaurantId WHERE id = :id");
         $stmt->bindParam( ":id", $session->id);
         $stmt->bindParam( ":startTime", $session->startTime);
         $stmt->bindParam( ":endTime", $session->endTime);
@@ -101,7 +101,7 @@ class restaurantRepository extends baseRepository
     {
         try {
             //delete from restaurant table
-            $stmt = $this->connection->prepare("DELETE FROM sessionRestaurant WHERE id = :id");
+            $stmt = $this->connection->prepare("DELETE FROM sessionrestaurant WHERE id = :id");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
 
@@ -113,7 +113,7 @@ class restaurantRepository extends baseRepository
 
     public function addSession(session $session)
     {
-        $stmt = $this->connection->prepare("INSERT INTO sessionRestaurant (restaurantId, startTime, endTime, date, reservationPrice, sessionPrice, reducedPrice, capacity) VALUES (:id, :startTime, :endTime,:date, :reservationPrice, :sessionPrice,:reducedPrice, :capacity)");
+        $stmt = $this->connection->prepare("INSERT INTO sessionrestaurant (restaurantId, startTime, endTime, date, reservationPrice, sessionPrice, reducedPrice, capacity) VALUES (:id, :startTime, :endTime,:date, :reservationPrice, :sessionPrice,:reducedPrice, :capacity)");
         //restaurant id is a foreign key in the table, so it's needed to reference
         $stmt->bindParam( ":id", $session->restaurantId);
         $stmt->bindParam( ":startTime", $session->startTime);
@@ -128,7 +128,7 @@ class restaurantRepository extends baseRepository
 
     public function getAllSessions(): array
     {
-        $stmt = $this->connection->prepare("SELECT * FROM sessionRestaurant");
+        $stmt = $this->connection->prepare("SELECT * FROM sessionrestaurant");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'session');
         $result = $stmt->fetchAll();
@@ -143,15 +143,13 @@ class restaurantRepository extends baseRepository
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
         $result = $stmt->fetch();
-        foreach ($result as $restaurant) {
-            $restaurant->sessions = $this->getSessionsByRestaurantId($restaurant->id);
-        }
+
         return $result;
     }
 
     public function getSessionById($id)
     {
-        $stmt = $this->connection->prepare("SELECT * FROM sessionRestaurant WHERE id = :id");
+        $stmt = $this->connection->prepare("SELECT * FROM sessionrestaurant WHERE id = :id");
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'session');

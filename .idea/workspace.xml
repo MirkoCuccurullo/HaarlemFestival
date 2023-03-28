@@ -4,23 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end">
-      <change afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_15_09__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_15_09__Changes_.xml" afterDir="false" />
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Quite a bit of front end but need to work on adding a Reservation and showing the restaurant">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/restaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/restaurantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/restaurantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/restaurantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style_food.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style_food.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/homePageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/homePageRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/SMTPServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/SMTPServer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
