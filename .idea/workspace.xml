@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end" />
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +32,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="cd0fa6af-c6ab-43a7-8444-6cc79c07a443" />
+        <option name="accountId" value="09b6758f-a11b-4e0b-8a86-446ddd171d4d" />
         <option name="url" value="https://github.com/MirkoCuccurullo/HaarlemFestival.git" />
       </UrlAndAccount>
     </option>
@@ -151,6 +153,8 @@
       <workItem from="1678454722455" duration="16000" />
       <workItem from="1679394353466" duration="929000" />
       <workItem from="1679585131589" duration="7392000" />
+      <workItem from="1680012798196" duration="532000" />
+      <workItem from="1680018058672" duration="1807000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -173,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010466747</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010466747</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010749139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010749139</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +223,8 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
+    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
+    <option name="LAST_COMMIT_MESSAGE" value="jlgvwlkebkfqjòkbnrejk" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
