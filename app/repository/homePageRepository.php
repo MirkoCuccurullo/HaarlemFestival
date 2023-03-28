@@ -7,7 +7,7 @@ class homePageRepository extends baseRepository
 {
     public function insertHome($title, $image, $content, $prompt)
     {
-        $sql = "INSERT INTO homePage(title, image, content, prompt) VALUES (:title, :image, :content, :prompt)";
+        $sql = "INSERT INTO homepage(title, image, content, prompt) VALUES (:title, :image, :content, :prompt)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":image", $image);
@@ -24,7 +24,7 @@ class homePageRepository extends baseRepository
 
     public function getAllHome()
     {
-        $sql = "SELECT id, title, image, content, prompt FROM homePage";
+        $sql = "SELECT id, title, image, content, prompt FROM homepage";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,7 +32,7 @@ class homePageRepository extends baseRepository
     }
 
     public function updateHomePages($id, $title, $image, $content, $prompt){
-        $sql = "UPDATE homePage SET title = :title, image = :image, content = :content, prompt = :prompt WHERE id = :id";
+        $sql = "UPDATE homepage SET title = :title, image = :image, content = :content, prompt = :prompt WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":image", $image);

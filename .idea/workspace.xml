@@ -32,7 +32,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="cd0fa6af-c6ab-43a7-8444-6cc79c07a443" />
+        <option name="accountId" value="09b6758f-a11b-4e0b-8a86-446ddd171d4d" />
         <option name="url" value="https://github.com/MirkoCuccurullo/HaarlemFestival.git" />
       </UrlAndAccount>
     </option>
@@ -54,23 +54,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Rares/Documents/GitHub/HaarlemFestival",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.deploy.options",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public" />
@@ -157,6 +157,7 @@
       <workItem from="1679837711324" duration="9113000" />
       <workItem from="1679917312057" duration="21281000" />
       <workItem from="1680006515318" duration="1025000" />
+      <workItem from="1680022402831" duration="56000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -179,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010466747</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010466747</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010749139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010749139</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +226,8 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
+    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
+    <option name="LAST_COMMIT_MESSAGE" value="jlgvwlkebkfqjòkbnrejk" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

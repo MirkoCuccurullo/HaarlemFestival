@@ -293,9 +293,9 @@ class router
                 break;
 
             case'/food':
-            case '/restaurant':
-            case '/festival/food':
+            case '/festival/yummy':
             case '/yummy':
+                case '/culinary':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayFoodPage();
@@ -486,6 +486,11 @@ class router
                 $controller = new \ticketControllerAPI();
                 $id = $_GET['id'];
                 $controller->scanTicket($id);
+
+            case "/restaurant":
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayRestaurant();
                 break;
             default:
                 echo '404';
