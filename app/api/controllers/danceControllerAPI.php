@@ -42,4 +42,17 @@ class danceControllerAPI
         }
     }
 
+    public function getAllByFilters(mixed $artist_id, mixed $date_id, mixed $venue_id)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+            // your code here
+            $cards = $this->eventService->getAllByFilters($artist_id, $date_id, $venue_id);
+            header('Content-Type: application/json');
+            echo json_encode($cards);
+            // return all articles in the database as JSON
+
+        }
+    }
+
 }

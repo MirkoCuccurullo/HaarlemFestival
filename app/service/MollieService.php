@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../config.php';
 class MollieService
 {
     private $mollie;
   public function __construct(){
-      $mollie = new \Mollie\Api\MollieApiClient();
-      $mollie->setApiKey($Mollie_Key);
+
+      require('../config.php');
+      $this->mollie = new \Mollie\Api\MollieApiClient();
+      $this->mollie->setApiKey($Mollie_Key);
   }
 
   public function pay($amount){
@@ -15,11 +16,11 @@ class MollieService
       $payment = $this->mollie->payments->create([
           "amount" => [
               "currency" => "EUR",
-              "value" => $amount
+              "value" => $amount,
           ],
           "description" => "Amount to pay for the order",
-          "redirectUrl" => "https://localhost/order/payment-success",
-          "webhookUrl"  => "https://localhost/order/payment-success",
+          "redirectUrl" => "http://localhost/home",
+          "webhookUrl"  => "https://ngrok.com/",
           "method"      => \Mollie\Api\Types\PaymentMethod::IDEAL,
           "issuer"      => "ideal_INGBNL2A", // e.g. "ideal_INGBNL2A"
       ]);

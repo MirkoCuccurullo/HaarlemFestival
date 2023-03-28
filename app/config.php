@@ -12,9 +12,7 @@ $smtpPassword = "rubaioagmjpzykyi";
 $smtpPort = 587;
 
 //Mollie API Key
-
-//$Mollie_Key="test_GSqhHfd3ardk7AkHQVmPjt5yFu4Qaw";
-$Mollie_Key="test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8";
+$Mollie_Key="test_GSqhHfd3ardk7AkHQVmPjt5yFu4Qaw";
 
 
 

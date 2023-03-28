@@ -23,6 +23,7 @@ class eventRepository extends baseRepository
             $dance->artist_name = $artist->name;
             $venue_name = $this->getVenueById($dance->location)->name;
             $dance->venue_name = $venue_name;
+            $dance->artist_picture = $artist->picture;
         }
         return $result;
     }
@@ -192,6 +193,48 @@ class eventRepository extends baseRepository
             $dance->venue_name = $venue_name;
         }
         return $result;
+    }
+
+    public function getAllByFilters(mixed $artist_id, mixed $date_id, mixed $venue_id)
+    {
+        if ($artist_id != 0 && $venue_id != 0){
+            $sql = "SELECT * FROM dance_event WHERE artist = :artist_id AND location = :venue_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+            $stmt->bindParam(":venue_id", $venue_id);
+
+        }
+
+        if ($artist_id == 0){
+            $sql = "SELECT * FROM dance_event WHERE location = :venue_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":venue_id", $venue_id);
+        }
+
+        if ($venue_id == 0){
+            $sql = "SELECT * FROM dance_event WHERE artist = :artist_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+        }
+
+        if ($artist_id == 0 && $venue_id == 0){
+            $sql = "SELECT * FROM dance_event";
+            $stmt = $this->connection->prepare($sql);
+        }
+
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_CLASS, "dance");
+        foreach ($result as $dance){
+
+            $artist = $this->getArtistById($dance->artist);
+
+            $dance->artist_name = $artist->name;
+            $venue_name = $this->getVenueById($dance->location)->name;
+            $dance->venue_name = $venue_name;
+            $dance->artist_picture = $artist->picture;
+        }
+        return $result;
+
     }
 
 

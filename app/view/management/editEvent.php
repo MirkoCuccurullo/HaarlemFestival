@@ -17,10 +17,6 @@ include_once __DIR__ . '/../../model/dance.php';
                                         <label for="artist">Artist</label>
                                         <select class="form-control" id="artits" name="artist">
                                             <?php
-                                            require_once __DIR__ . '/../../model/artist.php';
-                                            require_once __DIR__ . '/../../service/eventService.php';
-                                            $eventService = new eventService();
-                                            $artists = $eventService->getArtists();
                                             foreach ($artists as $artist){ ?>
                                                 <option value="<?= $artist->id ?>"><?= $artist->name ?></option>
                                             <?php } ?>
@@ -30,8 +26,6 @@ include_once __DIR__ . '/../../model/dance.php';
                                         <label for="location">Location</label>
                                         <select class="form-control" id="location" name="location">
                                             <?php
-                                            require_once __DIR__ . '/../../model/venues.php';
-                                            $locations = $eventService->getVenues();
                                             foreach ($locations as $location){?>
                                                 <option value="<?= $location->id ?>"><?= $location->name ?></option>
                                             <?php } ?>

@@ -12,5 +12,6 @@ public string $artist;
 public string $artist_name = "";
 public string $venue_name = "";
 public string $session = "Club";
+public string $artist_picture;
 
 }
