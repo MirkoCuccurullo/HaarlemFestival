@@ -16,20 +16,21 @@
     <form action="/historyManagement" method="POST">
         <div class="mb-3">
             <label for="dateAndDay" class="form-label">Date and Day</label>
-            <input type="date" class="form-control" id="dateAndDay" name="title" placeholder="date and day" >
+            <input type="date" class="form-control" id="dateAndDay" name="dateAndDay" placeholder="date and day" >
             <p id="selectedDay"></p>
         </div>
         <div class="mb-3">
             <label for="time" class="form-label">Time </label>
-            <input type="time" class="form-control" id="time" name="image" placeholder="time" required>
+            <label for="timeFormat" id="timeFormat" class="form-label" style="font-size: smaller">(format: 00:00 - 00:00)</label>
+            <input type="text" class="form-control" id="time" name="time" placeholder="time" required>
         </div>
         <div class="mb-3">
             <label for="language" class="form-label">Language</label>
-            <input type="text" class="form-control" id="language" name="content" placeholder="language" required>
+            <input type="text" class="form-control" id="language" name="language" placeholder="language" required>
         </div>
         <div class="mb-3">
             <label for="ticketAmount" class="form-label">Ticket Amount</label>
-            <input type="number" class="form-control" id="ticketAmount" name="content" placeholder="ticket amount" required>
+            <input type="number" class="form-control" id="ticketAmount" name="ticketAmount" placeholder="ticket amount" required>
         </div>
         <button type="submit" class="btn btn-primary" id="submitSchedule" value="submitSchedule" name="submitSchedule" style="margin-top: 20px;">Add</button>
         <div class="error"> <?php if (isset($addError)){ ?> <span id="error-msg"> <?=$addError?> </span> <?php } ?> </div>
@@ -42,8 +43,7 @@
     dateInput.addEventListener("input", function() {
         const date = new Date(this.value);
         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const selectedDayText = daysOfWeek[date.getDay()];
-        selectedDay.textContent = selectedDayText;
+        selectedDay.textContent = daysOfWeek[date.getDay()];
     });
 
 </script>

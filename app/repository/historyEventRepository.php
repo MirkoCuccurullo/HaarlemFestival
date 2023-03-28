@@ -36,7 +36,6 @@ class historyEventRepository extends baseRepository
         $stmt = $this->connection->prepare("DELETE FROM historyTourTimetable WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-
     }
     public function updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount) {
         $stmt = $this->connection->prepare("UPDATE historyTourTimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount WHERE id=:id");

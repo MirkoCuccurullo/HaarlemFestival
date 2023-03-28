@@ -97,8 +97,7 @@ class historyEventController
             }
             $this->historyManagement($addError);
         } catch (Exception $e) {
-//            echo $e;
-            throw new Exception($e->getLine());
+            throw new Exception($e->getMessage());
         }
     }
 
