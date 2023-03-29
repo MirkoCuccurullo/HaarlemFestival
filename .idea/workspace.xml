@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/apiKey.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/repository/apiKeyRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/service/apiKeyService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/management/getTokenPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/controllers/JwtGeneratorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controllers/JwtGeneratorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/controllers/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controllers/controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/festivalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/festivalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,23 +66,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/mirko/Documents/GitHub/HaarlemFestival",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.deploy.options",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public" />
@@ -84,7 +94,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="" />
+      <changelist id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="" />
       <created>1675956787229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -155,6 +165,7 @@
       <workItem from="1678454722455" duration="16000" />
       <workItem from="1679394353466" duration="929000" />
       <workItem from="1679567419802" duration="5116000" />
+      <workItem from="1680083381380" duration="4064000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
