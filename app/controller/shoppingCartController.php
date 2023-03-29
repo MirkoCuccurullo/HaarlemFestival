@@ -1,12 +1,20 @@
 <?php
 require_once __DIR__ . '/../model/order.php';
+require_once __DIR__ . '/../model/ticket.php';
+
 require_once __DIR__ . '/../service/eventService.php';
 require_once __DIR__ . '/../service/historyEventService.php';
 require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../service/accessPassService.php';
 require_once __DIR__ . '/../service/MollieService.php';
+require_once __DIR__ . '/../service/PDFGenerator.php';
+require_once __DIR__ . '/../service/ticketService.php';
+require_once __DIR__ . '/../service/SMTPServer.php';
+require_once __DIR__ . '/../service/userService.php';
+
 
 use router\router;
+
 
 class shoppingCartController
 {
@@ -29,6 +37,7 @@ class shoppingCartController
 
             $order->no_of_items = 0;
             $order->total_price = 0;
+            $order->status = 'open';
         }
 
         if (isset($_POST['addDanceEvent'])) {
@@ -112,10 +121,58 @@ class shoppingCartController
 //                unset($_SESSION['order']);
 //                $router = new Router();
 //                $router->route('/');
-                $amount = $_SESSION['order']->total_price;
+
+
+
+                $order = $_SESSION['order'];
+
+                //$payment_id = $_SESSION['payment_id'];
+
+                $orderService = new OrderService();
+                $order_id = $orderService->createOrder($order);
+                $order->id = $order_id;
+
+                $ticketService = new TicketService();
+                $tickets = $ticketService->createTickets($order);
+
                 $mollieService = new MollieService();
-                $mollieService->pay($amount);
+                $mollieService->pay($order, $tickets);
+
+//
+//                foreach ($tickets as $ticket)
+//                    $ticketService->insertTicket($ticket);
+//
+//
+//                $pdfGenerator = new PDFGenerator();
+//                $pdf = $pdfGenerator->createPDF($order);
+//
+//                $userService = new UserService();
+//                $user = $userService->getUserByID($order->user_id);
+//
+//                $mailService = new SMTPServer();
+//
+//                $receiverEmail = $user->email;
+//                $receiverName = $user->name;
+//                $subject = "Your Ticket(s)";
+//                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) are attached to this email. See you at the events!";
+//                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf);
+//                unlink($pdf);
+
+//                $router = new Router();
+//                $router->route('/');
+                unset($_SESSION['order']);
+
+
             }
         }
     }
+    public function confirmation($order_id)
+    {
+        $orderService = new orderService();
+        $order = $orderService->getOrder($order_id);
+        $status = $order->status;
+        require_once __DIR__ . '/../view/shoppingCart/confirmation.php';
+    }
+
+
 }

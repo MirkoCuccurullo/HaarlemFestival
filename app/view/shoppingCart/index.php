@@ -24,8 +24,8 @@ include __DIR__ . '/../header.php'; ?>
                         <h3><?php
                             if($dance_event instanceof dance)
                                 echo $dance_event->artist_name . " @ " . $dance_event->venue_name;
-                            else
-                                $dance_event->displayPass($dance_event->id);
+                            else if ($dance_event instanceof accessPass)
+                                echo $dance_event->displayPass($dance_event->id);
                             ?></h3>
                     </div>
 

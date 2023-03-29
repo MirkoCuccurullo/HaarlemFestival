@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end" />
+    <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +14,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -57,7 +61,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Web Development 2022/Lesson 2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -150,7 +154,7 @@
       <workItem from="1678366856192" duration="10847000" />
       <workItem from="1678454722455" duration="16000" />
       <workItem from="1679394353466" duration="929000" />
-      <workItem from="1679585131589" duration="7392000" />
+      <workItem from="1679567419802" duration="5116000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>

@@ -67,6 +67,10 @@
                         <li>
                             <a class="dropdown-item" href="/history">A Stroll Through History</a>
                         </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/qr">QR code checker</a>
+                        </li>
                     </ul>
                 </li>
 
