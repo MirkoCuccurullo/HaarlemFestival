@@ -1,9 +1,12 @@
 <?php
+
+use Models\order;
+
 require_once '../repository/orderRepository.php';
 
 class orderService
 {
-    private $orderRepository;
+    private orderRepository $orderRepository;
 
     public function __construct()
     {
@@ -15,9 +18,16 @@ class orderService
         return $this->orderRepository->createOrder($order);
     }
 
-    public function updateOrder($order, $id)
+    public function updateOrder($id, $user_id, $no_of_items, $total_price, $dance_events)
     {
-        return $this->orderRepository->updateOrder($order, $id);
+        $order = new order();
+        $order->id = $id;
+        $order->user_id = $user_id;
+        $order->no_of_items = $no_of_items;
+        $order->total_price = $total_price;
+        $order->dance_events = $dance_events;
+
+        return $this->orderRepository->updateOrder($order);
     }
 
     public function deleteOrder($id)
@@ -34,4 +44,5 @@ class orderService
     {
         return $this->orderRepository->getAllOrders($offset, $limit);
     }
+
 }

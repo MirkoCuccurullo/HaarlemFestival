@@ -65,9 +65,10 @@
                     endforeach; ?>
                 </ul>
                 <br>
-                <button formmethod="post" style="background: #ABAC7F; border-style: hidden; border-radius: 5%; width: 150px;" name="id" value="<?=$restaurant->id?>" formaction="/restaurant">
-                    <p class="text-center">View More</p>
-                </button>
+                <form method="post" action="/restaurant">
+                    <input type="hidden" name="id" value="<?= $restaurant->id ?>">
+                    <button type="submit" style="background: #ABAC7F; border-style: hidden; border-radius: 5%; width: 150px;" class="btn btn-primary">View More</button>
+                </form>
             </div>
         </div>
 

@@ -47,11 +47,24 @@ class reservationRepository extends baseRepository
             error_log("Failed to update reservation: " . $e->getMessage());
         }
     }
-    public function addReservation():void
+    public function addReservation($reservation):void
     {
+        $reservation->status =0;
+        //0: confirmed, 1: cancelled, 2: deactivated
         try{
-            $sql = "INSERT INTO reservation (restaurantName, sessionId, status, numberOfAdults, numberOfUnder12, reservationPrice, customerEmail, comment) VALUES (:rName, :session_id, :status, :adults, :under12, :rPrice, :email, :comment)";
-        } catch (PDOException $e) {
+// Insert the reservation into the reservation table
+            $stmt = $this->connection->prepare("INSERT INTO reservation (restaurantName, status,customerName, customerEmail, sessionId, numberOfAdults, numberOfUnder12, reservationPrice, comment) VALUES (:rName, :status,:cName, :email, :session_id, :adults, :under12, :rPrice, :comment)");
+            $stmt->bindParam(":rName", $reservation->restaurantName);
+            $stmt->bindParam(":status", $reservation->status);
+            $stmt->bindParam(":cName", $reservation->customerName);
+            $stmt->bindParam(":email", $reservation->customerEmail);
+            $stmt->bindParam(":session_id", $reservation->session->id);
+            $stmt->bindParam(":adults", $reservation->numberOfAdults);
+            $stmt->bindParam(":under12", $reservation->numberOfUnder12);
+            $stmt->bindParam(":rPrice", $reservation->reservationPrice);
+            $stmt->bindParam(":comment", $reservation->comment);
+            $stmt->execute();
+             } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to add reservation: " . $e->getMessage());
         }

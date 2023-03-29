@@ -2,6 +2,8 @@
 
 class reservation {
     public int $id;
+
+    public string $customerName;
     public string $restaurantName;
 
     public session $session;

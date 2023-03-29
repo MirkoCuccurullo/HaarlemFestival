@@ -7,6 +7,7 @@ use danceController;
 use danceControllerAPI;
 use festivalController;
 use loginController;
+use orderController;
 use registrationController;
 use userControllerAPI;
 
@@ -473,7 +474,40 @@ class router
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();
+                if (isset($_POST['checkSpace'])) {
+                    require_once __DIR__ . '/../controller/reservationController.php';
+                    $controller = new \reservationController();
+                    $controller->getAvailableSpacesPerSession();
+                }
                 break;
+                case '/add/reservation':
+                require_once __DIR__ . '/../controller/reservationController.php';
+                $controller = new \reservationController();
+                if (isset($_POST['addReservation'])) {
+                    $controller->addReservation();
+                }
+                break;
+
+                case '/api/order':
+                require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
+                $controller = new \orderControllerAPI();
+                $controller->getAll();
+                break;
+                case '/manage/order':
+                require_once __DIR__ . '/../controller/orderController.php';
+                $controller = new orderController();
+                $controller->manageOrder();
+                break;
+                case '/edit/order':
+                require_once __DIR__ . '/../controller/orderController.php';
+                $controller = new orderController();
+                if (isset($_POST['editOrder'])) {
+                    $controller->updateOrder();
+                } else {
+                    $controller->editOrder();
+                }
+                break;
+
             default:
                 echo '404';
         }

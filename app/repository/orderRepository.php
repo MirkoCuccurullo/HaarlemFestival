@@ -16,15 +16,16 @@ class orderRepository extends baseRepository{
         $last_id = $this->connection->lastInsertId();
         return $this->getOrder($last_id);
     }
-    public function updateOrder($order, $id){
+    public function updateOrder($order){
         $sql = "UPDATE orders SET user_id = :user_id, no_of_items = :no_of_items, total_price = :total_price WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":user_id", $order->user_id);
         $stmt->bindParam(":no_of_items", $order->no_of_items);
         $stmt->bindParam(":total_price", $order->total_price);
-        $stmt->bindParam(":id", $id);
+
+        $stmt->bindParam(":id", $order->id);
         $stmt->execute();
-        return $this->getOrder($id);
+        return $this->getOrder($order->id);
     }
     public function deleteOrder($id){
         $sql = "DELETE FROM orders WHERE id = :id";

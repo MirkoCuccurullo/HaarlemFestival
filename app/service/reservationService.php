@@ -56,6 +56,7 @@ class reservationService
             $spacesBooked += $reservation->numberOfUnder12;
             $spacesBooked += $reservation->numberOfAdults;
         }
-        return $session->capacity - $spacesBooked;
+        $capacity = $session->capacity;
+        return $capacity - $spacesBooked;
     }
 }
