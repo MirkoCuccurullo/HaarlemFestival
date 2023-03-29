@@ -91,7 +91,10 @@ class historyEventService{
         ];
     }
 
-
+    public function getHistoryEventByID(string $id)
+    {
+        return $this->historyEventRepository->getHistoryEventByID($id);
+    }
 
 
 }

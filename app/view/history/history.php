@@ -41,6 +41,14 @@
 
 <h3 class="schedule" id="schedule">SCHEDULE VIEW</h3> <br>
 <h3 class="from-to">FROM 27 JULY TO 31 JULY</h3>
+<label for="filter">Filter:</label>
+<select id="filter">
+    <option value="all">All</option>
+    <option value="thu">THURSDAY 27, July 2023</option>
+    <option value="fri">FRIDAY 28, July 2023</option>
+    <option value="sat">SATURDAY 29, July 2023</option>
+    <option value="sun">SUNDAY 30, July 2023</option>
+</select>
 <?php
 $prevDate = '';
 if (isset($historyTourTimetable)) {
@@ -74,8 +82,27 @@ if (isset($historyTourTimetable)) {
         <?php
     }
 }
-
 ?>
+<script>
+    //Add filter to schedule view
+    const filter = document.getElementById("filter");
+    const tables = document.querySelectorAll(".table1");
+
+    filter.addEventListener("change", function() {
+        const selectedOption = this.value;
+
+        tables.forEach(function(table) {
+            const eventDate = table.previousElementSibling.innerHTML;
+
+            if (selectedOption === "all" || eventDate.toLowerCase().includes(selectedOption)) {
+                table.style.display = "table";
+            } else {
+                table.style.display = "none";
+            }
+        });
+    });
+</script>
+</script>
 
 </body>
 

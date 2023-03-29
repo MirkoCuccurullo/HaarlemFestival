@@ -9,7 +9,7 @@ class historyEventRepository extends baseRepository
 {
     // Main Content CRUD
     public function updateMainContent($id, $mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText) {
-        $stmt = $this->connection->prepare("UPDATE historyPageContent SET mainImageHeader=:mainImageHeader, tourCardHeader=:tourCardHeader, tourCardParagraph=:tourCardParagraph, tourCardButtonText=:tourCardButtonText WHERE id=:id");
+        $stmt = $this->connection->prepare("UPDATE historypagecontent SET mainImageHeader=:mainImageHeader, tourCardHeader=:tourCardHeader, tourCardParagraph=:tourCardParagraph, tourCardButtonText=:tourCardButtonText WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':mainImageHeader', $mainImageHeader);
         $stmt->bindParam(':tourCardHeader', $tourCardHeader);
@@ -25,7 +25,7 @@ class historyEventRepository extends baseRepository
 
     // Schedule Content CRUD
     public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount) : bool {
-        $stmt = $this->connection->prepare("INSERT INTO historyTourTimetable (dateAndDay, time, language, ticketAmount) VALUES (:dateAndDay, :time, :language, :ticketAmount)");
+        $stmt = $this->connection->prepare("INSERT INTO historytourtimetable (dateAndDay, time, language, ticketAmount) VALUES (:dateAndDay, :time, :language, :ticketAmount)");
         $stmt->bindParam(':dateAndDay', $dateAndDay);
         $stmt->bindParam(':time', $time);
         $stmt->bindParam(':language', $language);
@@ -33,12 +33,12 @@ class historyEventRepository extends baseRepository
         return $stmt->execute();
     }
     public function deleteHistorySchedule($id) {
-        $stmt = $this->connection->prepare("DELETE FROM historyTourTimetable WHERE id=:id");
+        $stmt = $this->connection->prepare("DELETE FROM historytourtimetable WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
     public function updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount) {
-        $stmt = $this->connection->prepare("UPDATE historyTourTimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount WHERE id=:id");
+        $stmt = $this->connection->prepare("UPDATE historytourtimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':dateAndDay', $dateAndDay);
         $stmt->bindParam(':time', $time);
@@ -54,20 +54,20 @@ class historyEventRepository extends baseRepository
 
     // Card Content CRUD
     public function insertHistoryCardContent($title, $image, $content) : bool {
-        $stmt = $this->connection->prepare("INSERT INTO historyEvent (title, image, content) VALUES (:title, :image, :content)");
+        $stmt = $this->connection->prepare("INSERT INTO historyevent (title, image, content) VALUES (:title, :image, :content)");
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':image', $image);
         $stmt->bindParam(':content', $content);
         return $stmt->execute();
     }
     public function deleteHistoryCardContent($id) {
-        $stmt = $this->connection->prepare("DELETE FROM historyEvent WHERE id=:id");
+        $stmt = $this->connection->prepare("DELETE FROM historyevent WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
     }
     public function updateHistoryCardContent($id, $title, $image, $content) {
-        $stmt = $this->connection->prepare("UPDATE historyEvent SET title=:title, image=:image, content=:content WHERE id=:id");
+        $stmt = $this->connection->prepare("UPDATE historyevent SET title=:title, image=:image, content=:content WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':image', $image);
@@ -82,7 +82,7 @@ class historyEventRepository extends baseRepository
     // Get Methods
     public function getAllHistoryCard()
     {
-        $stmt = $this->connection->prepare("SELECT * FROM historyEvent");
+        $stmt = $this->connection->prepare("SELECT * FROM historyevent");
         $stmt -> execute();
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyPageCard');
@@ -91,7 +91,7 @@ class historyEventRepository extends baseRepository
     }
     public function getHistoryPageContent()
     {
-        $stmt = $this->connection->prepare("SELECT * FROM historyPageContent");
+        $stmt = $this->connection->prepare("SELECT * FROM historypagecontent");
         $stmt -> execute();
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyPageContent');
@@ -100,14 +100,14 @@ class historyEventRepository extends baseRepository
     }
     public function getHistoryTourTimetable()
     {
-        $stmt = $this->connection->prepare("SELECT * FROM historyTourTimetable ");
+        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable ");
         $stmt -> execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $result = $stmt->fetchAll();
         return $result;
     }
     public function getHistoryTicketById($id) {
-        $stmt = $this->connection->prepare("SELECT * FROM historyTourTimetable WHERE id=:id");
+        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -115,7 +115,17 @@ class historyEventRepository extends baseRepository
     }
     public function getLocationDetailById($id)
     {
-        $stmt = $this->connection->prepare("SELECT * FROM historyEventDetails WHERE id=:id");
+        $stmt = $this->connection->prepare("SELECT * FROM historyeventdetails WHERE id=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function getHistoryEventByID(string $id)
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM historyevent WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);

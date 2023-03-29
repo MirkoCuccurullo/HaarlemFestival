@@ -317,6 +317,7 @@ class router
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
                 $controller->addDanceEvent();
+                $controller->addHistoryEvent();
                 break;
 
             case '/shoppingCart/remove':
