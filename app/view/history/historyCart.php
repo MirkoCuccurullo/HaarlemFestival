@@ -1,5 +1,3 @@
-<?php include __DIR__ . '/../historyHeader.php'; ?>
-
 <!Doctype html>
 <html lang="en">
 <head>
@@ -75,25 +73,22 @@
     <table>
         <thead>
         <tr>
-            <th scope="col">Total</th>
             <th scope="col">Grand Total</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>0</td>
-            <td>0</td>
         </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
 
-        </tr>
         </tbody>
     </table>
 </div>
 
-<button id="addToCartBut">Add to cart</button>
+<form method="post" action="/shoppingCart/add">
+    <input type="hidden" name="historyEventId" value="1">
+    <button id="addToCartBut" name="historyEventId">Add to cart</button>
+</form>
 
 <script>
     var inputFields = document.querySelectorAll('input[name="quantity"]');
@@ -126,5 +121,3 @@
 
 </html>
 
-
-<?php //include __DIR__ . '/../footer.php'; ?>

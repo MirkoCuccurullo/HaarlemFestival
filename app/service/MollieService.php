@@ -16,6 +16,7 @@ class MollieService
           $orderId = $order->id;
           $user_id = $order->user_id;
 
+
           $payment = $this->mollie->payments->create([
               "amount" => [
                   "currency" => "EUR",
