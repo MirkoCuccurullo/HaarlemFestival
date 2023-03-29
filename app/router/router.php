@@ -483,6 +483,7 @@ class router
                 $controller = new \ticketControllerAPI();
                 $id = $_GET['id'];
                 $controller->scanTicket($id);
+                break;
 
             case '/webhook':
                 require_once __DIR__ . '/../controller/webhookController.php';

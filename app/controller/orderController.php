@@ -26,7 +26,7 @@ class orderController{
     public function updateOrder(): void
     {
 
-        $this->orderService->updateOrder($_POST['id'], $_POST['user_id'], $_POST['no_of_items'], $_POST['total_price'],);
+        $this->orderService->updateOrder($_POST['id'], $_POST['user_id'], $_POST['no_of_items'], $_POST['total_price'], $_POST['status']);
         header('Location: /manage/orders');
     }
 }
