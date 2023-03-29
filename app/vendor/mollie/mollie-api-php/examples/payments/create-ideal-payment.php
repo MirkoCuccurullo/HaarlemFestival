@@ -9,7 +9,7 @@ try {
      *
      * See: https://www.mollie.com/dashboard/developers/api-keys
      */
-    require "../initialize.php";
+    require __DIR__ . "/../initialize.php";
 
     /*
      * First, let the customer pick the bank in a simple HTML form. This step is actually optional.

@@ -18,16 +18,20 @@ class orderService
         return $this->orderRepository->createOrder($order);
     }
 
-    public function updateOrder($id, $user_id, $no_of_items, $total_price, $dance_events)
+    public function updateOrder($id, $user_id, $no_of_items, $total_price)
     {
         $order = new order();
         $order->id = $id;
         $order->user_id = $user_id;
         $order->no_of_items = $no_of_items;
         $order->total_price = $total_price;
-        $order->dance_events = $dance_events;
 
         return $this->orderRepository->updateOrder($order);
+	}
+    public function updateOrderStatus($order_id, $status)
+    {
+        return $this->orderRepository->updateOrderStatus($order_id, $status);
+
     }
 
     public function deleteOrder($id)

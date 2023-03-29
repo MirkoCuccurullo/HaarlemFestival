@@ -3,6 +3,7 @@
 namespace router;
 
 use controller\qrController;
+use controller\webhookController;
 use danceController;
 use danceControllerAPI;
 use festivalController;
@@ -18,7 +19,7 @@ class router
      */
     public function route($url)
     {
-
+        error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
             case'/qr':
                 require_once __DIR__ . '/../controller/qrController.php';
@@ -30,6 +31,12 @@ class router
                 require_once __DIR__ . '/../controller/homePageController.php';
                 $controller = new \homePageController();
                 $controller->index();
+                break;
+
+            case'/home/test':
+                require_once __DIR__ . '/../controller/homePageController.php';
+                $controller = new \homePageController();
+                $controller->index2();
                 break;
 
             case'/login':
@@ -339,6 +346,7 @@ class router
                 $controller->submitOrder();
                 break;
 
+
             case'/festival':
                 require_once __DIR__ . '/../controller/festivalController.php';
                 $controller = new festivalController();
@@ -468,6 +476,25 @@ class router
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
                 }
+                break;
+
+            case '/api/tickets/scan?id=' . $_GET['id']:
+                require_once __DIR__ . '/../api/controllers/ticketControllerAPI.php';
+                $controller = new \ticketControllerAPI();
+                $id = $_GET['id'];
+                $controller->scanTicket($id);
+
+            case '/webhook':
+                require_once __DIR__ . '/../controller/webhookController.php';
+                $controller = new webhookController();
+                $controller->webhook();
+                break;
+
+            case '/shoppingCart/confirmation?order_id=' . $_GET['order_id']:
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $order_id = $_GET['order_id'];
+                $controller->confirmation($order_id);
                 break;
 
             case "/restaurant":

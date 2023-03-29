@@ -7,6 +7,7 @@ class order{
     public int $no_of_items;
     public float $total_price;
     public $dance_events = array();
+    public string $status;
 
 //    public function __construct()
 //    {

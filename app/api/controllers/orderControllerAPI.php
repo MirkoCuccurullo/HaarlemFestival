@@ -14,10 +14,10 @@ class orderControllerAPI extends controller
 
     public function getAll()
     {
-        $token = $this->checkForJwt();
-        if (!$token){
-            return;
-        }
+//        $token = $this->checkForJwt();
+//        if (!$token){
+//            return;
+//        }
 
         $offset = NULL;
         $limit = NULL;
@@ -66,27 +66,37 @@ class orderControllerAPI extends controller
 
     public function add()
     {
-        $token = $this->checkForJwt();
-        if (!$token) {
-            return;
-        }
+//        $token = $this->checkForJwt();
+//        if (!$token) {
+//            return;
+//        }
+//        $json = file_get_contents('php://input');
+//        $data = json_decode($json);
+//        $order = new \Models\order();
+//        $order->user_id = $data['user_id'];
+//        $order->no_of_items = $data['no_of_items'];
+//        $order->total_price = $data['total_price'];
+
         $data = $this->createObjectFromPostedJson("Models\\order");
 
-        $appointment = $this->orderService->createOrder($data);
+        $appointment = $this->orderService->createOrder($order);
 
         $this->respond($appointment);
     }
 
     public function update($id)
     {
-        $token = $this->checkForJwt();
-        if (!$token) {
-            return;
-        }
-        $data = $this->createObjectFromPostedJson("Models\\order");
+//        $token = $this->checkForJwt();
+//        if (!$token) {
+//            return;
+//        }
+        //$data = $this->createObjectFromPostedJson("Models\\order");
 
-        $appointment = $this->orderService->updateOrder($data, $id);
+        $payload = file_get_contents('php://input');
+        $data = json_decode($payload,true);
+        $status = $data['metadata']['order_id'];
+        $this->orderService->updateOrderStatus($id, $status);
+        http_response_code(200);
 
-        $this->respond($appointment);
     }
 }
