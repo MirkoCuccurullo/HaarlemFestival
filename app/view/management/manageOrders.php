@@ -1,8 +1,15 @@
 <?php
 include __DIR__ . '/../header.php'; ?>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
+
 <h1 class="text-center mb-3">Manage Orders</h1>
 <br>
+<form method="post">
+    <button type="submit" class="btn btn-primary" name="jsonToCVS">Download CVS file</button>
+</form>
+<br>
+
 <div class="table table-responsive">
     <table class="table text-center">
         <thead>
@@ -45,18 +52,24 @@ include __DIR__ . '/../header.php'; ?>
                 const deleteButton = document.createElement("button")
                 const editButton = document.createElement("button")
                 const invoiceButton = document.createElement("button")
+                const test = document.createElement("input")
                 const editForm = document.createElement("form");
                 const idInput = document.createElement("input");
                 editForm.action = '/edit/order';
-                editForm.method = 'post';
+                editForm.method = "POST";
+                test.type = "hidden";
+                test.value = order.id;
+                test.name = "id";
 
-                invoiceButton.className = "btn btn-info";
+                invoiceButton.className = "btn btn-primary";
                 deleteButton.className = "btn btn-danger";
                 editButton.className = "btn btn-warning";
                 deleteButton.type = "button";
                 editButton.type = "submit";
+
                 //TODO generate invoice from order
                 invoiceButton.type = "submit";
+
                 idCol.scope = "row";
                 idInput.type = "hidden";
 
@@ -70,16 +83,14 @@ include __DIR__ . '/../header.php'; ?>
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
                 invoiceButton.innerHTML = "Invoice";
-                editForm.appendChild(idInput);
                 editForm.appendChild(editButton);
+                editForm.appendChild(idInput);
+                editForm.appendChild(test);
 
                 deleteButton.addEventListener("click", function(){
                     deleteOrder(order.id);
+                    table.removeChild(newRow);
                 });
-
-
-                editForm.appendChild(editButton);
-                editForm.appendChild(idInput);
 
                 deleteButtonCol.appendChild(deleteButton);
                 editButtonCol.appendChild(editForm);
@@ -94,6 +105,7 @@ include __DIR__ . '/../header.php'; ?>
                 newRow.appendChild(statusCol);
                 newRow.appendChild(deleteButtonCol);
                 newRow.appendChild(editButtonCol);
+                newRow.appendChild(invoiceButtonCol);
 
                 const table = document.getElementById("orderTable");
                 table.appendChild(newRow);
@@ -115,6 +127,8 @@ include __DIR__ . '/../header.php'; ?>
         </tbody>
     </table>
 </div>
+
+
 
 <?php include __DIR__ . '/../footer.php'; ?>
 

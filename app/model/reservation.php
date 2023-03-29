@@ -2,8 +2,6 @@
 
 class reservation {
     public int $id;
-
-    public string $customerName;
     public string $restaurantName;
 
     public session $session;
@@ -12,6 +10,7 @@ class reservation {
     public int $numberOfAdults;
     public int $numberOfUnder12;
     public float $reservationPrice;
+    public string $customerName;
     public string $customerEmail;
     public string $comment;
 }

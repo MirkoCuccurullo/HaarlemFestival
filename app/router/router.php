@@ -522,18 +522,29 @@ class router
                 $controller->getAll();
                 break;
                 case '/manage/order':
+                case '/manage/orders':
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
+                if (isset($_POST['jsonToCSV'])) {
+                    echo "json is a bitch";
+                    $controller->jsonToCSV();
+                }
                 $controller->manageOrder();
                 break;
-                case '/edit/order':
+            case 'edit/order':
+            case '/edit/order':
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
                 if (isset($_POST['editOrder'])) {
                     $controller->updateOrder();
-                } else {
+                } else{
                     $controller->editOrder();
                 }
+                break;
+                case '/api/delete/order':
+                require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
+                $controller = new \orderControllerAPI();
+                $controller->delete($_POST['id']);
                 break;
 
             default:

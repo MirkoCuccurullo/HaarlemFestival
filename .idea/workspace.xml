@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Order management">
+      <change beforePath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/controllers/orderControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controllers/orderControllerAPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/orderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/orderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/shoppingCartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/shoppingCartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/orderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/orderRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/orderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/orderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editReservation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php.bak" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageReservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageSessions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageSessions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680010749139</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Order management">
+      <created>1680084383107</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680084383107</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +252,8 @@
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
     <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
-    <option name="LAST_COMMIT_MESSAGE" value="jlgvwlkebkfqjòkbnrejk" />
+    <MESSAGE value="Order management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Order management" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
