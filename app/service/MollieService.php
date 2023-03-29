@@ -10,10 +10,11 @@ class MollieService
       $this->mollie->setApiKey($Mollie_Key);
   }
 
-  public function pay($order){
+  public function pay($order, $tickets){
       try {
           $method = $this->mollie->methods->get(\Mollie\Api\Types\PaymentMethod::IDEAL, ["include" => "issuers"]);
           $orderId = $order->id;
+          $user_id = $order->user_id;
 
           $payment = $this->mollie->payments->create([
               "amount" => [
@@ -22,12 +23,14 @@ class MollieService
               ],
               "description" => "Order #{$orderId}",
               //"description" => "Amount to pay for the order",
-              "redirectUrl" => "http://localhost/home",
-              "webhookUrl" => "https://1d55-31-151-65-113.eu.ngrok.io/we",
+              "redirectUrl" => "http://localhost/shoppingCart/confirmation?order_id={$orderId}" ,
+              "webhookUrl" => "https://7c28-31-151-65-113.eu.ngrok.io/webhook",
               "method" => \Mollie\Api\Types\PaymentMethod::IDEAL,
               "issuer" => !empty($_POST["issuer"]) ? $_POST["issuer"] : null,
               "metadata" => [
                   "order_id" => $orderId,
+                  "user_id" => $user_id,
+                  "tickets" => $tickets,
               ],
               //"issuer"      => "ideal_INGBNL2A", // e.g. "ideal_INGBNbL2A"
           ]);
@@ -53,6 +56,14 @@ class MollieService
 
   public function getAllPayments(){
       return $this->mollie->payments->page();
+  }
+
+  public function getPayment($payment_id){
+      try {
+          return $this->mollie->payments->get($payment_id);
+      } catch (\Mollie\Api\Exceptions\ApiException $e) {
+            echo "API call failed: " . htmlspecialchars($e->getMessage());
+      }
   }
 
   public function getPaymentStatus($payment_id){

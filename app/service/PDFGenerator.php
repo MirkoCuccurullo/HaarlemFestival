@@ -18,7 +18,7 @@ require_once __DIR__ . '/../service/qrCodeGenerator.php';
 use Dompdf\Dompdf;
 class PDFGenerator
 {
-    public function createPDF($order)
+    public function createPDF($order_id, $user_id)
     {
         $dompdf = new Dompdf();
 
@@ -33,12 +33,12 @@ class PDFGenerator
         ';
 
         $userService = new userService();
-        $user = $userService->getUserById($order->user_id);
+        $user = $userService->getUserById($user_id);
 
         $html .= "<h1 class='mb-5 text-center'>" . "Hey " . $user->name . ", here are your tickets!" . "</h1>";
 
         $ticketService = new ticketService();
-        $tickets = $ticketService->getTicketsByOrderId($order->id);
+        $tickets = $ticketService->getTicketsByOrderId($order_id);
 
         foreach ($tickets as $ticket){
 
@@ -121,7 +121,7 @@ class PDFGenerator
 // Render the HTML as PDF
         $dompdf->render();
         $pdf_content = $dompdf->output();
-        $file_name = "tickets_" . $order->id . ".pdf";
+        $file_name = "tickets_" . $order_id . ".pdf";
         file_put_contents($file_name, $pdf_content);
 
         return $file_name;

@@ -86,14 +86,17 @@ class orderControllerAPI extends controller
 
     public function update($id)
     {
-        $token = $this->checkForJwt();
-        if (!$token) {
-            return;
-        }
-        $data = $this->createObjectFromPostedJson("Models\\order");
+//        $token = $this->checkForJwt();
+//        if (!$token) {
+//            return;
+//        }
+        //$data = $this->createObjectFromPostedJson("Models\\order");
 
-        $appointment = $this->orderService->updateOrder($data, $id);
+        $payload = file_get_contents('php://input');
+        $data = json_decode($payload,true);
+        $status = $data['metadata']['order_id'];
+        $this->orderService->updateOrderStatus($id, $status);
+        http_response_code(200);
 
-        $this->respond($appointment);
     }
 }

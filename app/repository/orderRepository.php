@@ -39,7 +39,7 @@ class orderRepository extends baseRepository{
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\order');
-        $result = $stmt->fetchAll();
+        $result = $stmt->fetch();
         return $result;
 
     }

@@ -36,6 +36,7 @@ class shoppingCartController
 
             $order->no_of_items = 0;
             $order->total_price = 0;
+            $order->status = 'open';
         }
 
         if (isset($_POST['addDanceEvent'])) {
@@ -96,7 +97,6 @@ class shoppingCartController
                 $order = $_SESSION['order'];
 
                 //$payment_id = $_SESSION['payment_id'];
-                $order->status = "bruh";
 
                 $orderService = new OrderService();
                 $order_id = $orderService->createOrder($order);
@@ -104,61 +104,45 @@ class shoppingCartController
 
                 $ticketService = new TicketService();
                 $tickets = $ticketService->createTickets($order);
-                foreach ($tickets as $ticket)
-                    $ticketService->insertTicket($ticket);
 
+                $mollieService = new MollieService();
+                $mollieService->pay($order, $tickets);
 
-                //$tickets = $ticketService->getTicketsByOrderID($order_id);
-                $pdfGenerator = new PDFGenerator();
-                $pdf = $pdfGenerator->createPDF($order);
+//
+//                foreach ($tickets as $ticket)
+//                    $ticketService->insertTicket($ticket);
+//
+//
+//                $pdfGenerator = new PDFGenerator();
+//                $pdf = $pdfGenerator->createPDF($order);
+//
+//                $userService = new UserService();
+//                $user = $userService->getUserByID($order->user_id);
+//
+//                $mailService = new SMTPServer();
+//
+//                $receiverEmail = $user->email;
+//                $receiverName = $user->name;
+//                $subject = "Your Ticket(s)";
+//                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) are attached to this email. See you at the events!";
+//                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf);
+//                unlink($pdf);
 
-                $userService = new UserService();
-                $user = $userService->getUserByID($order->user_id);
-
-                $mailService = new SMTPServer();
-
-                $receiverEmail = $user->email;
-                $receiverName = $user->name;
-                $subject = "Your Ticket(s)";
-                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) are attached to this email. See you at the events!";
-                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf);
-                unlink($pdf);
-
-                $router = new Router();
-                $router->route('/');
+//                $router = new Router();
+//                $router->route('/');
                 unset($_SESSION['order']);
 
 
-
-                //$mollieService = new MollieService();
-                //$mollieService->pay($order);
             }
         }
     }
-
-    public function updateOrderStatus()
+    public function confirmation($order_id)
     {
-
-        $payload = file_get_contents('php://input');
-
-// Verify the webhook signature
-//        $signature = $_SERVER['HTTP_X_MOLLIE_SIGNATURE'];
-//        $isValid = verifyMollieSignature($payload, $signature);
-
-// Extract the relevant data from the payload
-        $data = json_decode($payload, true);
-        //$paymentId = $data['id'];
-        $paymentStatus = $data['status'];
-        $orderId = $data['metadata']['order_id'];
-
-// Update the order status in your database based on the payment status
-        $orderService = new OrderService();
-        $orderService->updateOrderStatus($orderId, $paymentStatus);
-
-// Return a response to Mollie
-//        http_response_code(200);
-//        echo 'OK';
-
-
+        $orderService = new orderService();
+        $order = $orderService->getOrder($order_id);
+        $status = $order->status;
+        require_once __DIR__ . '/../view/shoppingCart/confirmation.php';
     }
+
+
 }

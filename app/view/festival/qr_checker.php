@@ -9,7 +9,7 @@ include __DIR__ . '/../header_dance.php';
 
     </div>
 </div>
-<h1 id="message">h</h1>
+<h1 id="message" style="color: #FFFFFF"></h1>
 
 
 
