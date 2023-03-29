@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Sharing buttons on Twitter and Facebook">
+      <change afterPath="$PROJECT_DIR$/app/controller/orderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/management/editOrder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/orderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/orderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/orderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/orderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style_food.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+    </list>
+=======
+
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end" />
+
+>>>>>>> 76eab8fa5b44af1978f63f428b91d03078f63ec8
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="09b6758f-a11b-4e0b-8a86-446ddd171d4d" />
+        <option name="url" value="https://github.com/MirkoCuccurullo/HaarlemFestival.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/view/registration/registration.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2LVWZcx2dKQ3inczOL30gcEf9Dc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web Development 2022/Lesson 2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public" />
+      <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\view\history" />
+      <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public\css" />
+      <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\view\registration" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="" />
+      <created>1675956787229</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675956787229</updated>
+      <workItem from="1675956788715" duration="1691000" />
+      <workItem from="1675961176450" duration="1991000" />
+      <workItem from="1675963616695" duration="32000" />
+      <workItem from="1675964217064" duration="8497000" />
+      <workItem from="1676019558661" duration="339000" />
+      <workItem from="1676020368775" duration="1414000" />
+      <workItem from="1676023023712" duration="33000" />
+      <workItem from="1676034151017" duration="6542000" />
+      <workItem from="1676054208773" duration="7852000" />
+      <workItem from="1676116887911" duration="14565000" />
+      <workItem from="1676131830736" duration="12210000" />
+      <workItem from="1676200675567" duration="12179000" />
+      <workItem from="1676213874022" duration="1330000" />
+      <workItem from="1676222634403" duration="3000" />
+      <workItem from="1676222677793" duration="329000" />
+      <workItem from="1676284248207" duration="593000" />
+      <workItem from="1676379208893" duration="4140000" />
+      <workItem from="1676384011086" duration="3041000" />
+      <workItem from="1676393366852" duration="155000" />
+      <workItem from="1676393534712" duration="1111000" />
+      <workItem from="1676409410408" duration="3373000" />
+      <workItem from="1676444127619" duration="1957000" />
+      <workItem from="1676448332398" duration="4721000" />
+      <workItem from="1676453203578" duration="7722000" />
+      <workItem from="1676463992575" duration="2323000" />
+      <workItem from="1676578029732" duration="4527000" />
+      <workItem from="1676740045295" duration="4239000" />
+      <workItem from="1676752223619" duration="831000" />
+      <workItem from="1676827427403" duration="596000" />
+      <workItem from="1676897446736" duration="6648000" />
+      <workItem from="1676908911673" duration="2397000" />
+      <workItem from="1676917765478" duration="236000" />
+      <workItem from="1676918140014" duration="1458000" />
+      <workItem from="1676919638062" duration="5496000" />
+      <workItem from="1676976078131" duration="9976000" />
+      <workItem from="1676990407891" duration="1944000" />
+      <workItem from="1677001902806" duration="3142000" />
+      <workItem from="1677054163654" duration="323000" />
+      <workItem from="1677055520352" duration="9648000" />
+      <workItem from="1677143023603" duration="21000" />
+      <workItem from="1677179873655" duration="348000" />
+      <workItem from="1677180237238" duration="3215000" />
+      <workItem from="1677246251913" duration="4376000" />
+      <workItem from="1677258930694" duration="415000" />
+      <workItem from="1677328634972" duration="7889000" />
+      <workItem from="1677337318264" duration="10462000" />
+      <workItem from="1677351369908" duration="371000" />
+      <workItem from="1677357049604" duration="6054000" />
+      <workItem from="1677370052512" duration="5340000" />
+      <workItem from="1677414386449" duration="2422000" />
+      <workItem from="1677416860606" duration="5433000" />
+      <workItem from="1677432468399" duration="3261000" />
+      <workItem from="1677445453662" duration="35000" />
+      <workItem from="1677582386793" duration="3711000" />
+      <workItem from="1677586831919" duration="105000" />
+      <workItem from="1677587061171" duration="696000" />
+      <workItem from="1677767845664" duration="332000" />
+      <workItem from="1677768196094" duration="5159000" />
+      <workItem from="1677859382670" duration="19867000" />
+      <workItem from="1677960624704" duration="47000" />
+      <workItem from="1677964453195" duration="5083000" />
+      <workItem from="1678273816380" duration="9507000" />
+      <workItem from="1678366856192" duration="10847000" />
+      <workItem from="1678454722455" duration="16000" />
+      <workItem from="1679394353466" duration="929000" />
+      <workItem from="1679585131589" duration="7392000" />
+      <workItem from="1680012798196" duration="532000" />
+      <workItem from="1680018058672" duration="5357000" />
+      <workItem from="1680076015812" duration="2405000" />
+    </task>
+    <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
+      <created>1676210557441</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676210557441</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Complete Registration with Captcha">
+      <created>1677583861375</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677583861375</updated>
+    </task>
+    <task id="LOCAL-00003" summary="History main event page + Cart page front-end">
+      <created>1678274145118</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678274145118</updated>
+    </task>
+    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010466747</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010466747</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010749139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010749139</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Sharing buttons on Twitter and Facebook">
+      <created>1680020075764</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680020075764</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
+    <MESSAGE value="Complete Registration with Captcha" />
+    <MESSAGE value="History main event page + Cart page front-end" />
+    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
+    <MESSAGE value="Sharing buttons on Twitter and Facebook" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sharing buttons on Twitter and Facebook" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
