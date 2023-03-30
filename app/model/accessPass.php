@@ -9,8 +9,10 @@ class accessPass
     public function displayPass($id)
     {
         if($id == 1)
-            echo "All-days access pass";
+            $pass = "All-days access pass";
         else
-            echo "Day-" . ($id-1) . " access pass";
+            $pass = "Day-" . ($id-1) . " access pass";
+
+        return $pass;
     }
 }

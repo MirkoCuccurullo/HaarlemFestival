@@ -3,6 +3,7 @@
 namespace router;
 
 use controller\qrController;
+use controller\webhookController;
 use danceController;
 use danceControllerAPI;
 use festivalController;
@@ -20,6 +21,15 @@ class router
     {
         error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
+            case '/generateToken':
+                require_once __DIR__ . '/../controller/festivalController.php';
+                $controller = new festivalController();
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $controller->generateToken();
+                } else {
+                    $controller->tokenPage();
+                }
+                break;
             case'/qr':
                 require_once __DIR__ . '/../controller/qrController.php';
                 $controller = new qrController();
@@ -168,22 +178,6 @@ class router
                 $controller->editEvent();
                 break;
 
-            case'/history':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyMainPage();
-                break;
-            case'/historyCart':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyCartPage($_POST['id']);
-            break;
-            case '/locationDetail':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyLocationDetailPage($_POST['id']);
-            break;
-
             case '/signin':
                 require '../controller/loginController.php';
                 $controller = new loginController();
@@ -238,7 +232,10 @@ class router
                 $controller->displayAddedContent();
                 break;
             case '/historyManagement/add':
-                require __DIR__ . '/../view/history/historyAdmin/addContent.php';
+                require __DIR__ . '/../view/history/historyAdmin/addCardContent.php';
+                break;
+            case '/historyManagement/addScheduleContent':
+                require __DIR__ . '/../view/history/historyAdmin/addScheduleContent.php';
                 break;
 
 
@@ -294,9 +291,9 @@ class router
                 break;
 
             case'/food':
-            case '/restaurant':
-            case '/festival/food':
+            case '/festival/yummy':
             case '/yummy':
+                case '/culinary':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayFoodPage();
@@ -331,6 +328,7 @@ class router
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
                 $controller->addDanceEvent();
+                $controller->addHistoryEvent();
                 break;
 
             case '/shoppingCart/remove':
@@ -344,6 +342,7 @@ class router
                 $controller = new \shoppingCartController();
                 $controller->submitOrder();
                 break;
+
 
             case'/festival':
                 require_once __DIR__ . '/../controller/festivalController.php';
@@ -498,6 +497,31 @@ class router
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
                 }
+                break;
+
+            case '/api/tickets/scan?id=' . $_GET['id']:
+                require_once __DIR__ . '/../api/controllers/ticketControllerAPI.php';
+                $controller = new \ticketControllerAPI();
+                $id = $_GET['id'];
+                $controller->scanTicket($id);
+
+            case '/webhook':
+                require_once __DIR__ . '/../controller/webhookController.php';
+                $controller = new webhookController();
+                $controller->webhook();
+                break;
+
+            case '/shoppingCart/confirmation?order_id=' . $_GET['order_id']:
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $order_id = $_GET['order_id'];
+                $controller->confirmation($order_id);
+                break;
+
+            case "/restaurant":
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayRestaurant();
                 break;
             default:
                 echo '404';

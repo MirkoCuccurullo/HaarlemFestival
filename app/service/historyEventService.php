@@ -10,19 +10,57 @@ class historyEventService{
     }
 
     /*                  CRUD METHODS                 */
-    public function addContent(array $data)
+    // Add methods
+    public function addCardContent(array $data)
     {
-        $preparedData = $this->prepareData($data);
-        $this->historyEventRepository->insertHistoryContent($preparedData['title'], $preparedData['image'], $preparedData['content']);
+        $preparedData = $this->prepareCardContentData($data);
+        $this->historyEventRepository->insertHistoryCardContent($preparedData['title'], $preparedData['image'], $preparedData['content']);
     }
-    public function deleteContent($id) {
-        $this->historyEventRepository->deleteHistoryContent($id);
+    public function addScheduleContent(array $data)
+    {
+        $preparedData = $this->prepareScheduleContentData($data);
+        $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'], $preparedData['language'], $preparedData['ticketAmount']);
     }
 
-    public function updateContent($id, $title, $image, $content) {
-        return $this->historyEventRepository->updateHistoryContent($id, $title, $image, $content);
+    // Delete methods
+    public function deleteCardContent($id) {
+        $this->historyEventRepository->deleteHistoryCardContent($id);
     }
-    private function prepareData(array $data): array
+    public function deleteScheduleContent($id) {
+        $this->historyEventRepository->deleteHistorySchedule($id);
+    }
+
+    // Update methods
+    public function updateCardContent($id, $title, $image, $content) {
+        return $this->historyEventRepository->updateHistoryCardContent($id, $title, $image, $content);
+    }
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
+        return $this->historyEventRepository->updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount);
+    }
+    public function updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
+        return $this->historyEventRepository->updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
+    }
+
+    // Get methods
+    public function getAllHistoryCard() {
+        return $this->historyEventRepository->getAllHistoryCard();
+    }
+    public function getHistoryPageContent() {
+        return $this->historyEventRepository->getHistoryPageContent();
+    }
+    public function getHistoryTourTimetable() {
+        return $this->historyEventRepository->getHistoryTourTimetable();
+    }
+    public function getHistoryTicketById($id){
+        return $this->historyEventRepository->getHistoryTicketById($id);
+    }
+    public function getLocationDetailById($id)
+    {
+        return $this->historyEventRepository->getLocationDetailById($id);
+    }
+
+    // Prepare methods
+    private function prepareCardContentData(array $data): array
     {
         $title = isset($data['title']) && !empty($data['title']) ? htmlspecialchars($data['title']) : null;
         $image = isset($data['image']) && !empty($data['image']) ? htmlspecialchars($data['image']) : null;
@@ -38,28 +76,25 @@ class historyEventService{
             'content' => $content,
         ];
     }
-
-
-    /*                  GET METHODS                 */
-    public function getAllHistoryCard() {
-        return $this->historyEventRepository->getAllHistoryCard();
-    }
-
-    public function getHistoryPageContent() {
-        return $this->historyEventRepository->getHistoryPageContent();
-    }
-
-    public function getHistoryTourTimetable() {
-        return $this->historyEventRepository->getHistoryTourTimetable();
-    }
-
-    public function getHistoryTicketById($id){
-        return $this->historyEventRepository->getHistoryTicketById($id);
-    }
-
-    public function getLocationDetailById($id)
+    private function prepareScheduleContentData(array $data): array
     {
-        return $this->historyEventRepository->getLocationDetailById($id);
+        $dateAndDay = isset($data['$dateAndDay']) && !empty($data['$dateAndDay']) ? htmlspecialchars($data['$dateAndDay']) : null;
+        $time = isset($data['$time']) && !empty($data['$time']) ? htmlspecialchars($data['$time']) : null;
+        $language = isset($data['$language']) && !empty($data['$language']) ? htmlspecialchars($data['$language']) : null;
+        $ticketAmount = isset($data['$ticketAmount']) && !empty($data['$ticketAmount']) ? htmlspecialchars($data['$ticketAmount']) : null;
+
+        return [
+            'dateAndDay' => $dateAndDay,
+            'time' => $time,
+            'language' => $language,
+            'ticketAmount' => $ticketAmount,
+        ];
     }
+
+    public function getHistoryEventByID(string $id)
+    {
+        return $this->historyEventRepository->getHistoryEventByID($id);
+    }
+
 
 }

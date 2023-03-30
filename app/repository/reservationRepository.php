@@ -16,16 +16,14 @@ class reservationRepository extends baseRepository
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'reservation');
             $result = $stmt->fetchAll();
-
             foreach ($result as $reservation) {
                 $reservation->session = $this->getSessionById($reservation->sessionId);
             }
-
-            return $result;
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to get reservations: " . $e->getMessage());
         }
+        return $result;
     }
 
     public function updateReservation($reservation):void
@@ -58,7 +56,7 @@ class reservationRepository extends baseRepository
             error_log("Failed to add reservation: " . $e->getMessage());
         }
     }
-    private function getSessionByID($id):array
+    public function getSessionByID($id):array
     {
         try{
             $sql = "SELECT * FROM session WHERE id = :id";
@@ -104,6 +102,23 @@ class reservationRepository extends baseRepository
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to deactivate reservation: " . $e->getMessage());
+        }
+    }
+
+    public function getReservationsBySessionId(int $sessionId)
+    {
+        try{
+            $sql = "SELECT * FROM reservation WHERE sessionId = :sessionId";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":sessionId", $sessionId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'reservation');
+            $result = $stmt->fetchAll();
+            return $result;
+
+        } catch (PDOException $e) {
+            // Log the error and return failure status
+            error_log("Failed to get reservations: " . $e->getMessage());
         }
     }
 }
