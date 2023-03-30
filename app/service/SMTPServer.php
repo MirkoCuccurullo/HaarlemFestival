@@ -10,9 +10,9 @@ class SMTPServer
     public function sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf = null){
 
 
-        require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/Exception.php';
-        require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
-        require __DIR__ . '/../../vendor/PHPMailer/PHPMailer/src/SMTP.php';
+        require __DIR__ . '/../vendor/PHPMailer/PHPMailer/src/Exception.php';
+        require __DIR__ . '/../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
+        require __DIR__ . '/../vendor/PHPMailer/PHPMailer/src/SMTP.php';
         require '../config.php';
 
         //initialize client
