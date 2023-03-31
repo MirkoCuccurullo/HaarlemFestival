@@ -92,7 +92,9 @@ class historyEventController
                 $this->addCardContent($_POST);
                 $addError = "Content added";
             } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submitSchedule'])) {
-                $this->addScheduleContent($_POST);
+//                print_r($_POST);
+//                var_dump($_POST);
+                $this->addScheduleContent($_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
                 $addError = "Content added";
             } else {
                 $addError = "Could not add content";
@@ -103,11 +105,14 @@ class historyEventController
         }
     }
 
+    /**
+     * @throws Exception
+     */
     public function addCardContent($data) :void {
         $this->historyEventService->addCardContent($data);
     }
-    public function addScheduleContent($data) :void {
-        $this->historyEventService->addScheduleContent($data);
+    public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount) :void {
+        $this->historyEventService->addScheduleContent( $dateAndDay,  $time,  $language,  $ticketAmount);
     }
 
     public function getByDayFilter($day){

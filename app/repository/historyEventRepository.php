@@ -27,7 +27,7 @@ class historyEventRepository extends baseRepository
 
 
     // Schedule Content CRUD
-    public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount) : bool {
+    public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount)  {
         $stmt = $this->connection->prepare("INSERT INTO historytourtimetable (dateAndDay, time, language, ticketAmount) VALUES (:dateAndDay, :time, :language, :ticketAmount)");
         $stmt->bindParam(':dateAndDay', $dateAndDay);
         $stmt->bindParam(':time', $time);
@@ -35,7 +35,7 @@ class historyEventRepository extends baseRepository
         $stmt->bindParam(':ticketAmount', $ticketAmount);
         $stmt->execute();
 
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyTourTimetable');
         $result = $stmt->fetchAll();
         return $result;
     }
