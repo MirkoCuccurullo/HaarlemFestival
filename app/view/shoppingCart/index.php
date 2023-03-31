@@ -31,9 +31,17 @@ include __DIR__ . '/../header.php'; ?>
 
                     <div class="col-1">
                         <div class="row">
+                            <div class="col-md-4">
                             <button>-</button>
+                            </div>
+                            <div class="col-md-4">
+
                             <h3 id="quantity">1</h3>
+                            </div>
+                            <div class="col-md-4">
+
                             <button>+</button>
+                                </div>
                         </div>
                     </div>
 
