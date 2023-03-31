@@ -1,13 +1,10 @@
-.bg-mynav {
-    background-color: #BAC127;
-}
 
 body {
     font-size: 1rem;
     background-color: #ffffff;
 }
 
-.container {
+.container1 {
     margin-top: 20px;
 }
 
@@ -15,4 +12,20 @@ body {
     color: red;
     float: right;
     font-size: 0.8rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+input[type=text] {
+    border: none;
+    padding: 0;
+    width: 100%;
 }

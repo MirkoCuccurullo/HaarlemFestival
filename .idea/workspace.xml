@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end" />
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,11 +17,6 @@
     </execution>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -32,7 +27,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="09b6758f-a11b-4e0b-8a86-446ddd171d4d" />
+        <option name="accountId" value="cd0fa6af-c6ab-43a7-8444-6cc79c07a443" />
         <option name="url" value="https://github.com/MirkoCuccurullo/HaarlemFestival.git" />
       </UrlAndAccount>
     </option>
@@ -54,23 +49,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Rares/Documents/GitHub/HaarlemFestival",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.deploy.options",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public" />
@@ -82,7 +77,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="" />
+      <changelist id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="" />
       <created>1675956787229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -183,21 +178,7 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
-      <created>1680010466747</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1680010466747</updated>
-    </task>
-    <task id="LOCAL-00005" summary="jlgvwlkebkfqjòkbnrejk">
-      <created>1680010749139</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1680010749139</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,8 +210,7 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
-    <option name="LAST_COMMIT_MESSAGE" value="jlgvwlkebkfqjòkbnrejk" />
+    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -7,11 +7,11 @@
     <title>Visit Haarlem</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/header_style.css">
+<!--    <link rel="stylesheet" href="/css/header_style.css">-->
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #9DE2BD">
+<nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #BAC127">
     <div class="container">
         <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -66,10 +66,6 @@
 
                         <li>
                             <a class="dropdown-item" href="/history">A Stroll Through History</a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item" href="/qr">QR code checker</a>
                         </li>
                     </ul>
                 </li>
@@ -133,9 +129,5 @@
         </div>
     </div>
 </nav>
-
-<div style="overflow: hidden" class="mb-4">
-    <img src="/images/haarlem.png" alt="welcome to Haarlem">
-</div>
 
 <div class="container">

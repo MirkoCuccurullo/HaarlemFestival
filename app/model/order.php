@@ -10,6 +10,8 @@ class order{
     public string $status;
     public ?string $payment_id;
 
+    public $history_event = array();
+
 //    public function __construct()
 //    {
 //        $this->dance_events = array();
@@ -19,6 +21,12 @@ class order{
         $this->dance_events[] = $danceEvent;
         $this->no_of_items++;
         $this->total_price += $danceEvent->price;
+    }
+
+    public function addHistoryEvent($historyEvent){
+        $this->history_event[] = $historyEvent;
+        $this->no_of_items++;
+        $this->total_price += $historyEvent->price;
     }
 
     public function removeDanceEvent($key){

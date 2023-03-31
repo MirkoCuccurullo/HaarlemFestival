@@ -17,6 +17,12 @@ class JwtGeneratorController extends controller
         $this->userService = new userService();
     }
     public function generateToken() {
+        $result = $this->checkForGuidToken();
+
+        if(!$result) {
+            $this->respondWithError(401, "No token provided");
+            return;
+        }
 
         // generate jwt
         $tokenResponse = $this->generateJwt();

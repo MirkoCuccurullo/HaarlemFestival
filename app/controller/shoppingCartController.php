@@ -3,6 +3,7 @@ require_once __DIR__ . '/../model/order.php';
 require_once __DIR__ . '/../model/ticket.php';
 
 require_once __DIR__ . '/../service/eventService.php';
+require_once __DIR__ . '/../service/historyEventService.php';
 require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../service/accessPassService.php';
 require_once __DIR__ . '/../service/MollieService.php';
@@ -13,7 +14,6 @@ require_once __DIR__ . '/../service/userService.php';
 
 
 use router\router;
-
 
 class shoppingCartController
 {
@@ -60,6 +60,35 @@ class shoppingCartController
             $id = htmlspecialchars($_POST['accessPassId']);
             $accessPass = $accessPassService->getAccessPassByID($id);
             $order->addDanceEvent($accessPass);
+            $_SESSION['order'] = $order;
+        }
+        $router = new Router();
+        $router->route('/shoppingCart');
+    }
+
+    public function addHistoryEvent()
+    {
+        if (isset($_SESSION['order']))
+            $order = $_SESSION['order'];
+        else
+        {
+            $order = new \Models\order();
+            if(isset($_SESSION['current_user_id']))
+                $order->user_id = $_SESSION['current_user_id'];
+            else
+                $order->user_id = null;
+
+            $order->no_of_items = 0;
+            $order->total_price = 0;
+        }
+
+        if (isset($_POST['addHistoryEvent'])) {
+
+            $historyEventService = new HistoryEventService();
+            $id = htmlspecialchars($_POST['historyEventId']);
+            $event = $historyEventService->getHistoryTicketById($id);
+
+            $order->addHistoryEvent($event);
             $_SESSION['order'] = $order;
         }
         $router = new Router();

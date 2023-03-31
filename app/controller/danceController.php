@@ -30,6 +30,12 @@ class danceController
 
     public function displayFormEvent()
     {
+        require_once __DIR__ . '/../model/artist.php';
+        require_once __DIR__ . '/../service/eventService.php';
+        require_once __DIR__ . '/../model/venues.php';
+        $eventService = new eventService();
+        $artists = $eventService->getArtists();
+        $locations = $eventService->getVenues();
         require_once __DIR__ . '/../view/management/addDanceEvent.php';
     }
 
@@ -78,8 +84,13 @@ class danceController
     public function editEvent()
     {
         require_once __DIR__ . '/../service/eventService.php';
+        require_once __DIR__ . '/../model/artist.php';
+        require_once __DIR__ . '/../service/eventService.php';
+        require_once __DIR__ . '/../model/venues.php';
         $danceService = new eventService();
         $event = $danceService->getEventByID(htmlspecialchars($_POST['id']));
+        $artists = $danceService->getArtists();
+        $locations = $danceService->getVenues();
         require __DIR__ . '/../view/management/editEvent.php';
     }
 
@@ -114,7 +125,6 @@ class danceController
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
         $danceService->insertVenue(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['address']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['capacity']), htmlspecialchars($_POST['picture']));
-        header('Location: /festival/dance/manageVenues');
     }
 
     public function displayArtist()
