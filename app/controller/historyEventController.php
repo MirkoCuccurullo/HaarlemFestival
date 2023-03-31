@@ -4,6 +4,7 @@ use router\router;
 
 include_once __DIR__ . '/../model/historyPageCard.php';
 include_once __DIR__ . '/../model/historyPageContent.php';
+include_once __DIR__ . '/../model/historyTourTimetable.php';
 require_once __DIR__ . '/../service/historyEventService.php';
 
 class historyEventController
@@ -102,22 +103,16 @@ class historyEventController
         }
     }
 
-    /**
-     * @throws Exception
-     */
     public function addCardContent($data) :void {
-        try {
-            $this->historyEventService->addCardContent($data);
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage());
-        }
+        $this->historyEventService->addCardContent($data);
     }
     public function addScheduleContent($data) :void {
-        try {
-            $this->historyEventService->addScheduleContent($data);
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage());
-        }
+        $this->historyEventService->addScheduleContent($data);
     }
 
+    public function getByDayFilter($day){
+        if ($_SERVER["REQUEST_METHOD"] == $this->getByDayFilter($day) && isset($_POST['submitFilter'])) {
+            $this->historyEventService->getByDayFilter($day);
+        }
+    }
 }

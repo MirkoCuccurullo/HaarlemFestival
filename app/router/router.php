@@ -200,6 +200,12 @@ class router
                 break;
 
 
+            case '/invoiceHTML':
+                require __DIR__ . '/../controller/invoiceController.php';
+                $controller = new \invoiceController();
+                $controller->displayInvoiceHTML();
+                break;
+
             case '/history':
                 require __DIR__ . '/../controller/historyEventController.php';
                 $controller = new \historyEventController();

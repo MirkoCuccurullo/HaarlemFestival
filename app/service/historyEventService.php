@@ -58,6 +58,10 @@ class historyEventService{
     {
         return $this->historyEventRepository->getLocationDetailById($id);
     }
+    public function getByDayFilter($day)
+    {
+        return $this->historyEventRepository->getByDayFilter($day);
+    }
 
     // Prepare methods
     private function prepareCardContentData(array $data): array

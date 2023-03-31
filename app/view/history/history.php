@@ -42,13 +42,14 @@
 <h3 class="schedule" id="schedule">SCHEDULE VIEW</h3> <br>
 <h3 class="from-to">FROM 27 JULY TO 31 JULY</h3>
 <label for="filter">Filter:</label>
-<select id="filter">
+<select id="filter" name="filter">
     <option value="all">All</option>
     <option value="thu">THURSDAY 27, July 2023</option>
     <option value="fri">FRIDAY 28, July 2023</option>
     <option value="sat">SATURDAY 29, July 2023</option>
     <option value="sun">SUNDAY 30, July 2023</option>
 </select>
+
 <?php
 $prevDate = '';
 if (isset($historyTourTimetable)) {

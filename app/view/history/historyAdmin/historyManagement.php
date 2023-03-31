@@ -94,7 +94,7 @@
                     </form>
                     <td>
                         <form action="/historyManagement" method="POST">
-                            <input type="hidden" name="id" value="<?php echo $timetable['id'] ?>">
+                            <input type="hidden" name="tableId" value="<?php echo $timetable['id'] ?>">
                             <button type="submit" name="deleteSchedule"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>

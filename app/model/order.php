@@ -1,6 +1,7 @@
 <?php
 namespace Models;
 require_once __DIR__ . '/../model/dance.php';
+//add require for history event
 class order{
     public int $id;
     public ?int $user_id;
@@ -8,8 +9,6 @@ class order{
     public float $total_price;
     public $dance_events = array();
     public string $status;
-
-    public $history_event = array();
 
     public $history_event = array();
 

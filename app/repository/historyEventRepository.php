@@ -4,6 +4,9 @@ use repository\baseRepository;
 
 include_once 'baseRepository.php';
 require_once '../model/historyPageCard.php';
+require_once '../model/historyTourTimetable.php';
+require_once '../model/historyPageContent.php';
+require_once '../model/historyEventDetail.php';
 
 class historyEventRepository extends baseRepository
 {
@@ -30,7 +33,11 @@ class historyEventRepository extends baseRepository
         $stmt->bindParam(':time', $time);
         $stmt->bindParam(':language', $language);
         $stmt->bindParam(':ticketAmount', $ticketAmount);
-        return $stmt->execute();
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
+        return $result;
     }
     public function deleteHistorySchedule($id) {
         $stmt = $this->connection->prepare("DELETE FROM historytourtimetable WHERE id=:id");
@@ -46,7 +53,7 @@ class historyEventRepository extends baseRepository
         $stmt->bindParam(':ticketAmount', $ticketAmount);
         $stmt->execute();
 
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyTourTimetable');
         $result = $stmt->fetchAll();
         return $result;
     }
@@ -98,14 +105,6 @@ class historyEventRepository extends baseRepository
         $result = $stmt->fetchAll();
         return $result;
     }
-    public function getHistoryTourTimetable()
-    {
-        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable ");
-        $stmt -> execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $stmt->fetchAll();
-        return $result;
-    }
     public function getHistoryTicketById($id) {
         $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE id=:id");
         $stmt->bindParam(':id', $id);
@@ -122,7 +121,14 @@ class historyEventRepository extends baseRepository
 
         return $result;
     }
-
+    public function getHistoryTourTimetable()
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable ");
+        $stmt -> execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
     public function getHistoryEventByID(string $id)
     {
         $stmt = $this->connection->prepare("SELECT * FROM historyevent WHERE id=:id");
@@ -131,6 +137,16 @@ class historyEventRepository extends baseRepository
         $result = $stmt->fetch(PDO::FETCH_OBJ);
 
         return $result;
+    }
+
+    public function getByDayFilter($dateAndDay) {
+        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE dateAndDay=:dateAndDay");
+        $stmt->bindParam(':dateAndDay', $dateAndDay);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+
     }
 
 }
