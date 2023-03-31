@@ -7,7 +7,7 @@ include_once 'baseRepository.php';
 
 class orderRepository extends baseRepository{
     public function createOrder($order){
-        $sql = "INSERT INTO orders (user_id, no_of_items, total_price, status) VALUES (:user_id, :no_of_items, :total_price, :status)";")";
+        $sql = "INSERT INTO orders (user_id, no_of_items, total_price, status) VALUES (:user_id, :no_of_items, :total_price, :status)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":user_id", $order->user_id);
         $stmt->bindParam(":no_of_items", $order->no_of_items);
@@ -17,11 +17,12 @@ class orderRepository extends baseRepository{
         $last_id = $this->connection->lastInsertId();
         return $last_id;
     }
-    public function updateOrderStatus($order_id, $status){
-        $sql = "UPDATE orders SET status = :status WHERE id = :order_id";
+    public function updateOrder($order_id, $status, $payment_id){
+        $sql = "UPDATE orders SET status = :status, payment_id = :payment_id WHERE id = :order_id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":order_id", $order_id);
         $stmt->bindParam(":status", $status);
+        $stmt->bindParam(":payment_id", $payment_id);
         return $stmt->execute();
         //return $this->getOrder($id);
     }

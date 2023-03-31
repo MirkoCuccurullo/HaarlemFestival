@@ -13,4 +13,5 @@ class ticket
     public string $status;
     public int $order_id;
     public int $user_id;
+    public ?int $vat_id;
 }
