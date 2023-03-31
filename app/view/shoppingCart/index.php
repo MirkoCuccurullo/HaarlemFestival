@@ -20,13 +20,29 @@ include __DIR__ . '/../header.php'; ?>
                         <img src="../images/order-dance-event.svg" alt="music" style="width: 50px; height: 50px">
                     </div>
 
-                    <div class="col-7">
+                    <div class="col-6">
                         <h3><?php
                             if($dance_event instanceof dance)
                                 echo $dance_event->artist_name . " @ " . $dance_event->venue_name;
                             else if ($dance_event instanceof accessPass)
                                 echo $dance_event->displayPass($dance_event->id);
                             ?></h3>
+                    </div>
+
+                    <div class="col-1">
+                        <div class="row">
+                            <div class="col-md-4">
+                            <button>-</button>
+                            </div>
+                            <div class="col-md-4">
+
+                            <h3 id="quantity">1</h3>
+                            </div>
+                            <div class="col-md-4">
+
+                            <button>+</button>
+                                </div>
+                        </div>
                     </div>
 
                     <div class="col-3 text-center">
@@ -94,5 +110,9 @@ include __DIR__ . '/../header.php'; ?>
         </form>
     </div>
 </div>
+
+<script>
+
+</script>
 <?php
 include __DIR__ . '/../footer.php'; ?>

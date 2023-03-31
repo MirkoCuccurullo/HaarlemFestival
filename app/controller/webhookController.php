@@ -19,13 +19,14 @@ class webhookController
     {
         try {
             $mollieService = new \MollieService();
-            $payment = $mollieService->getPayment($_POST["id"]);
+            $payment_id = $_POST["id"];
+            $payment = $mollieService->getPayment($payment_id);
             $order_id = $payment->metadata->order_id;
             $user_id = $payment->metadata->user_id;
             $tickets = $payment->metadata->tickets;
 
             $orderService = new \orderService();
-            $orderService->updateOrderStatus($order_id, $payment->status);
+            $orderService->updateOrder($order_id, $payment->status, $payment_id);
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
 
                 $ticketService = new \ticketService();

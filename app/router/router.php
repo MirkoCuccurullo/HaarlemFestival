@@ -21,6 +21,15 @@ class router
     {
         error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
+            case '/generateToken':
+                require_once __DIR__ . '/../controller/festivalController.php';
+                $controller = new festivalController();
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $controller->generateToken();
+                } else {
+                    $controller->tokenPage();
+                }
+                break;
             case'/qr':
                 require_once __DIR__ . '/../controller/qrController.php';
                 $controller = new qrController();

@@ -186,9 +186,21 @@ include __DIR__ . '/../header_dance.php'; ?>
             eventPrice.className = 'list-group-item';
             eventPrice.innerHTML = 'Price: ' + event.price + ' €';
             var eventButton = document.createElement('button');
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '/shoppingCart/add';
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'danceEventId';
+            input.value = event.id;
             eventButton.className = 'btn btn-primary';
             eventButton.innerHTML = 'Add to cart';
             eventButton.style = 'width: 60%; margin-left: 20%; margin-bottom: 5%;';
+            eventButton.type = 'submit';
+            eventButton.name = 'addDanceEvent';
+
+            form.appendChild(input);
+            form.appendChild(eventButton);
 
             eventTitle.appendChild(eventTitleText);
             eventBody.appendChild(eventTitle);
@@ -200,7 +212,7 @@ include __DIR__ . '/../header_dance.php'; ?>
             eventBody.appendChild(eventList);
             eventCard.appendChild(eventImage);
             eventCard.appendChild(eventBody);
-            eventCard.appendChild(eventButton);
+            eventCard.appendChild(form);
             eventCol.appendChild(eventCard);
             eventDiv.appendChild(eventCol);
 
