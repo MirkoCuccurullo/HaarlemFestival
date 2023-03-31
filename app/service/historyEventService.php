@@ -16,12 +16,6 @@ class historyEventService{
         $preparedData = $this->prepareCardContentData($data);
         $this->historyEventRepository->insertHistoryCardContent($preparedData['title'], $preparedData['image'], $preparedData['content']);
     }
-//    public function addScheduleContent(array $data)
-//    {
-//        $preparedData = $this->prepareScheduleContentData($data);
-//        $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'], $preparedData['language'], $preparedData['ticketAmount']);
-//    }
-
     public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount)
     {
         $preparedData = $this->prepareScheduleContentData($dateAndDay, $time, $language, $ticketAmount);
@@ -87,21 +81,6 @@ class historyEventService{
             'content' => $content,
         ];
     }
-//    private function prepareScheduleContentData(array $data): array
-//    {
-//        $dateAndDay = isset($data['$dateAndDay']) && !empty($data['$dateAndDay']) ? htmlspecialchars($data['$dateAndDay']) : null;
-//        $time = isset($data['$time']) && !empty($data['$time']) ? htmlspecialchars($data['$time']) : null;
-//        $language = isset($data['$language']) && !empty($data['$language']) ? htmlspecialchars($data['$language']) : null;
-//        $ticketAmount = isset($data['$ticketAmount']) && !empty($data['$ticketAmount']) ? htmlspecialchars($data['$ticketAmount']) : null;
-//
-//        return [
-//            'dateAndDay' => $dateAndDay,
-//            'time' => $time,
-//            'language' => $language,
-//            'ticketAmount' => $ticketAmount,
-//        ];
-//    }
-
     private function prepareScheduleContentData(string $dateAndDay, string $time, string $language, int $ticketAmount): array
     {
         return [

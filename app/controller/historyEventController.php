@@ -92,8 +92,6 @@ class historyEventController
                 $this->addCardContent($_POST);
                 $addError = "Content added";
             } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submitSchedule'])) {
-//                print_r($_POST);
-//                var_dump($_POST);
                 $this->addScheduleContent($_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
                 $addError = "Content added";
             } else {
