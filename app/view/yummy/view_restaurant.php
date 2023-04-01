@@ -51,7 +51,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 10px;">
-                <h4>Session Times:</h4>
+                <h4>Session Times</h4>
                 <ul>
                     <?php
                     $firstSessionDate = $restaurant->sessions[0]->date;
@@ -71,25 +71,25 @@
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 10px;">
-                <h4>Prices:</h4>
-                <p>Adult <?= $session->sessionPrice ?> €</p>
-                <p>Under 12 <?= $session->reducedPrice ?> €</p>
+                <h4>Prices</h4>
+                <p>Adult: <?= $session->sessionPrice ?> €</p>
+                <p>Under 12:  <?= $session->reducedPrice ?> €</p>
             </div>
 
         <div class="col-md-3" style="   border: 1px solid white;
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 10px;">
-            <p>Location</p>
+            <h4>Location</h4>
             <p><?= $restaurant->address ?></p>
         </div>
         <div class="col-md-3" style="   border: 1px solid white;
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 10px;">
-            <p>Dietary</p>
+            <h5>Dietary</h5>
             <p><?= $restaurant->dietary ?></p>
-            <p>Cuisines</p>
+            <h5>Cuisines</h5>
             <p><?= $restaurant->cuisines ?></p>
         </div>
     </div>
@@ -100,7 +100,7 @@
 <div class="container" id="reservationForm" style="background-color: #8D6A71; border-radius: 5px; color: #000000">
     <form method="post" action="/add/reservation">
         <div class="form-group" style="padding-top: 1em">
-            <label for="restaurantName">You are currently placing a reservation for:</label>
+            <label for="restaurantName"><h4>You are currently placing a reservation for:</h4></label>
             <input class="form-control" id="restaurantName" name="restaurantName" value="<?= $restaurant->name ?>" readonly>
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
