@@ -8,19 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controllers/orderControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controllers/orderControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/orderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/orderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/shoppingCartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/shoppingCartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/orderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/orderRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/editOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/editReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editReservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageReservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageSessions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageSessions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/header_dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header_dance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +167,8 @@
       <workItem from="1680006515318" duration="1025000" />
       <workItem from="1680022402831" duration="56000" />
       <workItem from="1680022855078" duration="10465000" />
+      <workItem from="1680265345424" duration="304000" />
+      <workItem from="1680348192513" duration="1267000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -219,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680084383107</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Order management">
+      <created>1680097344674</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680097344674</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
