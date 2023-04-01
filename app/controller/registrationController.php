@@ -50,7 +50,7 @@ class registrationController {
                     }
                } else {
                     $captchaMessage = "Please, verify that you are not a robot";
-                }
+               }
            }
         } catch (Exception $e) {
             throw new Exception($e->getMessage());

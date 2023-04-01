@@ -13,6 +13,9 @@
 <div class="container1">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header" style="color: #3D1A78"><h2>Location Card Management</div>
+        <div class="error" > <?php if (isset($updateCardMessage)){ ?> <span id="update-msg"> <?=$updateCardMessage?> </span> <?php } ?> </div><br>
+        <div class="error" > <?php if (isset($deleteCardMessage)){ ?> <span id="update-msg"> <?=$deleteCardMessage?> </span> <?php } ?> </div><br>
+        <div class="error" > <?php if (isset($addCardMessage)){ ?> <span id="update-msg"> <?=$addCardMessage?> </span> <?php } ?> </div><br>
         <button type="button" style="background-color: #3D1A78">
             <a href="/historyManagement/add" style="color:white; text-decoration:none;">Add Card Content</a>
         </button>
@@ -60,6 +63,10 @@
 <div class="container2" style=" margin-top: 70px; color: #3D1A78">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Schedule Management</div>
+        <div class="error" > <?php if (isset($updateSchedule)){ ?> <span id="update-msg"> <?=$updateSchedule?> </span> <?php } ?> </div><br>
+        <div class="error" > <?php if (isset($deleteScheduleMessage)){ ?> <span id="update-msg"> <?=$deleteScheduleMessage?> </span> <?php } ?> </div><br>
+        <div class="error" > <?php if (isset($addScheduleMessage)){ ?> <span id="update-msg"> <?=$addScheduleMessage?> </span> <?php } ?> </div><br>
+
         <button type="button" style="background-color: #3D1A78">
             <a href="/historyManagement/addScheduleContent" style="color:white; text-decoration:none;">Add Schedule Content</a>
         </button>
@@ -110,8 +117,7 @@
 <div class="container2" style=" margin-top: 70px; color: #3D1A78">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight" id="header"><h2>Main Content Management</div>
-        <div class="error"> <?php if (isset($updateError)){ ?> <span id="error-msg"> <?=$updateError?> </span> <?php } ?> </div><br>
-
+        <div class="error" > <?php if (isset($updateMainContentMessage)){ ?> <span id="update-msg"> <?=$updateMainContentMessage?> </span> <?php } ?> </div><br>
     </div>
 
     <div class="table-container">

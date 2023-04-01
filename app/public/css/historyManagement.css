@@ -14,6 +14,12 @@ body {
     font-size: 0.8rem;
 }
 
+#update-msg {
+    color: limegreen;
+    padding: 30px;
+    font-size: 1.2rem;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;

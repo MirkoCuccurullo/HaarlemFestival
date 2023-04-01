@@ -235,7 +235,7 @@ class router
             case '/historyManagement':
                 require __DIR__ . '/../controller/historyEventController.php';
                 $controller = new \historyEventController();
-                $controller->displayAddedContent();
+                $controller->historyManagement();
                 break;
             case '/historyManagement/add':
                 require __DIR__ . '/../view/history/historyAdmin/addCardContent.php';
