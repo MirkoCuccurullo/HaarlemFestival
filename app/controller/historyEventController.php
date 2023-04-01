@@ -42,7 +42,7 @@ class historyEventController
         include __DIR__ . '/../view/footer_history.php';
     }
     public function historyManagement($addError) {
-
+        $updateError = "";
         if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['delete'])){
             $this->deleteCardContent($_POST['id']);
         } elseif (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['deleteSchedule'])){
@@ -53,6 +53,7 @@ class historyEventController
             $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
             $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
+            $updateError = "Schedule updated";
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateMainContent'])) {
             $this->updateMainContent($_POST['id'], $_POST['mainImageHeader'], $_POST['tourCardHeader'], $_POST['tourCardParagraph'], $_POST['tourCardButtonText']);
         }
@@ -67,25 +68,6 @@ class historyEventController
 
     }
 
-    public function deleteScheduleContent($id)
-    {
-        $this->historyEventService->deleteScheduleContent($id);
-    }
-    public function deleteCardContent($id)
-    {
-        $this->historyEventService->deleteCardContent($id);
-    }
-
-    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
-        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount);
-    }
-    public function updateCardContent($id, $title, $image, $content) {
-        $this->historyEventService->updateCardContent($id, $title, $image, $content);
-    }
-    public function updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
-        return $this->historyEventService->updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
-    }
-
     public function displayAddedContent() : void {
         try {
             if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submit'])) {
@@ -95,7 +77,7 @@ class historyEventController
                 $this->addScheduleContent($_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
                 $addError = "Content added";
             } else {
-                $addError = "Could not add content";
+                $addError = "GOT YA!!";
             }
             $this->historyManagement($addError);
         } catch (Exception $e) {
@@ -113,6 +95,28 @@ class historyEventController
         $this->historyEventService->addScheduleContent( $dateAndDay,  $time,  $language,  $ticketAmount);
     }
 
+    // Delete methods
+    public function deleteScheduleContent($id)
+    {
+        $this->historyEventService->deleteScheduleContent($id);
+    }
+    public function deleteCardContent($id)
+    {
+        $this->historyEventService->deleteCardContent($id);
+    }
+
+    // Update methods
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
+        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount);
+    }
+    public function updateCardContent($id, $title, $image, $content) {
+        $this->historyEventService->updateCardContent($id, $title, $image, $content);
+    }
+    public function updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
+        return $this->historyEventService->updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
+    }
+
+    // Filter method
     public function getByDayFilter($day){
         if ($_SERVER["REQUEST_METHOD"] == $this->getByDayFilter($day) && isset($_POST['submitFilter'])) {
             $this->historyEventService->getByDayFilter($day);

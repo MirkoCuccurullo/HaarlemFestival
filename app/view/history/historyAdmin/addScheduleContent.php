@@ -32,8 +32,8 @@
             <label for="ticketAmount" class="form-label">Ticket Amount</label>
             <input type="number" class="form-control" id="ticketAmount" name="ticketAmount" placeholder="ticket amount" required>
         </div>
+        <div class="error"> <?php if (isset($sysError)){ ?> <span id="error-msg"> <?=$sysError?> </span> <?php } ?> </div>
         <button type="submit" class="btn btn-primary" id="submitSchedule" value="submitSchedule" name="submitSchedule" style="margin-top: 20px;">Add</button>
-        <div class="error"> <?php if (isset($addError)){ ?> <span id="error-msg"> <?=$addError?> </span> <?php } ?> </div>
     </form>
 </div>
 <script>

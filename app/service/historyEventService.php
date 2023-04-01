@@ -18,8 +18,13 @@ class historyEventService{
     }
     public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount)
     {
+        $sysError = "";
         $preparedData = $this->prepareScheduleContentData($dateAndDay, $time, $language, $ticketAmount);
-        $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'], $preparedData['language'], $preparedData['ticketAmount']);
+        if (!$this->dateAlreadyExists($preparedData['dateAndDay'])) {
+            $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'], $preparedData['language'], $preparedData['ticketAmount']);
+        } else {
+            $sysError = "Date already exists";
+        }
     }
 
 
@@ -83,8 +88,12 @@ class historyEventService{
     }
     private function prepareScheduleContentData(string $dateAndDay, string $time, string $language, int $ticketAmount): array
     {
+        $date = new DateTime($dateAndDay);
+        $changeDateFormat = $date->format('d F Y');
+        $day = $date->format('l'); // get the full name of the day
+
         return [
-            'dateAndDay' => htmlspecialchars($dateAndDay),
+            'dateAndDay' => htmlspecialchars($day . ' ' . $changeDateFormat),
             'time' => htmlspecialchars($time),
             'language' => htmlspecialchars($language),
             'ticketAmount' => $ticketAmount,
@@ -94,6 +103,10 @@ class historyEventService{
     public function getHistoryEventByID(string $id)
     {
         return $this->historyEventRepository->getHistoryEventByID($id);
+    }
+    public function dateAlreadyExists(string $dateAndDay)
+    {
+        return $this->historyEventRepository->dateAlreadyExists($dateAndDay);
     }
 
 

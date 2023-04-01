@@ -149,4 +149,14 @@ class historyEventRepository extends baseRepository
 
     }
 
+    public function dateAlreadyExists(string $dateAndDay)
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE dateAndDay=:dateAndDay");
+        $stmt->bindParam(':dateAndDay', $dateAndDay);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
 }
