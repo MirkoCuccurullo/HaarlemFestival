@@ -2,7 +2,9 @@
   "require": {
     "phpmailer/phpmailer": "^6.7.1",
     "ext-dom": "*",
-    "ext-curl": "*"
+
+    "ext-openssl": "*"
+
   },
 
   "extra":{

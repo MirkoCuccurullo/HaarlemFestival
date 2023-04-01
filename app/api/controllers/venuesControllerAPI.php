@@ -40,4 +40,21 @@ class venuesControllerAPI
             $this->eventService->deleteVenue($obj->id);
         }
     }
+    public function getOne($id){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: *');
+        header('Access-Control-Allow-Methods: *');
+
+        // Respond to a GET request to /api/article
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+            // your code here
+            $cards = $this->eventService->getVenueByID($id);
+            header('Content-Type: application/json');
+            echo json_encode($cards);
+            // return all articles in the database as JSON
+
+        }
+
+    }
 }

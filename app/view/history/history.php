@@ -1,12 +1,12 @@
 <!Doctype html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="/css/history.css">
-        <title>History Event</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/history.css">
+    <title>History Event</title>
 </head>
 
 <body>
@@ -17,8 +17,7 @@
         <div class="card-body">
             <h5 class="card-title"><?php if(isset($content[0]->tourCardHeader)) echo $content[0]->tourCardHeader?></h5>
             <p class="card-text"> <?php if(isset($content[0]->tourCardParagraph)) echo $content[0]->tourCardParagraph?></p>
-            <a href="#" class="btn"><?php if(isset($content[0]->tourCardButtonText)) echo $content[0]->tourCardButtonText?></a>
-            <a href="#schedule" class="btn"><?php if(isset($content[1]->tourCardButtonText)) echo $content[1]->tourCardButtonText?></a>
+            <a href="#schedule" class="btn"><?php if(isset($content[0]->tourCardButtonText)) echo $content[0]->tourCardButtonText?></a>
         </div>
     </div>
 </div>
@@ -42,6 +41,14 @@
 
 <h3 class="schedule" id="schedule">SCHEDULE VIEW</h3> <br>
 <h3 class="from-to">FROM 27 JULY TO 31 JULY</h3>
+<label for="filter">Filter:</label>
+<select id="filter">
+    <option value="all">All</option>
+    <option value="thu">THURSDAY 27, July 2023</option>
+    <option value="fri">FRIDAY 28, July 2023</option>
+    <option value="sat">SATURDAY 29, July 2023</option>
+    <option value="sun">SUNDAY 30, July 2023</option>
+</select>
 <?php
 $prevDate = '';
 if (isset($historyTourTimetable)) {
@@ -76,10 +83,29 @@ if (isset($historyTourTimetable)) {
     }
 }
 ?>
+<script>
+    //Add filter to schedule view
+    const filter = document.getElementById("filter");
+    const tables = document.querySelectorAll(".table1");
+
+    filter.addEventListener("change", function() {
+        const selectedOption = this.value;
+
+        tables.forEach(function(table) {
+            const eventDate = table.previousElementSibling.innerHTML;
+
+            if (selectedOption === "all" || eventDate.toLowerCase().includes(selectedOption)) {
+                table.style.display = "table";
+            } else {
+                table.style.display = "none";
+            }
+        });
+    });
+</script>
+</script>
 
 </body>
 
 </html>
 
 
-<?php include __DIR__ . '/../footer.php'; ?>
