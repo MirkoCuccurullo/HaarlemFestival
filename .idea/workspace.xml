@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Reservation form in Restaurant page">
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Adjusted small things here and there while I wait for my pasta to be cooked">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/restaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/restaurantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/shoppingCartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/shoppingCartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/restaurantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/restaurantRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/eventService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/eventService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/restaurantService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/restaurantService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +177,9 @@
       <workItem from="1680022402831" duration="56000" />
       <workItem from="1680022855078" duration="10465000" />
       <workItem from="1680265345424" duration="304000" />
-      <workItem from="1680348192513" duration="5003000" />
+      <workItem from="1680348192513" duration="6982000" />
+      <workItem from="1680523292160" duration="96000" />
+      <workItem from="1680523448098" duration="10870000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -228,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680352633461</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adjusted small things here and there while I wait for my pasta to be cooked">
+      <created>1680353849547</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680353849547</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +287,8 @@
     <MESSAGE value="Order management" />
     <MESSAGE value="Added sharing to Twitter and Facebook on header.php and header_dance.php" />
     <MESSAGE value="Reservation form in Restaurant page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reservation form in Restaurant page" />
+    <MESSAGE value="Adjusted small things here and there while I wait for my pasta to be cooked" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusted small things here and there while I wait for my pasta to be cooked" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -84,5 +84,11 @@ class eventService
         return $this->eventRepo->getEventsByArtist($id);
     }
 
+    public function getReservationByID(string $id)
+    {
+        $service = new reservationService();
+        return $service->getReservationByID($id);
+    }
+
 
 }

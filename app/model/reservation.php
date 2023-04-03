@@ -4,9 +4,8 @@ class reservation {
     public int $id;
     public string $restaurantName;
 
-    public session $session;
-    public int $status;
-    //0: confirmed, 1: cancelled, 2: deactivated
+    public int $sessionId;
+    public string $status;
     public int $numberOfAdults;
     public int $numberOfUnder12;
     public float $reservationPrice;

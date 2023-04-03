@@ -320,6 +320,7 @@ class router
                 $controller = new \shoppingCartController();
                 require_once __DIR__ . '/../model/dance.php';
                 require_once __DIR__ . '/../model/order.php';
+                require_once __DIR__ . '/../model/reservation.php';
                 require_once __DIR__ . '/../service/eventService.php';
                 if (session_status() === PHP_SESSION_NONE) {
                     require_once __DIR__ . '/../../vendor/autoload.php';
@@ -331,13 +332,13 @@ class router
             case '/shoppingCart/add':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
-                $controller->addDanceEvent();
+                $controller->addEvent();
                 break;
 
             case '/shoppingCart/remove':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
-                $controller->removeDanceEvent();
+                $controller->removeEvent();
                 break;
 
             case '/shoppingCart/submit':
@@ -499,20 +500,26 @@ class router
                 break;
 
             case "/restaurant":
-                require_once __DIR__ . '/../controller/restaurantController.php';
-                $controller = new \restaurantController();
-                $controller->displayRestaurant();
-                if (isset($_POST['checkSpace'])) {
+                if (isset($_POST['checkSpaces'])) {
                     require_once __DIR__ . '/../controller/reservationController.php';
                     $controller = new \reservationController();
-                    $controller->getAvailableSpacesPerSession();
+                    $spaces = $controller->getAvailableSpacesPerSession();
                 }
+                    require_once __DIR__ . '/../controller/restaurantController.php';
+                    $controller = new \restaurantController();
+                    $controller->displayRestaurant();
                 break;
                 case '/add/reservation':
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 if (isset($_POST['addReservation'])) {
                     $controller->addReservation();
+                }
+                //add to shopping cart
+                if (isset($_POST['/shoppingCart/add'])) {
+                    require_once __DIR__ . '/../controller/shoppingCartController.php';
+                    $controller = new \shoppingCartController();
+                    $controller->addEvent();
                 }
                 break;
 

@@ -14,10 +14,10 @@ class order{
 //        $this->events = array();
 //    }
 
-    public function addEvent($danceEvent){
-        $this->events[] = $danceEvent;
+    public function addEvent($event){
+        $this->events[] = $event;
         $this->no_of_items++;
-        $this->total_price += $danceEvent->price;
+        $this->total_price += $event->price;
     }
 
     public function removeEvent($key){

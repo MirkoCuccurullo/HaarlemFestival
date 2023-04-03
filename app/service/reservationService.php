@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../repository/reservationRepository.php';
 require_once __DIR__ . '/../model/reservation.php';
+require_once __DIR__ . '/../model/session.php';
 
 class reservationService
 {
@@ -15,19 +16,8 @@ class reservationService
     {
         return $this->reservationRepository->getAllReservations();
     }
-
-    public function updateReservation($id, $restaurantName, $session, $status, $numberOfAdults, $numberOfUnder12, $reservationPrice, $customerEmail, $comment): void
+    public function updateReservation($reservation): void
     {
-        $reservation = new reservation();
-        $reservation->id = $id;
-        $reservation->restaurantName = $restaurantName;
-        $reservation->session = $session;
-        $reservation->status = $status;
-        $reservation->numberOfAdults = $numberOfAdults;
-        $reservation->numberOfUnder12 = $numberOfUnder12;
-        $reservation->reservationPrice = $reservationPrice;
-        $reservation->customerEmail = $customerEmail;
-        $reservation->comment = $comment;
         $this->reservationRepository->updateReservation($reservation);
     }
 
@@ -59,4 +49,5 @@ class reservationService
         $capacity = $session->capacity;
         return $capacity - $spacesBooked;
     }
+
 }

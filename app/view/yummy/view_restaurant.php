@@ -107,18 +107,18 @@
         </div>
         <div class="form-group">
             <label for="adults">Number of adults:</label>
-            <input type="number" id="adults" name="adults" min="1" max="10" required placeholder="Number of Adults" ><br>
+            <input type="number" id="adults" name="adults" min="1" max="<?=$session->capacity?>" required placeholder="Number of Adults" ><br>
         </div>
         <div class="form-group">
             <label for="under12">Number of children under 12:</label>
-            <input type="number" id="under12" name="under12" min="0" max="10" placeholder="Number of children under 12"><br>
+            <input type="number" id="under12" name="under12" min="0" max="<?=$session->capacity - 1?>" value="0" placeholder="Number of children under 12">
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
             </div>
         <div class="form-group">
-            <label for="session">Session:</label>
+            <label for="session">Session: </label>
             <select id="session" name="session" required>
                 <?php foreach ($restaurant->sessions as $session) {
                     $value = $session->id;
@@ -127,7 +127,7 @@
                     $end_time = new DateTime($session->endTime);
                     $label = $date->format('D, j F, o') . ' from ' . $start_time->format('H:i') . ' until ' . $end_time->format('H:i');
                     ?>
-                    <option value="<?php echo $value ?>"><?php echo $label ?></option>
+                    <option value="<?=$value?>"><?php echo $value, " - ", $label ?></option>
                 <?php } ?>
             </select>
             <span id="spaces-label"></span>
@@ -139,6 +139,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
+
             const sessionSelect = document.getElementById('session');
             const spacesLabel = document.getElementById('spaces-label');
             const submitBtn = document.querySelector('input[type="submit"]');
@@ -147,14 +148,10 @@
                 const sessionId = sessionSelect.value;
                 if (sessionId) {
                     $.post('checkSpaces', sessionId)
-                        .done(function(response) {
-                            const spaces = response;
-                            spacesLabel.textContent = `Spaces available: ${spaces}`;
-                            submitBtn.disabled = spaces < numberOfAttendees();
-                        })
-                        .fail(function() {
-                            alert('Cannot load current available spaces. Please try again later.');
-                        });
+                    const spaces = <?=$spaces?>;
+                    spacesLabel.textContent = `Spaces available: ${spaces}`;
+                    submitBtn.disabled = spaces < numberOfAttendees();
+
                 } else {
                     spacesLabel.textContent = '';
                     submitBtn.disabled = false;

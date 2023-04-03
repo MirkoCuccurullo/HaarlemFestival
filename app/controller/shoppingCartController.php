@@ -22,7 +22,7 @@ class shoppingCartController
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
 
-    public function addDanceEvent()
+    public function addEvent()
     {
         if (isset($_SESSION['order']))
             $order = $_SESSION['order'];
@@ -39,18 +39,24 @@ class shoppingCartController
             $order->status = 'open';
         }
 
-        if (isset($_POST['addDanceEvent'])) {
+        if (isset($_POST['addDanceEvent']) || isset($_POST['addReservation'])) {
 
             $eventService = new EventService();
-            $id = htmlspecialchars($_POST['danceEventId']);
-            $event = $eventService->getEventByID($id);
+            if (isset($_POST['addDanceEvent'])) {
+                $id = htmlspecialchars($_POST['danceEventId']);
 
+                $event = $eventService->getEventByID($id);
 
-            $artist = $eventService->getArtistByID($event->artist);
-            $event->artist_name = $artist->name;
+                $artist = $eventService->getArtistByID($event->artist);
+                $event->artist_name = $artist->name;
 
-            $venue = $eventService->getVenueByID($event->location);
-            $event->venue_name = $venue->name;
+                $venue = $eventService->getVenueByID($event->location);
+                $event->venue_name = $venue->name;
+            }
+            else if (isset($_POST['addReservation'])) {
+                $id = htmlspecialchars($_POST['reservationId']);
+                $event = $eventService->getReservationByID($id);
+            }
 
             $order->addEvent($event);
             $_SESSION['order'] = $order;
@@ -66,7 +72,7 @@ class shoppingCartController
         $router->route('/shoppingCart');
     }
 
-    public function removeDanceEvent()
+    public function removeEvent(): void
     {
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
@@ -141,6 +147,10 @@ class shoppingCartController
         $orderService = new orderService();
         $order = $orderService->getOrder($order_id);
         $status = $order->status;
+        $reservationService = new reservationService();
+        $reservation = $reservationService->getReservationById($_POST['reservation_id']);
+        $reservation->status = 'paid';
+        $reservationService->updateReservation($reservation);
         require_once __DIR__ . '/../view/shoppingCart/confirmation.php';
     }
 
