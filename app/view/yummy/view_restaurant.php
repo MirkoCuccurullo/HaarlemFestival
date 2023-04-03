@@ -166,6 +166,10 @@
         </script>
 
         <br>
+       // need to parse to the router/controller the reservation ID but it hasn't been created yet
+        so cant do it here
+        <input type="hidden" name="reservationId" value="<?= $reservation->id ?>">
+
         <button type="submit" name="addReservation" class="btn btn-primary">Submit</button>
     </form>
     <br>

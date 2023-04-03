@@ -514,12 +514,10 @@ class router
                 $controller = new \reservationController();
                 if (isset($_POST['addReservation'])) {
                     $controller->addReservation();
-                }
-                //add to shopping cart
-                if (isset($_POST['/shoppingCart/add'])) {
+                    //need reservation id to add to shopping cart from the reservation that has just been entered in the database
                     require_once __DIR__ . '/../controller/shoppingCartController.php';
-                    $controller = new \shoppingCartController();
-                    $controller->addEvent();
+                    $shoppingController = new \shoppingCartController();
+                    $shoppingController->addEvent();
                 }
                 break;
 
