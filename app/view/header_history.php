@@ -7,15 +7,11 @@
     <title>Visit Haarlem</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/header_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
+<!--    <link rel="stylesheet" href="/css/header_style.css">-->
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #9DE2BD">
+<nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #BAC127">
     <div class="container">
         <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -71,10 +67,6 @@
                         <li>
                             <a class="dropdown-item" href="/history">A Stroll Through History</a>
                         </li>
-
-                        <li>
-                            <a class="dropdown-item" href="/qr">QR code checker</a>
-                        </li>
                     </ul>
                 </li>
 
@@ -112,19 +104,11 @@
             </ul>
 
             <ul class="nav col-md-4 justify-content-end">
-                <li>
-                    <button id="twitter-button" class="btn btn-primary">
-                        <i class="fab fa-twitter"></i>
-                    </button>
-                    
-                    <button id="facebook-button" class="btn btn-primary" style="padding: 8px">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>Logout</a>
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
@@ -146,27 +130,4 @@
     </div>
 </nav>
 
-<div style="overflow: hidden" class="mb-4">
-    <img src="/images/haarlem.png" alt="welcome to Haarlem">
-</div>
-
 <div class="container">
-
-
-    <script>
-        document.getElementById('twitter-button').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var text = encodeURIComponent(document.title);
-            var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
-            window.open(shareUrl, '_blank');
-        });
-
-        document.getElementById('facebook-button').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var text = encodeURIComponent(document.title);
-            var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&text=' + text;
-            window.open(shareUrl, '_blank');
-        });
-
-
-    </script>

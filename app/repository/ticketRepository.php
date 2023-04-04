@@ -27,54 +27,23 @@ class ticketRepository extends \repository\baseRepository{
 
         public function insertTicket($ticket){
             $sql = "INSERT INTO tickets (quantity, price, ";
-            if(isset($ticket->dance_event_id)){
-                $sql .= "dance_event_id, ";
-            }
-            else if(isset($ticket->yummy_event_id)){
-                $sql .= "yummy_event_id, ";
-            }
-            else if(isset($ticket->history_event_id)){
-                $sql .= "history_event_id, ";
-            }
-            else if(isset($ticket->access_pass_id)){
-                $sql .= "access_pass_id, ";
-            }
+            $sql .= $this->updateQueryWithEventType($ticket);
+            $sql .= "status, order_id, user_id, vat_id) VALUES (:quantity, :price, ";
 
-            $sql .= "status, order_id, user_id) VALUES (:quantity, :price, ";
+            $sql .= $this->updateQueryWithValues($ticket);
 
-            if(isset($ticket->dance_event_id)){
-                $sql .= ":dance_event_id, ";
-            }
-            else if(isset($ticket->yummy_event_id)){
-                $sql .= ":yummy_event_id, ";
-            }
-            else if(isset($ticket->history_event_id)){
-                $sql .= ":history_event_id, ";
-            }
-            else if(isset($ticket->access_pass_id)){
-                $sql .= ":access_pass_id, ";
-            }
-
-            $sql .= ":status, :order_id, :user_id)";
+            $sql .= ":status, :order_id, :user_id, :vat_id)";
 
             $stmt = $this->connection->prepare($sql);
             $stmt->bindParam(':quantity', $ticket->quantity);
             $stmt->bindParam(':price', $ticket->price);
-            if(isset($ticket->dance_event_id)){
-                $stmt->bindParam(':dance_event_id', $ticket->dance_event_id);
-            }
-            else if(isset($ticket->yummy_event_id)){
-                $stmt->bindParam(':yummy_event_id', $ticket->yummy_event_id);
-            }
-            else if(isset($ticket->history_event_id)){
-                $stmt->bindParam(':history_event_id', $ticket->history_event_id);
-            }
-            else if(isset($ticket->access_pass_id)){
-                $stmt->bindParam(':access_pass_id', $ticket->access_pass_id);
-            }
+
+            $this->updateQueryWithBindParams($stmt, $ticket);
+
             $stmt->bindParam(':status', $ticket->status);
             $stmt->bindParam(':order_id', $ticket->order_id);
             $stmt->bindParam(':user_id', $ticket->user_id);
+            $stmt->bindParam(':vat_id', $ticket->vat_id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
@@ -109,20 +78,52 @@ class ticketRepository extends \repository\baseRepository{
             return true;
         }
 
-        public function updateQuery($ticket){
-            $sql='';
+        public function updateQueryWithEventType($ticket){
+            $sql = "";
             if(isset($ticket->dance_event_id)){
-                $sql .= "dance_event_id, ";
+                $sql = "dance_event_id, ";
             }
             else if(isset($ticket->yummy_event_id)){
-                $sql .= "yummy_event_id, ";
+                $sql = "yummy_event_id, ";
             }
             else if(isset($ticket->history_event_id)){
-                $sql .= "history_event_id, ";
+                $sql = "history_event_id, ";
             }
             else if(isset($ticket->access_pass_id)){
-                $sql .= "access_pass_id, ";
+                $sql = "access_pass_id, ";
             }
             return $sql;
+        }
+
+        public function updateQueryWithValues($ticket){
+            $sql = "";
+            if(isset($ticket->dance_event_id)){
+                $sql = ":dance_event_id, ";
+            }
+            else if(isset($ticket->yummy_event_id)){
+                $sql = ":yummy_event_id, ";
+            }
+            else if(isset($ticket->history_event_id)){
+                $sql = ":history_event_id, ";
+            }
+            else if(isset($ticket->access_pass_id)){
+                $sql = ":access_pass_id, ";
+            }
+            return $sql;
+        }
+
+        public function updateQueryWithBindParams($stmt, $ticket){
+            if(isset($ticket->dance_event_id)){
+                $stmt->bindParam(':dance_event_id', $ticket->dance_event_id);
+            }
+            else if(isset($ticket->yummy_event_id)){
+                $stmt->bindParam(':yummy_event_id', $ticket->yummy_event_id);
+            }
+            else if(isset($ticket->history_event_id)){
+                $stmt->bindParam(':history_event_id', $ticket->history_event_id);
+            }
+            else if(isset($ticket->access_pass_id)){
+                $stmt->bindParam(':access_pass_id', $ticket->access_pass_id);
+            }
         }
 }

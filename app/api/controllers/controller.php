@@ -74,4 +74,23 @@ class controller
         }
         return $object;
     }
+
+    function checkForGuidToken(){
+        require_once __DIR__ . '/../../service/apiKeyService.php';
+        if(!isset($_SERVER['HTTP_GUID'])) {
+            $this->respondWithError(401, "No token provided");
+            return;
+        }
+        $guid = $_SERVER['HTTP_GUID'];
+        $apiKeyService = new apiKeyService();
+        $result = $apiKeyService->checkApiKey($guid);
+        if($result) {
+            return true;
+        } else {
+            $this->respondWithError(401, "Invalid token");
+            return;
+        }
+
+
+    }
 }

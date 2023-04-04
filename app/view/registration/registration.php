@@ -36,7 +36,7 @@
         <div class="input-box">
             <label for="date_of_birth">Birth Date</label>
             <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Enter date of birth" required/><br /><br />
-            <div class="error"> <?php if (isset($dateInPast)){ ?> <span id="error-msg"> <?=$dateInPast?> </span> <?php } ?> </div><br />
+            <div class="error"> <?php if (isset($dateInPast)){ ?> <span id="error-msg"> <?=$dateInPast?> </span> <?php } ?> </div><br>
         </div>
 
         <p>Already have an account? <a href="/login"> Login</a></p>

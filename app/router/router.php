@@ -14,6 +14,7 @@ use userControllerAPI;
 
 class router
 {
+
     /**
      * @throws \Exception
      */
@@ -21,6 +22,15 @@ class router
     {
         error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
+            case '/generateToken':
+                require_once __DIR__ . '/../controller/festivalController.php';
+                $controller = new festivalController();
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $controller->generateToken();
+                } else {
+                    $controller->tokenPage();
+                }
+                break;
             case'/qr':
                 require_once __DIR__ . '/../controller/qrController.php';
                 $controller = new qrController();
@@ -168,6 +178,7 @@ class router
                 $controller->editEvent();
                 break;
 
+
             case'/history':
                 require __DIR__ . '/../controller/historyEventController.php';
                 $controller = new \historyEventController();
@@ -183,6 +194,7 @@ class router
                 $controller = new \historyEventController();
                 $controller->historyLocationDetailPage($_POST['id']);
                 break;
+
 
             case '/signin':
                 require '../controller/loginController.php';
@@ -238,7 +250,10 @@ class router
                 $controller->displayAddedContent();
                 break;
             case '/historyManagement/add':
-                require __DIR__ . '/../view/history/historyAdmin/addContent.php';
+                require __DIR__ . '/../view/history/historyAdmin/addCardContent.php';
+                break;
+            case '/historyManagement/addScheduleContent':
+                require __DIR__ . '/../view/history/historyAdmin/addScheduleContent.php';
                 break;
 
 
@@ -332,6 +347,7 @@ class router
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
                 $controller->addEvent();
+
                 break;
 
             case '/shoppingCart/remove':
@@ -455,12 +471,36 @@ class router
                     $controller->editReservation();
                 }
                 break;
+            case '/festival/dance/manageVenues':
+                    require_once __DIR__ . '/../controller/danceController.php';
+                    $controller = new \danceController();
+                    $controller->addVenue();
+                    break;
+            case '/api/dance/events?artist=' . $_GET['artist'] . '&date=' . $_GET['date'] . '&venue=' . $_GET['venue']:
+                require_once __DIR__ . '/../api/controllers/danceControllerAPI.php';
+                $controller = new \danceControllerAPI();
+                $artist_id = $_GET['artist'];
+                $date_id = $_GET['date'];
+                $venue_id = $_GET['venue'];
+                $controller->getAllByFilters($artist_id, $date_id, $venue_id);
+                break;
             case '/deactivate/reservation':
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 $controller->deactivateReservation();
                 break;
-
+            case '/api/dance/artists?id=' . $_GET['id']:
+                    require_once __DIR__ . '/../api/controllers/artistControllerAPI.php';
+                    $controller = new \artistControllerAPI();
+                    $id = $_GET['id'];
+                    $controller->getOne($id);
+                    break;
+            case'/api/dance/venues?id=' . $_GET['id']:
+                require_once __DIR__ . '/../api/controllers/venuesControllerAPI.php';
+                $controller = new \venuesControllerAPI();
+                $id = $_GET['id'];
+                $controller->getOne($id);
+                break;
             case'/api/orders?id=' . $_GET['id']:
                 require("../api/controllers/orderControllerAPI.php");
                 $controller = new \orderControllerAPI();

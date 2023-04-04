@@ -88,6 +88,11 @@ class eventService
     {
         $service = new reservationService();
         return $service->getReservationByID($id);
+
+    public function getAllByFilters(mixed $artist_id, mixed $date_id, mixed $venue_id)
+    {
+        return $this->eventRepo->getAllByFilters($artist_id, $date_id, $venue_id);
+
     }
 
 
