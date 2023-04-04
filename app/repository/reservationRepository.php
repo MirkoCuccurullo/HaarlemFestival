@@ -68,22 +68,6 @@ class reservationRepository extends baseRepository
         }
         return $reservation;
     }
-    public function getSessionByID($id)
-    {
-        try{
-            $sql = "SELECT * FROM session WHERE id = :id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindParam(":id", $id);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'session');
-            $session = $stmt->fetchAll();
-
-        } catch (PDOException $e) {
-            // Log the error and return failure status
-            error_log("Failed to get session: " . $e->getMessage());
-        }
-        return $session;
-    }
 
     public function getReservationById(int $id)
     {
@@ -94,7 +78,6 @@ class reservationRepository extends baseRepository
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'reservation');
             $result = $stmt->fetch();
-            $result->session = $this->getSessionById($result->sessionId);
             return $result;
 
         } catch (PDOException $e) {

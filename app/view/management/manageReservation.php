@@ -4,8 +4,8 @@
 <br>
 <select name="reservation" id="reservation" class="form-select" oninput="filterReservations()">
     <option selected value="0"> All Reservations</option>
-    <option value="1">Confirmed</option>
-    <option value="2">Canceled</option>
+    <option value="1">Paid</option>
+    <option value="2">Cancelled</option>
     <option value="3">Deactivated</option>
 </select>
 <br>
@@ -31,13 +31,13 @@
         <tbody class="table-group-divider" id="reservationTable">
 
         <script>
-       /*     function filterReservations() {
+        function filterReservations() {
                 const status = document.getElementById("reservation").value;
                 const table = document.getElementById("reservationTable");
                 const rows = table.getElementsByTagName("tr");
                 for (let i = 0; i < rows.length; i++) {
                     const row = rows[i];
-                    const statusCol = row.getElementsByTagName("td")[3];
+                    const statusCol = row.getElementsByTagName("td")[4];
                     if (statusCol) {
                         const statusValue = statusCol.textContent || statusCol.innerText;
                         if (status === "0" || statusValue === status) {
@@ -47,7 +47,7 @@
                         }
                     }
                 }
-            }*/
+            }
 
             function loadReservations() {
                 fetch('http://localhost/api/reservation')
@@ -115,7 +115,7 @@
 
                 deactivateForm.appendChild(idInputTwo);
                 deactivateForm.appendChild(deactivateButton);
-                deactivateButtonCol.appendChild(deactivateForm
+                deactivateButtonCol.appendChild(deactivateForm);
 
                 editForm.appendChild(idInput);
                 editForm.appendChild(editButton);

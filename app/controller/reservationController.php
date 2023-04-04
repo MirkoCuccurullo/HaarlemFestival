@@ -55,7 +55,7 @@ class reservationController
         $reservation->numberOfUnder12 = $_POST['under12'];
         $reservation->customerEmail = $_POST['email'];
         $reservation->comment = $_POST['comment'];
-        $reservation->status = 'pending';
+        $reservation->status = "pending";
         $reservation->price = $reservation->numberOfAdults * 10 + $reservation->numberOfUnder12 * 10;
         $reservation = $this->reservationService->addReservation($reservation);
     }
