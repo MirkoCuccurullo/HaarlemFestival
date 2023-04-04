@@ -1,10 +1,12 @@
 <?php
-include __DIR__ . '/../header.php'; ?>
+include __DIR__ . '/../header.php';
+//TODO: To do dynamically from the database
+?>
 
     <h1 class="text-center mb-3">Manage Sessions</h1>
     <select name="restaurants" id="restaurants" class="form-select" oninput="filterSession()">
         <option selected value="0"> All Restaurants</option>
-        //TODO: To do dynamically from the database
+
         <option value="Restaurant ML">To do Dynamically</option>
 
     </select>

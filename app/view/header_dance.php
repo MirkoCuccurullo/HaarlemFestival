@@ -8,6 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/dance_style.css">
+
+<!--    The below are to show the twitter and facebook icon in the button but when I uncomment it the page changes colour-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>-->
+
 </head>
 <body>
 
@@ -105,6 +111,15 @@
 
                 <ul class="nav col-md-4 justify-content-end">
                     <li class="nav-item">
+                        <button id="twitter-button" class="btn btn-primary">
+                            <i class="fab fa-twitter"></i>Twitter
+                        </button>
+
+                        <button id="facebook-button" class="btn btn-primary" >
+                            <i class="fab fa-facebook-f"></i>Facebook
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
                             echo "hidden" ?>>Logout</a>
                     </li>
@@ -123,6 +138,12 @@
                         <a class="nav-link" href="/shoppingCart">
                             <img src="../images/shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
                         </a>
+                    </li>
+                    <li>
+                        <div id="fb-root m-3" class="text-end" >
+                            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="3xLLnuP1"></script>
+                            <div class="fb-share-button m-3" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -145,3 +166,21 @@
     </nav>
 </div>
 
+
+<script>
+    document.getElementById('twitter-button').addEventListener('click', function() {
+        var url = encodeURIComponent(window.location.href);
+        var text = encodeURIComponent(document.title);
+        var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
+        window.open(shareUrl, '_blank');
+    });
+
+    document.getElementById('facebook-button').addEventListener('click', function() {
+        var url = encodeURIComponent(window.location.href);
+        var text = encodeURIComponent(document.title);
+        var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&text=' + text;
+        window.open(shareUrl, '_blank');
+    });
+
+
+</script>

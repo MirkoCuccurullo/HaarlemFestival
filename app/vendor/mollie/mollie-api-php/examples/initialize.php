@@ -6,7 +6,7 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-require_once __DIR__ . "/../../../autoload.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/functions.php";
 
 /*
@@ -15,4 +15,4 @@ require_once __DIR__ . "/functions.php";
  * See: https://www.mollie.com/dashboard/developers/api-keys
  */
 $mollie = new \Mollie\Api\MollieApiClient();
-$mollie->setApiKey("test_GSqhHfd3ardk7AkHQVmPjt5yFu4Qaw");
+$mollie->setApiKey("test_dHar4XY7LxsDOtmnkVtjNVWXLSlXsM");

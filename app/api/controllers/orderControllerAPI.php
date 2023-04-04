@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../model/order.php';
 require_once __DIR__ . '/controller.php';
 class orderControllerAPI extends controller
 {
-    private $orderService;
+    private orderService $orderService;
 
     // initialize services
     function __construct()
@@ -29,9 +29,9 @@ class orderControllerAPI extends controller
             $limit = $_GET["limit"];
         }
 
-        $appointments = $this->orderService->getAllOrders($offset, $limit);
+        $orders = $this->orderService->getAllOrders($offset, $limit);
 
-        $this->respond($appointments);
+        $this->respond($orders);
 
     }
 
@@ -59,9 +59,8 @@ class orderControllerAPI extends controller
         if (!$token) {
             return;
         }
-        $appointment = $this->orderService->deleteOrder($id);
-
-        $this->respond($appointment);
+        $order = $this->orderService->deleteOrder($id);
+        $this->respond($order);
     }
 
     public function add()
@@ -79,9 +78,9 @@ class orderControllerAPI extends controller
 
         $data = $this->createObjectFromPostedJson("Models\\order");
 
-        $appointment = $this->orderService->createOrder($order);
+        $order = $this->orderService->createOrder($order);
 
-        $this->respond($appointment);
+        $this->respond($order);
     }
 
     public function update($id)

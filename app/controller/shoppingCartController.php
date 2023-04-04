@@ -40,27 +40,32 @@ class shoppingCartController
             $order->status = 'open';
         }
 
-        if (isset($_POST['addDanceEvent'])) {
+        if (isset($_POST['addDanceEvent']) || isset($_POST['addReservation'])) {
 
             $eventService = new EventService();
-            $id = htmlspecialchars($_POST['danceEventId']);
-            $event = $eventService->getEventByID($id);
+            if (isset($_POST['addDanceEvent'])) {
+                $id = htmlspecialchars($_POST['danceEventId']);
 
+                $event = $eventService->getEventByID($id);
 
-            $artist = $eventService->getArtistByID($event->artist);
-            $event->artist_name = $artist->name;
+                $artist = $eventService->getArtistByID($event->artist);
+                $event->artist_name = $artist->name;
 
-            $venue = $eventService->getVenueByID($event->location);
-            $event->venue_name = $venue->name;
+                $venue = $eventService->getVenueByID($event->location);
+                $event->venue_name = $venue->name;
+            }
+            else if (isset($_POST['addReservation'])) {
+                $event = $reservation;
+            }
 
-            $order->addDanceEvent($event);
+            $order->addEvent($event);
             $_SESSION['order'] = $order;
         }
         else if(isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
             $accessPass = $accessPassService->getAccessPassByID($id);
-            $order->addDanceEvent($accessPass);
+            $order->addEvent($accessPass);
             $_SESSION['order'] = $order;
         }
         $router = new Router();
@@ -96,11 +101,11 @@ class shoppingCartController
         $router->route('/shoppingCart');
     }
 
-    public function removeDanceEvent()
+    public function removeEvent()
     {
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
-            $_SESSION['order']->removeDanceEvent($key);
+            $_SESSION['order']->removeEvent($key);
         }
         $router = new Router();
         $router->route('/shoppingCart');

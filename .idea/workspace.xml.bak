@@ -4,16 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
+
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="trying to add reservation to shopping cart">
+      <change afterPath="$PROJECT_DIR$/app/controller/CVSController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controller/ExcelController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/danceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/danceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/baseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/baseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/eventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/eventRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_artist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_artist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/header_dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header_dance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
+
+
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="History main event page + Cart page front-end" />
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,11 +29,6 @@
     </execution>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -59,6 +57,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2LVWZcx2dKQ3inczOL30gcEf9Dc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -68,7 +69,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mirko/Documents/GItHub/HaarlemFestival&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -162,8 +163,23 @@
       <workItem from="1678454722455" duration="16000" />
       <workItem from="1679394353466" duration="929000" />
       <workItem from="1679567419802" duration="5116000" />
-      <workItem from="1680182981417" duration="415000" />
-      <workItem from="1680606838799" duration="1987000" />
+      <workItem from="1679585985750" duration="10739000" />
+      <workItem from="1679837711324" duration="9113000" />
+      <workItem from="1679917312057" duration="21281000" />
+      <workItem from="1680006515318" duration="1025000" />
+      <workItem from="1680022402831" duration="56000" />
+      <workItem from="1680022855078" duration="10465000" />
+
+      <workItem from="1680265345424" duration="304000" />
+      <workItem from="1680348192513" duration="6982000" />
+      <workItem from="1680523292160" duration="96000" />
+      <workItem from="1680523448098" duration="11887000" />
+      <workItem from="1680611806055" duration="4466000" />
+
+
+      <workItem from="1680090135585" duration="12000" />
+      <workItem from="1680281820220" duration="1431000" />
+
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -186,7 +202,67 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
+
+    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010466747</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010466747</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010749139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010749139</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Order management">
+      <created>1680084383107</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680084383107</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Order management">
+      <created>1680097344674</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680097344674</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added sharing to Twitter and Facebook on header.php and header_dance.php">
+      <created>1680349563766</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680349563766</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Reservation form in Restaurant page">
+      <created>1680352633461</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680352633461</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Adjusted small things here and there while I wait for my pasta to be cooked">
+      <created>1680353849547</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680353849547</updated>
+    </task>
+    <task id="LOCAL-00011" summary="trying to add reservation to shopping cart">
+      <created>1680535562230</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680535562230</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+
     <option name="localTasksCounter" value="4" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +294,17 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
+<<<<<<< HEAD
+    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
+    <MESSAGE value="Order management" />
+    <MESSAGE value="Added sharing to Twitter and Facebook on header.php and header_dance.php" />
+    <MESSAGE value="Reservation form in Restaurant page" />
+    <MESSAGE value="Adjusted small things here and there while I wait for my pasta to be cooked" />
+    <MESSAGE value="trying to add reservation to shopping cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to add reservation to shopping cart" />
+
     <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
+
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

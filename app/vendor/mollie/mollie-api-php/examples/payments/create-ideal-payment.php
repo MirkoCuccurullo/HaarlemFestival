@@ -9,7 +9,7 @@ try {
      *
      * See: https://www.mollie.com/dashboard/developers/api-keys
      */
-    require __DIR__ . "/../initialize.php";
+    require "../initialize.php";
 
     /*
      * First, let the customer pick the bank in a simple HTML form. This step is actually optional.
@@ -59,7 +59,7 @@ try {
         "method" => \Mollie\Api\Types\PaymentMethod::IDEAL,
         "description" => "Order #{$orderId}",
         "redirectUrl" => "{$protocol}://{$hostname}{$path}/return.php?order_id={$orderId}",
-        "webhookUrl" => "https://ngrok.com/",
+        "webhookUrl" => "{$protocol}://{$hostname}{$path}/webhook.php",
         "metadata" => [
             "order_id" => $orderId,
         ],
@@ -69,7 +69,7 @@ try {
     /*
      * In this example we store the order with its payment status in a database.
      */
-    //database_write($orderId, $payment->status);
+    database_write($orderId, $payment->status);
 
     /*
      * Send the customer off to complete the payment.
