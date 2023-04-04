@@ -20,7 +20,7 @@ class router
      */
     public function route($url)
     {
-        //error_reporting(E_ERROR | E_PARSE);
+        error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
             case '/generateToken':
                 require_once __DIR__ . '/../controller/festivalController.php';
@@ -556,7 +556,7 @@ class router
                     //need reservation id to add to shopping cart from the reservation that has just been entered in the database
                     require_once __DIR__ . '/../controller/shoppingCartController.php';
                     $shoppingController = new \shoppingCartController();
-                    $shoppingController->addEvent();
+                    $shoppingController->addDanceEvent();
                 }
                 break;
 

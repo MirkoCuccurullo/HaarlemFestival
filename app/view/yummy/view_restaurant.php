@@ -118,8 +118,8 @@
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
             </div>
         <div class="form-group">
-            <label for="session">Session: </label>
-            <select id="session" name="session" required>
+            <label for="sessionId">Session: </label>
+            <select id="sessionId" name="sessionId" required>
                 <?php foreach ($restaurant->sessions as $session) {
                     $value = $session->id;
                     $date = new DateTime($session->date);

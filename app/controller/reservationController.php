@@ -45,7 +45,7 @@ class reservationController
         header('Location: /manage/reservation');
     }
 
-    public function addReservation()
+    public function addReservation(): void
     {
         $reservation = new reservation();
         $reservation->restaurantName = $_POST['restaurantName'];

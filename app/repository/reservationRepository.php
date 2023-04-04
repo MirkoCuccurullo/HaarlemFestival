@@ -16,9 +16,6 @@ class reservationRepository extends baseRepository
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'reservation');
             $result = $stmt->fetchAll();
-            foreach ($result as $reservation) {
-                $reservation->session = $this->getSessionById($reservation->sessionId);
-            }
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to get reservations: " . $e->getMessage());
@@ -38,7 +35,7 @@ class reservationRepository extends baseRepository
             $stmt->bindParam(":session_id", $reservation->session->id);
             $stmt->bindParam(":adults", $reservation->numberOfAdults);
             $stmt->bindParam(":under12", $reservation->numberOfUnder12);
-            $stmt->bindParam(":rPrice", $reservation->reservationPrice);
+            $stmt->bindParam(":rPrice", $reservation->price);
             $stmt->bindParam(":comment", $reservation->comment);
             $stmt->execute();
 
@@ -71,7 +68,7 @@ class reservationRepository extends baseRepository
         }
         return $reservation;
     }
-    public function getSessionByID($id): array
+    public function getSessionByID($id)
     {
         try{
             $sql = "SELECT * FROM session WHERE id = :id";
