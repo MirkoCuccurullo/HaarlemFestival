@@ -12,7 +12,7 @@ include __DIR__ . '/../header_dance.php'; ?>
             foreach ($artists as $artist) { ?>
                 <div class="col-2">
                 <form>
-                    <button formmethod="post" style="background: #363636; border-style: hidden; border-radius: 50%; width: 150px;" name="id" value="<?=$artist->id?>" formaction="/dance/artist">
+                    <button formmethod="post" style="background: #363636; border-style: hidden; border-radius: 50%; width: 150px;" name="id" value="<?=$artist->id?>" formaction="/dance/artist?id=<?=$artist->id?>">
                         <img src="<?= $artist->picture ?>" class="hover-shadow">
                         <p class="text-center"><?= $artist->name ?></p>
                     </button>
@@ -233,7 +233,7 @@ include __DIR__ . '/../footer.php'; ?>
     <script>changeFooterToDanceStyle();
         function changeFooterToDanceStyle() {
             document.getElementById("footer").style.backgroundColor = "#d9d9d9";
-
+            document.getElementById("fb-root m-3").remove();
         }
 
         function topFunction() {
