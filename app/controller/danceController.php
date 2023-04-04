@@ -111,7 +111,13 @@ class danceController
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $danceService->insertArtist(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['genre']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['picture']), htmlspecialchars($_POST['spotify']));
+
+        $picture_name = '/images/' . $_FILES['picture']['name'];
+        //upload picture to public/images
+        $target_dir = __DIR__ . "/../public/images/";
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+        move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
+        $danceService->insertArtist(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['genre']), htmlspecialchars($_POST['description']), htmlspecialchars($picture_name), htmlspecialchars($_POST['spotify']));
         header('Location: /manage/dance/artists');
     }
 
