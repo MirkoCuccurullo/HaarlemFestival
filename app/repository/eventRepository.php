@@ -96,14 +96,15 @@ class eventRepository extends baseRepository
         return $result;
     }
 
-    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description)
+    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description, $picture)
     {
-        $sql = "UPDATE dance_artists SET name = :name, genre = :genre, description = :description WHERE id = :id";
+        $sql = "UPDATE dance_artists SET name = :name, genre = :genre, description = :description, picture = :picture WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":genre", $genre);
         $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":picture", $picture);
         return $stmt->execute();
     }
 
