@@ -7,35 +7,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <link href="invoice_view.css">
+    <link rel="stylesheet" href="/css/invoice_view.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <title>Invoice</title>
 </head>
 <body>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+                <h2>Invoice</h2><h3 class="pull-right">Order # <?= $invoiceInfo[0]->invoiceNumber ?></h3>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                        <strong>Billed To:</strong><br>
-                        John Smith<br>
-                        1234 Main<br>
-                        Apt. 4B<br>
-                        Springfield, ST 54321
+                        <strong>Client name:</strong><br>
+                        <?= $invoiceInfo[0]->clientName ?><br><br>
+                        <strong>Address:</strong><br>
+                        <?= $invoiceInfo[0]->address ?><br>
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
-                        <strong>Shipped To:</strong><br>
-                        Jane Smith<br>
-                        1234 Main<br>
-                        Apt. 4B<br>
-                        Springfield, ST 54321
+                        <strong>Email:</strong><br>
+                        <?= $invoiceInfo[0]->email ?><br><br>
+                        <strong>Phone number:</strong><br>
+                        <?= $invoiceInfo[0]->phoneNumber ?><br>
                     </address>
                 </div>
             </div>
@@ -43,14 +43,15 @@
                 <div class="col-xs-6">
                     <address>
                         <strong>Payment Method:</strong><br>
-                        Visa ending **** 4242<br>
-                        jsmith@email.com
+                        <?= $invoiceInfo[0]->paymentMethod ?><br>
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
-                        <strong>Order Date:</strong><br>
-                        March 7, 2014<br><br>
+                        <strong>Invoice Date:</strong><br>
+                        <?= $invoiceInfo[0]->getInvoiceDate() ?><br><br>
+                        <strong>Payment Date:</strong><br>
+                        <?= $invoiceInfo[0]->paymentDate ?><br><br>
                     </address>
                 </div>
             </div>
@@ -98,25 +99,30 @@
                                 <td class="thick-line"></td>
                                 <td class="thick-line"></td>
                                 <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                <td class="thick-line text-right">$670.99</td>
+                                <td class="thick-line text-right"><?= $invoiceInfo[0]->subTotalAmount ?></td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
-                                <td class="no-line text-center"><strong>Shipping</strong></td>
-                                <td class="no-line text-right">$15</td>
+                                <td class="no-line text-center"><strong>VAT</strong></td>
+                                <td class="no-line text-right"><?= $invoiceInfo[0]->VAT ?></td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>Total</strong></td>
-                                <td class="no-line text-right">$685.99</td>
+                                <td class="no-line text-right"><?= $invoiceInfo[0]->totalAmount ?></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <button class="btn" >
+                <a href="path_to_file" id="invoiceDownload" download="proposed_file_name">
+                    <i class="fa fa-download"></i> Download
+                </a>
+            </button>
         </div>
     </div>
 </div>

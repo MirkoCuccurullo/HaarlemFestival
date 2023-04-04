@@ -208,7 +208,6 @@ class router
                 $controller->sendResetLink();
                 break;
 
-
             case '/invoiceHTML':
                 require __DIR__ . '/../controller/invoiceController.php';
                 $controller = new \invoiceController();

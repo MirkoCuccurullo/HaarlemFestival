@@ -12,8 +12,12 @@ class invoiceController {
     }
 
     public function displayInvoiceHTML(){
+        $invoiceInfo = $this->getAllInformationForInvoice();
         include __DIR__ . '/../view/invoice/invoice_view.php';
+    }
 
+    public function getAllInformationForInvoice(){
+        return $this->invoiceService->getAllInformationForInvoice();
     }
 
 }

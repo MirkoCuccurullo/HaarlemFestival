@@ -288,3 +288,55 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice`
+--
+
+CREATE TABLE 'invoice' (
+     id int not null auto_increment,
+     invoice_number int(10),
+     invoice_date DATE,
+     name_of_client varchar(100),
+     phone_number varchar(255),
+     address varchar(255),
+     email varchar(255),
+     subtotal DECIMAL(10,2),
+     total_amount DECIMAL(10,2),
+     vat DECIMAL(10,4),
+     payment_method varchar(255),
+     primary key (id)
+);
+
+
+--
+-- Modify for table `invoice
+--
+ALTER TABLE 'invoice' MODIFY COLUMN invoice_number INT;
+ALTER TABLE 'invoice' MODIFY total_amount FLOAT;
+ALTER TABLE 'invoice' MODIFY subTotal FLOAT;
+
+--
+-- Add for table `invoice
+--
+ALTER TABLE 'invoice'
+    ADD COLUMN payment_date DATE AFTER vat;
+
+ALTER TABLE 'invoice'
+    ADD COLUMN user_id INT AFTER payment_date;
+
+ALTER TABLE 'invoice'
+    ADD COLUMN no_of_items INT AFTER user_id;
+
+--
+-- Constraints for table `invoice
+--
+ALTER TABLE 'invoice'
+    ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+ALTER TABLE invoice
+ADD COLUMN order_id INT,
+ADD CONSTRAINT FK_order_invoice
+FOREIGN KEY (order_id) REFERENCES `orders` (id);

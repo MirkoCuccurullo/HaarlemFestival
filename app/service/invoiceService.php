@@ -9,4 +9,8 @@ class invoiceService
     {
         $this->invoiceRepository = new InvoiceRepository();
     }
+
+    public function getAllInformationForInvoice(){
+        return $this->invoiceRepository->getAllInformationForInvoice();
+    }
 }
