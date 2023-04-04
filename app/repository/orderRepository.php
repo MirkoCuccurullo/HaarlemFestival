@@ -19,17 +19,17 @@ class orderRepository extends baseRepository{
     }
 
 
-    public function updateOrder($order){
-        $sql = "UPDATE orders SET user_id = :user_id, no_of_items = :no_of_items, total_price = :total_price, status = :status WHERE id = :id";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam(":user_id", $order->user_id);
-        $stmt->bindParam(":no_of_items", $order->no_of_items);
-        $stmt->bindParam(":total_price", $order->total_price);
-        $stmt->bindParam(":status", $order->status);
-        $stmt->bindParam(":id", $order->id);
-        $stmt->execute();
-        return $this->getOrder($order->id);
-	}
+//    public function updateOrder($order){
+//        $sql = "UPDATE orders SET user_id = :user_id, no_of_items = :no_of_items, total_price = :total_price, status = :status WHERE id = :id";
+//        $stmt = $this->connection->prepare($sql);
+//        $stmt->bindParam(":user_id", $order->user_id);
+//        $stmt->bindParam(":no_of_items", $order->no_of_items);
+//        $stmt->bindParam(":total_price", $order->total_price);
+//        $stmt->bindParam(":status", $order->status);
+//        $stmt->bindParam(":id", $order->id);
+//        $stmt->execute();
+//        return $this->getOrder($order->id);
+//	}
 
     public function updateOrder($order_id, $status, $payment_id){
         $sql = "UPDATE orders SET status = :status, payment_id = :payment_id WHERE id = :order_id";

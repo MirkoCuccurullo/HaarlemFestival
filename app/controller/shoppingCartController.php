@@ -95,11 +95,11 @@ class shoppingCartController
         $router->route('/shoppingCart');
     }
 
-    public function removeDanceEvent()
+    public function removeEvent()
     {
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
-            $_SESSION['order']->removeDanceEvent($key);
+            $_SESSION['order']->removeEvent($key);
         }
         $router = new Router();
         $router->route('/shoppingCart');

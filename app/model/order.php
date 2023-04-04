@@ -7,16 +7,8 @@ class order{
     public int $no_of_items;
     public float $total_price;
     public string $status;
-
     public array $events = array();
-
     public ?string $payment_id;
-
-
-//    public function __construct()
-//    {
-//        $this->events = array();
-//    }
 
     public function addEvent($danceEvent){
         $this->events[] = $danceEvent;

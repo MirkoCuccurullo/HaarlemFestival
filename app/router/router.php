@@ -20,7 +20,7 @@ class router
      */
     public function route($url)
     {
-        error_reporting(E_ERROR | E_PARSE);
+        //error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
             case '/generateToken':
                 require_once __DIR__ . '/../controller/festivalController.php';
@@ -335,7 +335,7 @@ class router
             case '/shoppingCart/remove':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
-                $controller->removeDanceEvent();
+                $controller->removeEvent();
                 break;
 
             case '/shoppingCart/submit':
