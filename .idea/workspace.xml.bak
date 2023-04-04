@@ -4,9 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="Sharing buttons on Twitter and Facebook">
+      <change afterPath="$PROJECT_DIR$/app/controller/orderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/management/editOrder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HaarlemFestival.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/orderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/orderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/orderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/orderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/yummy_homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style_food.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+    </list>
+=======
 
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="History main event page + Cart page front-end" />
+    <list default="true" id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="History main event page + Cart page front-end" />
 
+>>>>>>> 76eab8fa5b44af1978f63f428b91d03078f63ec8
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,11 +36,14 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable path="composer" />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -29,7 +54,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="cd0fa6af-c6ab-43a7-8444-6cc79c07a443" />
+        <option name="accountId" value="09b6758f-a11b-4e0b-8a86-446ddd171d4d" />
         <option name="url" value="https://github.com/MirkoCuccurullo/HaarlemFestival.git" />
       </UrlAndAccount>
     </option>
@@ -56,7 +81,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web Development 2022/Lesson 2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -79,7 +104,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="" />
+      <changelist id="cc452e0b-9001-4a46-b8d2-c7d5d72b0ebd" name="Changes" comment="" />
       <created>1675956787229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -149,17 +174,10 @@
       <workItem from="1678366856192" duration="10847000" />
       <workItem from="1678454722455" duration="16000" />
       <workItem from="1679394353466" duration="929000" />
-      <workItem from="1679567419802" duration="5116000" />
-      <workItem from="1679585985750" duration="10739000" />
-      <workItem from="1679837711324" duration="9113000" />
-      <workItem from="1679917312057" duration="21281000" />
-      <workItem from="1680006515318" duration="1025000" />
-      <workItem from="1680022402831" duration="56000" />
-      <workItem from="1680022855078" duration="10465000" />
-
-      <workItem from="1680090135585" duration="12000" />
-      <workItem from="1680281820220" duration="1431000" />
-
+      <workItem from="1679585131589" duration="7392000" />
+      <workItem from="1680012798196" duration="532000" />
+      <workItem from="1680018058672" duration="5357000" />
+      <workItem from="1680076015812" duration="2405000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -182,9 +200,28 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-
-    <option name="localTasksCounter" value="4" />
-
+    <task id="LOCAL-00004" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010466747</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010466747</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jlgvwlkebkfqjòkbnrejk">
+      <created>1680010749139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010749139</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Sharing buttons on Twitter and Facebook">
+      <created>1680020075764</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680020075764</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,9 +253,9 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-
-    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
-
+    <MESSAGE value="jlgvwlkebkfqjòkbnrejk" />
+    <MESSAGE value="Sharing buttons on Twitter and Facebook" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sharing buttons on Twitter and Facebook" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

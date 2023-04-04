@@ -6,33 +6,30 @@ class order{
     public ?int $user_id;
     public int $no_of_items;
     public float $total_price;
-    public $dance_events = array();
     public string $status;
+
+    public array $events = array();
+
     public ?string $payment_id;
 
-    public $history_event = array();
 
 //    public function __construct()
 //    {
-//        $this->dance_events = array();
+//        $this->events = array();
 //    }
 
-    public function addDanceEvent($danceEvent){
-        $this->dance_events[] = $danceEvent;
+    public function addEvent($danceEvent){
+        $this->events[] = $danceEvent;
         $this->no_of_items++;
         $this->total_price += $danceEvent->price;
     }
 
-    public function addHistoryEvent($historyEvent){
-        $this->history_event[] = $historyEvent;
-        $this->no_of_items++;
-        $this->total_price += $historyEvent->price;
+    public function removeEvent($key){
+
+        $this->no_of_items--;
+        $this->total_price -= $this->events[$key]->price;
+        unset($this->events[$key]);
+        $this->events = array_values($this->events);
     }
 
-    public function removeDanceEvent($key){
-        $this->no_of_items--;
-        $this->total_price -= $this->dance_events[$key]->price;
-        unset($this->dance_events[$key]);
-        $this->dance_events = array_values($this->dance_events);
-    }
 }

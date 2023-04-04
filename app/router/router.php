@@ -8,6 +8,7 @@ use danceController;
 use danceControllerAPI;
 use festivalController;
 use loginController;
+use orderController;
 use registrationController;
 use userControllerAPI;
 
@@ -504,6 +505,7 @@ class router
                 $controller = new \ticketControllerAPI();
                 $id = $_GET['id'];
                 $controller->scanTicket($id);
+                break;
 
             case '/webhook':
                 require_once __DIR__ . '/../controller/webhookController.php';
@@ -522,7 +524,51 @@ class router
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();
+                if (isset($_POST['checkSpace'])) {
+                    require_once __DIR__ . '/../controller/reservationController.php';
+                    $controller = new \reservationController();
+                    $controller->getAvailableSpacesPerSession();
+                }
                 break;
+                case '/add/reservation':
+                require_once __DIR__ . '/../controller/reservationController.php';
+                $controller = new \reservationController();
+                if (isset($_POST['addReservation'])) {
+                    $controller->addReservation();
+                }
+                break;
+
+                case '/api/order':
+                require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
+                $controller = new \orderControllerAPI();
+                $controller->getAll();
+                break;
+                case '/manage/order':
+                case '/manage/orders':
+                require_once __DIR__ . '/../controller/orderController.php';
+                $controller = new orderController();
+                if (isset($_POST['jsonToCSV'])) {
+                    echo "json is a bitch";
+                    $controller->jsonToCSV();
+                }
+                $controller->manageOrder();
+                break;
+            case 'edit/order':
+            case '/edit/order':
+                require_once __DIR__ . '/../controller/orderController.php';
+                $controller = new orderController();
+                if (isset($_POST['editOrder'])) {
+                    $controller->updateOrder();
+                } else{
+                    $controller->editOrder();
+                }
+                break;
+                case '/api/delete/order':
+                require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
+                $controller = new \orderControllerAPI();
+                $controller->delete($_POST['id']);
+                break;
+
             default:
                 echo '404';
         }

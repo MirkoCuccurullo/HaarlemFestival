@@ -8,6 +8,8 @@ include __DIR__ . '/../header.php'; ?>
     <option value=1">Confirmed</option>
     <option value="2">Canceled</option>
     <option value="3">Deactivated</option>
+</select>
+<br>
 
     <div class="table table-responsive">
     <table class="table text-center">
@@ -22,6 +24,7 @@ include __DIR__ . '/../header.php'; ?>
             <th scope="col">Reservation Price (paid)</th>
             <th scope="col">Reservation Date</th>
             <th scope="col">Reservation Time</th>
+            <th scope="col">Customer Name</th>
             <th scope="col">Customer Email</th>
             <th scope="col">Comment</th>
             <th scope="col">Deactivate</th>
@@ -67,7 +70,7 @@ include __DIR__ . '/../header.php'; ?>
 
                 const newRow = document.createElement("tr");
                 const idCol = document.createElement("th");
-                const nameCol = document.createElement("td");
+                const restaurantNameCol = document.createElement("td");
                 const sessionIdCol = document.createElement("td");
                 const statusCol = document.createElement("td");
                 const adultCol = document.createElement("td");
@@ -75,6 +78,7 @@ include __DIR__ . '/../header.php'; ?>
                 const reservationPriceCol = document.createElement("td");
                 const reservationDateCol = document.createElement("td");
                 const reservationTimeCol = document.createElement("td");
+                const customerNameCol = document.createElement("td");
                 const customerEmailCol = document.createElement("td");
                 const commentCol = document.createElement("td");
                 const deactivateButtonCol = document.createElement("td");
@@ -99,14 +103,15 @@ include __DIR__ . '/../header.php'; ?>
                 idInput.name = "id";
                 idInput.value = reservation.id;
                 idCol.innerHTML = reservation.id;
-                nameCol.innerHTML = reservation.restaurantName;
-                sessionIdCol.innerHTML = reservation.sessionId;
+                restaurantNameCol.innerHTML = reservation.restaurantName;
+                sessionIdCol.innerHTML = reservation.session.id;
                 statusCol.innerHTML = reservation.status;
                 adultCol.innerHTML = reservation.numberOfAdults;
                 under12Col.innerHTML = reservation.numberOfUnder12;
                 reservationPriceCol.innerHTML = reservation.reservationPrice;
                 reservationDateCol.innerHTML = reservation.session.date;
                 reservationTimeCol.innerHTML = reservation.session.startTime;
+                customerNameCol.innerHTML = reservation.customerName;
                 customerEmailCol.innerHTML = reservation.customerEmail;
                 commentCol.innerHTML = reservation.comment;
                 deactivateButton.innerHTML = "Deactivate";
@@ -124,7 +129,7 @@ include __DIR__ . '/../header.php'; ?>
                 editButtonCol.appendChild(editForm);
 
                 newRow.appendChild(idCol);
-                newRow.appendChild(nameCol);
+                newRow.appendChild(restaurantNameCol);
                 newRow.appendChild(sessionIdCol);
                 newRow.appendChild(statusCol);
                 newRow.appendChild(adultCol);
@@ -132,6 +137,7 @@ include __DIR__ . '/../header.php'; ?>
                 newRow.appendChild(reservationPriceCol);
                 newRow.appendChild(reservationDateCol);
                 newRow.appendChild(reservationTimeCol);
+                newRow.appendChild(customerNameCol);
                 newRow.appendChild(customerEmailCol);
                 newRow.appendChild(commentCol);
                 newRow.appendChild(deactivateButtonCol);

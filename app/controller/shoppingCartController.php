@@ -52,14 +52,14 @@ class shoppingCartController
             $venue = $eventService->getVenueByID($event->location);
             $event->venue_name = $venue->name;
 
-            $order->addDanceEvent($event);
+            $order->addEvent($event);
             $_SESSION['order'] = $order;
         }
         else if(isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
             $accessPass = $accessPassService->getAccessPassByID($id);
-            $order->addDanceEvent($accessPass);
+            $order->addEvent($accessPass);
             $_SESSION['order'] = $order;
         }
         $router = new Router();
