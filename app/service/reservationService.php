@@ -21,9 +21,9 @@ class reservationService
         $this->reservationRepository->updateReservation($reservation);
     }
 
-    public function addReservation($reservation): void
+    public function addReservation($reservation)
     {
-        $this->reservationRepository->addReservation($reservation);
+       return $this->reservationRepository->addReservation($reservation);
     }
 
     public function getReservationById(int $id): reservation

@@ -8,7 +8,7 @@ class reservation {
     public string $status;
     public int $numberOfAdults;
     public int $numberOfUnder12;
-    public float $reservationPrice;
+    public float $price;
     public string $customerName;
     public string $customerEmail;
     public string $comment;

@@ -47,11 +47,11 @@ class reservationRepository extends baseRepository
             error_log("Failed to update reservation: " . $e->getMessage());
         }
     }
-    public function addReservation($reservation):void
+    public function addReservation($reservation)
     {
         try{
 // Insert the reservation into the reservation table
-            $stmt = $this->connection->prepare("INSERT INTO reservation (restaurantName, status,customerName, customerEmail, sessionId, numberOfAdults, numberOfUnder12, reservationPrice, comment) VALUES (:rName, :status,:cName, :email, :session_id, :adults, :under12, :rPrice, :comment)");
+            $stmt = $this->connection->prepare("INSERT INTO reservation (restaurantName, status, customerName, customerEmail, sessionId, numberOfAdults, numberOfUnder12, reservationPrice, comment) VALUES (:rName, :status,:cName, :email, :session_id, :adults, :under12, :rPrice, :comment)");
             $stmt->bindParam(":rName", $reservation->restaurantName);
             $stmt->bindParam(":status", $reservation->status);
             $stmt->bindParam(":cName", $reservation->customerName);
@@ -59,13 +59,17 @@ class reservationRepository extends baseRepository
             $stmt->bindParam(":session_id", $reservation->sessionId);
             $stmt->bindParam(":adults", $reservation->numberOfAdults);
             $stmt->bindParam(":under12", $reservation->numberOfUnder12);
-            $stmt->bindParam(":rPrice", $reservation->reservationPrice);
+            $stmt->bindParam(":rPrice", $reservation->price);
             $stmt->bindParam(":comment", $reservation->comment);
             $stmt->execute();
-             } catch (PDOException $e) {
+            //get the last ID
+            $id = $this->connection->lastInsertId();
+            $reservation->id = $id;
+        } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to add reservation: " . $e->getMessage());
         }
+        return $reservation;
     }
     public function getSessionByID($id): array
     {

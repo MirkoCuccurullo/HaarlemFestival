@@ -45,7 +45,7 @@ class reservationController
         header('Location: /manage/reservation');
     }
 
-    public function addReservation(): void
+    public function addReservation()
     {
         $reservation = new reservation();
         $reservation->restaurantName = $_POST['restaurantName'];
@@ -56,9 +56,8 @@ class reservationController
         $reservation->customerEmail = $_POST['email'];
         $reservation->comment = $_POST['comment'];
         $reservation->status = 'pending';
-        $reservation->reservationPrice = $reservation->numberOfAdults * 10 + $reservation->numberOfUnder12 * 10;
-        $this->reservationService->addReservation($reservation);
-        header('Location: /shoppingCart');
+        $reservation->price = $reservation->numberOfAdults * 10 + $reservation->numberOfUnder12 * 10;
+        $reservation = $this->reservationService->addReservation($reservation);
     }
 
     public function getAvailableSpacesPerSession(): int

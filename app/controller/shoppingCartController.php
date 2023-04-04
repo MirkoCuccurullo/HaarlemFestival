@@ -22,7 +22,7 @@ class shoppingCartController
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
 
-    public function addEvent()
+    public function addEvent(): void
     {
         if (isset($_SESSION['order']))
             $order = $_SESSION['order'];
@@ -54,8 +54,7 @@ class shoppingCartController
                 $event->venue_name = $venue->name;
             }
             else if (isset($_POST['addReservation'])) {
-                $id = htmlspecialchars($_POST['reservationId']);
-                $event = $eventService->getReservationByID($id);
+                $event = $reservation;
             }
 
             $order->addEvent($event);
