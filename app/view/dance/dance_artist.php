@@ -4,19 +4,20 @@ require_once __DIR__ . '/../../model/artist.php';
 require_once __DIR__ . '/../../model/dance.php';
 ?>
 
-<h2 class="m-2">
-    <p>
-        <?php echo $artist->name; ?>
-    </p>
-</h2>
+<div class="container">
 
-<div id="fb-root m-3" class="text-end" >
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="3xLLnuP1"></script>
-<div class="fb-share-button m-3" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</div>
+
+
+
 <form action="/festival/dance" method="post">
     <button type="submit" class="btn btn-outline-light m-3 ">Back</button>
 </form>
+
+    <h2 class="m-2">
+        <p>
+            <?php echo $artist->name; ?>
+        </p>
+    </h2>
 
 <div class="row">
     <div class="col-md-6">
@@ -30,6 +31,7 @@ require_once __DIR__ . '/../../model/dance.php';
             <?php echo $artist->description; ?>
         </p>
     </div>
+    <h2> <p> Listen to a sample of his music on Spotify</p></h2>
     <div>
         <?php
         $artist_spotify_array = explode("/", $artist->spotify);
@@ -70,6 +72,7 @@ require_once __DIR__ . '/../../model/dance.php';
            </div>
        </div>
     </div>
+</div>
     <?php
     include __DIR__ . '/../footer.php'; ?>
 

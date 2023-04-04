@@ -139,6 +139,12 @@
                             <img src="../images/shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
                         </a>
                     </li>
+                    <li>
+                        <div id="fb-root m-3" class="text-end" >
+                            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="3xLLnuP1"></script>
+                            <div class="fb-share-button m-3" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

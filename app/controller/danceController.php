@@ -127,11 +127,11 @@ class danceController
         $danceService->insertVenue(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['address']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['capacity']), htmlspecialchars($_POST['picture']));
     }
 
-    public function displayArtist()
+    public function displayArtist($id)
     {
         require_once __DIR__ . '/../service/eventService.php';
         $danceService = new eventService();
-        $artist = $danceService->getArtistByID(htmlspecialchars($_POST['id']));
+        $artist = $danceService->getArtistByID(htmlspecialchars($id));
         require __DIR__ . '/../view/dance/dance_artist.php';
     }
 }
