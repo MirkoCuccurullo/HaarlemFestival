@@ -5,9 +5,18 @@ include __DIR__ . '/../header.php'; ?>
 
 <h1 class="text-center mb-3">Manage Orders</h1>
 <br>
-<form method="post">
-    <button type="submit" class="btn btn-primary" name="jsonToCVS">Download CVS file</button>
+
+ <div style="display: inline-block; margin-right: 10px;">
+<form method="post" action="/saveInCSV">
+    <button type="submit" class="btn btn-primary" name="saveInCSV">Download CSV file</button>
 </form>
+ </div>
+<div style="display: inline-block;">
+    <form method="post" action="/saveInExcel">
+        <button type="submit" class="btn" style="background-color: green; color: white;" name="exportToExcel">Download Excel file</button>
+    </form>
+</div>
+<br>
 <br>
 
 <div class="table table-responsive">
@@ -67,7 +76,7 @@ include __DIR__ . '/../header.php'; ?>
                 deleteButton.type = "button";
                 editButton.type = "submit";
 
-                //TODO generate invoice from order
+                //TODO for Aizaz: generate invoice from order
                 invoiceButton.type = "submit";
 
                 idCol.scope = "row";

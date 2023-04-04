@@ -27,9 +27,10 @@ class restaurantService
         $restaurant=$this->setRestaurant($id, $name, $description, $address, $cuisines, $dietary, $photo);
         $this->restaurantRepository->addRestaurant($restaurant);
     }
-    public function getRestaurantByID(int $id)
+    public function getRestaurantByID(int $id) : restaurant
     {
-        return $this->restaurantRepository->getRestaurantByID($id);
+        $restaurant = $this->restaurantRepository->getRestaurantByID($id);
+        return $restaurant;
     }
 
     public function updateRestaurant($id, $name, $description, $address, $cuisines, $dietary, $photo): void

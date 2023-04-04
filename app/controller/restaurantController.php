@@ -80,9 +80,14 @@ class restaurantController
 
     public function displayRestaurant(): void
     {
-        $restaurant = $this->restaurantService->getRestaurantByID(htmlspecialchars($_POST['id']));
-        $restaurant->sessions = $this->restaurantService->getSessionsByRestaurantId(htmlspecialchars($_POST['id']));
+        $restaurant = $this->restaurantService->getRestaurantByID(intval($_POST['id']));
+        if ($restaurant == null) {
+            // handle the error, e.g. by redirecting to an error page
+            die('Error: Restaurant not found.');
+        }
+        $restaurant->sessions = $this->restaurantService->getSessionsByRestaurantId(intval($_POST['id']));
         require __DIR__ . '/../view/yummy/view_restaurant.php';
     }
+
 
 }
