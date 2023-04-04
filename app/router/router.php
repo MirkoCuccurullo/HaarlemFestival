@@ -90,16 +90,15 @@ class router
                 break;
             case'/api/orders':
                 require("../api/controllers/orderControllerAPI.php");
-                    $controller = new \orderControllerAPI();
+                $controller = new \orderControllerAPI();
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getAll();
                 }
 
-                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $controller->add();
                 }
                 break;
-
 
 
             case'/api/delete/user':
@@ -110,7 +109,7 @@ class router
             case'/generate/token':
                 require("../api/controllers/JwtGeneratorController.php");
                 $controller = new \JwtGeneratorController();
-                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->generateToken();
                 }
                 break;
@@ -178,12 +177,12 @@ class router
                 require __DIR__ . '/../controller/historyEventController.php';
                 $controller = new \historyEventController();
                 $controller->historyCartPage($_POST['id']);
-            break;
+                break;
             case '/locationDetail':
                 require __DIR__ . '/../controller/historyEventController.php';
                 $controller = new \historyEventController();
                 $controller->historyLocationDetailPage($_POST['id']);
-            break;
+                break;
 
             case '/signin':
                 require '../controller/loginController.php';
@@ -297,7 +296,7 @@ class router
             case'/food':
             case '/festival/yummy':
             case '/yummy':
-                case '/culinary':
+            case '/culinary':
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayFoodPage();
@@ -401,7 +400,7 @@ class router
                 }
                 break;
 
-                case '/api/restaurant':
+            case '/api/restaurant':
                 require_once __DIR__ . '/../api/controllers/restaurantControllerAPI.php';
                 $controller = new \restaurantControllerAPI();
                 $controller->index();
@@ -466,11 +465,11 @@ class router
                 require("../api/controllers/orderControllerAPI.php");
                 $controller = new \orderControllerAPI();
                 $id = $_GET['id'];
-                if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+                if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
                     $controller->delete($id);
                 }
 
-                if($_SERVER["REQUEST_METHOD"] == "PUT"){
+                if ($_SERVER["REQUEST_METHOD"] == "PUT") {
                     $controller->update($id);
                 }
 
@@ -505,11 +504,11 @@ class router
                     $controller = new \reservationController();
                     $spaces = $controller->getAvailableSpacesPerSession();
                 }
-                    require_once __DIR__ . '/../controller/restaurantController.php';
-                    $controller = new \restaurantController();
-                    $controller->displayRestaurant();
+                require_once __DIR__ . '/../controller/restaurantController.php';
+                $controller = new \restaurantController();
+                $controller->displayRestaurant();
                 break;
-                case '/add/reservation':
+            case '/add/reservation':
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 if (isset($_POST['addReservation'])) {
@@ -521,13 +520,13 @@ class router
                 }
                 break;
 
-                case '/api/order':
+            case '/api/order':
                 require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
                 $controller = new \orderControllerAPI();
                 $controller->getAll();
                 break;
-                case '/manage/order':
-                case '/manage/orders':
+            case '/manage/order':
+            case '/manage/orders':
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
                 if (isset($_POST['jsonToCSV'])) {
@@ -542,14 +541,24 @@ class router
                 $controller = new orderController();
                 if (isset($_POST['editOrder'])) {
                     $controller->updateOrder();
-                } else{
+                } else {
                     $controller->editOrder();
                 }
                 break;
-                case '/api/delete/order':
+            case '/api/delete/order':
                 require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
                 $controller = new \orderControllerAPI();
                 $controller->delete($_POST['id']);
+                break;
+            case '/saveInCSV':
+                require_once __DIR__ . '/../controller/CVSController.php';
+                $controller = new \CSVController();
+                $controller->exportCSV();
+                break;
+            case '/saveInExcel':
+                require_once __DIR__ . '/../controller/ExcelController.php';
+                $controller = new \ExcelController();
+                $controller->exportExcel();
                 break;
 
             default:
