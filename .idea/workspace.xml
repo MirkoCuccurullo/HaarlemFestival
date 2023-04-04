@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/danceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/danceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/baseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/baseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/eventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/eventRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_artist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_artist.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/header_dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header_dance.php" afterDir="false" />
     </list>

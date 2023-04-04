@@ -245,7 +245,6 @@ include __DIR__ . '/../footer.php'; ?>
     <script>changeFooterToDanceStyle();
         function changeFooterToDanceStyle() {
             document.getElementById("footer").style.backgroundColor = "#d9d9d9";
-            document.getElementById("fb-root m-3").remove();
         }
 
         function topFunction() {
