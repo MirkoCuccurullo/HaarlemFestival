@@ -15,9 +15,8 @@ class invoice  {
     public float $totalAmount; //total amount = subtotal amount + VAT
     public int $VAT; //VAT = 21% or 9% of subtotal amount
     public string $paymentDate;
-    public string $paymentMethod;
 
-    public function __construct($clientName, $invoiceNumber, $invoiceDate, $phoneNumber, $address, $email, $subTotalAmount, $totalAmount, $VAT, $paymentDate, $paymentMethod = '')
+    public function __construct($clientName, $invoiceNumber, $invoiceDate, $phoneNumber, $address, $email, $subTotalAmount, $totalAmount, $VAT, $paymentDate)
     {
         $this->clientName = $clientName;
         $this->invoiceNumber = $invoiceNumber;
@@ -29,7 +28,6 @@ class invoice  {
         $this->VAT = $VAT;
         $this->paymentDate = $paymentDate;
         $this->totalAmount = $totalAmount;
-        $this->paymentMethod = $paymentMethod;
     }
 
     /**

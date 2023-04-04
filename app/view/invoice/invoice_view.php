@@ -118,11 +118,6 @@
                     </div>
                 </div>
             </div>
-            <button class="btn" >
-                <a href="path_to_file" id="invoiceDownload" download="proposed_file_name">
-                    <i class="fa fa-download"></i> Download
-                </a>
-            </button>
         </div>
     </div>
 </div>

@@ -340,3 +340,6 @@ ALTER TABLE invoice
 ADD COLUMN order_id INT,
 ADD CONSTRAINT FK_order_invoice
 FOREIGN KEY (order_id) REFERENCES `orders` (id);
+
+ALTER TABLE invoice DROP FOREIGN KEY FK_user_invoice;
+ALTER TABLE invoice DROP COLUMN payment_method;

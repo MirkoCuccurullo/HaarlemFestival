@@ -31,8 +31,7 @@ class InvoiceRepository extends baseRepository{
                 $result['subtotal'],
                 $result['total_amount'],
                 $result['vat'],
-                $result['payment_date'],
-                $result['payment_method']
+                $result['payment_date']
             );
             $invoices[] = $invoice;
         }
