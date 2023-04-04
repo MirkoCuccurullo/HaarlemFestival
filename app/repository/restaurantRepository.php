@@ -136,16 +136,21 @@ class restaurantRepository extends baseRepository
 
     }
 
-    public function getRestaurantByID($id)
+    public function getRestaurantByID(int $id): ?Restaurant
     {
-        $stmt = $this->connection->prepare("SELECT id, name, description, address, cuisines, dietary, photo  FROM restaurant WHERE id = :id");
+        $stmt = $this->connection->prepare('SELECT * FROM restaurant WHERE id = :id');
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
-        $result = $stmt->fetch();
+        $restaurant = $stmt->fetchObject(Restaurant::class);
 
-        return $result;
+        if (!$restaurant) {
+            // ID not found in database, return null or throw an exception
+            return null;
+        }
+
+        return $restaurant;
     }
+
 
     public function getSessionById($id)
     {
