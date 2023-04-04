@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
     <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="History main event page + Cart page front-end" />
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/HaarlemFestival&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/DoctorsAppointment&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -79,7 +77,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="" />
+      <changelist id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="History main event page + Cart page front-end" />
       <created>1675956787229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -156,10 +154,10 @@
       <workItem from="1680006515318" duration="1025000" />
       <workItem from="1680022402831" duration="56000" />
       <workItem from="1680022855078" duration="10465000" />
-
       <workItem from="1680090135585" duration="12000" />
       <workItem from="1680281820220" duration="1431000" />
-
+      <workItem from="1680293521365" duration="8000" />
+      <workItem from="1680342915588" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -182,9 +180,7 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-
     <option name="localTasksCounter" value="4" />
-
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,9 +212,7 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-
     <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
-
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
