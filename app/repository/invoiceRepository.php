@@ -37,4 +37,21 @@ class InvoiceRepository extends baseRepository{
         }
         return $invoices;
     }
+
+    public function getOneOrderForInvoice() {
+        $stmt = $this->connection->query("SELECT * FROM orders");
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $orders = [];
+        foreach ($results as $result) {
+            $order = new Order(
+                $result['user_id'],
+                $result['no_of_items'],
+                $result['total_price'],
+                $result['status']
+            );
+            $orders[] = $order;
+        }
+        return $orders;
+    }
 }

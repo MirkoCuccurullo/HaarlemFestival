@@ -15,6 +15,7 @@ class orderController{
 
     public function manageOrder(): void
     {
+        $orders = $this->orderService->getAllOrders();
         require __DIR__ . '/../view/management/manageOrders.php';
     }
 

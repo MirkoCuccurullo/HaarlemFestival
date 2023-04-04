@@ -2,9 +2,8 @@
 
 use Decimal\Decimal;
 
-class invoice  {
+class invoice extends \Models\order {
 
-    //missing order number, $user_id, paymentMethod, noOfItems
     public string $clientName; //client name = username
     public int $invoiceNumber; //invoice number = order number
     public string $invoiceDate; //invoice date = order date

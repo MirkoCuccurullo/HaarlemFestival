@@ -24,17 +24,19 @@ include __DIR__ . '/../header.php'; ?>
         <thead>
         <tr>
             <th scope="col">Id</th>
-    <th scope="col">User Id</th>
-    <th scope="col">No of Items</th>
-<th scope="col">Total Price</th>
-<th scope="col">Status</th>
-<th scope="col">Delete</th>
-<th scope="col">Edit</th>
+            <th scope="col">User Id</th>
+            <th scope="col">No of Items</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
             <th scope="col">Invoice</th>
         </tr>
         </thead>
         <tbody class="table-group-divider" id="orderTable">
+<!--        <form action="/invoiceHTML" method="post" onclick="redirectToInvoicePage()">-->
 
+<!--        </form>-->
         <script>
             function loadOrders() {
                 fetch('http://localhost/api/order')
@@ -63,13 +65,20 @@ include __DIR__ . '/../header.php'; ?>
                 const invoiceButton = document.createElement("button")
                 const test = document.createElement("input")
                 const editForm = document.createElement("form");
+                //Create form element for the invoice button
+                const invoiceForm = document.createElement("form");
                 const idInput = document.createElement("input");
                 editForm.action = '/edit/order';
                 editForm.method = "POST";
+
+                //Set the action and method for the invoice button
+                invoiceForm.action = '/invoiceHTML';
+                invoiceForm.method = "POST";
                 test.type = "hidden";
                 test.value = order.id;
                 test.name = "id";
 
+                //Create the invoice button
                 invoiceButton.className = "btn btn-primary";
                 deleteButton.className = "btn btn-danger";
                 editButton.className = "btn btn-warning";
@@ -77,11 +86,11 @@ include __DIR__ . '/../header.php'; ?>
                 editButton.type = "submit";
 
                 //TODO for Aizaz: generate invoice from order
+                //Set the type of the invoice button
                 invoiceButton.type = "submit";
 
                 idCol.scope = "row";
                 idInput.type = "hidden";
-
                 idInput.name = "id";
                 idInput.value = order.id;
                 idCol.innerHTML = order.id;
@@ -96,16 +105,26 @@ include __DIR__ . '/../header.php'; ?>
                 editForm.appendChild(idInput);
                 editForm.appendChild(test);
 
+                //Add the invoice button to the invoice form
+                invoiceForm.appendChild(invoiceButton);
+                invoiceForm.appendChild(idInput);
+
+
                 deleteButton.addEventListener("click", function(){
                     deleteOrder(order.id);
                     table.removeChild(newRow);
                 });
 
+                //Add event listener to the invoice button
+                invoiceButton.addEventListener("click", function(){
+                    invoiceForm.action = '/invoiceHTML';
+                });
+
                 deleteButtonCol.appendChild(deleteButton);
                 editButtonCol.appendChild(editForm);
 
-                invoiceButtonCol.appendChild(invoiceButton);
-                invoiceButtonCol.appendChild(idInput);
+                //add the invoice form to the invoice button column
+                invoiceButtonCol.appendChild(invoiceForm);
 
                 newRow.appendChild(idCol);
                 newRow.appendChild(userIdCol);
@@ -119,6 +138,7 @@ include __DIR__ . '/../header.php'; ?>
                 const table = document.getElementById("orderTable");
                 table.appendChild(newRow);
             }
+
             loadOrders();
 
             function deleteOrder(eventId)
@@ -136,8 +156,6 @@ include __DIR__ . '/../header.php'; ?>
         </tbody>
     </table>
 </div>
-
-
 
 <?php include __DIR__ . '/../footer.php'; ?>
 
