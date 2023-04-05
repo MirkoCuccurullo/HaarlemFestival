@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="add a reservation now works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/header_dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header_dance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/restaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/restaurantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/addRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/addRestaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/addSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/addSession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editReservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editRestaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageReservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageRestaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageSessions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageSessions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +63,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2LVWZcx2dKQ3inczOL30gcEf9Dc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

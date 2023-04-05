@@ -1,15 +1,11 @@
 <?php
 include __DIR__ . '/../header.php';
-//TODO: To do dynamically from the database
 ?>
 
-    <h1 class="text-center mb-3">Manage Sessions</h1>
-    <select name="restaurants" id="restaurants" class="form-select" oninput="filterSession()">
-        <option selected value="0"> All Restaurants</option>
-
-        <option value="Restaurant ML">To do Dynamically</option>
-
-    </select>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="text-center mb-3">Manage Sessions</h1>
+        <a href="/add/session" class="btn btn-success">Add new</a>
+    </div>
 
     <div class="table table-responsive">
         <table class="table text-center">
@@ -93,8 +89,16 @@ include __DIR__ . '/../header.php';
                     idInput.value = session.id;
                     idCol.innerHTML = session.id;
 
-                    startTimeCol.innerHTML = session.startTime;
-                    endTimeCol.innerHTML = session.endTime;
+                    const startTime = session.startTime.substring(0, 8);
+                    const endTime = session.endTime.substring(0, 8);
+                    const options = {hour: 'numeric', minute: 'numeric',  hour12: false};
+                    const formattedStartTime = new Date(`2022-02-23T${startTime}`).toLocaleTimeString('en-US', options);
+                    const formattedEndTime = new Date(`2022-02-23T${endTime}`).toLocaleTimeString('en-US', options);
+
+                    startTimeCol.innerHTML = formattedStartTime;
+                    endTimeCol.innerHTML = formattedEndTime;
+
+
                     dateCol.innerHTML = session.date;
                     capacityCol.innerHTML = session.capacity;
                     restaurantCol.innerHTML = session.restaurantId;

@@ -27,16 +27,17 @@ class reservationRepository extends baseRepository
     {
         try {
             // Update the reservation table
-            $stmt = $this->connection->prepare("UPDATE reservation SET restaurantName=rName, status=:status, customerEmail=:email, sessionId=:session_id, numberOfAdults=:adults, numberOfUnder12=:under12, reservationPrice=:rPrice, comment=:comment WHERE id=:id");
-            $stmt->bindParam(":id", $reservation->id);
+            $stmt = $this->connection->prepare("UPDATE reservation SET restaurantName = :rName, status = :status, customerName = :cName, customerEmail = :email, sessionId = :session_id, numberOfAdults = :adults, numberOfUnder12 = :under12, price = :rPrice, comment = :comment WHERE id = :id");
             $stmt->bindParam(":rName", $reservation->restaurantName);
-            $stmt->bindParam(":email", $reservation->customerEmail);
             $stmt->bindParam(":status", $reservation->status);
-            $stmt->bindParam(":session_id", $reservation->session->id);
+            $stmt->bindParam(":cName", $reservation->customerName);
+            $stmt->bindParam(":email", $reservation->customerEmail);
+            $stmt->bindParam(":session_id", $reservation->sessionId);
             $stmt->bindParam(":adults", $reservation->numberOfAdults);
             $stmt->bindParam(":under12", $reservation->numberOfUnder12);
             $stmt->bindParam(":rPrice", $reservation->price);
             $stmt->bindParam(":comment", $reservation->comment);
+            $stmt->bindParam(":id", $reservation->id);
             $stmt->execute();
 
         } catch (PDOException $e) {
@@ -48,7 +49,7 @@ class reservationRepository extends baseRepository
     {
         try{
 // Insert the reservation into the reservation table
-            $stmt = $this->connection->prepare("INSERT INTO reservation (restaurantName, status, customerName, customerEmail, sessionId, numberOfAdults, numberOfUnder12, reservationPrice, comment) VALUES (:rName, :status,:cName, :email, :session_id, :adults, :under12, :rPrice, :comment)");
+            $stmt = $this->connection->prepare("INSERT INTO reservation (restaurantName, status, customerName, customerEmail, sessionId, numberOfAdults, numberOfUnder12, price, comment) VALUES (:rName, :status,:cName, :email, :session_id, :adults, :under12, :rPrice, :comment)");
             $stmt->bindParam(":rName", $reservation->restaurantName);
             $stmt->bindParam(":status", $reservation->status);
             $stmt->bindParam(":cName", $reservation->customerName);
@@ -89,7 +90,7 @@ class reservationRepository extends baseRepository
     public function deactivateReservation(int $id)
     {
         try{
-            $sql = "UPDATE reservation SET status = 'deactivated' WHERE id = :id";
+            $sql = "UPDATE reservation SET status = 'Deactivated' WHERE id = :id";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindParam(":id", $id);
             $stmt->execute();
@@ -115,5 +116,22 @@ class reservationRepository extends baseRepository
         }
         return $reservations;
 
+    }
+
+    public function getSessionById(int $sessionId)
+    {
+        try{
+            $sql = "SELECT * FROM session WHERE id = :id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":id", $sessionId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'session');
+            $result = $stmt->fetch();
+            return $result;
+
+        } catch (PDOException $e) {
+            // Log the error and return failure status
+            error_log("Failed to get session: " . $e->getMessage());
+        }
     }
 }

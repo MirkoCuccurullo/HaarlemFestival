@@ -54,12 +54,13 @@ include_once __DIR__ . '/../../model/restaurant.php';
                                                 <label for="dietary" class="form-label">Dietary</label>
                                             </div>
                                         </div>
-                                        <h2 class="mb-3">Photo path</h2>
+
+                                        <h2 class="mb-3">Upload Photo</h2>
                                         <div class="col-md-12">
                                             <div class="form-floating">
-                                                <input required type="text" class="form-control" id="photoPath"
-                                                       name="photo" placeholder="photoPath" value="<?=$restaurant->photo?>">
-                                                <label for="photoPath" class="form-label">Photo path</label>
+                                                <input type="text" value="<?= $restaurant->photo ?>" hidden name="old_pic_path">
+                                                <input required type="file" class="form-control" id="photo"
+                                                       name="photo" accept="jpg">
                                             </div>
                                         </div>
 
