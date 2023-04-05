@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/header_dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header_dance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/danceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/danceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/restaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/restaurantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/eventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/eventRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/eventService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/eventService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/addRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/addRestaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/addVenue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/addVenue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editRestaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editVenue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editVenue.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +165,8 @@
       <workItem from="1679567419802" duration="5116000" />
       <workItem from="1680182981417" duration="415000" />
       <workItem from="1680606838799" duration="1987000" />
+      <workItem from="1680631522122" duration="1363000" />
+      <workItem from="1680698416330" duration="845000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
