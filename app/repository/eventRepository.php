@@ -11,7 +11,7 @@ class eventRepository extends baseRepository
 {
 
     public function getAllEvents(){
-        $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id";
+        $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, s.type as session, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'dance');
@@ -172,7 +172,7 @@ class eventRepository extends baseRepository
 
     public function getEventsByArtist(int $id)
     {
-        $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, v.name as vanue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id WHERE artist = :id";
+        $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
@@ -182,28 +182,57 @@ class eventRepository extends baseRepository
 
     public function getAllByFilters(mixed $artist_id, mixed $date_id, mixed $venue_id)
     {
-        if ($artist_id != 0 && $venue_id != 0){
-            $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id WHERE artist = :artist_id AND location = :venue_id";
+        if ($artist_id != 0 && $venue_id != 0 && $date_id != 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id AND location = :venue_id AND date = :date";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindParam(":artist_id", $artist_id);
             $stmt->bindParam(":venue_id", $venue_id);
+            $stmt->bindParam(":date", $date_id);
 
-        }
-
-        if ($artist_id == 0){
-            $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id WHERE location = :venue_id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindParam(":venue_id", $venue_id);
-        }
-
-        if ($venue_id == 0){
-            $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id WHERE artist = :artist_id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindParam(":artist_id", $artist_id);
         }
 
         if ($artist_id == 0 && $venue_id == 0){
-            $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id";
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE date = :date";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":date", $date_id);
+        }
+
+        if($artist_id != 0 && $date_id != 0 && $venue_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id AND date = :date";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+            $stmt->bindParam(":date", $date_id);
+        }
+
+        if($venue_id != 0 && $date_id != 0 && $artist_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE location = :venue_id AND date = :date";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":venue_id", $venue_id);
+            $stmt->bindParam(":date", $date_id);
+        }
+
+        if ($artist_id != 0 && $venue_id != 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id AND location = :venue_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+            $stmt->bindParam(":venue_id", $venue_id);
+
+        }
+
+        if ($artist_id == 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE location = :venue_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":venue_id", $venue_id);
+        }
+
+        if ($venue_id == 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+        }
+
+        if ($artist_id == 0 && $venue_id == 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id";
             $stmt = $this->connection->prepare($sql);
         }
 
