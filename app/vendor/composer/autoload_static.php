@@ -4,13 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
+class ComposerStaticInitf316d374ac86c05945382b4dc18a3d97
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Svg\\' => 4,
             'Sabberworm\\CSS\\' => 15,
+        ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -49,6 +53,10 @@ class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
         'Sabberworm\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Mollie\\Api\\' => 
         array (
@@ -96,9 +104,9 @@ class ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5aed7c51dbbfe51753cf82a8740acb1a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf316d374ac86c05945382b4dc18a3d97::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf316d374ac86c05945382b4dc18a3d97::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf316d374ac86c05945382b4dc18a3d97::$classMap;
 
         }, null, ClassLoader::class);
     }

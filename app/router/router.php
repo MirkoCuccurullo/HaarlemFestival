@@ -263,10 +263,10 @@ class router
                 $controller->manageProfile($_SESSION['current_user_id']);
                 break;
 
-            case"/dance/artist":
+            case"/dance/artist?id=" . $_GET['id']:
                 require_once __DIR__ . '/../controller/danceController.php';
                 $controller = new \danceController();
-                $controller->displayArtist();
+                $controller->displayArtist($_GET['id']);
                 break;
 
             case'/manageProfile/update':
