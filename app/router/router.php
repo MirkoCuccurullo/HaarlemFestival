@@ -569,10 +569,6 @@ class router
             case '/manage/orders':
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
-                if (isset($_POST['jsonToCSV'])) {
-                    echo "json is a bitch";
-                    $controller->jsonToCSV();
-                }
                 $controller->manageOrder();
                 break;
             case 'edit/order':
@@ -585,10 +581,11 @@ class router
                     $controller->editOrder();
                 }
                 break;
-            case '/api/delete/order':
-                require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
-                $controller = new \orderControllerAPI();
-                $controller->delete($_POST['id']);
+            case '/delete/order':
+                echo "test";
+                require_once __DIR__ . '/../controller/orderController.php';
+                $controller = new \orderController();
+                $controller->deleteOrder();
                 break;
             case '/saveInCSV':
                 require_once __DIR__ . '/../controller/CVSController.php';

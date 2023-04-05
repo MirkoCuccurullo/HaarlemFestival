@@ -4,7 +4,8 @@
 require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../model/order.php';
 
-class orderController{
+class orderController
+{
 
     private $orderService;
 
@@ -23,35 +24,47 @@ class orderController{
         $order = $this->orderService->getOrder($_POST['id']);
         require __DIR__ . '/../view/management/editOrder.php';
     }
+
     public function updateOrder(): void
     {
-        $this->orderService->updateOrder($_POST['id'], $_POST['user_id'], $_POST['no_of_items'], $_POST['total_price'], $_POST['status']);
-        header('Location: /manage/orders');
-    }
-   public function jsonToCSV(): void
-    {
-        $url = 'http://localhost/api/order';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $json_data = curl_exec($ch);
-        curl_close($ch);
+        try {
+            // Sanitize inputs
+            $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+            $user_id = filter_var($_POST['user_id'], FILTER_SANITIZE_NUMBER_INT);
+            $no_of_items = filter_var($_POST['no_of_items'], FILTER_SANITIZE_NUMBER_INT);
+            $total_price = filter_var($_POST['total_price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            $status = filter_var($_POST['status'], FILTER_SANITIZE_STRING);
 
-        $data = json_decode($json_data, true);
+            // Validate inputs
+            if (empty($id) || empty($user_id) || empty($no_of_items) || empty($total_price) || empty($status)) {
+                throw new Exception("One or more required fields are missing.");
+            }
 
-        $csv_file = fopen('orders.csv', 'w');
-
-// Write headers to the CSV file
-        fputcsv($csv_file, array_keys($data[0]));
-
-// Loop through the data and write each row to the CSV file
-        foreach ($data as $row) {
-            fputcsv($csv_file, $row);
+            // Call the service to update the order
+            $this->orderService->updateOrder($id, $user_id, $no_of_items, $total_price, $status);
+            header('Location: /manage/orders');
+        } catch (Exception $e) {
+            // Log the error
+            error_log($e->getMessage());
         }
-
-// Close the file pointer
-        fclose($csv_file);
-
     }
+    public function deleteOrder(): void
+    {
+        try {
+            // Sanitize inputs
+            $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
 
+            // Validate inputs
+            if (empty($id)) {
+                throw new Exception("No order id provided");
+            }
+
+            // Call the service to delete the order
+            $this->orderService->deleteOrder($id);
+            header('Location: /manage/orders');
+        } catch (Exception $e) {
+            // Log the error
+            error_log($e->getMessage());
+        }
+    }
 }

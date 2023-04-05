@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="add a reservation now works">
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Manage reservation and deactivate all working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/restaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/restaurantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/addRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/addRestaurant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/addSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/addSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/editReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editReservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/editRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editRestaurant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageReservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageRestaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageRestaurant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageSessions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageSessions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/orderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/orderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/orderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/orderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Manage reservation and deactivate all working">
+      <created>1680698674407</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680698674407</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +225,8 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
+    <MESSAGE value="Manage reservation and deactivate all working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Manage reservation and deactivate all working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
