@@ -23,36 +23,49 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="/home" style="color: black">
-                        <img class="header-icon" src="../../images/home-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                        <img class="header-icon" src="../../images/home-icon.svg" alt="Home"
+                             style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/history" style="color: black">
-                        <img class="header-icon" src="../../images/history-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                        <img class="header-icon" src="../../images/history-icon.svg" alt="History"
+                             style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         History
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/music" style="color: black">
-                        <img class="header-icon" src="../../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                        <img class="header-icon" src="../../images/music-icon.svg" alt="Music"
+                             style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Music
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/kids" style="color: black">
-                        <img class="header-icon" src="../../images/kids-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                        <img class="header-icon" src="../../images/kids-icon.svg" alt="Kids"
+                             style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Kids
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/kids" style="color: black">
+                        <img class="header-icon" src="../../images/culinary-icon.svg" alt="Culinary"
+                             style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                        Culinary
                     </a>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: black">
 
-                        <img class="header-icon" src="../../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                        <img class="header-icon" src="../../images/music-icon.svg" alt="Festival"
+                             style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Festival
                     </a>
                     <ul class="dropdown-menu">
@@ -74,15 +87,16 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown" >
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black"> Admin Management </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black"> Admin
+                        Management </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item" href="/manage/users">Users</a>
                         </li>
 
 
-                        <li> <a class="dropdown-item" href="#"> DANCE &raquo; </a>
+                        <li><a class="dropdown-item" href="#"> DANCE &raquo; </a>
                             <ul class="submenu dropdown-menu">
                                 <li><a class="dropdown-item" href="/manage/dance/artists">Artists</a></li>
                                 <li><a class="dropdown-item" href="/manage/dance/venues">Venues</a></li>
@@ -118,11 +132,22 @@
                     <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
                         echo "hidden" ?>>Login</a>
                 </li>
-                <li class="nav-item" <?php if (!isset($_SESSION['current_user']))
+
+                <li class="nav-item dropdown" <?php if (!isset($_SESSION['current_user']))
                     echo "hidden" ?>>
-                    <a class="nav-link" href="/manageProfile">
-                        <img src="../../images/profile-menu-bar.svg" alt="Profile picture" style="width: 32px; height: 32px">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black">
+                        <img src="../../images/profile-menu-bar.svg" alt="Profile picture"
+                             style="width: 32px; height: 32px">
                     </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="/manageProfile">My profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">My orders</a>
+                        </li>
+                    </ul>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shoppingCart">
@@ -134,8 +159,8 @@
     </div>
 </nav>
 
-<div style="overflow: hidden" class="mb-4">
-    <img src="/images/haarlem.png" alt="welcome to Haarlem">
+<div style="overflow: hidden" class="mb-4" id="banner-container">
+    <img src="/images/haarlem.png" alt="welcome to Haarlem" id="banner-image-input">
 </div>
 
 <div class="container">

@@ -22,7 +22,7 @@ class shoppingCartController
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
 
-    public function addDanceEvent()
+    public function addEvent()
     {
         if (isset($_SESSION['order']))
             $order = $_SESSION['order'];
@@ -52,14 +52,14 @@ class shoppingCartController
             $venue = $eventService->getVenueByID($event->location);
             $event->venue_name = $venue->name;
 
-            $order->addDanceEvent($event);
+            $order->addEvent($event);
             $_SESSION['order'] = $order;
         }
         else if(isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
             $accessPass = $accessPassService->getAccessPassByID($id);
-            $order->addDanceEvent($accessPass);
+            $order->addEvent($accessPass);
             $_SESSION['order'] = $order;
         }
         $router = new Router();
@@ -95,11 +95,11 @@ class shoppingCartController
         $router->route('/shoppingCart');
     }
 
-    public function removeDanceEvent()
+    public function removeEvent()
     {
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
-            $_SESSION['order']->removeDanceEvent($key);
+            $_SESSION['order']->removeEvent($key);
         }
         $router = new Router();
         $router->route('/shoppingCart');

@@ -42,11 +42,6 @@ class router
                 $controller->index();
                 break;
 
-            case'/home/test':
-                require_once __DIR__ . '/../controller/homePageController.php';
-                $controller = new \homePageController();
-                $controller->index2();
-                break;
 
             case'/login':
                 require_once("../view/login/login.php");
@@ -302,6 +297,10 @@ class router
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
                 $controller = new \homePageControllerAPI();
+                if($_SERVER['REQUEST_METHOD'] == 'DELETE')
+                    $controller->deleteHome();
+
+                else if($_SERVER['REQUEST_METHOD'] == 'GET')
                 $controller->index();
                 break;
 
@@ -327,14 +326,13 @@ class router
             case '/shoppingCart/add':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
-                $controller->addDanceEvent();
-                $controller->addHistoryEvent();
+                $controller->addEvent();
                 break;
 
             case '/shoppingCart/remove':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
-                $controller->removeDanceEvent();
+                $controller->removeEvent();
                 break;
 
             case '/shoppingCart/submit':
@@ -523,6 +521,21 @@ class router
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();
                 break;
+
+            case '/api/festivalCards':
+                require_once __DIR__ . '/../api/controllers/festivalPageControllerAPI.php';
+                $controller = new \festivalPageControllerAPI();
+                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                    $controller->getAllFestivalCards();
+                }
+                else if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controller->createFestivalCard();
+                }
+                else if($_SERVER["REQUEST_METHOD"] == "PUT"){
+                    $controller->updateFestivalCard();
+                }
+                break;
+
             default:
                 echo '404';
         }
