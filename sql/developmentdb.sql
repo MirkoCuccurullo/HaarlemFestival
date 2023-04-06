@@ -336,10 +336,13 @@ ALTER TABLE 'invoice'
 ALTER TABLE 'invoice'
     ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id);
 
-ALTER TABLE invoice
+ALTER TABLE 'invoice'
 ADD COLUMN order_id INT,
 ADD CONSTRAINT FK_order_invoice
 FOREIGN KEY (order_id) REFERENCES `orders` (id);
 
-ALTER TABLE invoice DROP FOREIGN KEY FK_user_invoice;
-ALTER TABLE invoice DROP COLUMN payment_method;
+ALTER TABLE 'invoice' DROP FOREIGN KEY FK_user_invoice;
+ALTER TABLE 'invoice' DROP COLUMN payment_method;
+
+ALTER TABLE 'historytourtimetable' ADD COLUMN price float;
+UPDATE 'historytourtimetable' SET price = '17.50';
