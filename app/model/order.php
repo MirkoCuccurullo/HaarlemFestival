@@ -25,4 +25,20 @@ class order{
         $this->events = array_values($this->events);
     }
 
+    //setting properties for invoice
+    public function setUserId($user_id) {
+        $this->user_id = $user_id;
+    }
+
+    public function setNoOfItems($no_of_items) {
+        $this->no_of_items = $no_of_items;
+    }
+
+    public function setTotalPrice($total_price) {
+        $this->total_price = $total_price;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+    }
 }

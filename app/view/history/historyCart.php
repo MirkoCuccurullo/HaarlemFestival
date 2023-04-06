@@ -35,10 +35,10 @@
             <th scope="row">Single</th>
             <td>€ 17,50</td>
         </tr>
-        <tr>
-            <th scope="row">Family (4 people)</th>
-            <td>€ 60,00</td>
-        </tr>
+<!--        <tr>-->
+<!--            <th scope="row">Family (4 people)</th>-->
+<!--            <td>€ 60,00</td>-->
+<!--        </tr>-->
         </tbody>
     </table>
 
@@ -58,15 +58,15 @@
                 </div>
             </td>
         </tr>
-        <tr>
-            <td>
-                <div class="ticket-box">
-                    <button class="minus-btn" id="minus-btn" type="button" name="button">-</button>
-                    <input type="text" name="quantity" value="1">
-                    <button class="plus-btn" id="plus-btn" type="button" name="button">+</button>
-                </div>
-            </td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <div class="ticket-box">-->
+<!--                    <button class="minus-btn" id="minus-btn" type="button" name="button">-</button>-->
+<!--                    <input type="text" name="quantity" value="1">-->
+<!--                    <button class="plus-btn" id="plus-btn" type="button" name="button">+</button>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
         </tbody>
     </table>
 

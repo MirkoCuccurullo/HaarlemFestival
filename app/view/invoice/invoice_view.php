@@ -18,24 +18,24 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Invoice</h2><h3 class="pull-right">Order # <?= $invoiceInfo[0]->invoiceNumber ?></h3>
+                <h2>Invoice</h2><h3 class="pull-right">Order # <?= $invoiceInfo[0]->getInvoiceNumber() ?></h3>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
                         <strong>Client name:</strong><br>
-                        <?= $invoiceInfo[0]->clientName ?><br><br>
+                        <?= $invoiceInfo[0]->getClientName() ?><br><br>
                         <strong>Address:</strong><br>
-                        <?= $invoiceInfo[0]->address ?><br>
+                        <?= $invoiceInfo[0]->getAddress() ?><br>
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
                         <strong>Email:</strong><br>
-                        <?= $invoiceInfo[0]->email ?><br><br>
+                        <?= $invoiceInfo[0]->getEmail() ?><br><br>
                         <strong>Phone number:</strong><br>
-                        <?= $invoiceInfo[0]->phoneNumber ?><br>
+                        <?= $invoiceInfo[0]->getPhoneNumber() ?><br>
                     </address>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         <strong>Invoice Date:</strong><br>
                         <?= $invoiceInfo[0]->getInvoiceDate() ?><br><br>
                         <strong>Payment Date:</strong><br>
-                        <?= $invoiceInfo[0]->paymentDate ?><br><br>
+                        <?= $invoiceInfo[0]->getPaymentDate() ?><br><br>
                     </address>
                 </div>
             </div>
@@ -97,19 +97,19 @@
                                 <td class="thick-line"></td>
                                 <td class="thick-line"></td>
                                 <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                <td class="thick-line text-right"><?= $invoiceInfo[0]->subTotalAmount ?></td>
+                                <td class="thick-line text-right"><?= $invoiceInfo[0]->getSubTotalAmount() ?></td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>VAT</strong></td>
-                                <td class="no-line text-right"><?= $invoiceInfo[0]->VAT ?></td>
+                                <td class="no-line text-right"><?= $invoiceInfo[0]->getVAT() ?></td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>Total</strong></td>
-                                <td class="no-line text-right"><?= $invoiceInfo[0]->totalAmount ?></td>
+                                <td class="no-line text-right"><?= $invoiceInfo[0]->getTotalAmount() ?></td>
                             </tr>
                             </tbody>
                         </table>

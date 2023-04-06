@@ -1,8 +1,10 @@
 <?php
 
+use Models\order;
 use repository\baseRepository;
 require_once 'baseRepository.php';
 require_once '../model/invoice.php';
+require_once '../model/order.php';
 
 class InvoiceRepository extends baseRepository{
     public function getInvoice($id){
@@ -21,20 +23,21 @@ class InvoiceRepository extends baseRepository{
 
         $invoices = [];
         foreach ($results as $result) {
-            $invoice = new Invoice(
-                $result['name_of_client'],
-                $result['invoice_number'],
-                $result['invoice_date'],
-                $result['phone_number'],
-                $result['address'],
-                $result['email'],
-                $result['subtotal'],
-                $result['total_amount'],
-                $result['vat'],
-                $result['payment_date']
-            );
+            $invoice = new Invoice();
+            $invoice->setClientName($result['name_of_client']);
+            $invoice->setInvoiceNumber($result['invoice_number']);
+            $invoice->setInvoiceDate($result['invoice_date']);
+            $invoice->setPhoneNumber($result['phone_number']);
+            $invoice->setAddress($result['address']);
+            $invoice->setEmail($result['email']);
+            $invoice->setSubTotalAmount($result['subtotal']);
+            $invoice->setTotalAmount($result['total_amount']);
+            $invoice->setVAT($result['vat']);
+            $invoice->setPaymentDate($result['payment_date']);
             $invoices[] = $invoice;
         }
+        $order[] = $this->getOneOrderForInvoice();
+        $invoices[] = $order;
         return $invoices;
     }
 
@@ -44,12 +47,11 @@ class InvoiceRepository extends baseRepository{
 
         $orders = [];
         foreach ($results as $result) {
-            $order = new Order(
-                $result['user_id'],
-                $result['no_of_items'],
-                $result['total_price'],
-                $result['status']
-            );
+            $order = new Order();
+            $order->setUserId($result['user_id']);
+            $order->setNoOfItems($result['no_of_items']);
+            $order->setTotalPrice($result['total_price']);
+            $order->setStatus($result['status']);
             $orders[] = $order;
         }
         return $orders;

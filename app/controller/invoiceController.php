@@ -2,6 +2,9 @@
 
 include_once __DIR__ . '/../model/invoice.php';
 require_once __DIR__ . '/../service/invoiceService.php';
+//
+require_once __DIR__ . '/../service/userService.php';
+require_once __DIR__ . '/../service/ticketService.php';
 
 class invoiceController {
 
@@ -29,8 +32,8 @@ class invoiceController {
         }
     }
 
-    public function convertHTMLToPDF(){
-        $this->invoiceService->convertHTMLToPDF();
+    public function convertHTMLToPDF($order_id, $user_id){
+        $this->invoiceService->convertHTMLToPDF($order_id, $user_id);
     }
 
 //    public function exportExcel()
