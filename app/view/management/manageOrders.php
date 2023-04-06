@@ -71,6 +71,7 @@ include __DIR__ . '/../header.php'; ?>
                 deleteForm.method = "POST";
                 editForm.action = '/edit/order';
                 editForm.method = "POST";
+
                 idInput3.type = "hidden";
                 idInput3.value = order.id;
                 idInput3.name = "id";
@@ -103,10 +104,10 @@ include __DIR__ . '/../header.php'; ?>
                 invoiceButton.innerHTML = "Invoice";
 
                 deleteForm.appendChild(idInput2);
+                deleteButtonCol.appendChild(deleteForm);
                 deleteForm.appendChild(deleteButton);
-                deleteButtonCol.appendChild(deleteButton);
+
                 editForm.appendChild(editButton);
-                editForm.appendChild(idInput);
                 editForm.appendChild(idInput3);
                 editButtonCol.appendChild(editForm);
 
@@ -117,8 +118,6 @@ include __DIR__ . '/../header.php'; ?>
                         deleteForm.submit();
                     }
                 });
-
-
 
                 invoiceButtonCol.appendChild(invoiceButton);
                 invoiceButtonCol.appendChild(idInput);
@@ -137,17 +136,16 @@ include __DIR__ . '/../header.php'; ?>
             }
             loadOrders();
 
-            function deleteOrder(eventId)
-            {
-                const obj = {id: eventId};
-                fetch('http://localhost/api/delete/order', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(obj),
-                }).then(result => {
-                    console.log(result)
-                });
+            function deleteOrder(id) {
+                fetch('http://localhost/api/order/' + id, {
+                    method: 'DELETE',
+                })
+                    .then(result => result.json())
+                    .then((orders)=>{
+                        console.log(orders);
+                    })
             }
+
         </script>
         </tbody>
     </table>

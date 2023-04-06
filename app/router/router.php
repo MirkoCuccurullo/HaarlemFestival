@@ -582,7 +582,6 @@ class router
                 }
                 break;
             case '/delete/order':
-                echo "test";
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new \orderController();
                 $controller->deleteOrder();
