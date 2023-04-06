@@ -38,35 +38,30 @@ class shoppingCartController
             $order->status = 'open';
         }
 
-        if (isset($_POST['addDanceEvent']) || isset($_POST['addReservation'])) {
-
+        $event = null;
+        if(isset($_POST['addDanceEvent']))
+        {
             $eventService = new EventService();
-            if (isset($_POST['addDanceEvent'])) {
-                $id = htmlspecialchars($_POST['danceEventId']);
-
-                $event = $eventService->getEventByID($id);
-
-                $artist = $eventService->getArtistByID($event->artist);
-                $event->artist_name = $artist->name;
-
-                $venue = $eventService->getVenueByID($event->location);
-                $event->venue_name = $venue->name;
-            }
-            else if (isset($_POST['addReservation'])) {
-                $event = $reservation;
-            }
-
-            $order->addEvent($event);
-            $_SESSION['order'] = $order;
-        } else if (isset($_POST['addAccessPass'])) {
+            $id = htmlspecialchars($_POST['danceEventId']);
+            $event = $eventService->getEventByID($id);
+            $artist = $eventService->getArtistByID($event->artist);
+            $event->artist_name = $artist->name;
+            $venue = $eventService->getVenueByID($event->location);
+            $event->venue_name = $venue->name;
+        }
+        else if(isset($_POST['addReservation'])) {
+            $event = $reservation;
+        }
+        else if(isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
-            $accessPass = $accessPassService->getAccessPassByID($id);
-            $order->addEvent($accessPass);
-            $_SESSION['order'] = $order;
+            $event = $accessPassService->getAccessPassByID($id);
         }
-        $router = new Router();
-        $router->route('/shoppingCart');
+
+        $order->addEvent($event);
+        $_SESSION['order'] = $order;
+
+        header('Location: /shoppingCart');
     }
 
     public function addHistoryEvent()
@@ -101,10 +96,11 @@ class shoppingCartController
     {
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
-            $_SESSION['order']->removeEvent($key);
+            $uniqueEvents = $_SESSION['order']->getUniqueEvents();
+            $event = $uniqueEvents[$key];
+            $_SESSION['order']->removeEventByType($event);
         }
-        $router = new Router();
-        $router->route('/shoppingCart');
+        header('Location: /shoppingCart');
     }
 
     public function submitOrder()

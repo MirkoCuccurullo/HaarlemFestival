@@ -13,7 +13,8 @@ include __DIR__ . '/../header.php'; ?>
 
             <?php
             if (isset($_SESSION['order'])) {
-                foreach ($_SESSION['order']->events as $key => $event) {
+                $uniqueEvents = $_SESSION['order']->getUniqueEvents();
+                foreach ($uniqueEvents as $key => $event) {
                     ?>
 
                     <div class="col-1 mb-3">
@@ -29,24 +30,85 @@ include __DIR__ . '/../header.php'; ?>
                             ?></h3>
                     </div>
 
-                    <div class="col-1">
+                    <div class="col-2">
                         <div class="row">
-                            <div class="col-md-4">
-                            <button class="btn btn-primary">-</button>
+                            <?php
+                            $serializedEvent = serialize($event);
+                            $jsonEvent = json_encode($serializedEvent);
+                            ?>
+                            <div class="col-md-3">
+                                <button <?php if($_SESSION['order']->countForEvent($event) == 1)
+                                    echo "disabled"
+                                    ?> class="btn btn-primary" id="minus-btn" onclick="removeEvent(<?= htmlspecialchars($jsonEvent) ?>)">
+                                    <strong style="font-size: 1.3em">-</strong>
+                                </button>
                             </div>
-                            <div class="col-md-4">
-
-                            <h3 id="quantity" class="ms-2">1</h3>
+                            <div class="col-md-3">
+                                <h3 id="quantity" class="ms-2"><?php echo $_SESSION['order']->countForEvent($event) ?></h3>
                             </div>
-                            <div class="col-md-4">
-
-                            <button class="btn btn-primary">+</button>
-                                </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-primary" onclick="addEvent(<?= htmlspecialchars($jsonEvent) ?>)">
+                                    <strong style="font-size: 1.3em">+</strong>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-3 text-center">
-                        <h3><?php echo "€" . $event->price ?></h3>
+                    <script>
+                        function addEvent(event) {
+                            // let xhttp = new XMLHttpRequest();
+                            // xhttp.onreadystatechange = function() {
+                            //     if (this.readyState === 4 && this.status === 200) {
+                            //         let updatedArray = JSON.parse(this.responseText);
+                            //         console.log(updatedArray);
+                            //         //window.location.reload();
+                            //     }
+                            // };
+                            // xhttp.onload = function() {
+                            //     if (xhttp.status === 200) {
+                            //         console.log(xhttp.responseText);
+                            //     } else {
+                            //         console.log('Request failed.  Returned status of ' + xhttp.status);
+                            //     }
+                            // };
+                            //let uriComp = encodeURIComponent(JSON.stringify(event));
+                            //xhttp.open("GET", "/test?action=add&event=" + encodeURIComponent(event), true);
+                            //xhttp.open("GET", "/api/orders".  , true);
+                            //xhttp.open("GET", "/test?action=add&event=" + uriComp, true);
+
+                            // xhttp.open("POST", "/test", true);
+                            // xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                            //
+                            // let formData = new FormData();
+                            // formData.append("event", JSON.stringify(event));
+                            // xhttp.send(formData);
+                            //xhttp.send();
+                            const obj = { event: event };
+                            fetch('/test', {
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify(obj),
+                            }).then(result => {
+                                console.log(result)
+                            });
+                        }
+
+                        function removeEvent(event) {
+                            let xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+                                if (this.readyState === 4 && this.status === 200) {
+                                    let updatedArray = JSON.parse(this.responseText);
+                                    console.log(updatedArray);
+                                    window.location.reload();
+                                }
+                            };
+                            xhttp.open("GET", "/test?action=remove&event=" + encodeURIComponent(JSON.stringify(event)), true);
+                            xhttp.send();
+                        }
+
+                    </script>
+                    <div class="col-2 text-center">
+                        <h3><?php echo "€" . $_SESSION['order']->priceForEvent($event) ?></h3>
                     </div>
 
                     <div class="col-1">

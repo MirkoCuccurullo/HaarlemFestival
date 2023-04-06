@@ -126,15 +126,15 @@
             </ul>
 
             <ul class="nav col-md-4 justify-content-end">
-                <li>
-                    <button id="twitter-button" class="btn btn-primary">
-                        <i class="fab fa-twitter"></i>
-                    </button>
-                    
-                    <button id="facebook-button" class="btn btn-primary" style="padding: 8px">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-                </li>
+<!--                <li>-->
+<!--                    <button id="twitter-button" class="btn btn-primary">-->
+<!--                        <i class="fab fa-twitter"></i>-->
+<!--                    </button>-->
+<!--                    -->
+<!--                    <button id="facebook-button" class="btn btn-primary" style="padding: 8px">-->
+<!--                        <i class="fab fa-facebook-f"></i>-->
+<!--                    </button>-->
+<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" style="color: black" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>Logout</a>
@@ -178,20 +178,20 @@
 <div class="container">
 
 
-    <script>
-        document.getElementById('twitter-button').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var text = encodeURIComponent(document.title);
-            var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
-            window.open(shareUrl, '_blank');
-        });
-
-        document.getElementById('facebook-button').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var text = encodeURIComponent(document.title);
-            var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&text=' + text;
-            window.open(shareUrl, '_blank');
-        });
-
-
-    </script>
+<!--    <script>-->
+<!--        document.getElementById('twitter-button').addEventListener('click', function() {-->
+<!--            var url = encodeURIComponent(window.location.href);-->
+<!--            var text = encodeURIComponent(document.title);-->
+<!--            var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;-->
+<!--            window.open(shareUrl, '_blank');-->
+<!--        });-->
+<!---->
+<!--        document.getElementById('facebook-button').addEventListener('click', function() {-->
+<!--            var url = encodeURIComponent(window.location.href);-->
+<!--            var text = encodeURIComponent(document.title);-->
+<!--            var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&text=' + text;-->
+<!--            window.open(shareUrl, '_blank');-->
+<!--        });-->
+<!---->
+<!---->
+<!--    </script>-->
