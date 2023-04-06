@@ -24,12 +24,11 @@ class shoppingCartController
 
     public function addEvent()
     {
-        if (isset($_SESSION['order']))
+        if (isset($_SESSION['order'])) {
             $order = $_SESSION['order'];
-        else
-        {
+        } else {
             $order = new \Models\order();
-            if(isset($_SESSION['current_user_id']))
+            if (isset($_SESSION['current_user_id']))
                 $order->user_id = $_SESSION['current_user_id'];
             else
                 $order->user_id = null;
@@ -54,8 +53,7 @@ class shoppingCartController
 
             $order->addEvent($event);
             $_SESSION['order'] = $order;
-        }
-        else if(isset($_POST['addAccessPass'])) {
+        } else if (isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
             $accessPass = $accessPassService->getAccessPassByID($id);
@@ -70,10 +68,9 @@ class shoppingCartController
     {
         if (isset($_SESSION['order']))
             $order = $_SESSION['order'];
-        else
-        {
+        else {
             $order = new \Models\order();
-            if(isset($_SESSION['current_user_id']))
+            if (isset($_SESSION['current_user_id']))
                 $order->user_id = $_SESSION['current_user_id'];
             else
                 $order->user_id = null;
@@ -107,25 +104,12 @@ class shoppingCartController
 
     public function submitOrder()
     {
-        if(!isset($_SESSION['current_user_id']))
-        {
+        if (!isset($_SESSION['current_user_id'])) {
             $router = new Router();
             $router->route('/login');
-        }
-        else {
+        } else {
             if (isset($_POST['submitOrder'])) {
-//                $order = $_SESSION['order'];
-//                $orderService = new OrderService();
-//                $orderService->createOrder($order);
-//                unset($_SESSION['order']);
-//                $router = new Router();
-//                $router->route('/');
-
-
-
                 $order = $_SESSION['order'];
-
-                //$payment_id = $_SESSION['payment_id'];
 
                 $orderService = new OrderService();
                 $order_id = $orderService->createOrder($order);
@@ -137,34 +121,11 @@ class shoppingCartController
                 $mollieService = new MollieService();
                 $mollieService->pay($order, $tickets);
 
-//
-//                foreach ($tickets as $ticket)
-//                    $ticketService->insertTicket($ticket);
-//
-//
-//                $pdfGenerator = new PDFGenerator();
-//                $pdf = $pdfGenerator->createPDF($order);
-//
-//                $userService = new UserService();
-//                $user = $userService->getUserByID($order->user_id);
-//
-//                $mailService = new SMTPServer();
-//
-//                $receiverEmail = $user->email;
-//                $receiverName = $user->name;
-//                $subject = "Your Ticket(s)";
-//                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) are attached to this email. See you at the events!";
-//                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf);
-//                unlink($pdf);
-
-//                $router = new Router();
-//                $router->route('/');
                 unset($_SESSION['order']);
-
-
             }
         }
     }
+
     public function confirmation($order_id)
     {
         $orderService = new orderService();

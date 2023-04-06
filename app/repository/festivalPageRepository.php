@@ -36,4 +36,11 @@ class festivalPageRepository extends baseRepository
         return $stmt->execute();
     }
 
+    public function deleteFestivalCard($id){
+        $sql = "DELETE FROM festival_page WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        return $stmt->execute();
+    }
+
 }

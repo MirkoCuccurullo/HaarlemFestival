@@ -11,17 +11,8 @@ class festivalPageControllerAPI
         $this->festivalPageService = new festivalPageService();
     }
 
-//    public function index()
-//    {
-//        require_once __DIR__ . '/../../view/festival/festival_homepage.php';
-//    }
-
     public function getAllFestivalCards()
     {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: *');
-        header('Access-Control-Allow-Methods: *');
-
         $cards = $this->festivalPageService->getAllFestivalCards();
         header('Content-Type: application/json');
         echo json_encode($cards);
@@ -45,6 +36,13 @@ class festivalPageControllerAPI
         $paragraph = $data['paragraph'];
         $link = $data['link'];
         $this->festivalPageService->updateFestivalCard($id, $heading, $image, $paragraph, $link);
+    }
+
+    public function deleteFestivalCard()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = $data['id'];
+        $this->festivalPageService->deleteFestivalCard($id);
     }
 
 }

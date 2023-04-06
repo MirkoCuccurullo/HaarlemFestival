@@ -13,7 +13,6 @@ include __DIR__ . '/../header.php';
     </div>
     <div id="alert-box" role="alert" hidden>
         <h1 id="message" style="color: #000000"></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </div>
 
@@ -57,14 +56,14 @@ include __DIR__ . '/../footer.php'; ?>
     function showFailureMessage(message) {
         document.getElementById("message").innerHTML = message;
         let alertBox = document.getElementById("alert-box");
-        alertBox.className = "alert alert-danger alert-dismissible fade show";
+        alertBox.className = "alert alert-danger";
         alertBox.hidden = false;
     }
 
     function showSuccessMessage(message) {
         document.getElementById("message").innerHTML = message;
         let alertBox = document.getElementById("alert-box");
-        alertBox.className = "alert alert-success alert-dismissible fade show";
+        alertBox.className = "alert alert-success";
         alertBox.hidden = false;
     }
 

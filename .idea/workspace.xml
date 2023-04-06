@@ -159,7 +159,8 @@
       <workItem from="1680293521365" duration="8000" />
       <workItem from="1680342915588" duration="13000" />
       <workItem from="1680694458077" duration="15175000" />
-      <workItem from="1680712353401" duration="641000" />
+      <workItem from="1680712353401" duration="1475000" />
+      <workItem from="1680784581124" duration="3312000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>

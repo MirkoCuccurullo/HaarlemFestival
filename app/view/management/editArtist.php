@@ -69,6 +69,7 @@ include_once __DIR__ . '/../../model/artist.php';
             </div>
         </form>
     </div>
+</div>
 <?php
 include __DIR__ . '/../footer.php'; ?>
 

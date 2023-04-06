@@ -534,6 +534,9 @@ class router
                 else if($_SERVER["REQUEST_METHOD"] == "PUT"){
                     $controller->updateFestivalCard();
                 }
+                else if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+                    $controller->deleteFestivalCard();
+                }
                 break;
 
             default:

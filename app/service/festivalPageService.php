@@ -20,4 +20,9 @@ class festivalPageService
         return $this->festivalPageRepository->updateFestivalCard($id, $title, $image, $content, $prompt);
     }
 
+    public function deleteFestivalCard($id)
+    {
+        return $this->festivalPageRepository->deleteFestivalCard($id);
+    }
+
 }

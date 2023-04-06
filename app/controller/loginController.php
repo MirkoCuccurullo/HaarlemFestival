@@ -23,6 +23,9 @@ class loginController
             $_SESSION['current_user_email'] = $currentUser->email;
             $_SESSION['current_user_id'] = $currentUser->id;
             $_SESSION['current_user_password'] = $currentUser->password;
+            if(isset($_SESSION['order'])){
+                $_SESSION['order']->user_id = $currentUser->id;
+            }
             $router = new router();
             $router->route('/');
         }
