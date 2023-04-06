@@ -126,4 +126,24 @@ class PDFGenerator
 
         return $file_name;
     }
+
+    public function convertHTMLToPDF(){
+        $invoiceInfo = $this->getAllInformationForInvoice();
+
+        // $html = $this->generateHTML($invoiceInfo);
+        $html = require __DIR__ . '/../view/invoice/invoice_view.php';
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+        $pdf_content = $dompdf->output();
+        $file_name = "invoice.pdf";
+        file_put_contents($file_name, $pdf_content);
+    }
 }

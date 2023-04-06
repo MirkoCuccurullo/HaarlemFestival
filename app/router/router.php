@@ -178,23 +178,23 @@ class router
                 $controller->editEvent();
                 break;
 
-
-            case'/history':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyMainPage();
-                break;
-            case'/historyCart':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyCartPage($_POST['id']);
-                break;
-            case '/locationDetail':
-                require __DIR__ . '/../controller/historyEventController.php';
-                $controller = new \historyEventController();
-                $controller->historyLocationDetailPage($_POST['id']);
-                break;
-
+//
+//            case'/history':
+//                require __DIR__ . '/../controller/historyEventController.php';
+//                $controller = new \historyEventController();
+//                $controller->historyMainPage();
+//                break;
+//            case'/historyCart':
+//                require __DIR__ . '/../controller/historyEventController.php';
+//                $controller = new \historyEventController();
+//                $controller->historyCartPage($_POST['id']);
+//                break;
+//            case '/locationDetail':
+//                require __DIR__ . '/../controller/historyEventController.php';
+//                $controller = new \historyEventController();
+//                $controller->historyLocationDetailPage($_POST['id']);
+//                break;
+//
 
             case '/signin':
                 require '../controller/loginController.php';
@@ -226,11 +226,17 @@ class router
                 $controller->sendResetLink();
                 break;
 
-            case '/invoiceHTML':
+            case '/invoice':
                 require __DIR__ . '/../controller/invoiceController.php';
                 $controller = new \invoiceController();
-                $controller->displayInvoiceHTML();
+                $controller->displayInvoice();
                 break;
+            case '/invoice/download':
+                require __DIR__ . '/../controller/invoiceController.php';
+                $controller = new \invoiceController();
+                $controller->convertHTMLToPDF();
+                break;
+
 
             case '/history':
                 require __DIR__ . '/../controller/historyEventController.php';
@@ -604,6 +610,11 @@ class router
                 require_once __DIR__ . '/../controller/ExcelController.php';
                 $controller = new \ExcelController();
                 $controller->exportExcel();
+                break;
+            case '/downloadInvoice':
+                require_once __DIR__ . '/../controller/invoiceController.php';
+                $controller = new \invoiceController();
+                $controller->downloadInvoice();
                 break;
 
             default:

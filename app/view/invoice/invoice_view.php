@@ -42,8 +42,7 @@
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                        <strong>Payment Method:</strong><br>
-                        <?= $invoiceInfo[0]->paymentMethod ?><br>
+<!--                        <strong>Payment Method:</strong><br>-->
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
@@ -76,7 +75,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- foreach ($order->lineItems as $line) or some such thing here -->
                             <tr>
                                 <td>BS-200</td>
                                 <td class="text-center">$10.99</td>
@@ -115,6 +113,23 @@
                             </tr>
                             </tbody>
                         </table>
+                        <a href="invoice_view.php?file=invoice.pdf" download>Download Invoice</a>
+                        <?php if (!empty($_GET['file']))
+                        {
+                            $fileName = basename($_GET['file']);
+                            $filePath = "/HaarlemFestival/app/view/invoice/invoice_pdf/" . $fileName;
+                            if (file_exists($filePath))
+                            {
+                                header('Cache-Control: public');
+                                header('Content-Description: File Transfer');
+                                header('Content-Disposition: attachment; filename=$fileName');
+                                header('Content-Type: application/zip');
+                                readfile($filePath);
+                                exit;
+                            } else {
+                                echo "File does not exist";
+                            }
+                        }?>
                     </div>
                 </div>
             </div>
