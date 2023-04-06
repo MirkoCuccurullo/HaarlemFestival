@@ -11,20 +11,11 @@ class eventRepository extends baseRepository
 {
 
     public function getAllEvents(){
-        $sql = "SELECT * FROM dance_event";
+        $sql = "SELECT de.*, a.name as artist_name, a.picture as artist_picture, s.type as session, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'dance');
         $result = $stmt->fetchAll();
-        foreach ($result as $dance){
-
-            $artist = $this->getArtistById($dance->artist);
-
-            $dance->artist_name = $artist->name;
-            $venue_name = $this->getVenueById($dance->location)->name;
-            $dance->venue_name = $venue_name;
-            $dance->artist_picture = $artist->picture;
-        }
         return $result;
     }
 
@@ -105,26 +96,28 @@ class eventRepository extends baseRepository
         return $result;
     }
 
-    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description)
+    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description, $picture)
     {
-        $sql = "UPDATE dance_artists SET name = :name, genre = :genre, description = :description WHERE id = :id";
+        $sql = "UPDATE dance_artists SET name = :name, genre = :genre, description = :description, picture = :picture WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":genre", $genre);
         $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":picture", $picture);
         return $stmt->execute();
     }
 
-    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity)
+    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity, $picture)
     {
-        $sql = "UPDATE venues SET name = :name, address = :address, description = :description, capacity = :capacity WHERE id = :id";
+        $sql = "UPDATE venues SET name = :name, address = :address, description = :description, capacity = :capacity, picture = :picture WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":address", $address);
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":capacity", $capacity);
+        $stmt->bindParam(":picture", $picture);
         return $stmt->execute();
     }
 
@@ -179,60 +172,72 @@ class eventRepository extends baseRepository
 
     public function getEventsByArtist(int $id)
     {
-        $sql = "SELECT * FROM dance_event WHERE artist = :id";
+        $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_CLASS, "dance");
-        foreach ($result as $dance){
-
-            $artist = $this->getArtistById($dance->artist);
-
-            $dance->artist_name = $artist->name;
-            $venue_name = $this->getVenueById($dance->location)->name;
-            $dance->venue_name = $venue_name;
-        }
         return $result;
     }
 
     public function getAllByFilters(mixed $artist_id, mixed $date_id, mixed $venue_id)
     {
-        if ($artist_id != 0 && $venue_id != 0){
-            $sql = "SELECT * FROM dance_event WHERE artist = :artist_id AND location = :venue_id";
+        if ($artist_id != 0 && $venue_id != 0 && $date_id != 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id AND location = :venue_id AND date = :date";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindParam(":artist_id", $artist_id);
             $stmt->bindParam(":venue_id", $venue_id);
+            $stmt->bindParam(":date", $date_id);
 
-        }
-
-        if ($artist_id == 0){
-            $sql = "SELECT * FROM dance_event WHERE location = :venue_id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindParam(":venue_id", $venue_id);
-        }
-
-        if ($venue_id == 0){
-            $sql = "SELECT * FROM dance_event WHERE artist = :artist_id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindParam(":artist_id", $artist_id);
         }
 
         if ($artist_id == 0 && $venue_id == 0){
-            $sql = "SELECT * FROM dance_event";
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE date = :date";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":date", $date_id);
+        }
+
+        if($artist_id != 0 && $date_id != 0 && $venue_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id AND date = :date";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+            $stmt->bindParam(":date", $date_id);
+        }
+
+        if($venue_id != 0 && $date_id != 0 && $artist_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE location = :venue_id AND date = :date";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":venue_id", $venue_id);
+            $stmt->bindParam(":date", $date_id);
+        }
+
+        if ($artist_id != 0 && $venue_id != 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id AND location = :venue_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+            $stmt->bindParam(":venue_id", $venue_id);
+
+        }
+
+        if ($artist_id == 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE location = :venue_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":venue_id", $venue_id);
+        }
+
+        if ($venue_id == 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id WHERE artist = :artist_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":artist_id", $artist_id);
+        }
+
+        if ($artist_id == 0 && $venue_id == 0 && $date_id == 0){
+            $sql = "SELECT de.*, a.name as artist_name,s.type as session, a.picture as artist_picture, v.name as venue_name FROM dance_event as de join dance_artists as a on de.artist = a.id join venues as v on de.location = v.id join dance_session as s on de.session = s.id";
             $stmt = $this->connection->prepare($sql);
         }
 
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_CLASS, "dance");
-        foreach ($result as $dance){
-
-            $artist = $this->getArtistById($dance->artist);
-
-            $dance->artist_name = $artist->name;
-            $venue_name = $this->getVenueById($dance->location)->name;
-            $dance->venue_name = $venue_name;
-            $dance->artist_picture = $artist->picture;
-        }
         return $result;
 
     }

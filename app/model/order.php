@@ -10,15 +10,14 @@ class order{
     public string $status;
     public ?string $payment_id;
 
-
     public function addEvent($event){
         $this->events[] = $event;
         $this->no_of_items++;
         $this->total_price += $event->price;
     }
 
-
     public function removeEvent($key){
+
         $this->no_of_items--;
         $this->total_price -= $this->events[$key]->price;
         unset($this->events[$key]);

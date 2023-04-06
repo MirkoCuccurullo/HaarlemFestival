@@ -1,21 +1,15 @@
 <?php include __DIR__ . '/../header.php'; ?>
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-</head>
 
 <body style="background-color: #49111C; color:white;">
-<div class="col-md-4" style="alignment: right;" >
-    <h4>Sharing is caring</h4>
-    <button id="twitter-button" class="btn btn-primary">
-        <i class="fab fa-twitter col-md-6"></i>Twitter
-    </button>
-    <button id="facebook-button" class="btn btn-primary">
-        <i class="fab fa-facebook-f col-md-6"></i>Facebook
-    </button>
-</div>
+<!--<div class="col-md-2">-->
+<!--    <button id="twitter-button" class="btn btn-primary">-->
+<!--        <i class="fab fa-twitter col-md-2"></i>Twitter-->
+<!--    </button>-->
+<!--    <button id="facebook-button" class="btn btn-primary">-->
+<!--        <i class="fab fa-facebook-f col-md-2"></i>Facebook-->
+<!--    </button>-->
+<!--</div>-->
 <br>
 <div id="restaurant-container">
     <?php foreach ($restaurants as $restaurant): ?>
@@ -65,9 +59,10 @@
                     endforeach; ?>
                 </ul>
                 <br>
-                <button formmethod="post" style="background: #ABAC7F; border-style: hidden; border-radius: 5%; width: 150px;" name="id" value="<?=$restaurant->id?>" formaction="/restaurant">
-                    <p class="text-center">View More</p>
-                </button>
+                <form method="post" action="/restaurant">
+                    <input type="hidden" name="id" value="<?= $restaurant->id ?>">
+                    <button type="submit" style="background: #ABAC7F; border-style: hidden; border-radius: 5%; width: 150px;" class="btn btn-primary">View More</button>
+                </form>
             </div>
         </div>
 
@@ -75,23 +70,7 @@
     <?php endforeach; ?>
 </div>
 
-<script>
-    document.getElementById('twitter-button').addEventListener('click', function() {
-        var url = encodeURIComponent(window.location.href);
-        var text = encodeURIComponent(document.title);
-        var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
-        window.open(shareUrl, '_blank');
-    });
 
-    document.getElementById('facebook-button').addEventListener('click', function() {
-        var url = encodeURIComponent(window.location.href);
-        var text = encodeURIComponent(document.title);
-        var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&text=' + text;
-        window.open(shareUrl, '_blank');
-    });
-
-
-</script>
 
 </body>
 

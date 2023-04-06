@@ -7,9 +7,9 @@ include __DIR__ . '/../header.php'; ?>
 </form>
 <select name="role" id="role" class="form-select" oninput="filterUsers()">
     <option selected value="0"> All Roles</option>
-    <option value="Employee">Employee</option>
-    <option value="Customer">Customer</option>
-    <option value="Administrator">Administrator</option>
+    <option value="Club">Club</option>
+    <option value="Back2Back">B2B</option>
+    <option value="TiëstoWorld">Tiesto World</option>
 </select>
 
 <div class="table table-responsive">
@@ -86,7 +86,7 @@ include __DIR__ . '/../header.php'; ?>
                 idInput.value = event.id;
                 idCol.innerHTML = event.id;
                 nameCol.innerHTML = event.artist_name + " @ " + event.venue_name;
-                roleCol.innerHTML = 'session';
+                roleCol.innerHTML = event.session;
                 emailCol.innerHTML = event.date;
                 dateOfBirthCol.innerHTML = event.start_time;
                 regDateCol.innerHTML = event.end_time;

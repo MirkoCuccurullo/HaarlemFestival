@@ -49,14 +49,14 @@ class eventService
         return $this->eventRepo->deleteVenue($id);
     }
 
-    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description)
+    public function updateArtist(mixed $id, mixed $name, mixed $genre, mixed $description, $picture)
     {
-        return $this->eventRepo->updateArtist($id, $name, $genre, $description);
+        return $this->eventRepo->updateArtist($id, $name, $genre, $description, $picture);
     }
 
-    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity)
+    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity, mixed $picture)
     {
-        return $this->eventRepo->updateVenue($id, $name, $address, $description, $capacity);
+        return $this->eventRepo->updateVenue($id, $name, $address, $description, $capacity, $picture);
     }
 
     public function getEventByID(mixed $id)
@@ -84,9 +84,16 @@ class eventService
         return $this->eventRepo->getEventsByArtist($id);
     }
 
+    public function getReservationByID(string $id)
+    {
+        $service = new reservationService();
+        return $service->getReservationByID($id);
+    }
+
     public function getAllByFilters(mixed $artist_id, mixed $date_id, mixed $venue_id)
     {
         return $this->eventRepo->getAllByFilters($artist_id, $date_id, $venue_id);
+
     }
 
 

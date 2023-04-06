@@ -57,36 +57,9 @@ include __DIR__ . '/../header.php'; ?>
                     </div>
                     <?php
                 }
-                foreach ($_SESSION['order']->history_event as $key => $history_event) {
-                    ?>
-
-                    <div class="col-1 mb-3">
-                        <img src="../images/order-dance-event.svg" alt="music" style="width: 50px; height: 50px">
-                    </div>
-
-                    <div class="col-7">
-                        <h3><?php
-                            if($history_event instanceof historyTourTimetable)
-                                echo $history_event->language;
-                            ?></h3>
-                    </div>
-
-                    <div class="col-3 text-center">
-<!--                        <h3>--><?php //echo "€" . $history_event->price; ?><!--</h3>-->
-                        <h3><?php echo "€ PRICE" ?></h3>
-                    </div>
-
-                    <div class="col-1">
-                        <form action="/shoppingCart/remove" method="post">
-                            <input hidden type="text" name="remove_item_key" value="<?php echo $key; ?>">
-                            <button type="submit" class="btn-danger" style="width: 6em">X</button>
-                        </form>
-                    </div>
-                    <?php
                 }
-            } else
-                echo "No events added yet";
-            ?>
+            else
+                echo "No events added yet"; ?>
         </div>
 
 
