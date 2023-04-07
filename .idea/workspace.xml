@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Debugging delete order">
+    <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/dance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/eventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/eventRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageArtists.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageArtists.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageEvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageEvents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageVenues.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageVenues.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,30 +58,27 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2LVWZcx2dKQ3inczOL30gcEf9Dc" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/PHP/Assignment",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.deploy.options",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mirko/Documents/GItHub/HaarlemFestival&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public" />
@@ -87,7 +90,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Debugging delete order" />
+      <changelist id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="" />
       <created>1675956787229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -160,8 +163,8 @@
       <workItem from="1679567419802" duration="5116000" />
       <workItem from="1680182981417" duration="415000" />
       <workItem from="1680606838799" duration="1987000" />
-      <workItem from="1680781036263" duration="5557000" />
-      <workItem from="1680795083031" duration="4427000" />
+      <workItem from="1680631522122" duration="1363000" />
+      <workItem from="1680698416330" duration="3280000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -184,28 +187,7 @@
       <option name="project" value="LOCAL" />
       <updated>1678274145118</updated>
     </task>
-    <task id="LOCAL-00004" summary="Manage reservation and deactivate all working">
-      <created>1680698674407</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1680698674407</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Debugging delete order">
-      <created>1680700621566</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1680700621566</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Debugging delete order">
-      <created>1680796678164</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1680796678164</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,9 +219,7 @@
     <MESSAGE value="Registration with Hashed password, missing 'email in use'" />
     <MESSAGE value="Complete Registration with Captcha" />
     <MESSAGE value="History main event page + Cart page front-end" />
-    <MESSAGE value="Manage reservation and deactivate all working" />
-    <MESSAGE value="Debugging delete order" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debugging delete order" />
+    <option name="LAST_COMMIT_MESSAGE" value="History main event page + Cart page front-end" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

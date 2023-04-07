@@ -104,15 +104,15 @@ include __DIR__ . '/../header_dance.php'; ?>
         <div class="card border-light my-4">
             <div class="row m-3">
                 <div class="col-3">
-                    <select name="venue" id="venue" class="form-select" oninput="filterEventsByDate()">
+                    <select name="date" id="date" class="form-select" oninput="filterEventsByArtist()">
                         <option selected value="0"> All Days</option>
-                        <option value="28/03/2023">Day 1</option>
-                        <option value="29/03/2023">Day 2</option>
-                        <option value="30/03/2023">Day 3</option>
+                        <option value="2023-07-28">Day 1</option>
+                        <option value="2023-07-29">Day 2</option>
+                        <option value="2023-07-30">Day 3</option>
                     </select>
                 </div>
                 <div class="col-3">
-                    <select name="date" id="date" class="form-select" oninput="filterEventsByArtist()">
+                    <select name="venue" id="venue" class="form-select" oninput="filterEventsByArtist()">
                         <option selected value="0"> All Locations</option>
                         <?php foreach ($venues as $venue) { ?>
                         <option value="<?= $venue->id?>"><?= $venue->name?></option>

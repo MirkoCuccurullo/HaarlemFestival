@@ -3,7 +3,7 @@
 include __DIR__ . '/../header.php';
 ?>
 
-<form method="post" action="/add/restaurant">
+<form method="post" action="/add/restaurant" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter restaurant name">
@@ -25,12 +25,10 @@ include __DIR__ . '/../header.php';
         <input type="text" class="form-control" id="dietary" name="dietary" placeholder="Enter dietary information">
     </div>
     <div class="form-group">
-        <label for="photo">Photo Path</label>
-        <input class="form-control" type="file" name="photo" id="photo" accept=".jpg">
-        <input type="text" class="form-control" id="photo" name="photo" placeholder="Enter photo path, for multiple paths use comma to separate">
+        <label for="picture"> Upload Picture</label>
+        <input class="form-control" type="file" name="picture" id="picture" accept=".jpg">
     </div>
     <br>
-    <a href="/manage/restaurant" class="btn btn-warning">Cancel</a>
     <button type="submit" name="addRestaurant" class="btn btn-primary">Submit</button>
 </form>
 <?php

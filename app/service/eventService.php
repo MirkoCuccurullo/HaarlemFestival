@@ -54,9 +54,9 @@ class eventService
         return $this->eventRepo->updateArtist($id, $name, $genre, $description, $picture);
     }
 
-    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity)
+    public function updateVenue(mixed $id, mixed $name, mixed $address, mixed $description, mixed $capacity, mixed $picture)
     {
-        return $this->eventRepo->updateVenue($id, $name, $address, $description, $capacity);
+        return $this->eventRepo->updateVenue($id, $name, $address, $description, $capacity, $picture);
     }
 
     public function getEventByID(mixed $id)
