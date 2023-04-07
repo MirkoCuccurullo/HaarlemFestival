@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="padding front end">
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="removed echo I forgot around">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/shoppingCartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/shoppingCartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/shoppingCart/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/shoppingCart/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +168,7 @@
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680631522122" duration="1363000" />
       <workItem from="1680698416330" duration="3280000" />
-      <workItem from="1680882898493" duration="6275000" />
+      <workItem from="1680882898493" duration="7902000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -203,7 +205,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680888018497</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="padding front end">
+      <created>1680889491630</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680889491630</updated>
+    </task>
+    <task id="LOCAL-00007" summary="removed echo I forgot around">
+      <created>1680889577531</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680889577531</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +253,8 @@
     <MESSAGE value="History main event page + Cart page front-end" />
     <MESSAGE value="Debugged for the 3rd time reservation" />
     <MESSAGE value="padding front end" />
-    <option name="LAST_COMMIT_MESSAGE" value="padding front end" />
+    <MESSAGE value="removed echo I forgot around" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed echo I forgot around" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

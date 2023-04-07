@@ -17,11 +17,6 @@
     <div class="col-md-8 justify-content-end">
 <h3><?= $restaurant->name ?></h3>
 </div>
-<div class="col-md-3 justify-content-end">
-    <button  style=" alignment: right; color: white; background: #ABAC7F; border-style: hidden; border-radius: 5%;" >
-        <p class="text-center">Reserve now </p>
-    </button>
-</div>
 
 <div id="restaurant-container" style="padding: 1em;">
     <div class="row" id="restaurantDescription">

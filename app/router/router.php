@@ -555,7 +555,7 @@ class router
                     $reservation = $controller->addReservation();
                     require_once __DIR__ . '/../controller/shoppingCartController.php';
                     $shoppingController = new \shoppingCartController();
-                    $shoppingController->addDanceEvent();
+                    $shoppingController->addReservation($reservation);
                 }
                 break;
 
