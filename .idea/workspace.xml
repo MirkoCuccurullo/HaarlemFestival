@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Debugging delete order">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controllers/orderControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controllers/orderControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +64,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Roby/Documents/GitHub/HaarlemFestival",
+    "last_opened_file_path": "C:/PHP/Assignment",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -164,7 +161,7 @@
       <workItem from="1680182981417" duration="415000" />
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680781036263" duration="5557000" />
-      <workItem from="1680795083031" duration="1289000" />
+      <workItem from="1680795083031" duration="4427000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -201,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680700621566</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Debugging delete order">
+      <created>1680796678164</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680796678164</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
