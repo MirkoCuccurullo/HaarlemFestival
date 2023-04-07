@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="removed echo I forgot around">
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Showing reservation in shopping cart">
+      <change afterPath="$PROJECT_DIR$/app/public/images/French.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/Fris.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/ML1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/MR &amp; MRS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/Ratat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/Specta.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/grand caf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/ml2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/ml3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/images/ml4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/shoppingCartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/shoppingCartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +173,7 @@
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680631522122" duration="1363000" />
       <workItem from="1680698416330" duration="3280000" />
-      <workItem from="1680882898493" duration="7902000" />
+      <workItem from="1680882898493" duration="8712000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -219,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680889577531</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Showing reservation in shopping cart">
+      <created>1680891100020</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680891100020</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +266,8 @@
     <MESSAGE value="Debugged for the 3rd time reservation" />
     <MESSAGE value="padding front end" />
     <MESSAGE value="removed echo I forgot around" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed echo I forgot around" />
+    <MESSAGE value="Showing reservation in shopping cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Showing reservation in shopping cart" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
