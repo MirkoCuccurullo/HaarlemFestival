@@ -343,6 +343,7 @@ FOREIGN KEY (order_id) REFERENCES `orders` (id);
 
 ALTER TABLE 'invoice' DROP FOREIGN KEY FK_user_invoice;
 ALTER TABLE 'invoice' DROP COLUMN payment_method;
+ALTER TABLE 'invoice' DROP COLUMN phone_number;
 
 ALTER TABLE 'historytourtimetable' ADD COLUMN price float;
 UPDATE 'historytourtimetable' SET price = '17.50';
