@@ -86,13 +86,13 @@ class reservationController
             } else {
                 $numberOfUnder12 = 0;
             }
-           $customerEmail = filter_var($_POST['customerEmail'], FILTER_SANITIZE_EMAIL);
+           $customerEmail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             if (isset($_POST['comment'])) {
                 $comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
             } else {
                 $comment = "None";
             }
-            $customerName = filter_var($_POST['customerName'], FILTER_SANITIZE_STRING);
+            $customerName = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
 
                 // Instantiate reservation object and set properties
                 $reservation = new Reservation();

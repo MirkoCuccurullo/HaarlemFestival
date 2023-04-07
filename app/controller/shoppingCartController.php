@@ -54,7 +54,8 @@ class shoppingCartController
                 $event->venue_name = $venue->name;
             }
             else if (isset($_POST['addReservation'])) {
-                $event = $reservation;
+               $event = $reservation;
+                echo "Wopsy daisy";
             }
 
             $order->addEvent($event);

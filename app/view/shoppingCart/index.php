@@ -27,7 +27,7 @@ include __DIR__ . '/../header.php'; ?>
                             else if ($event instanceof accessPass)
                                 echo $event->displayPass($event->id);
                             else if ($event instanceof reservation)
-                                echo "Reservation @ " . $event->restaurantName . " for " . $event->numberOfAdults+ $event->numberOfUnder12 . " people";
+                                echo "Reservation @ " . $event->restaurantName . " for " . ($event->numberOfAdults+ $event->numberOfUnder12) . " people";
                             ?></h3>
                     </div>
 

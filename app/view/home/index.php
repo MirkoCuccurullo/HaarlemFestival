@@ -297,10 +297,9 @@ include __DIR__ . '/../header.php'; ?>
 
 <br>
 
-<div id="card-container">
-        <br>
-    <div id="instafeed-container"></div>
-    <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+<div id="card-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <div id="instafeed-container" style="flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 10px;">
+        <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
 <script type="text/javascript">
     var userFeed = new Instafeed({
         get: 'user',
@@ -312,8 +311,9 @@ include __DIR__ . '/../header.php'; ?>
     userFeed.run();
 </script>
 
-
 </div>
+</div>
+
 
 <?php
 include __DIR__ . '/../footer.php'; ?>
