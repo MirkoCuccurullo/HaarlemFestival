@@ -5,8 +5,7 @@ class invoice {
     public string $clientName; //client name = username
     public int $invoiceNumber; //invoice number = order number
     public string $invoiceDate; //invoice date = order date
-    public int $phoneNumber;
-    public string $address;
+
     public string $email;
     public float $subTotalAmount; //per line item
     public float $totalAmount; //total amount = subtotal amount + VAT
@@ -20,7 +19,7 @@ class invoice {
     {
         $invoiceDate = $this->invoiceDate;
         if ($invoiceDate !== null) {
-            $invoiceDate = date('Y-m-d', strtotime($invoiceDate));
+            $invoiceDate = date('d-m-Y', strtotime($invoiceDate));
             $this->setInvoiceDate($invoiceDate);
         }
         return $invoiceDate;
@@ -34,6 +33,7 @@ class invoice {
         $invoiceDate = date('Y-m-d', strtotime($invoiceDate));
         $this->invoiceDate = $invoiceDate;
     }
+
 
     /**
      * @return string
@@ -49,22 +49,6 @@ class invoice {
     public function getInvoiceNumber(): int
     {
         return $this->invoiceNumber;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPhoneNumber(): int
-    {
-        return $this->phoneNumber;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddress(): string
-    {
-        return $this->address;
     }
 
     /**
@@ -121,22 +105,6 @@ class invoice {
     public function setInvoiceNumber(int $invoiceNumber): void
     {
         $this->invoiceNumber = $invoiceNumber;
-    }
-
-    /**
-     * @param int $phoneNumber
-     */
-    public function setPhoneNumber(int $phoneNumber): void
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
-     * @param string $address
-     */
-    public function setAddress(string $address): void
-    {
-        $this->address = $address;
     }
 
     /**

@@ -229,14 +229,15 @@ class router
             case '/invoice':
                 require __DIR__ . '/../controller/invoiceController.php';
                 $controller = new \invoiceController();
-                $controller->displayInvoice();
+                $order_id = $_POST['order_id'];
+                $controller->displayInvoice($order_id);
                 break;
             case '/invoice/download':
                 require __DIR__ . '/../controller/invoiceController.php';
                 $controller = new \invoiceController();
-                $controller->convertHTMLToPDF();
+                $order_id = $_POST['order_id'];
+                $controller->convertHTMLToPDF($order_id);
                 break;
-
 
             case '/history':
                 require __DIR__ . '/../controller/historyEventController.php';
@@ -266,7 +267,6 @@ class router
             case '/historyManagement/addScheduleContent':
                 require __DIR__ . '/../view/history/historyAdmin/addScheduleContent.php';
                 break;
-
 
             case'/manageProfile':
                 require_once __DIR__ . '/../controller/userController.php';

@@ -42,81 +42,65 @@ class invoiceService
         }
     }
 
-//    public function convertHTMLToPDF(){
-//        $invoiceInfo = $this->getAllInformationForInvoice();
-//
-//        // $html = $this->generateHTML($invoiceInfo);
-//        $html = require __DIR__ . '/../view/invoice/invoice_view.php';
-//
-//        // (Optional) Setup the paper size and orientation
-//        $dompdf = new Dompdf();
-//        $dompdf->loadHtml($html);
-//
-//        // (Optional) Setup the paper size and orientation
-//        $dompdf->setPaper('A4', 'landscape');
-//
-//        // Render the HTML as PDF
-//        $dompdf->render();
-//        $pdf_content = $dompdf->output();
-//        $file_name = "invoice.pdf";
-//        file_put_contents($file_name, $pdf_content);
-//    }
-    public function convertHTMLToPDF($order_id, $user_id){
+    public function loadHTMLToPDF($html){
         $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $pdf_content = $dompdf->output();
+        $file_name = "invoice.pdf";
+        file_put_contents($file_name, $pdf_content);
+    }
+
+    public function convertHTMLToPDF($order_id){
+        $invoiceRepository = new invoiceRepository();
+        $order = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
+        $user = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
+        $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
 
         $html = '<!doctype html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport"
-                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-            <link rel="stylesheet" href="/css/invoice_view.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-            <title>Invoice</title>
-        </head>
-        <body>
-        
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/css/invoice_view.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <title>Invoice</title>
+    </head>
+    <body>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="invoice-title">
-                        <h2>Invoice</h2><h3 class="pull-right">Order # '.$invoiceInfo[0]->invoiceNumber.'</h3>
+                        <h2>Invoice</h2><h3 class="pull-right">Order # '.$order->id.'</h3>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-xs-6">
                             <address>
                                 <strong>Client name:</strong><br>
-                                '.$invoiceInfo[0]->clientName.'<br><br>
-                                <strong>Address:</strong><br>
-                                '.$invoiceInfo[0]->address.'<br>
+                                '.$user->name.'<br><br>
                             </address>
                         </div>
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Email:</strong><br>
-                                '.$invoiceInfo[0]->email.'<br><br>
-                                <strong>Phone number:</strong><br>
-                                '.$invoiceInfo[0]->phoneNumber.'<br>
+                                '.$user->email.'<br><br>
                             </address>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
-                            <address>
-        <!--                        <strong>Payment Method:</strong><br>-->
-                            </address>
-                        </div>
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Invoice Date:</strong><br>
-                                '.$invoiceInfo[0]->getInvoiceDate().'<br><br>
+                                '.$invoice->invoiceDate.'<br><br>
                                 <strong>Payment Date:</strong><br>
-                                '.$invoiceInfo[0]->paymentDate.'<br><br>
+                                '.$invoice->paymentDate.'<br><br>
                             </address>
                         </div>
                     </div>
@@ -163,20 +147,23 @@ class invoiceService
                                         <td class="thick-line"></td>
                                         <td class="thick-line"></td>
                                         <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                        <td class="thick-line text-right"><?= $invoiceInfo[0]->subTotalAmount ?></td>
+                                        <td class="thick-line text-right">
+                                        '.$invoice->subTotalAmount.'
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>VAT</strong></td>
-                                        <td class="no-line text-right"><?= $invoiceInfo[0]->VAT ?></td>
+                                        <td class="no-line text-right">'.$invoice->VAT.'</td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line text-right"><?= $invoiceInfo[0]->totalAmount ?></td>
+                                        <td class="no-line text-right">'.$invoice->totalAmount.'</td>
                                     </tr>
+
                                     </tbody>
                                 </table>
                                 <a href="invoice_view.php?file=invoice.pdf" download>Download Invoice</a>
@@ -186,9 +173,10 @@ class invoiceService
                 </div>
             </div>
         </div>
-        </body>
-        </html>';
-                }
-        } ?>
+    </body>
+    </html>';
+
+        $this->loadHTMLToPDF($html);
     }
+
 }

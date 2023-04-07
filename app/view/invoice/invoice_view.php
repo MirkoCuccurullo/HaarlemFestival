@@ -12,45 +12,49 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <title>Invoice</title>
 </head>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/invoice_view.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Invoice</title>
+</head>
 <body>
-
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Invoice</h2><h3 class="pull-right">Order # <?= $invoiceInfo[0]->getInvoiceNumber() ?></h3>
+                <h2>Invoice</h2><h3 class="pull-right">Order # <?= $order->getId()?></h3>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
                         <strong>Client name:</strong><br>
-                        <?= $invoiceInfo[0]->getClientName() ?><br><br>
-                        <strong>Address:</strong><br>
-                        <?= $invoiceInfo[0]->getAddress() ?><br>
+                        '.$user->name.'<br><br>
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
                         <strong>Email:</strong><br>
-                        <?= $invoiceInfo[0]->getEmail() ?><br><br>
-                        <strong>Phone number:</strong><br>
-                        <?= $invoiceInfo[0]->getPhoneNumber() ?><br>
+                        '.$user->email.'<br><br>
                     </address>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6">
-                    <address>
-<!--                        <strong>Payment Method:</strong><br>-->
-                    </address>
-                </div>
                 <div class="col-xs-6 text-right">
                     <address>
                         <strong>Invoice Date:</strong><br>
-                        <?= $invoiceInfo[0]->getInvoiceDate() ?><br><br>
+                        '.$invoice->invoiceDate.'<br><br>
                         <strong>Payment Date:</strong><br>
-                        <?= $invoiceInfo[0]->getPaymentDate() ?><br><br>
+                        '.$invoice->paymentDate.'<br><br>
                     </address>
                 </div>
             </div>
@@ -97,39 +101,26 @@
                                 <td class="thick-line"></td>
                                 <td class="thick-line"></td>
                                 <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                <td class="thick-line text-right"><?= $invoiceInfo[0]->getSubTotalAmount() ?></td>
+                                <td class="thick-line text-right">
+                                    '.$invoice->subTotalAmount.'
+                                </td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>VAT</strong></td>
-                                <td class="no-line text-right"><?= $invoiceInfo[0]->getVAT() ?></td>
+                                <td class="no-line text-right">'.$invoice->VAT.'</td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>Total</strong></td>
-                                <td class="no-line text-right"><?= $invoiceInfo[0]->getTotalAmount() ?></td>
+                                <td class="no-line text-right">'.$invoice->totalAmount.'</td>
                             </tr>
+
                             </tbody>
                         </table>
                         <a href="invoice_view.php?file=invoice.pdf" download>Download Invoice</a>
-                        <?php if (!empty($_GET['file']))
-                        {
-                            $fileName = basename($_GET['file']);
-                            $filePath = "/HaarlemFestival/app/view/invoice/invoice_pdf/" . $fileName;
-                            if (file_exists($filePath))
-                            {
-                                header('Cache-Control: public');
-                                header('Content-Description: File Transfer');
-                                header('Content-Disposition: attachment; filename=$fileName');
-                                header('Content-Type: application/zip');
-                                readfile($filePath);
-                                exit;
-                            } else {
-                                echo "File does not exist";
-                            }
-                        }?>
                     </div>
                 </div>
             </div>
@@ -138,3 +129,4 @@
 </div>
 </body>
 </html>
+
