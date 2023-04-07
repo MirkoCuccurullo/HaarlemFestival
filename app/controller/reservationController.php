@@ -109,7 +109,6 @@ class reservationController
                 $session = $this->reservationService->getSessionByID($reservation->sessionId);
                 $reservation->price = ($reservation->numberOfAdults + $reservation->numberOfUnder12) * $session->reservationPrice;
                $reservation = $this->reservationService->addReservation($reservation);
-            echo "oh well";
         } catch (Exception $e) {
             // Log error message and redirect to error page
             error_log($e->getMessage());

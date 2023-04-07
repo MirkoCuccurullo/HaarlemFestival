@@ -55,7 +55,6 @@ class shoppingCartController
             }
             else if (isset($_POST['addReservation'])) {
                $event = $reservation;
-                echo "Wopsy daisy";
             }
 
             $order->addEvent($event);
