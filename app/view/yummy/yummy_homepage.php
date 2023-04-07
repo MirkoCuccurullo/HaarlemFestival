@@ -19,9 +19,9 @@
     padding: 10px;">
             <!-- Restaurant name and photo -->
             <div class="col-md-3" id="restaurantNameAndPhoto">
-                <h3><?= $restaurant->name ?></h3>
+                <h4><?= $restaurant->name ?></h4>
                 <?php $photos = explode(',', $restaurant->photo); ?>
-                <img src="<?= $photos[0] ?>" alt="<?= $restaurant->name ?>">
+                <img src="<?= $photos[0] ?>" alt="<?= $restaurant->name ?>" width="200" height="150">
             </div>
 
             <!-- Restaurant description -->
