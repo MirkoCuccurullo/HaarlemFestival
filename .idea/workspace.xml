@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="">
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Debugging delete order">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/dance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/dance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/eventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/eventRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/dance/dance_homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageArtists.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageArtists.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageEvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageEvents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageVenues.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageVenues.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editReservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editReservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/editSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/editSession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageSessions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageSessions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/shoppingCart/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/shoppingCart/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +59,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2LVWZcx2dKQ3inczOL30gcEf9Dc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,7 +94,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cd552268-9e10-4241-b9c2-dbd7f649eb9e" name="Changes" comment="" />
+      <changelist id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Debugging delete order" />
       <created>1675956787229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -165,6 +169,7 @@
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680631522122" duration="1363000" />
       <workItem from="1680698416330" duration="3280000" />
+      <workItem from="1680882898493" duration="3938000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>

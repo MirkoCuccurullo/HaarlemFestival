@@ -43,11 +43,18 @@ class reservationService
 
         $spacesBooked = 0;
         foreach ($reservations as $reservation) {
-            $spacesBooked += $reservation->numberOfUnder12;
-            $spacesBooked += $reservation->numberOfAdults;
+            if ($reservation->status == "Paid") {
+                $spacesBooked += $reservation->numberOfUnder12;
+                $spacesBooked += $reservation->numberOfAdults;
+            }
         }
         $capacity = $session->capacity;
         return $capacity - $spacesBooked;
+    }
+
+    public function getSessionByID($sessionId)
+    {
+        return $this->reservationRepository->getSessionById($sessionId);
     }
 
 }

@@ -2,13 +2,6 @@
 
 <h1 class="text-center mb-3">Manage Reservations</h1>
 <br>
-<select name="reservation" id="reservation" class="form-select" oninput="filterReservations()">
-    <option selected value="0"> All Reservations</option>
-    <option value="1">Confirmed</option>
-    <option value="2">Canceled</option>
-    <option value="3">Deactivated</option>
-</select>
-<br>
 
 <div class="table table-responsive">
     <table class="table text-center">
@@ -31,24 +24,6 @@
         <tbody class="table-group-divider" id="reservationTable">
 
         <script>
-       /*     function filterReservations() {
-                const status = document.getElementById("reservation").value;
-                const table = document.getElementById("reservationTable");
-                const rows = table.getElementsByTagName("tr");
-                for (let i = 0; i < rows.length; i++) {
-                    const row = rows[i];
-                    const statusCol = row.getElementsByTagName("td")[3];
-                    if (statusCol) {
-                        const statusValue = statusCol.textContent || statusCol.innerText;
-                        if (status === "0" || statusValue === status) {
-                            row.style.display = "";
-                        } else {
-                            row.style.display = "none";
-                        }
-                    }
-                }
-            }*/
-
             function loadReservations() {
                 fetch('http://localhost/api/reservation')
                     .then(result => result.json())
@@ -115,11 +90,18 @@
 
                 deactivateForm.appendChild(idInputTwo);
                 deactivateForm.appendChild(deactivateButton);
-                deactivateButtonCol.appendChild(deactivateForm
+                deactivateButtonCol.appendChild(deactivateForm);
+
+                deactivateButton.addEventListener("click", function() {
+                    if (confirm("Are you sure you want to deactivate this reservation?")) {
+                        // If the user confirms, submit the form
+                        deactivateForm.submit();
+                    }
+                });
 
                 editForm.appendChild(idInput);
                 editForm.appendChild(editButton);
-                editButtonCol.appendChild(editButton);
+                editButtonCol.appendChild(editForm);
 
                 newRow.appendChild(idCol);
                 newRow.appendChild(restaurantNameCol);

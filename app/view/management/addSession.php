@@ -36,7 +36,8 @@ include __DIR__ . '/../header.php';
         <input type="number" class="form-control" id="restaurantId" name="restaurantId" placeholder="Enter restaurant ID">
     </div>
         <br>
-    <button type="submit" name="addSession" class="btn btn-primary">Submit</button>
+        <a href="/manage/session" class="btn btn-warning">Cancel</a>
+        <button type="submit" name="addSession" class="btn btn-primary">Submit</button>
 </form>
 <?php
 include __DIR__ . '/../footer.php'; ?>
