@@ -28,23 +28,7 @@ include __DIR__ . '/../header.php';
             <tbody class="table-group-divider" id="sessionTable">
 
             <script>
-                function filterSession(){
-                    const restaurant = document.getElementById("restaurants").value;
-                    const table = document.getElementById("sessionTable");
-                    const rows = table.getElementsByTagName("tr");
-                    for (let i = 0; i < rows.length; i++) {
-                        const row = rows[i];
-                        const restaurantCol = row.getElementsByTagName("td")[4];
-                        if (restaurantCol) {
-                            const restaurantValue = restaurantCol.textContent || restaurantCol.innerText;
-                            if (restaurant === "0" || restaurantValue === restaurant) {
-                                row.style.display = "";
-                            } else {
-                                row.style.display = "none";
-                            }
-                        }
-                    }
-                }
+
                 function loadSessions() {
                     fetch('http://localhost/api/session')
                         .then(result => result.json())

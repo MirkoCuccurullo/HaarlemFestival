@@ -12,4 +12,12 @@ class reservation {
     public string $customerName;
     public string $customerEmail;
     public string $comment;
+
+    public function displayReservation($reservation)
+    {
+            $pass = "Reservation at" . ($reservation->restaurantName);
+
+        return $pass;
+
+    }
 }
