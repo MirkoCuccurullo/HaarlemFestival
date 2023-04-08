@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Showing reservation in shopping cart">
-      <change afterPath="$PROJECT_DIR$/app/public/images/French.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/Fris.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/ML1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/MR &amp; MRS.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/Ratat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/Specta.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/grand caf.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/ml2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/ml3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/images/ml4.jpg" afterDir="false" />
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Entered photos for Restaurant ML">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +165,9 @@
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680631522122" duration="1363000" />
       <workItem from="1680698416330" duration="3280000" />
-      <workItem from="1680882898493" duration="8712000" />
+      <workItem from="1680882898493" duration="9542000" />
+      <workItem from="1680955457170" duration="1022000" />
+      <workItem from="1680976860426" duration="2736000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -231,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680891100020</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Entered photos for Restaurant ML">
+      <created>1680891779685</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680891779685</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +268,8 @@
     <MESSAGE value="padding front end" />
     <MESSAGE value="removed echo I forgot around" />
     <MESSAGE value="Showing reservation in shopping cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Showing reservation in shopping cart" />
+    <MESSAGE value="Entered photos for Restaurant ML" />
+    <option name="LAST_COMMIT_MESSAGE" value="Entered photos for Restaurant ML" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

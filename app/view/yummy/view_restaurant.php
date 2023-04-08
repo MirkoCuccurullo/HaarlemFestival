@@ -131,24 +131,30 @@ padding: 1em;">
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-
-            const sessionSelect = document.getElementById('session');
+            const sessionSelect = document.getElementById('sessionId');
             const spacesLabel = document.getElementById('spaces-label');
             const submitBtn = document.querySelector('input[type="submit"]');
 
             sessionSelect.addEventListener('change', () => {
                 const sessionId = sessionSelect.value;
                 if (sessionId) {
-                    $.post('checkSpaces', sessionId)
-                    const spaces = <?=$spaces?>;
-                    spacesLabel.textContent = `Spaces available: ${spaces}`;
-                    submitBtn.disabled = spaces < numberOfAttendees();
-
+                    $.post('checkSpaces', { checkSpaces: true, sessionId })
+                        .done(function(data) {
+                            const spaces = data.spaces;
+                            spacesLabel.textContent = `Spaces available: ${spaces}`;
+                            submitBtn.disabled = spaces < numberOfAttendees();
+                        })
+                        .fail(function() {
+                            spacesLabel.textContent = 'Error checking spaces';
+                            submitBtn.disabled = true;
+                        });
                 } else {
                     spacesLabel.textContent = '';
                     submitBtn.disabled = false;
                 }
             });
+
+
 
             function numberOfAttendees() {
                 const numAdults = parseInt(document.getElementById('adults').value, 10) || 0;

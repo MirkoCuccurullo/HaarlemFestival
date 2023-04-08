@@ -542,8 +542,10 @@ class router
                 if (isset($_POST['checkSpaces'])) {
                     require_once __DIR__ . '/../controller/reservationController.php';
                     $controller = new \reservationController();
-                    $spaces = $controller->getAvailableSpacesPerSession();
+                    $spaces= $controller->getAvailableSpacesPerSession();
+                    echo "<script>let spaces =; $spaces;</script>";
                 }
+
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();
