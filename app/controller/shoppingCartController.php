@@ -11,6 +11,7 @@ require_once __DIR__ . '/../service/PDFGenerator.php';
 require_once __DIR__ . '/../service/ticketService.php';
 require_once __DIR__ . '/../service/SMTPServer.php';
 require_once __DIR__ . '/../service/userService.php';
+require_once __DIR__ . '/../service/reservationService.php';
 
 
 use router\router;
@@ -64,6 +65,28 @@ class shoppingCartController
         header('Location: /shoppingCart');
     }
 
+    public function addReservation($reservation): void
+    {
+        if (isset($_SESSION['order']))
+            $order = $_SESSION['order'];
+        else {
+            $order = new \Models\order();
+            if (isset($_SESSION['current_user_id']))
+                $order->user_id = $_SESSION['current_user_id'];
+            else
+                $order->user_id = null;
+
+            $order->no_of_items = 0;
+            $order->total_price = 0;
+            $order->status = 'open';
+        }
+        $event = $reservation;
+        $order->addEvent($event);
+        $_SESSION['order'] = $order;
+        $router = new Router();
+        $router->route('/shoppingCart');
+    }
+
     public function addHistoryEvent()
     {
         if (isset($_SESSION['order']))
@@ -94,6 +117,12 @@ class shoppingCartController
 
     public function removeEvent()
     {
+        foreach ($_SESSION['order']->events as $event)
+            if ($event instanceof reservation)
+            {
+                $reservationService = new ReservationService();
+                $reservationService->deactivateReservation($event->id);
+            }
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
             $uniqueEvents = $_SESSION['order']->getUniqueEvents();
@@ -110,6 +139,7 @@ class shoppingCartController
             $router->route('/login');
         } else {
             if (isset($_POST['submitOrder'])) {
+
                 $order = $_SESSION['order'];
 
                 $orderService = new OrderService();
@@ -152,6 +182,5 @@ class shoppingCartController
             }
         }
     }
-
 
 }

@@ -576,11 +576,10 @@ class router
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
                 if (isset($_POST['addReservation'])) {
-                    $controller->addReservation();
-                    //need reservation id to add to shopping cart from the reservation that has just been entered in the database
+                    $reservation = $controller->addReservation();
                     require_once __DIR__ . '/../controller/shoppingCartController.php';
                     $shoppingController = new \shoppingCartController();
-                    $shoppingController->addDanceEvent();
+                    $shoppingController->addReservation($reservation);
                 }
                 break;
 
@@ -593,10 +592,6 @@ class router
             case '/manage/orders':
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
-                if (isset($_POST['jsonToCSV'])) {
-                    echo "json is a bitch";
-                    $controller->jsonToCSV();
-                }
                 $controller->manageOrder();
                 break;
             case 'edit/order':
@@ -609,10 +604,10 @@ class router
                     $controller->editOrder();
                 }
                 break;
-            case '/api/delete/order':
-                require_once __DIR__ . '/../api/controllers/orderControllerAPI.php';
-                $controller = new \orderControllerAPI();
-                $controller->delete($_POST['id']);
+            case '/delete/order':
+                require_once __DIR__ . '/../controller/orderController.php';
+                $controller = new \orderController();
+                $controller->deleteOrder();
                 break;
             case '/saveInCSV':
                 require_once __DIR__ . '/../controller/CVSController.php';

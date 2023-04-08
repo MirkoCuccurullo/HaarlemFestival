@@ -71,7 +71,7 @@ include_once __DIR__ . '/../../model/session.php';
                                     <div class="row mb-3">
                                         <div class="col-md">
                                             <div class="form-floating">
-                                                <input required type="number" class="form-control" id="sessionPrice"
+                                                <input required type="number" step="0.01" class="form-control" id="sessionPrice"
                                                        name="sessionPrice" placeholder="sessionPrice" value="<?=$session->sessionPrice?>">
                                                 <label for="sessionPrice" class="form-label">Session Price</label>
                                             </div>
@@ -82,7 +82,7 @@ include_once __DIR__ . '/../../model/session.php';
                                         <div class="row mb-3">
                                             <div class="col-md">
                                                 <div class="form-floating">
-                                                    <input required type="number" class="form-control" id="reducedPrice"
+                                                    <input required type="number" step="0.01" class="form-control" id="reducedPrice"
                                                            name="reducedPrice" placeholder="reducedPrice" value="<?=$session->reducedPrice?>">
                                                     <label for="reducedPrice" class="form-label">Price for Under 12</label>
                                                 </div>

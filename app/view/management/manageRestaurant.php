@@ -1,8 +1,11 @@
 <?php
 include __DIR__ . '/../header.php'; ?>
 
-    <h1 class="text-center mb-3">Manage Restaurants</h1>
-    <br>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="text-center mb-3">Manage Restaurants</h1>
+        <a href="/add/restaurant" class="btn btn-success">Add new</a>
+    </div>
+
     <div class="table table-responsive">
         <table class="table text-center">
             <thead>

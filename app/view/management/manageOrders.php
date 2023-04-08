@@ -61,14 +61,24 @@ include __DIR__ . '/../header.php'; ?>
                 const deleteButton = document.createElement("button")
                 const editButton = document.createElement("button")
                 const invoiceButton = document.createElement("button")
-                const test = document.createElement("input")
+                const idInput3 = document.createElement("input")
                 const editForm = document.createElement("form");
                 const idInput = document.createElement("input");
+                const idInput2 = document.createElement("input");
+                const deleteForm = document.createElement("form");
+
+                deleteForm.action = '/delete/order';
+                deleteForm.method = "POST";
                 editForm.action = '/edit/order';
                 editForm.method = "POST";
-                test.type = "hidden";
-                test.value = order.id;
-                test.name = "id";
+
+                idInput3.type = "hidden";
+                idInput3.value = order.id;
+                idInput3.name = "id";
+
+                idInput2.type = "hidden";
+                idInput2.value = order.id;
+                idInput2.name = "id";
 
                 invoiceButton.className = "btn btn-primary";
                 deleteButton.className = "btn btn-danger";
@@ -92,17 +102,22 @@ include __DIR__ . '/../header.php'; ?>
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
                 invoiceButton.innerHTML = "Invoice";
+
+                deleteForm.appendChild(idInput2);
+                deleteButtonCol.appendChild(deleteForm);
+                deleteForm.appendChild(deleteButton);
+
                 editForm.appendChild(editButton);
-                editForm.appendChild(idInput);
-                editForm.appendChild(test);
-
-                deleteButton.addEventListener("click", function(){
-                    deleteOrder(order.id);
-                    table.removeChild(newRow);
-                });
-
-                deleteButtonCol.appendChild(deleteButton);
+                editForm.appendChild(idInput3);
                 editButtonCol.appendChild(editForm);
+
+                deleteButton.addEventListener("click", function() {
+                    if (confirm("Are you sure you want to deactivate this reservation?")) {
+                        table.removeChild(newRow);
+                        // If the user confirms, submit the form
+                        deleteForm.submit();
+                    }
+                });
 
                 invoiceButtonCol.appendChild(invoiceButton);
                 invoiceButtonCol.appendChild(idInput);
@@ -121,17 +136,16 @@ include __DIR__ . '/../header.php'; ?>
             }
             loadOrders();
 
-            function deleteOrder(eventId)
-            {
-                const obj = {id: eventId};
-                fetch('http://localhost/api/delete/order', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(obj),
-                }).then(result => {
-                    console.log(result)
-                });
+            function deleteOrder(id) {
+                fetch('http://localhost/api/order/' + id, {
+                    method: 'DELETE',
+                })
+                    .then(result => result.json())
+                    .then((orders)=>{
+                        console.log(orders);
+                    })
             }
+
         </script>
         </tbody>
     </table>

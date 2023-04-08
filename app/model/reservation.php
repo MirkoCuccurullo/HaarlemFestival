@@ -12,4 +12,5 @@ class reservation {
     public string $customerName;
     public string $customerEmail;
     public string $comment;
+
 }
