@@ -20,6 +20,14 @@ class shoppingCartController
 {
     public function index()
     {
+        if(isset($_GET['order']) )
+        {
+            $encodedOrder = $_GET['order'];
+            $serializedOrder = json_decode(urldecode($encodedOrder), true);
+            $order = unserialize($serializedOrder);
+            $_SESSION['order'] = $order;
+            //echo json_encode($_SESSION['order']);
+        }
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
 
@@ -51,7 +59,7 @@ class shoppingCartController
             $event->venue_name = $venue->name;
         }
         else if(isset($_POST['addReservation'])) {
-            $event = $reservation;
+            //$event = $reservation;
         }
         else if(isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
@@ -117,16 +125,15 @@ class shoppingCartController
 
     public function removeEvent()
     {
-        foreach ($_SESSION['order']->events as $event)
-            if ($event instanceof reservation)
-            {
-                $reservationService = new ReservationService();
-                $reservationService->deactivateReservation($event->id);
-            }
         if (isset($_POST['remove_item_key'])) {
             $key = $_POST['remove_item_key'];
             $uniqueEvents = $_SESSION['order']->getUniqueEvents();
             $event = $uniqueEvents[$key];
+            if($event instanceof reservation)
+            {
+                $reservationService = new ReservationService();
+                $reservationService->deactivateReservation($event->id);
+            }
             $_SESSION['order']->removeEventByType($event);
         }
         header('Location: /shoppingCart');

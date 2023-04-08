@@ -16,11 +16,17 @@ class orderController
 
     public function manageOrder(): void
     {
-        require __DIR__ . '/../view/management/manageOrders.php';
+        if(isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/management/manageOrders.php';
+        else
+            header('location: /home');
     }
 
     public function editOrder(): void
     {
+        if (!isset($_POST['id'])) {
+            header('Location: /home');
+        }
         $order = $this->orderService->getOrder($_POST['id']);
         require __DIR__ . '/../view/management/editOrder.php';
     }

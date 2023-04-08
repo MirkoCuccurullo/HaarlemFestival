@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../model/order.php';
-require_once __DIR__ . '/../model/accessPass.php';
 require_once __DIR__ . '/../model/user.php';
 
 session_start();

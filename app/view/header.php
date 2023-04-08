@@ -58,7 +58,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/kids" style="color: black">
+                    <a class="nav-link" href="/culinary" style="color: black">
                         <img class="header-icon" src="../../images/culinary-icon.svg" alt="Culinary"
                              style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                         Culinary
@@ -85,14 +85,21 @@
                             <a class="dropdown-item" href="/history">A Stroll Through History</a>
                         </li>
 
-                        <li>
+                        <li <?php if(!isset($_SESSION['current_user']))
+                            echo "hidden";
+                        else if($_SESSION['current_user']->role != '2')
+                            echo "hidden";?>>
                             <a class="dropdown-item" href="/qr">QR code checker</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black"> Admin
+                    <a class="nav-link dropdown-toggle" <?php if (!isset($_SESSION['current_user']))
+                        echo "hidden";
+                    else if($_SESSION['current_user']->role != '3')
+                        echo "hidden";
+                        ?> href="#" data-bs-toggle="dropdown" style="color: black"> Admin
                         Management </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -145,21 +152,11 @@
                         echo "hidden" ?>>Login</a>
                 </li>
 
-                <li class="nav-item dropdown" <?php if (!isset($_SESSION['current_user']))
+                <li class="nav-item" <?php if (!isset($_SESSION['current_user']))
                     echo "hidden" ?>>
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black">
-                        <img src="../../images/profile-menu-bar.svg" alt="Profile picture"
-                             style="width: 32px; height: 32px">
+                    <a class="nav-link" href="/manageProfile">
+                        <img src="../../images/profile-menu-bar.svg" alt="Profile picture" style="width: 32px; height: 32px">
                     </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item" href="/manageProfile">My profile</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">My orders</a>
-                        </li>
-                    </ul>
-
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shoppingCart">
@@ -193,21 +190,3 @@
 
 <div class="container">
 
-
-<!--    <script>-->
-<!--        document.getElementById('twitter-button').addEventListener('click', function() {-->
-<!--            var url = encodeURIComponent(window.location.href);-->
-<!--            var text = encodeURIComponent(document.title);-->
-<!--            var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;-->
-<!--            window.open(shareUrl, '_blank');-->
-<!--        });-->
-<!---->
-<!--        document.getElementById('facebook-button').addEventListener('click', function() {-->
-<!--            var url = encodeURIComponent(window.location.href);-->
-<!--            var text = encodeURIComponent(document.title);-->
-<!--            var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&text=' + text;-->
-<!--            window.open(shareUrl, '_blank');-->
-<!--        });-->
-<!---->
-<!---->
-<!--    </script>-->

@@ -49,7 +49,7 @@ include __DIR__ . '/../header.php'; ?>
                 const editForm = document.createElement("form");
                 const idInput = document.createElement("input");
                 editForm.method = "POST";
-                editForm.action = "/edit/event";
+                editForm.action = "/edit/dance/venue";
 
                 deleteButton.className = "btn btn-danger";
                 editButton.className = "btn btn-warning";

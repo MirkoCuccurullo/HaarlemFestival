@@ -33,10 +33,10 @@ class ticketService{
                 $ticket->access_pass_id = $event->id;
                 $ticket->vat_id = 1;
             }
-//            else if($event instanceof yummy){
-//                $ticket->yummy_event_id = $event->id;
-//                $ticket->vat_id = 2;
-//            }
+            else if($event instanceof reservation){
+                $ticket->yummy_event_id = $event->id;
+                $ticket->vat_id = 2;
+            }
 //            else if($event instanceof history){
 //                $ticket->history_event_id = $event->id;
 //                $ticket->vat_id = 2;

@@ -1,6 +1,10 @@
 <?php
+
 namespace Models;
+
 require_once __DIR__ . '/../model/dance.php';
+require_once __DIR__ . '/../model/accessPass.php';
+require_once __DIR__ . '/../model/reservation.php';
 class order{
     public int $id;
     public ?int $user_id;
