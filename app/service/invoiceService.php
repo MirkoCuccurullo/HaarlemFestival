@@ -54,8 +54,9 @@ class invoiceService
 
     public function convertHTMLToPDF($order_id){
         $invoiceRepository = new invoiceRepository();
-        $order = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
-        $user = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
+        $orderRepository = new orderRepository();
+        $order = $orderRepository->getOrder($order_id);
+        $user = $invoiceRepository->getUserByOrderId($order_id);
         $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
 
         $html = '<!doctype html>
@@ -124,19 +125,7 @@ class invoiceService
                                         <td class="text-right"><strong>Totals</strong></td>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>BS-200</td>
-                                        <td class="text-center">$10.99</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-right">$10.99</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BS-400</td>
-                                        <td class="text-center">$20.00</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-right">$60.00</td>
-                                    </tr>
+                                    <tbody>                                    
                                     <tr>
                                         <td>BS-1000</td>
                                         <td class="text-center">$600.00</td>
@@ -163,10 +152,8 @@ class invoiceService
                                         <td class="no-line text-center"><strong>Total</strong></td>
                                         <td class="no-line text-right">'.$invoice->totalAmount.'</td>
                                     </tr>
-
                                     </tbody>
                                 </table>
-                                <a href="invoice_view.php?file=invoice.pdf" download>Download Invoice</a>
                             </div>
                         </div>
                     </div>

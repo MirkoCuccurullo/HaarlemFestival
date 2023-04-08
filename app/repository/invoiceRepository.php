@@ -5,6 +5,9 @@ use repository\baseRepository;
 require_once 'baseRepository.php';
 require_once '../model/invoice.php';
 require_once '../model/order.php';
+//
+require_once '../repository/orderRepository.php';
+require_once '../repository/userRepository.php';
 
 class InvoiceRepository extends baseRepository{
 
@@ -42,14 +45,18 @@ class InvoiceRepository extends baseRepository{
             }
         }
 
-        $order = $this->getOrderById($order_id);
-        $user = $this->getUserByOrderId($order_id);
+        $orderRepo = new orderRepository();
+        $userRepo = new userRepository();
+        $order = $orderRepo->getOrder($order_id);
+        $user = $userRepo->getUser($order_id);
+//        $order = $this->getOrderById($order_id);
+//        $user = $this->getUserByOrderId($order_id);
 
         $invoices[] = [$order, $user];
         return $invoices;
     }
 
-    private function getOrderById($order_id) {
+    public function getOrderById($order_id) {
         $stmt = $this->connection->prepare("SELECT * FROM orders WHERE id = :id");
         $stmt->execute(['id' => $order_id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -70,7 +77,7 @@ class InvoiceRepository extends baseRepository{
 //        $result = $stmt->fetch();
 //        return $result;
 //    }
-    private function getUserByOrderId($order_id) {
+    public function getUserByOrderId($order_id) {
         $user = null; // Initialize $user to null
         $stmt = $this->connection->prepare("SELECT * FROM users WHERE id = (SELECT user_id FROM orders WHERE id = :id)");
         $stmt->execute(['id' => $order_id]);

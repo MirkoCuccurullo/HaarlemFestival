@@ -34,9 +34,7 @@ include __DIR__ . '/../header.php'; ?>
         </tr>
         </thead>
         <tbody class="table-group-divider" id="orderTable">
-<!--        <form action="/invoice" method="post" onclick="redirectToInvoicePage()">-->
 
-<!--        </form>-->
         <script>
             function loadOrders() {
                 fetch('http://localhost/api/order')
@@ -72,7 +70,7 @@ include __DIR__ . '/../header.php'; ?>
                 editForm.method = "POST";
 
                 //Set the action and method for the invoice button
-                invoiceForm.action = '/invoice';
+                // invoiceForm.action = '/invoice';
                 invoiceForm.method = "POST";
                 test.type = "hidden";
                 test.value = order.id;
@@ -117,7 +115,7 @@ include __DIR__ . '/../header.php'; ?>
 
                 //Add event listener to the invoice button
                 invoiceButton.addEventListener("click", function(){
-                    invoiceForm.action = '/invoice';
+                    window.open('/invoice.pdf', '_blank');
                 });
 
                 deleteButtonCol.appendChild(deleteButton);

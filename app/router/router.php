@@ -226,12 +226,12 @@ class router
                 $controller->sendResetLink();
                 break;
 
-            case '/invoice':
-                require __DIR__ . '/../controller/invoiceController.php';
-                $controller = new \invoiceController();
-                $order_id = $_POST['order_id'];
-                $controller->displayInvoice($order_id);
-                break;
+//            case '/manage/orders':
+//                require __DIR__ . '/../controller/invoiceController.php';
+//                $controller = new \invoiceController();
+//                $order_id = $_POST['order_id'];
+//                $controller->displayInvoice($order_id);
+//                break;
             case '/invoice/download':
                 require __DIR__ . '/../controller/invoiceController.php';
                 $controller = new \invoiceController();
@@ -585,6 +585,8 @@ class router
                     $controller->jsonToCSV();
                 }
                 $controller->manageOrder();
+                $order_id = $_POST['order_id'];
+                $controller->displayInvoice($order_id);
                 break;
             case 'edit/order':
             case '/edit/order':
