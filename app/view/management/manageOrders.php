@@ -6,11 +6,11 @@ include __DIR__ . '/../header.php'; ?>
 <h1 class="text-center mb-3">Manage Orders</h1>
 <br>
 
- <div style="display: inline-block; margin-right: 10px;">
-<form method="post" action="/saveInCSV">
-    <button type="submit" class="btn btn-primary" name="saveInCSV">Download CSV file</button>
-</form>
- </div>
+<div style="display: inline-block; margin-right: 10px;">
+    <form method="post" action="/saveInCSV">
+        <button type="submit" class="btn btn-primary" name="saveInCSV">Download CSV file</button>
+    </form>
+</div>
 <div style="display: inline-block;">
     <form method="post" action="/saveInExcel">
         <button type="submit" class="btn" style="background-color: green; color: white;" name="exportToExcel">Download Excel file</button>
@@ -63,17 +63,19 @@ include __DIR__ . '/../header.php'; ?>
                 const invoiceButton = document.createElement("button")
                 const idInput3 = document.createElement("input")
                 const editForm = document.createElement("form");
-                //Create form element for the invoice button
-                const invoiceForm = document.createElement("form");
                 const idInput = document.createElement("input");
                 const idInput2 = document.createElement("input");
+                //Create form element for the invoice button
+                const invoiceForm = document.createElement("form");
                 const deleteForm = document.createElement("form");
 
                 deleteForm.action = '/delete/order';
                 deleteForm.method = "POST";
                 editForm.action = '/edit/order';
                 editForm.method = "POST";
-
+                //Set the action and method for the invoice button
+                // invoiceForm.action = '/invoice';
+                invoiceForm.method = "POST";
                 idInput3.type = "hidden";
                 idInput3.value = order.id;
                 idInput3.name = "id";
@@ -81,13 +83,6 @@ include __DIR__ . '/../header.php'; ?>
                 idInput2.type = "hidden";
                 idInput2.value = order.id;
                 idInput2.name = "id";
-
-                //Set the action and method for the invoice button
-                // invoiceForm.action = '/invoice';
-                invoiceForm.method = "POST";
-                test.type = "hidden";
-                test.value = order.id;
-                test.name = "id";
 
                 //Create the invoice button
                 invoiceButton.className = "btn btn-primary";
@@ -102,6 +97,7 @@ include __DIR__ . '/../header.php'; ?>
 
                 idCol.scope = "row";
                 idInput.type = "hidden";
+
                 idInput.name = "id";
                 idInput.value = order.id;
                 idCol.innerHTML = order.id;
@@ -120,6 +116,9 @@ include __DIR__ . '/../header.php'; ?>
                 editForm.appendChild(editButton);
                 editForm.appendChild(idInput3);
                 editButtonCol.appendChild(editForm);
+                //Add the invoice button to the invoice form
+                invoiceButtonCol.appendChild(invoiceButton);
+                invoiceButtonCol.appendChild(idInput);
 
                 deleteButton.addEventListener("click", function() {
                     if (confirm("Are you sure you want to deactivate this reservation?")) {
@@ -127,23 +126,11 @@ include __DIR__ . '/../header.php'; ?>
                         // If the user confirms, submit the form
                         deleteForm.submit();
                     }
-                //Add the invoice button to the invoice form
-                invoiceForm.appendChild(invoiceButton);
-                invoiceForm.appendChild(idInput);
-
-
-                deleteButton.addEventListener("click", function(){
-                    deleteOrder(order.id);
-                    table.removeChild(newRow);
                 });
-
                 //Add event listener to the invoice button
                 invoiceButton.addEventListener("click", function(){
                     window.open('/invoice.pdf', '_blank');
                 });
-
-                deleteButtonCol.appendChild(deleteButton);
-                editButtonCol.appendChild(editForm);
 
                 //add the invoice form to the invoice button column
                 invoiceButtonCol.appendChild(invoiceForm);
@@ -160,7 +147,6 @@ include __DIR__ . '/../header.php'; ?>
                 const table = document.getElementById("orderTable");
                 table.appendChild(newRow);
             }
-
             loadOrders();
 
             function deleteOrder(id) {
@@ -178,6 +164,7 @@ include __DIR__ . '/../header.php'; ?>
     </table>
 </div>
 
-<?php include __DIR__ . '/../footer.php'; ?>
 
+
+<?php include __DIR__ . '/../footer.php'; ?>
 

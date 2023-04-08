@@ -6,5 +6,6 @@ class historyTourTimetable {
     public string $time;
     public string $language;
     public int $ticketAmount;
+    public float $price;
 
 }

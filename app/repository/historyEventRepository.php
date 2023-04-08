@@ -33,6 +33,7 @@ class historyEventRepository extends baseRepository
         $stmt->bindParam(':time', $time);
         $stmt->bindParam(':language', $language);
         $stmt->bindParam(':ticketAmount', $ticketAmount);
+        $stmt->bindParam(':price', $price);
         $stmt->execute();
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyTourTimetable');
@@ -51,6 +52,7 @@ class historyEventRepository extends baseRepository
         $stmt->bindParam(':time', $time);
         $stmt->bindParam(':language', $language);
         $stmt->bindParam(':ticketAmount', $ticketAmount);
+        $stmt->bindParam(':price', $price);
         $stmt->execute();
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyTourTimetable');

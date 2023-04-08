@@ -11,6 +11,7 @@ use loginController;
 use orderController;
 use registrationController;
 use userControllerAPI;
+use invoiceController;
 
 class router
 {
@@ -346,6 +347,7 @@ class router
                 require_once __DIR__ . '/../model/dance.php';
                 require_once __DIR__ . '/../model/order.php';
                 require_once __DIR__ . '/../model/reservation.php';
+                require_once __DIR__ . '/../model/historyTourTimetable.php';
                 require_once __DIR__ . '/../service/eventService.php';
                 if (session_status() === PHP_SESSION_NONE) {
                     require_once __DIR__ . '/../../vendor/autoload.php';
@@ -357,7 +359,9 @@ class router
             case '/shoppingCart/add':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
-                $controller->addEvent();
+                $controller->addDanceEvent();
+                $reservation = $_POST['addReservation`'];
+                $controller->addReservation($reservation);
 
                 break;
 
@@ -580,8 +584,10 @@ class router
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
                 $controller->manageOrder();
+                require __DIR__ . '/../controller/invoiceController.php';
+                $invoiceController = new invoiceController();
                 $order_id = $_POST['order_id'];
-                $controller->displayInvoice($order_id);
+                $invoiceController->displayInvoice($order_id);
                 break;
             case 'edit/order':
             case '/edit/order':
@@ -607,11 +613,6 @@ class router
                 require_once __DIR__ . '/../controller/ExcelController.php';
                 $controller = new \ExcelController();
                 $controller->exportExcel();
-                break;
-            case '/downloadInvoice':
-                require_once __DIR__ . '/../controller/invoiceController.php';
-                $controller = new \invoiceController();
-                $controller->downloadInvoice();
                 break;
 
             default:
