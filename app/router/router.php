@@ -22,13 +22,12 @@ class router
     {
         error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
-            case '/test':
-                //echo 404;
+            case '/shoppingCart/quantity?action=' . $_GET['action']:
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    require_once __DIR__ . '/../view/shoppingCart/test.php';
-
+                    require_once __DIR__ . '/../controller/shoppingCartController.php';
+                    $controller = new \shoppingCartController();
+                    $controller->changeQuantity();
                 }
-                require_once __DIR__ . '/../view/shoppingCart/test.php';
                 break;
 
             case '/generateToken':
@@ -627,10 +626,7 @@ class router
                 break;
 
             default:
-                echo $_GET['event'];
-                //require_once __DIR__ . '/../view/shoppingCart/test.php';
-                //break;
-                //echo '404';
+                echo '404';
         }
     }
 }

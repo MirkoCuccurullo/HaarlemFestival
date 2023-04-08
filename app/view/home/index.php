@@ -45,7 +45,7 @@ include __DIR__ . '/../header.php'; ?>
                 </p>
             </div>
 
-            <a type="button" href="/festival" class="btn btn-primary" >Explore events</a>
+            <a type="button" href="/festival" class="btn btn-primary btn-custom" >Explore events</a>
 
         </div>
     </div>

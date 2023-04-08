@@ -56,54 +56,27 @@ include __DIR__ . '/../header.php'; ?>
 
                     <script>
                         function addEvent(event) {
-                            // let xhttp = new XMLHttpRequest();
-                            // xhttp.onreadystatechange = function() {
-                            //     if (this.readyState === 4 && this.status === 200) {
-                            //         let updatedArray = JSON.parse(this.responseText);
-                            //         console.log(updatedArray);
-                            //         //window.location.reload();
-                            //     }
-                            // };
-                            // xhttp.onload = function() {
-                            //     if (xhttp.status === 200) {
-                            //         console.log(xhttp.responseText);
-                            //     } else {
-                            //         console.log('Request failed.  Returned status of ' + xhttp.status);
-                            //     }
-                            // };
-                            //let uriComp = encodeURIComponent(JSON.stringify(event));
-                            //xhttp.open("GET", "/test?action=add&event=" + encodeURIComponent(event), true);
-                            //xhttp.open("GET", "/api/orders".  , true);
-                            //xhttp.open("GET", "/test?action=add&event=" + uriComp, true);
-
-                            // xhttp.open("POST", "/test", true);
-                            // xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                            //
-                            // let formData = new FormData();
-                            // formData.append("event", JSON.stringify(event));
-                            // xhttp.send(formData);
-                            //xhttp.send();
                             const obj = { event: event };
-                            fetch('/test', {
+                            fetch('/shoppingCart/quantity?action=add', {
                                 method: 'POST',
                                 headers: {'Content-Type': 'application/json'},
                                 body: JSON.stringify(obj),
                             }).then(result => {
+                                 window.location.reload();
                                 console.log(result)
                             });
                         }
 
                         function removeEvent(event) {
-                            let xhttp = new XMLHttpRequest();
-                            xhttp.onreadystatechange = function() {
-                                if (this.readyState === 4 && this.status === 200) {
-                                    let updatedArray = JSON.parse(this.responseText);
-                                    console.log(updatedArray);
-                                    window.location.reload();
-                                }
-                            };
-                            xhttp.open("GET", "/test?action=remove&event=" + encodeURIComponent(JSON.stringify(event)), true);
-                            xhttp.send();
+                            const obj = { event: event };
+                            fetch('/shoppingCart/quantity?action=remove', {
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify(obj),
+                            }).then(result => {
+                                window.location.reload();
+                                console.log(result)
+                            });
                         }
 
                     </script>
@@ -145,9 +118,5 @@ include __DIR__ . '/../header.php'; ?>
         </form>
     </div>
 </div>
-
-<script>
-
-</script>
 <?php
 include __DIR__ . '/../footer.php'; ?>

@@ -135,5 +135,23 @@ class shoppingCartController
         require_once __DIR__ . '/../view/shoppingCart/confirmation.php';
     }
 
+    public function changeQuantity()
+    {
+        if(isset($_GET['action'])) {
+            $action = $_GET['action'];
+            if($action == 'add') {
+                $data = json_decode(file_get_contents('php://input'), true);
+                $event = unserialize($data['event']);
+                $_SESSION['order']->addEvent($event);
+                echo json_encode($_SESSION['order']);
+            } else if ($action == 'remove') {
+                $data = json_decode(file_get_contents('php://input'), true);
+                $event = unserialize($data['event']);
+                $_SESSION['order']->removeEvent($event);
+                echo json_encode($_SESSION['order']);
+            }
+        }
+    }
+
 
 }

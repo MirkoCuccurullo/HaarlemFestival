@@ -59,8 +59,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mirko/Documents/GItHub/HaarlemFestival&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rares/Documents/GitHub/WebDev2-backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -171,6 +170,8 @@
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680631522122" duration="1363000" />
       <workItem from="1680698416330" duration="3280000" />
+      <workItem from="1680871475823" duration="5719000" />
+      <workItem from="1680950405142" duration="1137000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
