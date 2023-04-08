@@ -81,6 +81,7 @@
                 <th scope="col">Time</th>
                 <th scope="col">Language</th>
                 <th scope="col">Ticket Amount</th>
+                <th scope="col">Price</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
@@ -95,6 +96,7 @@
                         <td name="time"> <input type="text" name="time" value="<?= $timetable['time']; ?>"></td>
                         <td name="language"> <input type="text" name="language" value="<?= $timetable['language']; ?>"></td>
                         <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $timetable['ticketAmount']; ?>"></td>
+                        <td name="price"> <input type="text" name="price" value="<?= $timetable['price']; ?>"></td>
                         <td>
                             <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
                         </td>

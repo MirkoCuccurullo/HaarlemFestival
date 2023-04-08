@@ -27,8 +27,8 @@ class historyEventRepository extends baseRepository
 
 
     // Schedule Content CRUD
-    public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount)  {
-        $stmt = $this->connection->prepare("INSERT INTO historytourtimetable (dateAndDay, time, language, ticketAmount) VALUES (:dateAndDay, :time, :language, :ticketAmount)");
+    public function insertHistorySchedule($dateAndDay, $time, $language, $ticketAmount, $price)  {
+        $stmt = $this->connection->prepare("INSERT INTO historytourtimetable (dateAndDay, time, language, ticketAmount, price) VALUES (:dateAndDay, :time, :language, :ticketAmount, :price)");
         $stmt->bindParam(':dateAndDay', $dateAndDay);
         $stmt->bindParam(':time', $time);
         $stmt->bindParam(':language', $language);
@@ -45,8 +45,8 @@ class historyEventRepository extends baseRepository
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
-    public function updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount) {
-        $stmt = $this->connection->prepare("UPDATE historytourtimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount WHERE id=:id");
+    public function updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount, $price) {
+        $stmt = $this->connection->prepare("UPDATE historytourtimetable SET dateAndDay=:dateAndDay, time=:time, language=:language, ticketAmount=:ticketAmount, price=:price WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':dateAndDay', $dateAndDay);
         $stmt->bindParam(':time', $time);

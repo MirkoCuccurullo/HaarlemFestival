@@ -16,12 +16,13 @@ class historyEventService{
         $preparedData = $this->prepareCardContentData($data);
         $this->historyEventRepository->insertHistoryCardContent($preparedData['title'], $preparedData['image'], $preparedData['content']);
     }
-    public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount)
+    public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount, float $price)
     {
         $sysError = "";
-        $preparedData = $this->prepareScheduleContentData($dateAndDay, $time, $language, $ticketAmount);
+        $preparedData = $this->prepareScheduleContentData($dateAndDay, $time, $language, $ticketAmount, $price);
         if (!$this->dateAlreadyExists($preparedData['dateAndDay'])) {
-            $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'], $preparedData['language'], $preparedData['ticketAmount']);
+            $this->historyEventRepository->insertHistorySchedule($preparedData['dateAndDay'], $preparedData['time'],
+                $preparedData['language'], $preparedData['ticketAmount'], $preparedData['price']);
         } else {
             $sysError = "Date already exists";
         }
@@ -40,8 +41,8 @@ class historyEventService{
     public function updateCardContent($id, $title, $image, $content) {
         return $this->historyEventRepository->updateHistoryCardContent($id, $title, $image, $content);
     }
-    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
-        return $this->historyEventRepository->updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount);
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price) {
+        return $this->historyEventRepository->updateHistorySchedule($id, $dateAndDay, $time, $language, $ticketAmount, $price);
     }
     public function updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText ) {
         return $this->historyEventRepository->updateMainContent($id, $mainImageHeader, $tourCardHeader , $tourCardParagraph , $tourCardButtonText );
@@ -86,7 +87,7 @@ class historyEventService{
             'content' => $content,
         ];
     }
-    private function prepareScheduleContentData(string $dateAndDay, string $time, string $language, int $ticketAmount): array
+    private function prepareScheduleContentData(string $dateAndDay, string $time, string $language, int $ticketAmount, float $price): array
     {
         $date = new DateTime($dateAndDay);
         $changeDateFormat = $date->format('d F Y');
@@ -97,6 +98,7 @@ class historyEventService{
             'time' => htmlspecialchars($time),
             'language' => htmlspecialchars($language),
             'ticketAmount' => $ticketAmount,
+            'price' => $price,
         ];
     }
 

@@ -57,7 +57,7 @@ class historyEventController
             $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
             $updateCardMessage = "Card Content updated!";
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
-            $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
+            $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount'], $_POST['price']);
             $updateSchedule = "Schedule Content updated!";
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateMainContent'])) {
             $this->updateMainContent($_POST['id'], $_POST['mainImageHeader'], $_POST['tourCardHeader'], $_POST['tourCardParagraph'], $_POST['tourCardButtonText']);
@@ -69,7 +69,7 @@ class historyEventController
             $this->addCardContent($_POST);
             $addCardMessage = "Card Content added!";
         } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['submitSchedule'])) {
-            $this->addScheduleContent($_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
+            $this->addScheduleContent($_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount'], $_POST['price']);
             $addScheduleMessage = "Schedule Content added!";
         }
 
@@ -89,8 +89,8 @@ class historyEventController
     public function addCardContent($data) :void {
         $this->historyEventService->addCardContent($data);
     }
-    public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount) :void {
-        $this->historyEventService->addScheduleContent( $dateAndDay,  $time,  $language,  $ticketAmount);
+    public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount, float $price) :void {
+        $this->historyEventService->addScheduleContent( $dateAndDay,  $time,  $language,  $ticketAmount, $price);
     }
 
     // Delete methods
@@ -104,8 +104,8 @@ class historyEventController
     }
 
     // Update methods
-    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount) {
-        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount);
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price) {
+        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price);
     }
     public function updateCardContent($id, $title, $image, $content) {
         $this->historyEventService->updateCardContent($id, $title, $image, $content);
