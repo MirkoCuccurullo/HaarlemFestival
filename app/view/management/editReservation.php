@@ -5,7 +5,7 @@ include_once __DIR__ . '/../../model/reservation.php';
 
 <div class="row">
     <div class="col-md-6">
-        <form action="/edit/session" method="post">
+        <form action="/edit/reservation" method="post">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
@@ -29,8 +29,8 @@ include_once __DIR__ . '/../../model/reservation.php';
                                     <div class="col-md">
                                         <div class="form-floating">
                                             <input required type="number" class="form-control" id="sessionId"
-                                                   name="sessionId" placeholder="sessionId" value="<?=$reservation->session->id?>">
-                                            <label for="sessionId" class="form-label">Restaurant ID</label>
+                                                   name="sessionId" placeholder="sessionId" value="<?=$reservation->sessionId?>">
+                                            <label for="sessionId" class="form-label">Session ID</label>
                                         </div>
                                     </div>
                                 </div>
@@ -39,9 +39,9 @@ include_once __DIR__ . '/../../model/reservation.php';
                                 <h2 class="mb-3">Status</h2>
                                     <div class="col-md">
                                         <div class="form-floating">
-                                            <input required type="number" class="form-control" id="status"
+                                            <input required type="text" class="form-control" id="status"
                                                    name="status" placeholder="status" value="<?=$reservation->status?>">
-                                            <label for="status" class="form-label">0: confirmed, 1: cancelled, 2: deactivated</label>
+                                            <label for="status" class="form-label">Reservation status</label>
                                         </div>
                                     </div>
                                 </div>
@@ -73,8 +73,8 @@ include_once __DIR__ . '/../../model/reservation.php';
                                     <div class="col-md">
                                         <div class="form-floating">
                                             <input required type="number" class="form-control" id="reservationPrice"
-                                                   name="reservationPrice" placeholder="reservationPrice" value="<?=$reservation->reservationPrice?>">
-                                            <label for="reservationPrice" class="form-label">Reservation Price</label>
+                                                   name="reservationPrice" placeholder="reservationPrice" value="<?=$reservation->price?>">
+                                            <label for="reservationPrice" class="form-label">Price paid to book </label>
                                         </div>
                                     </div>
                                 </div>

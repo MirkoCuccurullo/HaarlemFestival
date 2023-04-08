@@ -2,14 +2,14 @@
 <?php
 include __DIR__ . '/../header.php'; ?>
 
-<form method="post" action="/add/venue">
+<form method="post" action="/add/venue" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
     </div>
     <div class="form-group">
-        <label for="picture">Picture Path</label>
-        <input type="text" class="form-control" id="picture" name="picture" placeholder="Enter picture path">
+        <label for="picture"> Upload Picture</label>
+        <input class="form-control" type="file" name="picture" id="picture" accept=".jpg">
     </div>
     <div class="form-group">
         <label for="address">Address</label>

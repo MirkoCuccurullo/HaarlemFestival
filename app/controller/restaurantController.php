@@ -37,7 +37,12 @@ class restaurantController
 
     public function addRestaurant(): void
     {
-        $this->restaurantService->addRestaurant($_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'], $_POST['photo']);
+        $picture_name = '/images/' . $_FILES['picture']['name'];
+        //upload picture to public/images
+        $target_dir = __DIR__ . "/../public/images/";
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+        move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
+        $this->restaurantService->addRestaurant($_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'], $picture_name);
         header('Location: /manage/restaurant');
     }
 
@@ -49,7 +54,16 @@ class restaurantController
 
     public function updateRestaurant(): void
     {
-        $this->restaurantService->updateRestaurant($_POST['id'], $_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'], $_POST['photo']);
+        if (isset($_FILES['picture'])){
+            $picture_name = '/images/' . $_FILES['picture']['name'];
+            //upload picture to public/images
+            $target_dir = __DIR__ . "/../public/images/";
+            $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+            move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
+        }else{
+            $picture_name = $_POST['old_pic_path'];
+        }
+        $this->restaurantService->updateRestaurant($_POST['id'], $_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'], $picture_name);
         header('Location: /manage/restaurant');
     }
 

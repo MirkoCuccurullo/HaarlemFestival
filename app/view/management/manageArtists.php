@@ -6,13 +6,6 @@ include __DIR__ . '/../header.php'; ?>
     <button formmethod="post" class="btn btn-primary"> Add Artist </button>
 </form>
 
-<select name="role" id="role" class="form-select" oninput="filterUsers()">
-    <option selected value="0"> All Roles</option>
-    <option value="Employee">Employee</option>
-    <option value="Customer">Customer</option>
-    <option value="Administrator">Administrator</option>
-</select>
-
 <div class="table table-responsive">
     <table class="table text-center">
         <thead>
@@ -30,23 +23,6 @@ include __DIR__ . '/../header.php'; ?>
         <tbody class="table-group-divider" id="userTable">
 
         <script>
-            function filterUsers(){
-                const role = document.getElementById("role").value;
-                const table = document.getElementById("userTable");
-                const rows = table.getElementsByTagName("tr");
-                for (let i = 0; i < rows.length; i++) {
-                    const row = rows[i];
-                    const roleCol = row.getElementsByTagName("td")[4];
-                    if (roleCol) {
-                        const roleValue = roleCol.textContent || roleCol.innerText;
-                        if (role === "0" || roleValue === role) {
-                            row.style.display = "";
-                        } else {
-                            row.style.display = "none";
-                        }
-                    }
-                }
-            }
             function loadEvents() {
                 fetch('http://localhost/api/dance/artists')
                     .then(result => result.json())

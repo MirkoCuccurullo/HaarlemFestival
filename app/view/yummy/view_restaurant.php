@@ -15,12 +15,7 @@
 <?php $photos = explode(',', $restaurant->photo); ?>
 <div class="row">
     <div class="col-md-8 justify-content-end">
-<h3><?= $restaurant->name ?></h3>
-</div>
-<div class="col-md-3 justify-content-end">
-    <button  style=" alignment: right; color: white; background: #ABAC7F; border-style: hidden; border-radius: 5%; padding: 10px;" >
-        <p class="text-center">Reserve now </p>
-    </button>
+<h1><?= $restaurant->name ?></h1>
 </div>
 
 <div id="restaurant-container">
@@ -28,29 +23,26 @@
         <div class="col-md-7" id="restaurantDescription" style="   border: 1px solid white;
     border-radius: 10px;
     margin-bottom: 10px;
-    padding: 10px;">
-            <p><?= $restaurant->description ?></p>
+padding: 1em;">
+            <h4><?= $restaurant->description ?></h4>
         </div>
         <div class="col-md-3" id="restaurantMainPhoto">
-            <img src="<?= $photos[0] ?>" alt="<?= $restaurant->name ?>">
+            <img src="<?= $photos[0] ?>" alt="<?= $restaurant->name ?>" width="400" height="300" style="padding: 1em">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <img src="<?= $photos[1] ?>" alt="<?= $restaurant->name ?>">
+        <div class="col-md-4" style="padding: 1em;">
+            <img src="<?= $photos[1] ?>" alt="<?= $restaurant->name ?>" width="280" height="190">
         </div>
-        <div class="col-md-4">
-            <img src="<?= $photos[2] ?>" alt="<?= $restaurant->name ?>">
+        <div class="col-md-4" style="padding: 1em;">
+            <img src="<?= $photos[2] ?>" alt="<?= $restaurant->name ?>" width="280" height="190">
         </div>
-        <div class="col-md-4">
-            <img src="<?= $photos[3] ?>" alt="<?= $restaurant->name ?>">
+        <div class="col-md-4" style="padding: 1em;">
+            <img src="<?= $photos[3] ?>" alt="<?= $restaurant->name ?>" width="280" height="190">
         </div>
     </div>
-    <div class="row">
-            <div class="col-md-2" style="border: 1px solid white;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding: 10px;">
+    <div class="row" style="padding: 1em;">
+            <div class="col-md-2" style="border: 1px solid white; border-radius: 10px;  margin-bottom: 10px; padding: 1em;">
                 <h4>Session Times</h4>
                 <ul>
                     <?php
@@ -70,7 +62,7 @@
             <div class="col-md-2" style="   border: 1px solid white;
     border-radius: 10px;
     margin-bottom: 10px;
-    padding: 10px;">
+    padding: 1em;">
                 <h4>Prices</h4>
                 <p>Adult: <?= $session->sessionPrice ?> €</p>
                 <p>Under 12:  <?= $session->reducedPrice ?> €</p>

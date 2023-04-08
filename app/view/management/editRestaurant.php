@@ -5,7 +5,7 @@ include_once __DIR__ . '/../../model/restaurant.php';
 
 <div class="row">
     <div class="col-md-6">
-        <form action="/edit/restaurant " method="post">
+        <form action="/edit/restaurant " method="post" enctype="multipart/form-data">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
@@ -54,14 +54,14 @@ include_once __DIR__ . '/../../model/restaurant.php';
                                                 <label for="dietary" class="form-label">Dietary</label>
                                             </div>
                                         </div>
-                                        <h2 class="mb-3">Photo path</h2>
+                                        <h2 class="mb-3">Upload picture</h2>
                                         <div class="col-md-12">
                                             <div class="form-floating">
-                                                <input required type="text" class="form-control" id="photoPath"
-                                                       name="photo" placeholder="photoPath" value="<?=$restaurant->photo?>">
-                                                <label for="photoPath" class="form-label">Photo path</label>
+                                                <label for="picture" class="form-label">Picture</label>
+                                                <input type="text" value="<?= $restaurant->photo ?>" hidden name="old_pic_path">
+                                                <input required type="file" class="form-control" id="picture"
+                                                       name="picture" accept=".jpg">
                                             </div>
-                                        </div>
 
                                         <input type="number" hidden name="id" value="<?=$restaurant->id?>">
                                         <button type="submit" class="btn btn-primary" name="editRestaurant">Confirm changes</button>
