@@ -7,6 +7,7 @@ use router\router;
 require_once __DIR__ . '/../service/MollieService.php';
 require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../service/ticketService.php';
+require_once __DIR__ . '/../service/reservationService.php';
 require_once __DIR__ . '/../service/PDFGenerator.php';
 require_once __DIR__ . '/../service/SMTPServer.php';
 require_once __DIR__ . '/../service/userService.php';
@@ -29,10 +30,19 @@ class webhookController
             $orderService->updateOrderStatus($order_id, $payment->status, $payment_id);
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
 
+
+                $reservationService = new \reservationService();
                 $ticketService = new \ticketService();
                 foreach ($tickets as $ticket)
+                {
                     $ticketService->insertTicket($ticket);
-
+                    if(isset($ticket->yummy_event_id))
+                    {
+                        $reservation = $reservationService->getReservationById($ticket->yummy_event_id);
+                        $reservation->status = "Paid";
+                        $reservationService->updateReservation($reservation);
+                    }
+                }
 
                 $pdfGenerator = new \PDFGenerator();
                 $pdf = $pdfGenerator->createPDF($order_id, $user_id);

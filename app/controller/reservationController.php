@@ -13,8 +13,12 @@ class reservationController
 
     public function editReservation(): void
     {
-        $reservation = $this->reservationService->getReservationByID($_POST['id']);
-        require __DIR__ . '/../view/management/editReservation.php';
+        if(isset($_POST['id'])) {
+            $reservation = $this->reservationService->getReservationByID($_POST['id']);
+            require __DIR__ . '/../view/management/editReservation.php';
+        }
+        else
+            header('Location: /festival/yummy');
     }
 
     public function updateReservation(): void
@@ -64,8 +68,13 @@ class reservationController
 
     public function manageReservation(): void
     {
-        $reservationInfo = $this->reservationService->getAllReservations();
-        require __DIR__ . '/../view/management/manageReservation.php';
+        if(isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+        {
+            $reservationInfo = $this->reservationService->getAllReservations();
+            require __DIR__ . '/../view/management/manageReservation.php';
+        }
+        else
+            header('Location: /festival/yummy');
     }
 
     public function deactivateReservation(): void
