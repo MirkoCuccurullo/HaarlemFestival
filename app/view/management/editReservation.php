@@ -104,7 +104,7 @@ include_once __DIR__ . '/../../model/reservation.php';
                                     <h2 class="mb-3">Comment</h2>
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input required type="text" class="form-control" id="comment"
+                                            <input type="text" class="form-control" id="comment"
                                                    name="comment" placeholder="comment" value="<?=$reservation->comment?>">
                                             <label for="comment" class="form-label">Comment</label>
                                         </div>
