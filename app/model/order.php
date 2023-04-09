@@ -17,6 +17,14 @@ class order{
         $this->total_price += $event->price;
     }
 
+//    public function addHistoryEvent($historyTourTimeTable, $quantity = 1) {
+//        $this->events[] = $historyTourTimeTable;
+//        $this->no_of_items += $quantity;
+//        $this->total_price += $historyTourTimeTable->price * $quantity;
+//        $this->event_names[] = $historyTourTimeTable->name; // add event name to event_names array
+//        $this->event_prices[] = $historyTourTimeTable->price; // add event price to event_prices array
+//    }
+
     public function removeEvent($key){
 
         $this->no_of_items--;

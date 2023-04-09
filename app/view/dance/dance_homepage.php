@@ -178,6 +178,7 @@ include __DIR__ . '/../header_dance.php'; ?>
             eventStart.innerHTML = 'From: ' + event.start_time;
             var eventEnd = document.createElement('li');
             eventEnd.className = 'list-group-item';
+            eventEnd.className = 'list-group-item';
             eventEnd.innerHTML = 'To: ' + event.end_time;
             var eventSession = document.createElement('li');
             eventSession.className = 'list-group-item';

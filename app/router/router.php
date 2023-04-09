@@ -6,6 +6,7 @@ use controller\qrController;
 use controller\webhookController;
 use danceController;
 use danceControllerAPI;
+use historyControllerAPI;
 use festivalController;
 use loginController;
 use orderController;
@@ -65,6 +66,12 @@ class router
                 $controller = new danceControllerAPI();
                 $controller->index();
                 break;
+            case"/api/history/historyTourTimetable":
+                require("../api/controllers/historyControllerAPI.php");
+                $controller = new historyControllerAPI();
+                $controller->index();
+                break;
+
             case"/api/dance/artists":
                 require("../api/controllers/artistControllerAPI.php");
                 $controller = new \artistControllerAPI();
@@ -178,24 +185,6 @@ class router
                 $controller = new \danceController();
                 $controller->editEvent();
                 break;
-
-//
-//            case'/history':
-//                require __DIR__ . '/../controller/historyEventController.php';
-//                $controller = new \historyEventController();
-//                $controller->historyMainPage();
-//                break;
-//            case'/historyCart':
-//                require __DIR__ . '/../controller/historyEventController.php';
-//                $controller = new \historyEventController();
-//                $controller->historyCartPage($_POST['id']);
-//                break;
-//            case '/locationDetail':
-//                require __DIR__ . '/../controller/historyEventController.php';
-//                $controller = new \historyEventController();
-//                $controller->historyLocationDetailPage($_POST['id']);
-//                break;
-//
 
             case '/signin':
                 require '../controller/loginController.php';
@@ -362,6 +351,7 @@ class router
                 $controller->addDanceEvent();
                 $reservation = $_POST['addReservation`'];
                 $controller->addReservation($reservation);
+                $controller->addHistoryEvent();
 
                 break;
 

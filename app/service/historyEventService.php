@@ -102,11 +102,15 @@ class historyEventService{
         ];
     }
 
-    public function getHistoryEventByID(string $id)
+    public function getHistorySchedulePriceByID($id)
     {
-        return $this->historyEventRepository->getHistoryEventByID($id);
+        return $this->historyEventRepository->getHistorySchedulePriceById($id);
     }
-    public function dateAlreadyExists(string $dateAndDay)
+    public function getHistoryScheduleDateAndDayById($id)
+    {
+        return $this->historyEventRepository->getHistoryScheduleDateAndDayById($id);
+    }
+    public function dateAlreadyExists($dateAndDay)
     {
         return $this->historyEventRepository->dateAlreadyExists($dateAndDay);
     }

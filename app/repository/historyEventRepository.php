@@ -140,17 +140,6 @@ class historyEventRepository extends baseRepository
 
         return $result;
     }
-
-    public function getByDayFilter($dateAndDay) {
-        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE dateAndDay=:dateAndDay");
-        $stmt->bindParam(':dateAndDay', $dateAndDay);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_OBJ);
-
-        return $result;
-
-    }
-
     public function dateAlreadyExists(string $dateAndDay)
     {
         $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE dateAndDay=:dateAndDay");
@@ -159,6 +148,21 @@ class historyEventRepository extends baseRepository
         $result = $stmt->fetch(PDO::FETCH_OBJ);
 
         return $result;
+    }
+
+    public function getHistorySchedulePriceById($id) {
+        $stmt = $this->connection->prepare("SELECT price FROM historytourtimetable WHERE id=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $price = $stmt->fetchColumn();
+        return $price;
+    }
+    public function getHistoryScheduleDateAndDayById($id) {
+        $stmt = $this->connection->prepare("SELECT dateAndDay FROM historytourtimetable WHERE id=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $dateAndDay = $stmt->fetchColumn();
+        return $dateAndDay;
     }
 
 }

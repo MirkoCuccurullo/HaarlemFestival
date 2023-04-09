@@ -28,6 +28,8 @@ include __DIR__ . '/../header.php'; ?>
                                 echo $event->displayPass($event->id);
                             else if ($event instanceof reservation)
                                 echo "Reservation @ " . $event->restaurantName . " for " . ($event->numberOfAdults+ $event->numberOfUnder12) . " people";
+                            else if ($event instanceof historyTourTimetable)
+                                echo "History tour: " . $event->dateAndDay . " : " . $event->price;
                             ?></h3>
                     </div>
 

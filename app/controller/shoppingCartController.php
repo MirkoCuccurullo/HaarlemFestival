@@ -101,19 +101,24 @@ class shoppingCartController
 
             $order->no_of_items = 0;
             $order->total_price = 0;
+            $order->status = 'open';
+
         }
-
         if (isset($_POST['addHistoryEvent'])) {
-
-            $historyEventService = new HistoryEventService();
+            $historyEventService = new historyEventService();
             $id = htmlspecialchars($_POST['historyEventId']);
-            $event = $historyEventService->getHistoryTicketById($id);
 
-            $order->addHistoryEvent($event);
+            $event = $historyEventService->getHistoryTicketById($id);
+            $price = $historyEventService->getHistorySchedulePriceByID($id);
+            $dateAndDay = $historyEventService->getHistoryScheduleDateAndDayById($id);
+            $event['price'] = $price; // set the name property of the $event object
+            $event['dateAndDay'] = $dateAndDay; // set the name property of the $event object
+            $order->addEvent($event);
             $_SESSION['order'] = $order;
         }
         $router = new Router();
         $router->route('/shoppingCart');
+
     }
 
     public function removeEvent()
