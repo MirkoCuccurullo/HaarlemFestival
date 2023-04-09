@@ -17,4 +17,8 @@ class homePageService{
     public function updateHomePages($id, $title, $image, $content, $prompt){
         return $this->homePageRepository->updateHomePages($id, $title, $image, $content, $prompt);
     }
+
+    public function deleteHome($id){
+        return $this->homePageRepository->deleteHome($id);
+    }
 }

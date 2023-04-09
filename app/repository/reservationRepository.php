@@ -66,6 +66,7 @@ class reservationRepository extends baseRepository
             $totalPeople = $reservation->numberOfAdults + $reservation->numberOfUnder12;
             // Update the session table
             $this->updateSessionSpaces($reservation->sessionId, $totalPeople);
+            $reservation = $this->getReservationById($id);
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to add reservation: " . $e->getMessage());
@@ -124,7 +125,7 @@ class reservationRepository extends baseRepository
     public function getSessionById(int $sessionId)
     {
         try{
-            $sql = "SELECT * FROM session WHERE id = :id";
+            $sql = "SELECT * FROM sessionrestaurant WHERE id = :id";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindParam(":id", $sessionId);
             $stmt->execute();

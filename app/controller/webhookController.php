@@ -26,7 +26,7 @@ class webhookController
             $tickets = $payment->metadata->tickets;
 
             $orderService = new \orderService();
-            $orderService->updateOrder($order_id, $payment->status, $payment_id);
+            $orderService->updateOrderStatus($order_id, $payment->status, $payment_id);
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
 
                 $ticketService = new \ticketService();

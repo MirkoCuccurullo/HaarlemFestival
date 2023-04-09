@@ -24,7 +24,7 @@ class userRepository extends baseRepository
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":email", $email);
-        $role = " ";
+        $role = "1";
         $stmt->bindParam(":role", $role);
         $stmt->bindParam(":hashedSaltedPassword", $hashedSaltedPassword);
         $stmt->bindParam(":date_of_birth", $date_of_birth);

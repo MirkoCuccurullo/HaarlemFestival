@@ -108,12 +108,14 @@ class reservationController
                 //the price depends on the session so get the session to calculate
                 $session = $this->reservationService->getSessionByID($reservation->sessionId);
                 $reservation->price = ($reservation->numberOfAdults + $reservation->numberOfUnder12) * $session->reservationPrice;
+
                $reservation = $this->reservationService->addReservation($reservation);
+            return $reservation;
+
         } catch (Exception $e) {
             // Log error message and redirect to error page
             error_log($e->getMessage());
         }
-        return $reservation;
     }
 
     public function getAvailableSpacesPerSession(): int

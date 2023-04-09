@@ -20,14 +20,22 @@ class shoppingCartController
 {
     public function index()
     {
+        if(isset($_GET['order']) )
+        {
+            $encodedOrder = $_GET['order'];
+            $serializedOrder = json_decode(urldecode($encodedOrder), true);
+            $order = unserialize($serializedOrder);
+            $_SESSION['order'] = $order;
+            //echo json_encode($_SESSION['order']);
+        }
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
 
-    public function addDanceEvent()
+    public function addEvent()
     {
-        if (isset($_SESSION['order']))
+        if (isset($_SESSION['order'])) {
             $order = $_SESSION['order'];
-        else {
+        } else {
             $order = new \Models\order();
             if (isset($_SESSION['current_user_id']))
                 $order->user_id = $_SESSION['current_user_id'];
@@ -39,30 +47,30 @@ class shoppingCartController
             $order->status = 'open';
         }
 
-        if (isset($_POST['addDanceEvent'])) {
-
+        $event = null;
+        if(isset($_POST['addDanceEvent']))
+        {
             $eventService = new EventService();
             $id = htmlspecialchars($_POST['danceEventId']);
-
             $event = $eventService->getEventByID($id);
-
             $artist = $eventService->getArtistByID($event->artist);
             $event->artist_name = $artist->name;
-
             $venue = $eventService->getVenueByID($event->location);
             $event->venue_name = $venue->name;
-
-            $order->addEvent($event);
-            $_SESSION['order'] = $order;
-        } else if (isset($_POST['addAccessPass'])) {
+        }
+        else if(isset($_POST['addReservation'])) {
+            //$event = $reservation;
+        }
+        else if(isset($_POST['addAccessPass'])) {
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
-            $accessPass = $accessPassService->getAccessPassByID($id);
-            $order->addEvent($accessPass);
-            $_SESSION['order'] = $order;
+            $event = $accessPassService->getAccessPassByID($id);
         }
-        $router = new Router();
-        $router->route('/shoppingCart');
+
+        $order->addEvent($event);
+        $_SESSION['order'] = $order;
+
+        header('Location: /shoppingCart');
     }
 
     public function addReservation($reservation): void
@@ -117,18 +125,18 @@ class shoppingCartController
 
     public function removeEvent()
     {
-        foreach ($_SESSION['order']->events as $event)
-            if ($event instanceof reservation)
+        if (isset($_POST['remove_item_key'])) {
+            $key = $_POST['remove_item_key'];
+            $uniqueEvents = $_SESSION['order']->getUniqueEvents();
+            $event = $uniqueEvents[$key];
+            if($event instanceof reservation)
             {
                 $reservationService = new ReservationService();
                 $reservationService->deactivateReservation($event->id);
             }
-        if (isset($_POST['remove_item_key'])) {
-            $key = $_POST['remove_item_key'];
-            $_SESSION['order']->removeEvent($key);
+            $_SESSION['order']->removeEventByType($event);
         }
-        $router = new Router();
-        $router->route('/shoppingCart');
+        header('Location: /shoppingCart');
     }
 
     public function submitOrder()
@@ -138,17 +146,8 @@ class shoppingCartController
             $router->route('/login');
         } else {
             if (isset($_POST['submitOrder'])) {
-//                $order = $_SESSION['order'];
-//                $orderService = new OrderService();
-//                $orderService->createOrder($order);
-//                unset($_SESSION['order']);
-//                $router = new Router();
-//                $router->route('/');
-
 
                 $order = $_SESSION['order'];
-
-                //$payment_id = $_SESSION['payment_id'];
 
                 $orderService = new OrderService();
                 $order_id = $orderService->createOrder($order);
@@ -160,31 +159,7 @@ class shoppingCartController
                 $mollieService = new MollieService();
                 $mollieService->pay($order, $tickets);
 
-//
-//                foreach ($tickets as $ticket)
-//                    $ticketService->insertTicket($ticket);
-//
-//
-//                $pdfGenerator = new PDFGenerator();
-//                $pdf = $pdfGenerator->createPDF($order);
-//
-//                $userService = new UserService();
-//                $user = $userService->getUserByID($order->user_id);
-//
-//                $mailService = new SMTPServer();
-//
-//                $receiverEmail = $user->email;
-//                $receiverName = $user->name;
-//                $subject = "Your Ticket(s)";
-//                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) are attached to this email. See you at the events!";
-//                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf);
-//                unlink($pdf);
-
-//                $router = new Router();
-//                $router->route('/');
                 unset($_SESSION['order']);
-
-
             }
         }
     }
@@ -196,4 +171,23 @@ class shoppingCartController
         $status = $order->status;
         require_once __DIR__ . '/../view/shoppingCart/confirmation.php';
     }
+
+    public function changeQuantity()
+    {
+        if(isset($_GET['action'])) {
+            $action = $_GET['action'];
+            if($action == 'add') {
+                $data = json_decode(file_get_contents('php://input'), true);
+                $event = unserialize($data['event']);
+                $_SESSION['order']->addEvent($event);
+                echo json_encode($_SESSION['order']);
+            } else if ($action == 'remove') {
+                $data = json_decode(file_get_contents('php://input'), true);
+                $event = unserialize($data['event']);
+                $_SESSION['order']->removeEvent($event);
+                echo json_encode($_SESSION['order']);
+            }
+        }
+    }
+
 }

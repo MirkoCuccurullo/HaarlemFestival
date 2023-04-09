@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Small debugs here and there">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repository/restaurantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/restaurantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
-    </list>
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Showing reservation in shopping cart" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,23 +57,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mirko/Documents/GItHub/HaarlemFestival&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Rares/Documents/GitHub/DoctorsAppointment",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.deploy.options",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Web Development 2022\FestivalProjectTerm3\HaarlemFestival\app\public" />
@@ -163,14 +156,26 @@
       <workItem from="1678454722455" duration="16000" />
       <workItem from="1679394353466" duration="929000" />
       <workItem from="1679567419802" duration="5116000" />
+      <workItem from="1679585985750" duration="10739000" />
+      <workItem from="1679837711324" duration="9113000" />
+      <workItem from="1679917312057" duration="21281000" />
+      <workItem from="1680006515318" duration="1025000" />
+      <workItem from="1680022402831" duration="56000" />
+      <workItem from="1680022855078" duration="10465000" />
+      <workItem from="1680090135585" duration="12000" />
+      <workItem from="1680281820220" duration="1431000" />
+      <workItem from="1680293521365" duration="8000" />
+      <workItem from="1680342915588" duration="13000" />
+      <workItem from="1680694458077" duration="15175000" />
+      <workItem from="1680712353401" duration="1475000" />
+      <workItem from="1680784581124" duration="3312000" />
       <workItem from="1680182981417" duration="415000" />
       <workItem from="1680606838799" duration="1987000" />
       <workItem from="1680631522122" duration="1363000" />
       <workItem from="1680698416330" duration="3280000" />
-      <workItem from="1680882898493" duration="9542000" />
-      <workItem from="1680955457170" duration="1022000" />
-      <workItem from="1680976860426" duration="2745000" />
-      <workItem from="1681033478431" duration="1528000" />
+      <workItem from="1680871475823" duration="5719000" />
+      <workItem from="1680950405142" duration="1137000" />
+      <workItem from="1680882898493" duration="8712000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -228,21 +233,7 @@
       <option name="project" value="LOCAL" />
       <updated>1680891100020</updated>
     </task>
-    <task id="LOCAL-00009" summary="Entered photos for Restaurant ML">
-      <created>1680891779685</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1680891779685</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Small debugs here and there">
-      <created>1680979634970</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1680979634970</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,9 +269,7 @@
     <MESSAGE value="padding front end" />
     <MESSAGE value="removed echo I forgot around" />
     <MESSAGE value="Showing reservation in shopping cart" />
-    <MESSAGE value="Entered photos for Restaurant ML" />
-    <MESSAGE value="Small debugs here and there" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small debugs here and there" />
+    <option name="LAST_COMMIT_MESSAGE" value="Showing reservation in shopping cart" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

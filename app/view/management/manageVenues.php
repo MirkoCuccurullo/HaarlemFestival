@@ -15,7 +15,6 @@ include __DIR__ . '/../header.php'; ?>
             <th scope="col">Address</th>
             <th scope="col">Description</th>
             <th scope="col">Capacity</th>
-            <th scope="col">To remove</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
         </tr>
@@ -42,7 +41,6 @@ include __DIR__ . '/../header.php'; ?>
                 const nameCol = document.createElement("td");
                 const emailCol = document.createElement("td");
                 const dateOfBirthCol = document.createElement("td");
-                const roleCol = document.createElement("td");
                 const regDateCol = document.createElement("td");
                 const deleteButtonCol = document.createElement("td");
                 const editButtonCol = document.createElement("td");
@@ -51,7 +49,7 @@ include __DIR__ . '/../header.php'; ?>
                 const editForm = document.createElement("form");
                 const idInput = document.createElement("input");
                 editForm.method = "POST";
-                editForm.action = "/edit/event";
+                editForm.action = "/edit/dance/venue";
 
                 deleteButton.className = "btn btn-danger";
                 editButton.className = "btn btn-warning";
@@ -64,7 +62,6 @@ include __DIR__ . '/../header.php'; ?>
                 idInput.value = venue.id;
                 idCol.innerHTML = venue.id;
                 nameCol.innerHTML = venue.name;
-                roleCol.innerHTML = 'session';
                 emailCol.innerHTML = venue.address;
                 dateOfBirthCol.innerHTML = venue.description;
                 regDateCol.innerHTML = venue.capacity;
@@ -89,7 +86,6 @@ include __DIR__ . '/../header.php'; ?>
                 newRow.appendChild(emailCol);
                 newRow.appendChild(dateOfBirthCol);
                 newRow.appendChild(regDateCol);
-                newRow.appendChild(roleCol);
                 newRow.appendChild(deleteButtonCol);
                 newRow.appendChild(editButtonCol);
 

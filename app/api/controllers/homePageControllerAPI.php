@@ -62,4 +62,13 @@ class homePageControllerAPI
         }
 
     }
+
+    public function deleteHome()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = $data['id'];
+        $this->homePageService->deleteHome($id);
+        header('Content-Type: application/json');
+    }
+
 }
