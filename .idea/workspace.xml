@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Entered photos for Restaurant ML">
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Small debugs here and there">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/reservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/reservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repository/restaurantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository/restaurantRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/management/manageOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/management/manageOrders.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +169,8 @@
       <workItem from="1680698416330" duration="3280000" />
       <workItem from="1680882898493" duration="9542000" />
       <workItem from="1680955457170" duration="1022000" />
-      <workItem from="1680976860426" duration="2736000" />
+      <workItem from="1680976860426" duration="2745000" />
+      <workItem from="1681033478431" duration="1528000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -232,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680891779685</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Small debugs here and there">
+      <created>1680979634970</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680979634970</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +279,8 @@
     <MESSAGE value="removed echo I forgot around" />
     <MESSAGE value="Showing reservation in shopping cart" />
     <MESSAGE value="Entered photos for Restaurant ML" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entered photos for Restaurant ML" />
+    <MESSAGE value="Small debugs here and there" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small debugs here and there" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

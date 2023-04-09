@@ -472,10 +472,10 @@ class router
                 }
                 break;
             case '/festival/dance/manageVenues':
-                    require_once __DIR__ . '/../controller/danceController.php';
-                    $controller = new \danceController();
-                    $controller->addVenue();
-                    break;
+                require_once __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->addVenue();
+                break;
             case '/api/dance/events?artist=' . $_GET['artist'] . '&date=' . $_GET['date'] . '&venue=' . $_GET['venue']:
                 require_once __DIR__ . '/../api/controllers/danceControllerAPI.php';
                 $controller = new \danceControllerAPI();
@@ -490,11 +490,11 @@ class router
                 $controller->deactivateReservation();
                 break;
             case '/api/dance/artists?id=' . $_GET['id']:
-                    require_once __DIR__ . '/../api/controllers/artistControllerAPI.php';
-                    $controller = new \artistControllerAPI();
-                    $id = $_GET['id'];
-                    $controller->getOne($id);
-                    break;
+                require_once __DIR__ . '/../api/controllers/artistControllerAPI.php';
+                $controller = new \artistControllerAPI();
+                $id = $_GET['id'];
+                $controller->getOne($id);
+                break;
             case'/api/dance/venues?id=' . $_GET['id']:
                 require_once __DIR__ . '/../api/controllers/venuesControllerAPI.php';
                 $controller = new \venuesControllerAPI();
@@ -539,12 +539,9 @@ class router
                 break;
 
             case "/restaurant":
-                if (isset($_POST['checkSpaces'])) {
-                    require_once __DIR__ . '/../controller/reservationController.php';
-                    $controller = new \reservationController();
-                    $spaces= $controller->getAvailableSpacesPerSession();
-                    echo "<script>let spaces =; $spaces;</script>";
-                }
+                require_once __DIR__ . '/../controller/reservationController.php';
+                $controller = new \reservationController();
+                $spaces = $controller->getAvailableSpacesPerSession();
 
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();

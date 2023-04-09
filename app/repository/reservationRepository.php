@@ -63,6 +63,9 @@ class reservationRepository extends baseRepository
             //get the last ID
             $id = $this->connection->lastInsertId();
             $reservation->id = $id;
+            $totalPeople = $reservation->numberOfAdults + $reservation->numberOfUnder12;
+            // Update the session table
+            $this->updateSessionSpaces($reservation->sessionId, $totalPeople);
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to add reservation: " . $e->getMessage());
@@ -132,6 +135,22 @@ class reservationRepository extends baseRepository
         } catch (PDOException $e) {
             // Log the error and return failure status
             error_log("Failed to get session: " . $e->getMessage());
+        }
+    }
+
+    private function updateSessionSpaces($sessionId, $totalPeople)
+    {
+        try{
+            $session = $this->getSessionById($sessionId);
+            $newSpaces = $session->spaces - $totalPeople;
+            $sql = "UPDATE session SET spaces = :spaces WHERE id = :id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":spaces", $newSpaces);
+            $stmt->bindParam(":id", $sessionId);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            // Log the error and return failure status
+            error_log("Failed to update session: " . $e->getMessage());
         }
     }
 }

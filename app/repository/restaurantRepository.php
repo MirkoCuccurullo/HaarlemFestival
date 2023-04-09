@@ -113,7 +113,7 @@ class restaurantRepository extends baseRepository
 
     public function addSession(session $session)
     {
-        $stmt = $this->connection->prepare("INSERT INTO sessionrestaurant (restaurantId, startTime, endTime, date, reservationPrice, sessionPrice, reducedPrice, capacity) VALUES (:id, :startTime, :endTime,:date, :reservationPrice, :sessionPrice,:reducedPrice, :capacity)");
+        $stmt = $this->connection->prepare("INSERT INTO sessionrestaurant (restaurantId, startTime, endTime, date, reservationPrice, sessionPrice, reducedPrice, capacity, spaces) VALUES (:id, :startTime, :endTime,:date, :reservationPrice, :sessionPrice,:reducedPrice, :capacity, :spaces)");
         //restaurant id is a foreign key in the table, so it's needed to reference
         $stmt->bindParam( ":id", $session->restaurantId);
         $stmt->bindParam( ":startTime", $session->startTime);
@@ -123,6 +123,8 @@ class restaurantRepository extends baseRepository
         $stmt->bindParam( ":sessionPrice", $session->sessionPrice);
         $stmt->bindParam( ":reducedPrice", $session->reducedPrice);
         $stmt->bindParam( ":capacity", $session->capacity);
+        //since it's a new session, the spaces are the same as the capacity
+        $stmt->bindParam( ":spaces", $session->capacity);
         $stmt->execute();
     }
 
