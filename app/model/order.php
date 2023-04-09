@@ -5,7 +5,11 @@ namespace Models;
 require_once __DIR__ . '/../model/dance.php';
 require_once __DIR__ . '/../model/accessPass.php';
 require_once __DIR__ . '/../model/reservation.php';
-class order{
+require_once __DIR__ . '/../service/ticketService.php';
+require_once __DIR__ . '/../service/eventService.php';
+
+class order
+{
     public int $id;
     public ?int $user_id;
     public int $no_of_items;
@@ -14,13 +18,15 @@ class order{
     public string $status;
     public ?string $payment_id;
 
-    public function addEvent($event){
+    public function addEvent($event)
+    {
         $this->events[] = $event;
         $this->no_of_items++;
         $this->total_price += $event->price;
     }
 
-    public function removeEvent($event){
+    public function removeEvent($event)
+    {
         $this->no_of_items--;
         $this->total_price -= $event->price;
         $reversedEvents = array_reverse($this->events);
@@ -30,7 +36,8 @@ class order{
         $this->events = array_values($this->events);
     }
 
-    public function removeEventByType($event){
+    public function removeEventByType($event)
+    {
         foreach ($this->events as $key => $value) {
             if ($value == $event) {
                 $this->removeEvent($value);
@@ -39,33 +46,51 @@ class order{
         $this->events = array_values($this->events);
     }
 
-    public function countForEvent($event){
+    public function countForEvent($event)
+    {
         $count = 0;
-        foreach($this->events as $e){
-            if($e == $event){
+        foreach ($this->events as $e) {
+            if ($e == $event) {
                 $count++;
             }
         }
         return $count;
     }
 
-    public function priceForEvent($event){
+    public function priceForEvent($event)
+    {
         $price = 0;
-        foreach($this->events as $e){
-            if($e == $event){
+        foreach ($this->events as $e) {
+            if ($e == $event) {
                 $price += $e->price;
             }
         }
         return $price;
     }
 
-    public function getUniqueEvents(){
+    public function getUniqueEvents()
+    {
         $uniqueEvents = array();
-        foreach($this->events as $event){
-            if(!in_array($event, $uniqueEvents)){
+        foreach ($this->events as $event) {
+            if (!in_array($event, $uniqueEvents)) {
                 $uniqueEvents[] = $event;
             }
         }
         return $uniqueEvents;
+    }
+
+    public function ticketsSoldForDanceEvent($event_id)
+    {
+        $ticketService = new \ticketService();
+        $ticketsSold = $ticketService->noOfTicketsForDanceEvent($event_id);
+        return $ticketsSold;
+    }
+
+    public function capacityForDanceEvent($event)
+    {
+        $eventService = new \eventService();
+        $venue = $eventService->getVenueById($event->location);
+        $capacity = intval($venue->capacity);
+        return $capacity;
     }
 }

@@ -12,6 +12,7 @@ require_once __DIR__ . '/../service/ticketService.php';
 require_once __DIR__ . '/../service/SMTPServer.php';
 require_once __DIR__ . '/../service/userService.php';
 require_once __DIR__ . '/../service/reservationService.php';
+require_once __DIR__ . '/../service/bitlyService.php';
 
 
 use router\router;
@@ -20,6 +21,7 @@ class shoppingCartController
 {
     public function index()
     {
+        $bitlyService = new BitlyService();
         if(isset($_GET['order']) )
         {
             $encodedOrder = $_GET['order'];

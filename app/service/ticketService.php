@@ -58,4 +58,8 @@ class ticketService{
     public function scanTicket($ticket){
         return $this->ticketRepo->scanTicket($ticket);
     }
+
+    public function noOfTicketsForDanceEvent($event_id){
+        return $this->ticketRepo->noOfTicketsForDanceEvent($event_id);
+    }
 }

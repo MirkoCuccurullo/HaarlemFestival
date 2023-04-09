@@ -148,75 +148,114 @@ include __DIR__ . '/../header_dance.php'; ?>
                 })
         }
 
+        function getSoldTickets(eventId) {
+            return new Promise((resolve, reject) => {
+                fetch(`http://localhost/api/tickets/sold?id=` + eventId)
+                    .then(result => result.json())
+                    .then((tickets) => {
+                        resolve(tickets);
+                    })
+                    .catch((error) => {
+                        reject(error);
+                    });
+            });
+        }
+
+        function getVenue(venueId) {
+            return new Promise((resolve, reject) => {
+                fetch(`http://localhost/api/dance/venues?id=` + venueId)
+                    .then(result => result.json())
+                    .then((venue) => {
+                        resolve(venue);
+                    })
+                    .catch((error) => {
+                        reject(error);
+                    });
+            });
+        }
+
         function appendEvent(event){
-            var eventDiv = document.getElementById('tickets');
-            var eventCol = document.createElement('div');
+            let soldTickets;
+            let eventVenue;
+            getSoldTickets(event.id).then((tickets) => {
+                soldTickets = tickets;
+            }).then(() => { getVenue(event.location).then((venue) => {
+                eventVenue = venue;
+                var eventDiv = document.getElementById('tickets');
+                var eventCol = document.createElement('div');
+                eventCol.className = 'col-3 m-1';
+                var eventCard = document.createElement('div');
+                eventCard.className = 'card border-light my-3';
+                eventCard.style.width = '18rem';
+                eventCard.id = 'ticket_card';
+                var eventImage = document.createElement('img');
+                eventImage.className = 'card-img m-3';
+                eventImage.src = event.artist_picture;
+                eventImage.id = 'ticket_image';
+                var eventBody = document.createElement('div');
+                eventBody.className = 'card-body';
+                var eventTitle = document.createElement('h5');
+                eventTitle.className = 'card-title';
+                var eventTitleText = document.createElement('p');
+                eventTitleText.innerHTML = event.artist_name + " @ " + event.venue_name;
+                var eventList = document.createElement('ul');
+                eventList.className = 'list-group list-group-flush';
+                eventList.id = 'ticket_text';
+                var eventDate = document.createElement('li');
+                eventDate.className = 'list-group-item';
+                eventDate.innerHTML = 'Date: ' + event.date;
+                var eventStart = document.createElement('li');
+                eventStart.className = 'list-group-item';
+                eventStart.innerHTML = 'From: ' + event.start_time;
+                var eventEnd = document.createElement('li');
+                eventEnd.className = 'list-group-item';
+                eventEnd.innerHTML = 'To: ' + event.end_time;
+                var eventSession = document.createElement('li');
+                eventSession.className = 'list-group-item';
+                eventSession.innerHTML = 'Session: ' + event.session;
+                var eventPrice = document.createElement('li');
+                eventPrice.className = 'list-group-item';
+                eventPrice.innerHTML = 'Price: ' + event.price + ' €';
+                var eventButton = document.createElement('button');
+                var form = document.createElement('form');
+                form.method = 'post';
+                form.action = '/shoppingCart/add';
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'danceEventId';
+                input.value = event.id;
+                eventButton.className = 'btn btn-primary';
+                eventButton.innerHTML = 'Add to cart';
+                if(soldTickets >= eventVenue.capacity){
+                    eventButton.className = 'btn btn-danger';
+                    eventButton.disabled = true;
+                    eventButton.innerHTML = 'Sold out';
+                }
+                eventButton.style = 'width: 60%; margin-left: 20%; margin-bottom: 5%;';
+                eventButton.type = 'submit';
+                eventButton.name = 'addDanceEvent';
 
-            eventCol.className = 'col-3 m-1';
-            var eventCard = document.createElement('div');
-            eventCard.className = 'card border-light my-3';
-            eventCard.style.width = '18rem';
-            eventCard.id = 'ticket_card';
-            var eventImage = document.createElement('img');
-            eventImage.className = 'card-img m-3';
-            eventImage.src = event.artist_picture;
-            eventImage.id = 'ticket_image';
-            var eventBody = document.createElement('div');
-            eventBody.className = 'card-body';
-            var eventTitle = document.createElement('h5');
-            eventTitle.className = 'card-title';
-            var eventTitleText = document.createElement('p');
-            eventTitleText.innerHTML = event.artist_name + " @ " + event.venue_name;
-            var eventList = document.createElement('ul');
-            eventList.className = 'list-group list-group-flush';
-            eventList.id = 'ticket_text';
-            var eventDate = document.createElement('li');
-            eventDate.className = 'list-group-item';
-            eventDate.innerHTML = 'Date: ' + event.date;
-            var eventStart = document.createElement('li');
-            eventStart.className = 'list-group-item';
-            eventStart.innerHTML = 'From: ' + event.start_time;
-            var eventEnd = document.createElement('li');
-            eventEnd.className = 'list-group-item';
-            eventEnd.innerHTML = 'To: ' + event.end_time;
-            var eventSession = document.createElement('li');
-            eventSession.className = 'list-group-item';
-            eventSession.innerHTML = 'Session: ' + event.session;
-            var eventPrice = document.createElement('li');
-            eventPrice.className = 'list-group-item';
-            eventPrice.innerHTML = 'Price: ' + event.price + ' €';
-            var eventButton = document.createElement('button');
-            var form = document.createElement('form');
-            form.method = 'post';
-            form.action = '/shoppingCart/add';
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'danceEventId';
-            input.value = event.id;
-            eventButton.className = 'btn btn-primary';
-            eventButton.innerHTML = 'Add to cart';
-            eventButton.style = 'width: 60%; margin-left: 20%; margin-bottom: 5%;';
-            eventButton.type = 'submit';
-            eventButton.name = 'addDanceEvent';
+                form.appendChild(input);
+                form.appendChild(eventButton);
 
-            form.appendChild(input);
-            form.appendChild(eventButton);
-
-            eventTitle.appendChild(eventTitleText);
-            eventBody.appendChild(eventTitle);
-            eventList.appendChild(eventDate);
-            eventList.appendChild(eventStart);
-            eventList.appendChild(eventEnd);
-            eventList.appendChild(eventSession);
-            eventList.appendChild(eventPrice);
-            eventBody.appendChild(eventList);
-            eventCard.appendChild(eventImage);
-            eventCard.appendChild(eventBody);
-            eventCard.appendChild(form);
-            eventCol.appendChild(eventCard);
-            eventDiv.appendChild(eventCol);
+                eventTitle.appendChild(eventTitleText);
+                eventBody.appendChild(eventTitle);
+                eventList.appendChild(eventDate);
+                eventList.appendChild(eventStart);
+                eventList.appendChild(eventEnd);
+                eventList.appendChild(eventSession);
+                eventList.appendChild(eventPrice);
+                eventBody.appendChild(eventList);
+                eventCard.appendChild(eventImage);
+                eventCard.appendChild(eventBody);
+                eventCard.appendChild(form);
+                eventCol.appendChild(eventCard);
+                eventDiv.appendChild(eventCol);
+            })});
 
         }
+
+
 
 
         function filterEventsByArtist(){
