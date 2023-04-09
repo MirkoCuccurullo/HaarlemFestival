@@ -29,7 +29,7 @@ include __DIR__ . '/../header.php'; ?>
                             else if ($event instanceof reservation)
                                 echo "Reservation @ " . $event->restaurantName . " for " . ($event->numberOfAdults+ $event->numberOfUnder12) . " people";
                             else if ($event instanceof historyTourTimetable)
-                                echo "History tour: " . $event->dateAndDay . " : " . $event->price;
+                                echo "History tour " . $event->dateAndDay;
                             ?></h3>
                     </div>
 
@@ -50,7 +50,9 @@ include __DIR__ . '/../header.php'; ?>
                     </div>
 
                     <div class="col-3 text-center">
-                        <h3><?php echo "€" . $event->price ?></h3>
+
+                        <h3><?php
+                            echo "€" . $event->price ?></h3>
                     </div>
 
                     <div class="col-1">
@@ -66,7 +68,6 @@ include __DIR__ . '/../header.php'; ?>
                 echo "No events added yet"; ?>
         </div>
 
-
         <div class="row m-3 text-center">
             <div class="col">
                 <h1>Total</h1>
@@ -76,7 +77,6 @@ include __DIR__ . '/../header.php'; ?>
                         echo "€" . $_SESSION['order']->total_price;
                     else
                         echo "€0" ?></h1>
-
             </div>
         </div>
 

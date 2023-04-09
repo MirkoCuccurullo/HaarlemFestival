@@ -61,6 +61,11 @@ class historyEventService{
     public function getHistoryTicketById($id){
         return $this->historyEventRepository->getHistoryTicketById($id);
     }
+
+    public function getHistoryTicketByIdUsingFetchClass($id){
+        return $this->historyEventRepository->getHistoryTicketByIdUsingFetchClass($id);
+    }
+
     public function getLocationDetailById($id)
     {
         return $this->historyEventRepository->getLocationDetailById($id);

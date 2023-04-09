@@ -114,6 +114,16 @@ class historyEventRepository extends baseRepository
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    //used in shopping cart
+    public function getHistoryTicketByIdUsingFetchClass($id) {
+        $stmt = $this->connection->prepare("SELECT * FROM historytourtimetable WHERE id=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyTourTimetable');
+        $result = $stmt->fetch();
+
+        return $result;
+    }
     public function getLocationDetailById($id)
     {
         $stmt = $this->connection->prepare("SELECT * FROM historyeventdetails WHERE id=:id");

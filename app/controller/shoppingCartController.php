@@ -108,11 +108,13 @@ class shoppingCartController
             $historyEventService = new historyEventService();
             $id = htmlspecialchars($_POST['historyEventId']);
 
-            $event = $historyEventService->getHistoryTicketById($id);
-            $price = $historyEventService->getHistorySchedulePriceByID($id);
-            $dateAndDay = $historyEventService->getHistoryScheduleDateAndDayById($id);
-            $event['price'] = $price; // set the name property of the $event object
-            $event['dateAndDay'] = $dateAndDay; // set the name property of the $event object
+            $event = $historyEventService->getHistoryTicketByIdUsingFetchClass($id);
+//            $price = $historyEventService->getHistorySchedulePriceByID($id);
+//            $dateAndDay = $historyEventService->getHistoryScheduleDateAndDayById($id);
+//            $event['price'] = $event->price; // set the dateAndDay property of the $event object
+//            $event['price'] = $price; // set the dateAndDay property of the $event object
+//                var_dump($event['price']);
+//                var_dump($dateAndDay);
             $order->addEvent($event);
             $_SESSION['order'] = $order;
         }
