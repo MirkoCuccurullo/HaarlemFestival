@@ -21,18 +21,27 @@ class restaurantController
 
     public function manageSessions(): void
     {
-        require __DIR__ . '/../view/management/manageSessions.php';
+        if (isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/management/manageSessions.php';
+        else
+            header('Location: /festival/yummy');
     }
 
 
     public function manageRestaurant(): void
     {
-        require __DIR__ . '/../view/management/manageRestaurant.php';
+        if(isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/management/manageRestaurant.php';
+        else
+            header('Location: /festival/yummy');
     }
 
     public function displayFormRestaurant(): void
     {
-        require __DIR__ . '/../view/management/addRestaurant.php';
+        if (isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/management/addRestaurant.php';
+        else
+            header('Location: /festival/yummy');
     }
 
     public function addRestaurant(): void
@@ -48,19 +57,22 @@ class restaurantController
 
     public function editRestaurant(): void
     {
-        $restaurant = $this->restaurantService->getRestaurantByID($_POST['id']);
-        require __DIR__ . '/../view/management/editRestaurant.php';
+        if (isset($_POST['id'])) {
+            $restaurant = $this->restaurantService->getRestaurantByID($_POST['id']);
+            require __DIR__ . '/../view/management/editRestaurant.php';
+        } else
+            header('Location: /manage/restaurant');
     }
 
     public function updateRestaurant(): void
     {
-        if (isset($_FILES['picture'])){
+        if (isset($_FILES['picture'])) {
             $picture_name = '/images/' . $_FILES['picture']['name'];
             //upload picture to public/images
             $target_dir = __DIR__ . "/../public/images/";
             $target_file = $target_dir . basename($_FILES["picture"]["name"]);
             move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
-        }else{
+        } else {
             $picture_name = $_POST['old_pic_path'];
         }
         $this->restaurantService->updateRestaurant($_POST['id'], $_POST['name'], $_POST['description'], $_POST['address'], $_POST['cuisines'], $_POST['dietary'], $picture_name);
@@ -69,8 +81,11 @@ class restaurantController
 
     public function editSession(): void
     {
-        $session = $this->restaurantService->getSessionById($_POST['id']);
-        require __DIR__ . '/../view/management/editSession.php';
+        if (isset($_POST['id'])) {
+            $session = $this->restaurantService->getSessionById($_POST['id']);
+            require __DIR__ . '/../view/management/editSession.php';
+        } else
+            header('Location: /festival/yummy');
     }
 
     public function updateSession(): void
@@ -89,7 +104,10 @@ class restaurantController
 
     public function displayFormSession(): void
     {
-        require __DIR__ . '/../view/management/addSession.php';
+        if (isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/management/addSession.php';
+        else
+            header('Location: /festival/yummy');
     }
 
     public function displayRestaurant(): void

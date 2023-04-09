@@ -106,21 +106,21 @@ include __DIR__ . '/../header.php'; ?>
     <h1 class="about-header">Explore our instagram page!</h1>
 </div>
 
-<div id="card-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <div id="instafeed-container" style="flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 10px;">
-        <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
-<script type="text/javascript">
-    var userFeed = new Instafeed({
-        get: 'user',
-        target: "instafeed-container",
-        resolution: 'low_resolution',
-        accessToken: 'IGQVJYQUI5MlBBVF9hZA3RzWHBPQWg4NUxURERaN3V5OHNKMkRuVUg5enhrMTNsYWdNMzdrb3dwLVZAPZAFE5V2dCaFE2R3gwT0ZA2VXlzbjVzR3I4MnY4NTRPZA2FfdUVSd3M3OFQzSE54ZAlpGQVE5a2JHNwZDZD',
-        template: '<a href="{{link}}" target="_blank"><img src="{{image}}" width="400"></a>'
-    });
-    userFeed.run();
-</script>
-
-</div>
+<div id="card-container" class="text-center">
+    <br>
+    <div id="instafeed-container">
+    <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+    <script type="text/javascript">
+        var userFeed = new Instafeed({
+            get: 'user',
+            target: "instafeed-container",
+            resolution: 'low_resolution',
+            accessToken: 'IGQVJYQUI5MlBBVF9hZA3RzWHBPQWg4NUxURERaN3V5OHNKMkRuVUg5enhrMTNsYWdNMzdrb3dwLVZAPZAFE5V2dCaFE2R3gwT0ZA2VXlzbjVzR3I4MnY4NTRPZA2FfdUVSd3M3OFQzSE54ZAlpGQVE5a2JHNwZDZD',
+            template: '<a href="{{link}}" target="_blank"><img src="{{image}}" width="400"></a>'
+        });
+        userFeed.run();
+    </script>
+    </div>
 </div>
 
 

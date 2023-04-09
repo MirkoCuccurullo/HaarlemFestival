@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="Added two missing &lt;/div&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c279d976-45c6-4c09-afea-852d43f3cca0" name="Changes" comment="fixed edit reservation comment not required">
+      <change beforePath="$PROJECT_DIR$/app/controller/reservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/reservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/reservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/reservationService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/yummy/view_restaurant.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +182,7 @@
       <workItem from="1680950405142" duration="1137000" />
       <workItem from="1680882898493" duration="8712000" />
       <workItem from="1681036754304" duration="256000" />
-      <workItem from="1681067260891" duration="858000" />
+      <workItem from="1681067260891" duration="148000" />
     </task>
     <task id="LOCAL-00001" summary="Registration with Hashed password, missing 'email in use'">
       <created>1676210557441</created>
@@ -245,14 +247,7 @@
       <option name="project" value="LOCAL" />
       <updated>1681067276297</updated>
     </task>
-    <task id="LOCAL-00010" summary="Added two missing &lt;/div&gt;">
-      <created>1681067504045</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1681067504045</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,8 +284,7 @@
     <MESSAGE value="removed echo I forgot around" />
     <MESSAGE value="Showing reservation in shopping cart" />
     <MESSAGE value="fixed edit reservation comment not required" />
-    <MESSAGE value="Added two missing &lt;/div&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added two missing &lt;/div&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed edit reservation comment not required" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
