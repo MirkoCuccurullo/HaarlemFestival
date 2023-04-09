@@ -35,4 +35,15 @@ class ticketControllerAPI extends controller
         }
     }
 
+    public function getSoldDanceTickets($id)
+    {
+        try {
+            $tickets = $this->ticketService->noOfTicketsForDanceEvent($id);
+            $this->respond($tickets);
+        }
+        catch (Exception $e) {
+            $this->respondWithError(500, "Something went wrong");
+        }
+
+    }
 }

@@ -548,6 +548,13 @@ class router
                 $controller->scanTicket($id);
                 break;
 
+            case '/api/tickets/sold?id=' . $_GET['id']:
+                require_once __DIR__ . '/../api/controllers/ticketControllerAPI.php';
+                $controller = new \ticketControllerAPI();
+                $id = $_GET['id'];
+                $controller->getSoldDanceTickets($id);
+                break;
+
             case '/webhook':
                 require_once __DIR__ . '/../controller/webhookController.php';
                 $controller = new webhookController();
