@@ -117,6 +117,11 @@ padding: 1em;">
                     $date = new DateTime($session->date);
                     $start_time = new DateTime($session->startTime);
                     $end_time = new DateTime($session->endTime);
+                    if ($session->spaces == 0) {
+                        $label = $date->format('D, j F, o') . ' from ' . $start_time->format('H:i') . ' until ' . $end_time->format('H:i') . " / spaces remaining: " . $session->spaces . " - SOLD OUT";
+                        //disable button if selected
+                        $disabled = 'disabled';
+                    }    else
                     $label = $date->format('D, j F, o') . ' from ' . $start_time->format('H:i') . ' until ' . $end_time->format('H:i') . " / spaces remaining: " . $session->spaces;
                     ?>
                     <option value="<?=$value?>"><?php echo $value, " - ", $label ?></option>
@@ -128,7 +133,7 @@ padding: 1em;">
             <textarea id="comment" name="comment" rows="4" cols="40"></textarea><br>
         </div>
 
-        <button type="submit" name="addReservation" class="btn btn-primary">Submit</button>
+        <button type="submit" name="addReservation" class="btn btn-primary" <?=$disabled?>>Submit</button>
     </form>
     <br>
 </div>
