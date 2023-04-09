@@ -18,47 +18,61 @@
 <body>
 
 <div class="sticky-top">
-    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #d9d9d9">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #D9D9D9">
         <div class="container">
             <a class="navbar-brand" href="/" style="color: black">Visit Haarlem</a>
-            <button class="navbar-toggler" style="color: black" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" style="color: black;"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
                     <li class="nav-item">
                         <a class="nav-link" href="/home" style="color: black">
-                            <img class="header-icon" src="../images/home-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            <img class="header-icon" src="../../images/home-icon.svg" alt="Home"
+                                 style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                             Home
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/history" style="color: black">
-                            <img class="header-icon" src="../images/history-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            <img class="header-icon" src="../../images/history-icon.svg" alt="History"
+                                 style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                             History
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/music" style="color: black">
-                            <img class="header-icon" src="../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            <img class="header-icon" src="../../images/music-icon.svg" alt="Music"
+                                 style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                             Music
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/kids" style="color: black">
-                            <img class="header-icon" src="../images/kids-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            <img class="header-icon" src="../../images/kids-icon.svg" alt="Kids"
+                                 style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                             Kids
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/culinary" style="color: black">
+                            <img class="header-icon" src="../../images/culinary-icon.svg" alt="Culinary"
+                                 style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+                            Culinary
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: black">
-                            <img class="header-icon" src="../images/music-icon.svg" alt="Home" style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
+
+                            <img class="header-icon" src="../../images/music-icon.svg" alt="Festival"
+                                 style="width: 25px; height: 25px; margin-right: 5px; margin-bottom: 5px;">
                             Festival
                         </a>
                         <ul class="dropdown-menu">
@@ -71,20 +85,32 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="/festival/history">A Stroll Through History</a>
+                                <a class="dropdown-item" href="/history">A Stroll Through History</a>
+                            </li>
+
+                            <li <?php if(!isset($_SESSION['current_user']))
+                                echo "hidden";
+                            else if($_SESSION['current_user']->role != '2')
+                                echo "hidden";?>>
+                                <a class="dropdown-item" href="/qr">QR code checker</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown" >
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: black"> Admin Management </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" <?php if (!isset($_SESSION['current_user']))
+                            echo "hidden";
+                        else if($_SESSION['current_user']->role != '3')
+                            echo "hidden";
+                        ?> href="#" data-bs-toggle="dropdown" style="color: black"> Admin
+                            Management </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item" href="/manage/users">Users</a>
                             </li>
 
 
-                            <li> <a class="dropdown-item" href="#"> DANCE &raquo; </a>
+                            <li><a class="dropdown-item" href="#"> DANCE &raquo; </a>
                                 <ul class="submenu dropdown-menu">
                                     <li><a class="dropdown-item" href="/manage/dance/artists">Artists</a></li>
                                     <li><a class="dropdown-item" href="/manage/dance/venues">Venues</a></li>
@@ -101,7 +127,7 @@
                             </li>
 
 
-                            <li><a class="dropdown-item" href="#"> A Stroll Through History </a>
+                            <li><a class="dropdown-item" href="/historyManagement"> A Stroll Through History </a>
                             </li>
                         </ul>
                     </li>
@@ -111,11 +137,11 @@
 
                 <ul class="nav col-md-4 justify-content-end">
                     <li class="nav-item">
-                        <button id="twitter-button" class="btn btn-primary">
+                        <button id="twitter-button" class="btn btn-info">
                             <i class="fab fa-twitter"></i>Twitter
                         </button>
 
-                        <button id="facebook-button" class="btn btn-primary" >
+                        <button id="facebook-button" class="btn btn-info" >
                             <i class="fab fa-facebook-f"></i>Facebook
                         </button>
                     </li>
@@ -128,15 +154,16 @@
                         <a class="nav-link" href="/login" style="color: black" <?php if (isset($_SESSION['current_user']))
                             echo "hidden" ?>>Login</a>
                     </li>
+
                     <li class="nav-item" <?php if (!isset($_SESSION['current_user']))
                         echo "hidden" ?>>
                         <a class="nav-link" href="/manageProfile">
-                            <img src="../images/profile-menu-bar.svg" alt="Profile picture" style="width: 32px; height: 32px">
+                            <img src="../../images/profile-menu-bar.svg" alt="Profile picture" style="width: 32px; height: 32px">
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/shoppingCart">
-                            <img src="../images/shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
+                            <img src="../../images/shopping-cart.png" alt="Shopping cart" style="width: 32px; height: 32px">
                         </a>
                     </li>
                 </ul>

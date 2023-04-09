@@ -19,10 +19,6 @@ class ticketControllerAPI extends controller
 
     public function scanTicket($id)
     {
-//        $token = $this->checkForJwt();
-//        if (!$token) {
-//            return;
-//        }
         $ticket = $this->ticketService->getTicketById($id);
         if (!$ticket) {
             $this->respondWithError(404, "Ticket not found");

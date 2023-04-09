@@ -1,14 +1,18 @@
 <?php
+
 namespace Models;
+
 require_once __DIR__ . '/../model/dance.php';
+require_once __DIR__ . '/../model/accessPass.php';
+require_once __DIR__ . '/../model/reservation.php';
 //add require for history event
 class order{
     public int $id;
     public ?int $user_id;
     public int $no_of_items;
     public float $total_price;
+    public $events = array();
     public string $status;
-    public array $events = array();
     public ?string $payment_id;
 
     public function addEvent($event){
@@ -17,11 +21,13 @@ class order{
         $this->total_price += $event->price;
     }
 
-    public function removeEvent($key){
-
+    public function removeEvent($event){
         $this->no_of_items--;
-        $this->total_price -= $this->events[$key]->price;
-        unset($this->events[$key]);
+        $this->total_price -= $event->price;
+        $reversedEvents = array_reverse($this->events);
+        $key = array_search($event, $reversedEvents);
+        $lastKey = count($this->events) - $key - 1;
+        unset($this->events[$lastKey]);
         $this->events = array_values($this->events);
     }
 

@@ -3,11 +3,11 @@
 use repository\baseRepository;
 
 include_once 'baseRepository.php';
-class homePageRepository extends baseRepository
+class festivalPageRepository extends baseRepository
 {
-    public function insertHome($title, $image, $content, $prompt)
+    public function insertFestivalCard($title, $image, $content, $prompt)
     {
-        $sql = "INSERT INTO homepage(title, image, content, prompt) VALUES (:title, :image, :content, :prompt)";
+        $sql = "INSERT INTO festival_page(title, image, content, prompt) VALUES (:title, :image, :content, :prompt)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":image", $image);
@@ -16,17 +16,17 @@ class homePageRepository extends baseRepository
         return $stmt->execute();
     }
 
-    public function getAllHome()
+    public function getAllFestivalCards()
     {
-        $sql = "SELECT id, title, image, content, prompt FROM homepage";
+        $sql = "SELECT id, title, image, content, prompt FROM festival_page";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    public function updateHomePages($id, $title, $image, $content, $prompt){
-        $sql = "UPDATE homepage SET title = :title, image = :image, content = :content, prompt = :prompt WHERE id = :id";
+    public function updateFestivalCard($id, $title, $image, $content, $prompt){
+        $sql = "UPDATE festival_page SET title = :title, image = :image, content = :content, prompt = :prompt WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":image", $image);
@@ -36,10 +36,11 @@ class homePageRepository extends baseRepository
         return $stmt->execute();
     }
 
-    public function deleteHome($id){
-        $sql = "DELETE FROM homepage WHERE id = :id";
+    public function deleteFestivalCard($id){
+        $sql = "DELETE FROM festival_page WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(":id", $id);
         return $stmt->execute();
     }
+
 }

@@ -14,4 +14,6 @@ class session{
     public int $restaurantId;
     public $date;
 
+    public $spaces;
+
 }

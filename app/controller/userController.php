@@ -39,7 +39,10 @@ class userController
 
 
     public function manageAllUsers(){
-        require __DIR__ . '/../view/management/manageUsers.php';
+        if(isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/management/manageUsers.php';
+        else
+            header('location: /home');
     }
 
     public function updateProfile($id)

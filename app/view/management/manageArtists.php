@@ -14,8 +14,6 @@ include __DIR__ . '/../header.php'; ?>
             <th scope="col">Name</th>
             <th scope="col">Genre</th>
             <th scope="col">Description</th>
-            <th scope="col">To remove</th>
-            <th scope="col">To remove</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
         </tr>
@@ -41,8 +39,6 @@ include __DIR__ . '/../header.php'; ?>
                 const nameCol = document.createElement("td");
                 const emailCol = document.createElement("td");
                 const dateOfBirthCol = document.createElement("td");
-                const roleCol = document.createElement("td");
-                const regDateCol = document.createElement("td");
                 const deleteButtonCol = document.createElement("td");
                 const editButtonCol = document.createElement("td");
                 const deleteButton = document.createElement("button")
@@ -63,10 +59,8 @@ include __DIR__ . '/../header.php'; ?>
                 idInput.value = artist.id;
                 idCol.innerHTML = artist.id;
                 nameCol.innerHTML = artist.name;
-                roleCol.innerHTML = 'session';
                 emailCol.innerHTML = artist.genre;
                 dateOfBirthCol.innerHTML = artist.description;
-                regDateCol.innerHTML = 'nothing';
                 deleteButton.innerHTML = "Delete";
                 editButton.innerHTML = "Edit";
 
@@ -87,8 +81,6 @@ include __DIR__ . '/../header.php'; ?>
                 newRow.appendChild(nameCol);
                 newRow.appendChild(emailCol);
                 newRow.appendChild(dateOfBirthCol);
-                newRow.appendChild(regDateCol);
-                newRow.appendChild(roleCol);
                 newRow.appendChild(deleteButtonCol);
                 newRow.appendChild(editButtonCol);
 

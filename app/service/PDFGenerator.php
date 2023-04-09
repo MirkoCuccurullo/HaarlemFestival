@@ -5,11 +5,14 @@ require_once __DIR__ . '/../model/ticket.php';
 require_once __DIR__ . '/../model/dance.php';
 require_once __DIR__ . '/../model/accessPass.php';
 require_once __DIR__ . '/../model/user.php';
+require_once __DIR__ . '/../model/order.php';
+require_once __DIR__ . '/../model/reservation.php';
 
 require_once __DIR__ . '/../service/eventService.php';
 require_once __DIR__ . '/../service/accessPassService.php';
 require_once __DIR__ . '/../service/userService.php';
 require_once __DIR__ . '/../service/qrCodeGenerator.php';
+require_once __DIR__ . '/../service/reservationService.php';
 
 
 
@@ -40,6 +43,9 @@ class PDFGenerator
         $ticketService = new ticketService();
         $tickets = $ticketService->getTicketsByOrderId($order_id);
 
+        $reservationService = new reservationService();
+
+
         foreach ($tickets as $ticket){
 
             $qrCodeGenerator = new qrCodeGenerator();
@@ -65,6 +71,10 @@ class PDFGenerator
                 $passService = new accessPassService();
                 $event = $passService->getAccessPassById($ticket->access_pass_id);
             }
+            else if(isset($ticket->yummy_event_id))
+            {
+                $event = $reservationService->getReservationById($ticket->yummy_event_id);
+            }
 
             $html .= '
 <div class="card mb-3">
@@ -86,17 +96,29 @@ class PDFGenerator
                 $pass = $event->displayPass($eventId);
                 $html .= "<h1 class='card-title text-center'>" . $pass . "</h1>";
             }
+            else if ($event instanceof reservation)
+                $html .= "<h1 class='card-title text-center'>" . "Reservation @ " . $event->restaurantName . " for " . ($event->numberOfAdults + $event->numberOfUnder12) . " people" . "</h1>";
 
             $html .= '<ul class="fs-3 mt-5">';
             $html .= "<li>Customer: " . $user->name . "</li>";
 
             if (isset($event->date))
                 $html .= "<li>Date of event: " . $event->date . "</li>";
+            else if($event instanceof reservation)
+            {
+                $session = $reservationService->getSessionById($event->sessionId);
+                $html .= "<li>Date of event: " . $session->date . "</li>";
+            }
             else
                 $html .= "<li>Date of event: " . "N/A" . "</li>";
 
             if($event instanceof dance)
                 $html .= "<li>Start time: " . $event->start_time . "</li>";
+            else if($event instanceof reservation)
+            {
+                $session = $reservationService->getSessionById($event->sessionId);
+                $html .= "<li>Start time: " . $session->startTime . "</li>";
+            }
             else if($event instanceof accessPass)
                 $html .= "<li>Start time: " . "N/A" . "</li>";
 

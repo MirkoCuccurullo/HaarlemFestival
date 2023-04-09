@@ -6,7 +6,6 @@ use controller\qrController;
 use controller\webhookController;
 use danceController;
 use danceControllerAPI;
-use historyControllerAPI;
 use festivalController;
 use loginController;
 use orderController;
@@ -24,6 +23,20 @@ class router
     {
         error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
+            case '/shoppingCart?order=' . $_GET['order']:
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->index();
+                break;
+
+            case '/shoppingCart/quantity?action=' . $_GET['action']:
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    require_once __DIR__ . '/../controller/shoppingCartController.php';
+                    $controller = new \shoppingCartController();
+                    $controller->changeQuantity();
+                }
+                break;
+
             case '/generateToken':
                 require_once __DIR__ . '/../controller/festivalController.php';
                 $controller = new festivalController();
@@ -45,11 +58,6 @@ class router
                 $controller->index();
                 break;
 
-            case'/home/test':
-                require_once __DIR__ . '/../controller/homePageController.php';
-                $controller = new \homePageController();
-                $controller->index2();
-                break;
 
             case'/login':
                 require_once("../view/login/login.php");
@@ -66,12 +74,6 @@ class router
                 $controller = new danceControllerAPI();
                 $controller->index();
                 break;
-            case"/api/history/historyTourTimetable":
-                require("../api/controllers/historyControllerAPI.php");
-                $controller = new historyControllerAPI();
-                $controller->index();
-                break;
-
             case"/api/dance/artists":
                 require("../api/controllers/artistControllerAPI.php");
                 $controller = new \artistControllerAPI();
@@ -151,8 +153,10 @@ class router
             case'/edit/user':
                 require __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
-//                $controller->editUser();
-                $controller->editUser($_POST['id']);
+                if (isset($_POST['id']))
+                    $controller->editUser($_POST['id']);
+                else
+                    header("Location: /home");
                 break;
             case'/edit/artist':
                 require __DIR__ . '/../controller/danceController.php';
@@ -261,7 +265,10 @@ class router
             case'/manageProfile':
                 require_once __DIR__ . '/../controller/userController.php';
                 $controller = new \userController();
-                $controller->manageProfile($_SESSION['current_user_id']);
+                if (isset($_SESSION['current_user_id']))
+                    $controller->manageProfile($_SESSION['current_user_id']);
+                else
+                    header("Location: /home");
                 break;
 
             case"/dance/artist?id=" . $_GET['id']:
@@ -321,7 +328,11 @@ class router
             case'/api/homeCards':
                 require_once __DIR__ . '/../api/controllers/homePageControllerAPI.php';
                 $controller = new \homePageControllerAPI();
-                $controller->index();
+                if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
+                    $controller->deleteHome();
+
+                else if ($_SERVER['REQUEST_METHOD'] == 'GET')
+                    $controller->index();
                 break;
 
             case'/api/homeCards/update':
@@ -330,6 +341,11 @@ class router
                 $controller->updateHomePages();
                 break;
 
+            case '/shoppingCart?order=' . $_GET['order']:
+                require_once __DIR__ . '/../controller/shoppingCartController.php';
+                $controller = new \shoppingCartController();
+                $controller->index();
+                break;
             case '/shoppingCart':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
@@ -342,12 +358,22 @@ class router
                     require_once __DIR__ . '/../../vendor/autoload.php';
                     session_start();
                 }
+//                require_once __DIR__ . '/../model/dance.php';
+//                require_once __DIR__ . '/../model/order.php';
+//                require_once __DIR__ . '/../model/reservation.php';
+//                require_once __DIR__ . '/../service/eventService.php';
+//                if (session_status() === PHP_SESSION_NONE) {
+//                    require_once __DIR__ . '/../../vendor/autoload.php';
+//                    session_start();
+//                }
                 $controller->index();
                 break;
+
 
             case '/shoppingCart/add':
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
                 $controller = new \shoppingCartController();
+                $controller->addEvent();
                 $controller->addDanceEvent();
                 $reservation = $_POST['addReservation`'];
                 $controller->addReservation($reservation);
@@ -477,10 +503,10 @@ class router
                 }
                 break;
             case '/festival/dance/manageVenues':
-                    require_once __DIR__ . '/../controller/danceController.php';
-                    $controller = new \danceController();
-                    $controller->addVenue();
-                    break;
+                require_once __DIR__ . '/../controller/danceController.php';
+                $controller = new \danceController();
+                $controller->addVenue();
+                break;
             case '/api/dance/events?artist=' . $_GET['artist'] . '&date=' . $_GET['date'] . '&venue=' . $_GET['venue']:
                 require_once __DIR__ . '/../api/controllers/danceControllerAPI.php';
                 $controller = new \danceControllerAPI();
@@ -495,11 +521,11 @@ class router
                 $controller->deactivateReservation();
                 break;
             case '/api/dance/artists?id=' . $_GET['id']:
-                    require_once __DIR__ . '/../api/controllers/artistControllerAPI.php';
-                    $controller = new \artistControllerAPI();
-                    $id = $_GET['id'];
-                    $controller->getOne($id);
-                    break;
+                require_once __DIR__ . '/../api/controllers/artistControllerAPI.php';
+                $controller = new \artistControllerAPI();
+                $id = $_GET['id'];
+                $controller->getOne($id);
+                break;
             case'/api/dance/venues?id=' . $_GET['id']:
                 require_once __DIR__ . '/../api/controllers/venuesControllerAPI.php';
                 $controller = new \venuesControllerAPI();
@@ -544,15 +570,25 @@ class router
                 break;
 
             case "/restaurant":
-                if (isset($_POST['checkSpaces'])) {
-                    require_once __DIR__ . '/../controller/reservationController.php';
-                    $controller = new \reservationController();
-                    $spaces = $controller->getAvailableSpacesPerSession();
-                }
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();
                 break;
+
+            case '/api/festivalCards':
+                require_once __DIR__ . '/../api/controllers/festivalPageControllerAPI.php';
+                $controller = new \festivalPageControllerAPI();
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $controller->getAllFestivalCards();
+                } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $controller->createFestivalCard();
+                } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+                    $controller->updateFestivalCard();
+                } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+                    $controller->deleteFestivalCard();
+                }
+                break;
+
             case '/add/reservation':
                 require_once __DIR__ . '/../controller/reservationController.php';
                 $controller = new \reservationController();
@@ -561,6 +597,7 @@ class router
                     require_once __DIR__ . '/../controller/shoppingCartController.php';
                     $shoppingController = new \shoppingCartController();
                     $shoppingController->addReservation($reservation);
+                    //var_dump($reservation);
                 }
                 break;
 
@@ -606,7 +643,13 @@ class router
                 break;
 
             default:
-                echo '404';
+                if (isset($_GET['order'])) {
+                    require_once __DIR__ . '/../controller/shoppingCartController.php';
+                    $controller = new \shoppingCartController();
+                    $controller->index();
+                    break;
+                } else
+                    http_response_code(404);
         }
     }
 }
