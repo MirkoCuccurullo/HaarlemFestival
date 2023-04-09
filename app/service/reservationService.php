@@ -35,23 +35,6 @@ class reservationService
     {
         $this->reservationRepository->deactivateReservation($id);
     }
-
-    public function getAvailableSpacesPerSession(int $sessionId): int
-    {
-        $session = $this->reservationRepository->getSessionById($sessionId);
-        $reservations = $this->reservationRepository->getReservationsBySessionId($sessionId);
-
-        $spacesBooked = 0;
-        foreach ($reservations as $reservation) {
-            if ($reservation->status == "Paid") {
-                $spacesBooked += $reservation->numberOfUnder12;
-                $spacesBooked += $reservation->numberOfAdults;
-            }
-        }
-        $capacity = $session->capacity;
-        return $capacity - $spacesBooked;
-    }
-
     public function getSessionByID($sessionId)
     {
         return $this->reservationRepository->getSessionById($sessionId);

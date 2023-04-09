@@ -83,7 +83,7 @@ include __DIR__ . '/../header.php'; ?>
                 invoiceButton.className = "btn btn-primary";
                 deleteButton.className = "btn btn-danger";
                 editButton.className = "btn btn-warning";
-                deleteButton.type = "button";
+                deleteButton.type = "submit";
                 editButton.type = "submit";
 
                 //TODO for Aizaz: generate invoice from order
