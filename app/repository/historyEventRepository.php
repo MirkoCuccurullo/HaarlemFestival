@@ -164,6 +164,7 @@ class historyEventRepository extends baseRepository
         $stmt = $this->connection->prepare("SELECT price FROM historytourtimetable WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'historyTourTimetable');
         $price = $stmt->fetchColumn();
         return $price;
     }

@@ -13,8 +13,8 @@
 <br>
 <?php if(isset($ticketById))  { ?>
 <h3 class="heading" id="datendayHeading"><?php echo $ticketById['dateAndDay']?></h3> <br>
-<h3 class="heading" id="timeHeading">Time</h3> </br>
-<button id="timeBut"><?php echo $ticketById['time']?></button></br>
+<h3 class="heading" id="timeHeading">Time</h3> <br>
+<button id="timeBut"><?php echo $ticketById['time']?></button><br>
 
 <h3 class="heading" id="languageHeading">Language</h3> <br>
 <button id="languageBut"><?php echo $ticketById['language']?></button><br>
@@ -113,115 +113,12 @@
     });
 
     function updateTotalPrice() {
-        var pricePerTicket = 17.50; // This should match the price per ticket in the table
+        var pricePerTicket = 17.50;
         var quantity = document.querySelector('input[name="quantity"]').value;
         var totalPrice = pricePerTicket * quantity;
 
         document.getElementById('totalPrice').textContent = '€ ' + totalPrice.toFixed(2);
     }
-
-    loadData();
-    function loadData() {
-        fetch('http://localhost/api/history/historyTourTimetable')
-            .then(result => result.json())
-            .then((events)=>{
-                events.forEach(event => {
-                    appendTicketById(event);
-                })
-            })
-    }
-
-
-    function appendTicketById(ticketById) {
-        // Create the necessary HTML elements
-        const buttonLanguage = document.createElement("button");
-        const divTableWrapper = document.createElement("div");
-        const table1 = document.createElement("table");
-        const table2 = document.createElement("table");
-        const table3 = document.createElement("table");
-        const tbody1 = document.createElement("tbody");
-        const divTicketBox = document.createElement("div");
-        const buttonMinus = document.createElement("button");
-        const buttonPlus = document.createElement("button");
-        const inputQuantity = document.createElement("input");
-
-        // Set the necessary attributes and text content for each element
-        buttonLanguage.setAttribute("id", "languageBut");
-        buttonLanguage.textContent = ticketById.language;
-
-        divTableWrapper.setAttribute("class", "table-wrapper");
-
-        table1.innerHTML = `
-                    <thead>
-                      <tr>
-                        <th scope="col">Type</th>
-                        <th scope="col">Price</th>
-                      </tr>
-                    </thead>
-                  `;
-        tbody1.innerHTML = `
-                    <tr>
-                      <td>Single</td>
-                      <td>€ 17,50</td>
-                    </tr>
-                  `;
-        table1.appendChild(tbody1);
-
-        table2.innerHTML = `
-            <thead>
-              <tr>
-                <th scope="col">Number of Tickets</th>
-              </tr>
-            </thead>
-          `;
-
-        table3.innerHTML = `
-            <thead>
-              <tr>
-                <th scope="col">Total Price</th>
-              </tr>
-            </thead>
-          `;
-        divTicketBox.setAttribute("class", "ticket-box");
-        buttonMinus.setAttribute("class", "minus-btn");
-        buttonMinus.setAttribute("id", "minus-btn");
-        buttonMinus.setAttribute("type", "button");
-        buttonMinus.setAttribute("name", "button");
-        buttonMinus.textContent = "-";
-        inputQuantity.setAttribute("type", "text");
-        inputQuantity.setAttribute("name", "quantity");
-        inputQuantity.setAttribute("id", "quantity");
-        inputQuantity.setAttribute("value", "1");
-        buttonPlus.setAttribute("class", "plus-btn");
-        buttonPlus.setAttribute("id", "plus-btn");
-        buttonPlus.setAttribute("type", "button");
-        buttonPlus.setAttribute("name", "button");
-        buttonPlus.textContent = "+";
-
-        // Append the elements to the DOM
-        divTicketBox.appendChild(buttonMinus);
-        divTicketBox.appendChild(inputQuantity);
-        divTicketBox.appendChild(buttonPlus);
-        table2.appendChild(divTicketBox);
-        table3.appendChild(tbody1);
-        divTableWrapper.appendChild(table1);
-        divTableWrapper.appendChild(table2);
-        divTableWrapper.appendChild(table3);
-        document.getElementById("ticketById").appendChild(buttonLanguage);
-        document.getElementById("ticketById").appendChild(divTableWrapper);
-        //
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'historyEventId';
-
-        var eventButton = document.createElement('button');
-        // eventButton.className = 'btn btn-primary';
-        // eventButton.innerHTML = 'Add to cart';
-        eventButton.style = 'width: 60%; margin-left: 20%; margin-bottom: 5%;';
-        eventButton.type = 'submit';
-        eventButton.name = 'addDanceEvent';
-    }
-
 
 </script>
 </body>

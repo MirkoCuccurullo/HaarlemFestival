@@ -29,7 +29,7 @@ include __DIR__ . '/../header.php'; ?>
                             else if ($event instanceof reservation)
                                 echo "Reservation @ " . $event->restaurantName . " for " . ($event->numberOfAdults+ $event->numberOfUnder12) . " people";
                             else if ($event instanceof historyTourTimetable)
-                                echo "History tour " . $event->dateAndDay;
+                                echo "History tour "
                             ?></h3>
                     </div>
 
