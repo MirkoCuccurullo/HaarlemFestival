@@ -562,10 +562,6 @@ class router
                 break;
 
             case "/restaurant":
-                require_once __DIR__ . '/../controller/reservationController.php';
-                $controller = new \reservationController();
-                $spaces = $controller->getAvailableSpacesPerSession();
-
                 require_once __DIR__ . '/../controller/restaurantController.php';
                 $controller = new \restaurantController();
                 $controller->displayRestaurant();

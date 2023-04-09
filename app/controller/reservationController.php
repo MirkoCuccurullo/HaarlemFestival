@@ -118,9 +118,5 @@ class reservationController
         }
     }
 
-    public function getAvailableSpacesPerSession(): int
-    {
-        return $this->reservationService->getAvailableSpacesPerSession(intval($_POST['sessionId']));
-    }
 
 }

@@ -39,5 +39,7 @@ include __DIR__ . '/../header.php';
         <a href="/manage/session" class="btn btn-warning">Cancel</a>
         <button type="submit" name="addSession" class="btn btn-primary">Submit</button>
 </form>
+
+</div>
 <?php
 include __DIR__ . '/../footer.php'; ?>
