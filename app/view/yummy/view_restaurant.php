@@ -117,7 +117,7 @@ padding: 1em;">
                     $date = new DateTime($session->date);
                     $start_time = new DateTime($session->startTime);
                     $end_time = new DateTime($session->endTime);
-                    $label = $date->format('D, j F, o') . ' from ' . $start_time->format('H:i') . ' until ' . $end_time->format('H:i');
+                    $label = $date->format('D, j F, o') . ' from ' . $start_time->format('H:i') . ' until ' . $end_time->format('H:i') . " / spaces remaining: " . $session->spaces;
                     ?>
                     <option value="<?=$value?>"><?php echo $value, " - ", $label ?></option>
                 <?php } ?>
