@@ -16,8 +16,6 @@ class invoiceController {
 
     public function displayInvoice($order_id){
         $this->convertHTMLToPDF($order_id);
-        var_dump($order_id);
-//        require_once __DIR__ . '/../public/invoice.pdf';
     }
 
     public function convertHTMLToPDF($order_id){

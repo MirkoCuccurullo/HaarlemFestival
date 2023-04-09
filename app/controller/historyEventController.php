@@ -83,7 +83,7 @@ class historyEventController
             if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['update'])) {
                 $this->updateCardContent($_POST['id'], $_POST['title'], $_POST['image'], $_POST['content']);
             } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateSchedule'])) {
-                $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount']);
+                $this->updateScheduleContent($_POST['id'], $_POST['dateAndDay'], $_POST['time'], $_POST['language'], $_POST['ticketAmount'], $_POST['price']);
             } else if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['updateMainContent'])) {
                 $this->updateMainContent($_POST['id'], $_POST['mainImageHeader'], $_POST['tourCardHeader'], $_POST['tourCardParagraph'], $_POST['tourCardButtonText']);
             }
@@ -98,44 +98,43 @@ class historyEventController
             }
         }
 
-        /**
-         * @throws Exception
-         */
-        public function addCardContent($data): void
-        {
-            $this->historyEventService->addCardContent($data);
-        }
+    /**
+     * @throws Exception
+     */
+    public function addCardContent($data): void
+    {
+        $this->historyEventService->addCardContent($data);
+    }
 
-        public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount, float $price): void
-        {
-            $this->historyEventService->addScheduleContent($dateAndDay, $time, $language, $ticketAmount, $price);
-        }
+    public function addScheduleContent(string $dateAndDay, string $time, string $language, int $ticketAmount, float $price): void
+    {
+        $this->historyEventService->addScheduleContent($dateAndDay, $time, $language, $ticketAmount, $price);
+    }
 
-        // Delete methods
-        public function deleteScheduleContent($id)
-        {
-            $this->historyEventService->deleteScheduleContent($id);
-        }
+    // Delete methods
+    public function deleteScheduleContent($id)
+    {
+        $this->historyEventService->deleteScheduleContent($id);
+    }
 
-        public function deleteCardContent($id)
-        {
-            $this->historyEventService->deleteCardContent($id);
-        }
+    public function deleteCardContent($id)
+    {
+        $this->historyEventService->deleteCardContent($id);
+    }
 
-        // Update methods
-        public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price)
-        {
-            $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price);
-        }
+    // Update methods
+    public function updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price)
+    {
+        $this->historyEventService->updateScheduleContent($id, $dateAndDay, $time, $language, $ticketAmount, $price);
+    }
 
-        public function updateCardContent($id, $title, $image, $content)
-        {
-            $this->historyEventService->updateCardContent($id, $title, $image, $content);
-        }
+    public function updateCardContent($id, $title, $image, $content)
+    {
+        $this->historyEventService->updateCardContent($id, $title, $image, $content);
+    }
 
-        public function updateMainContent($id, $mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText)
-        {
-            $this->historyEventService->updateMainContent($id, $mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText);
-        }
+    public function updateMainContent($id, $mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText)
+    {
+        $this->historyEventService->updateMainContent($id, $mainImageHeader, $tourCardHeader, $tourCardParagraph, $tourCardButtonText);
     }
 }
