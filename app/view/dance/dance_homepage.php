@@ -226,7 +226,7 @@ include __DIR__ . '/../header_dance.php'; ?>
                 input.value = event.id;
                 eventButton.className = 'btn btn-primary';
                 eventButton.innerHTML = 'Add to cart';
-                if(soldTickets >= eventVenue.capacity){
+                if(parseInt(soldTickets) >= parseInt(eventVenue.capacity)){
                     eventButton.className = 'btn btn-danger';
                     eventButton.disabled = true;
                     eventButton.innerHTML = 'Sold out';

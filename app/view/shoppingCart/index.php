@@ -169,7 +169,10 @@ include __DIR__ . '/../header.php'; ?>
 
         <form action="/shoppingCart/submit" method="post">
             <div class="row m-3">
-                <button class="btn btn-primary fs-3" name="submitOrder">Continue to secure payment</button>
+                <button <?php
+                if(!isset($_SESSION['order']))
+                    echo "disabled";
+                ?> class="btn btn-primary fs-3" name="submitOrder">Continue to secure payment</button>
             </div>
         </form>
     </div>
