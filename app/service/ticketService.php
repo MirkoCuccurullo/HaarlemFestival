@@ -13,6 +13,7 @@ class ticketService{
 
     public function createTickets($order){
         $tickets = array();
+        //create tickets for each event
         foreach($order->events as $event){
             $ticket = new ticket();
             $ticket->dance_event_id = NULL;

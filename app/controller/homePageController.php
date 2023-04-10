@@ -15,6 +15,7 @@ class homePageController
 
     public function index()
     {
+        //switch between admin and user homepage depending on the role
         if (isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
             require __DIR__ . '/../view/home/admin-index.php';
         else

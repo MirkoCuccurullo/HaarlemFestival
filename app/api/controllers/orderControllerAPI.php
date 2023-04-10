@@ -6,7 +6,6 @@ class orderControllerAPI extends controller
 {
     private orderService $orderService;
 
-    // initialize services
     function __construct()
     {
         $this->orderService = new orderService();
@@ -14,10 +13,6 @@ class orderControllerAPI extends controller
 
     public function getAll()
     {
-//        $token = $this->checkForJwt();
-//        if (!$token){
-//            return;
-//        }
 
         $offset = NULL;
         $limit = NULL;
@@ -41,15 +36,14 @@ class orderControllerAPI extends controller
         if (!$token) {
             return;
         }
-        $appointment = $this->orderService->getOrder($id);
+        $order = $this->orderService->getOrder($id);
 
-        // we might need some kind of error checking that returns a 404 if the product is not found in the DB
-        if (!$appointment) {
-            $this->respondWithError(404, "Appointment not found");
+        if (!$order) {
+            $this->respondWithError(404, "Order not found");
             return;
         }
 
-        $this->respond($appointment);
+        $this->respond($order);
 
     }
 
@@ -65,37 +59,11 @@ class orderControllerAPI extends controller
 
     public function add()
     {
-//        $token = $this->checkForJwt();
-//        if (!$token) {
-//            return;
-//        }
-//        $json = file_get_contents('php://input');
-//        $data = json_decode($json);
-//        $order = new \Models\order();
-//        $order->user_id = $data['user_id'];
-//        $order->no_of_items = $data['no_of_items'];
-//        $order->total_price = $data['total_price'];
 
-        $data = $this->createObjectFromPostedJson("Models\\order");
+        $order = $this->createObjectFromPostedJson("Models\\order");
 
         $order = $this->orderService->createOrder($order);
 
         $this->respond($order);
-    }
-
-    public function update($id)
-    {
-//        $token = $this->checkForJwt();
-//        if (!$token) {
-//            return;
-//        }
-        //$data = $this->createObjectFromPostedJson("Models\\order");
-
-        $payload = file_get_contents('php://input');
-        $data = json_decode($payload,true);
-        $status = $data['metadata']['order_id'];
-        $this->orderService->updateOrderStatus($id, $status);
-        http_response_code(200);
-
     }
 }

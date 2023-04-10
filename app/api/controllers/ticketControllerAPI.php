@@ -11,7 +11,6 @@ class ticketControllerAPI extends controller
 {
     private $ticketService;
 
-    // initialize services
     function __construct()
     {
         $this->ticketService = new ticketService();

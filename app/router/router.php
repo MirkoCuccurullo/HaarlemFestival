@@ -532,10 +532,6 @@ class router
                     $controller->delete($id);
                 }
 
-                if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-                    $controller->update($id);
-                }
-
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
                 }
