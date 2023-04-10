@@ -7,6 +7,7 @@ require_once __DIR__ . '/../model/accessPass.php';
 
 class accessPassRepository extends baseRepository
 {
+    //get access pass by id
     public function getAccessPassById($id){
         $sql = "SELECT * FROM access_passes WHERE id = :id";
         $stmt = $this->connection->prepare($sql);

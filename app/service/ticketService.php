@@ -13,6 +13,7 @@ class ticketService{
 
     public function createTickets($order){
         $tickets = array();
+        //create tickets for each event
         foreach($order->events as $event){
             $ticket = new ticket();
             $ticket->dance_event_id = NULL;
@@ -57,5 +58,9 @@ class ticketService{
 
     public function scanTicket($ticket){
         return $this->ticketRepo->scanTicket($ticket);
+    }
+
+    public function noOfTicketsForDanceEvent($event_id){
+        return $this->ticketRepo->noOfTicketsForDanceEvent($event_id);
     }
 }

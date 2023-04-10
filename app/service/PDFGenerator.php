@@ -48,11 +48,13 @@ class PDFGenerator
 
         foreach ($tickets as $ticket){
 
+            //create qr code for ticket
             $qrCodeGenerator = new qrCodeGenerator();
             $dataUri = $qrCodeGenerator->generateQrCode($ticket);
 
             $event = null;
 
+            //get information about the event
             if(isset($ticket->dance_event_id))
             {
                 $eventService = new eventService();
@@ -89,6 +91,7 @@ class PDFGenerator
             <div class="card-body">';
 
 
+            //display relevant information about the event
             if($event instanceof dance)
                 $html .= "<h1 class='card-title text-center'>" . $event->artist_name . " @ " . $event->venue_name . "</h1>";
             else if($event instanceof accessPass) {
@@ -133,16 +136,15 @@ class PDFGenerator
 </html>';
         }
 
-// Load HTML content
         $dompdf->loadHtml($html);
 
 
-// (Optional) Set up the paper size and orientation
         $dompdf->setPaper('A4', 'landscape');
 
-// Render the HTML as PDF
         $dompdf->render();
         $pdf_content = $dompdf->output();
+
+        //create pdf file
         $file_name = "tickets_" . $order_id . ".pdf";
         file_put_contents($file_name, $pdf_content);
 

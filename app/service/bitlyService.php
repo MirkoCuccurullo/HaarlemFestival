@@ -4,6 +4,7 @@ class BitlyService
 {
     public function shortenURL($url)
     {
+        //shorten url with bitly api
         $apiUrl = 'https://api-ssl.bitly.com/v4/shorten';
         $accessToken = '85c0dc1d4cf8146f5c51211d8ab185fedb6aa234';
         $curl = curl_init();

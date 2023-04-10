@@ -27,9 +27,12 @@ class ticketRepository extends \repository\baseRepository{
 
         public function insertTicket($ticket){
             $sql = "INSERT INTO tickets (quantity, price, ";
+
+            //update query with event type
             $sql .= $this->updateQueryWithEventType($ticket);
             $sql .= "status, order_id, user_id, vat_id) VALUES (:quantity, :price, ";
 
+            //update query with values
             $sql .= $this->updateQueryWithValues($ticket);
 
             $sql .= ":status, :order_id, :user_id, :vat_id)";
@@ -38,6 +41,7 @@ class ticketRepository extends \repository\baseRepository{
             $stmt->bindParam(':quantity', $ticket->quantity);
             $stmt->bindParam(':price', $ticket->price);
 
+            //update query with bind params
             $this->updateQueryWithBindParams($stmt, $ticket);
 
             $stmt->bindParam(':status', $ticket->status);
@@ -45,22 +49,6 @@ class ticketRepository extends \repository\baseRepository{
             $stmt->bindParam(':user_id', $ticket->user_id);
             $stmt->bindParam(':vat_id', $ticket->vat_id);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result;
-        }
-
-        public function updateTicket($ticket){
-            $sql = "UPDATE tickets SET name = :name, description = :description, price = :price, date = :date, location = :location, picture = :picture, category = :category, seller = :seller WHERE id = :id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->execute(['name' => $ticket->name, 'description' => $ticket->description, 'price' => $ticket->price, 'date' => $ticket->date, 'location' => $ticket->location, 'picture' => $ticket->picture, 'category' => $ticket->category, 'seller' => $ticket->seller, 'id' => $ticket->id]);
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result;
-        }
-
-        public function deleteTicket($id){
-            $sql = "DELETE FROM tickets WHERE id = :id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->execute(['id' => $id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
         }
@@ -73,9 +61,16 @@ class ticketRepository extends \repository\baseRepository{
             $sql = "UPDATE tickets SET status = 'Scanned' WHERE id = :id";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute(['id' => $ticket->id]);
-//            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-//            return $result;
             return true;
+        }
+
+        //get all sold tickets for a specific dance event
+        public function noOfTicketsForDanceEvent($event_id){
+            $sql = "SELECT COUNT(*) AS ticket_count FROM tickets WHERE dance_event_id = :event_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute(['event_id' => $event_id]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['ticket_count'];
         }
 
         public function updateQueryWithEventType($ticket){

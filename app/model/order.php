@@ -5,23 +5,30 @@ namespace Models;
 require_once __DIR__ . '/../model/dance.php';
 require_once __DIR__ . '/../model/accessPass.php';
 require_once __DIR__ . '/../model/reservation.php';
-//add require for history event
-class order{
+require_once __DIR__ . '/../service/ticketService.php';
+require_once __DIR__ . '/../service/eventService.php';
+
+class order
+{
     public int $id;
     public ?int $user_id;
     public int $no_of_items;
     public float $total_price;
+    //events array contains all the events in the order
     public $events = array();
     public string $status;
     public ?string $payment_id;
 
-    public function addEvent($event){
+    public function addEvent($event)
+    {
         $this->events[] = $event;
         $this->no_of_items++;
         $this->total_price += $event->price;
     }
 
-    public function removeEvent($event){
+    public function removeEvent($event)
+    {
+        //remove last occurrence of event from events array, so shopping cart doesn't change the order of events
         $this->no_of_items--;
         $this->total_price -= $event->price;
         $reversedEvents = array_reverse($this->events);
@@ -31,89 +38,50 @@ class order{
         $this->events = array_values($this->events);
     }
 
-
-
-    //properties
-
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function removeEventByType($event)
     {
-        return $this->id;
+        //remove all occurrences of event from events array
+        foreach ($this->events as $key => $value) {
+            if ($value == $event) {
+                $this->removeEvent($value);
+            }
+        }
+        $this->events = array_values($this->events);
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function countForEvent($event)
     {
-        $this->id = $id;
+        //count all occurrences of event in events array
+        $count = 0;
+        foreach ($this->events as $e) {
+            if ($e == $event) {
+                $count++;
+            }
+        }
+        return $count;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getUserId(): ?int
+    public function priceForEvent($event)
     {
-        return $this->user_id;
+        //sum all occurrences of event in events array
+        $price = 0;
+        foreach ($this->events as $e) {
+            if ($e == $event) {
+                $price += $e->price;
+            }
+        }
+        return $price;
     }
 
-    /**
-     * @param int|null $user_id
-     */
-    public function setUserId(?int $user_id): void
+    public function getUniqueEvents()
     {
-        $this->user_id = $user_id;
+        //return array of unique events to display in shopping cart
+        $uniqueEvents = array();
+        foreach ($this->events as $event) {
+            if (!in_array($event, $uniqueEvents)) {
+                $uniqueEvents[] = $event;
+            }
+        }
+        return $uniqueEvents;
     }
-
-    /**
-     * @return int
-     */
-    public function getNoOfItems(): int
-    {
-        return $this->no_of_items;
-    }
-
-    /**
-     * @param int $no_of_items
-     */
-    public function setNoOfItems(int $no_of_items): void
-    {
-        $this->no_of_items = $no_of_items;
-    }
-
-    /**
-     * @return float
-     */
-    public function getTotalPrice(): float
-    {
-        return $this->total_price;
-    }
-
-    /**
-     * @param float $total_price
-     */
-    public function setTotalPrice(float $total_price): void
-    {
-        $this->total_price = $total_price;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPaymentId(): ?string
-    {
-        return $this->payment_id;
-    }
-
-    /**
-     * @param string|null $payment_id
-     */
-    public function setPaymentId(?string $payment_id): void
-    {
-        $this->payment_id = $payment_id;
-    }
-
-
 }

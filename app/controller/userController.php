@@ -51,12 +51,16 @@ class userController
             $name = htmlspecialchars($_POST['profileName']);
             $email = htmlspecialchars($_POST['email']);
 
+            //update user profile and send confirmation email
             $this->userService->updateUser($id, $name, $email);
             $_SESSION['current_user_email'] = $email;
             header('location: /home');
             $message = "Hello " . $name . ", your profile changes have been applied. ";
             $this->smtpServer->sendEmail($email, $name, $message, "Profile changes");
+
         } else if (isset($_POST['editPassword'])) {
+
+            //change password from profile page
             $_SESSION['err_msg'] = "";
             $hashedPassword = $_SESSION['current_user_password'];
             $currentPassword = htmlspecialchars($_POST['currentPassword']);
@@ -100,6 +104,7 @@ class userController
     public function resetPassword()
     {
 
+        //reset password from the reset link
         if (isset($_POST['resetPassword'])) {
             $id = $_SESSION['current_user_id'];
             $password = htmlspecialchars($_POST['password']);

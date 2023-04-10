@@ -12,7 +12,6 @@ class MollieService
 
   public function pay($order, $tickets){
       try {
-          $method = $this->mollie->methods->get(\Mollie\Api\Types\PaymentMethod::IDEAL, ["include" => "issuers"]);
           $orderId = $order->id;
           $user_id = $order->user_id;
 
@@ -23,22 +22,19 @@ class MollieService
                   "value" => $order->total_price . ".00",
               ],
               "description" => "Order #{$orderId}",
-              //"description" => "Amount to pay for the order",
+              //redirect to confirmation page
               "redirectUrl" => "http://localhost/shoppingCart/confirmation?order_id={$orderId}" ,
-              "webhookUrl" => "https://e253-31-151-65-113.ngrok-free.app/webhook",
+              //redirect to webhook
+              "webhookUrl" => "https://f442-31-151-65-113.ngrok-free.app/webhook",
               "method" => \Mollie\Api\Types\PaymentMethod::IDEAL,
               "issuer" => !empty($_POST["issuer"]) ? $_POST["issuer"] : null,
               "metadata" => [
+                  //send order id, user id, and tickets to webhook
                   "order_id" => $orderId,
                   "user_id" => $user_id,
                   "tickets" => $tickets,
               ],
-              //"issuer"      => "ideal_INGBNL2A", // e.g. "ideal_INGBNbL2A"
           ]);
-
-          //store payment id in the order table
-
-          //$_SESSION['payment_id'] = $payment->id;
 
           header("Location: " . $payment->getCheckoutUrl(), true, 303);
       }
@@ -47,36 +43,12 @@ class MollieService
         }
   }
 
-  public function isPaid($payment_id){
-      $payment = $this->mollie->payments->get($payment_id);
-      if($payment->isPaid()){
-          return true;
-      }
-      return false;
-  }
-
-  public function getAllPayments(){
-      return $this->mollie->payments->page();
-  }
-
   public function getPayment($payment_id){
       try {
           return $this->mollie->payments->get($payment_id);
       } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
       }
-  }
-
-  public function getPaymentStatus($payment_id){
-      $payment_status = null;
-      try {
-          $payment = $this->mollie->payments->get($payment_id);
-          $payment_status = $payment->status;
-      }
-        catch (\Mollie\Api\Exceptions\ApiException $e) {
-            echo "API call failed: " . htmlspecialchars($e->getMessage());
-        }
-        return $payment_status;
   }
 
 }

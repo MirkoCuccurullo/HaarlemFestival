@@ -527,10 +527,6 @@ class router
                     $controller->delete($id);
                 }
 
-                if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-                    $controller->update($id);
-                }
-
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
                 }
@@ -541,6 +537,13 @@ class router
                 $controller = new \ticketControllerAPI();
                 $id = $_GET['id'];
                 $controller->scanTicket($id);
+                break;
+
+            case '/api/tickets/sold?id=' . $_GET['id']:
+                require_once __DIR__ . '/../api/controllers/ticketControllerAPI.php';
+                $controller = new \ticketControllerAPI();
+                $id = $_GET['id'];
+                $controller->getSoldDanceTickets($id);
                 break;
 
             case '/webhook':

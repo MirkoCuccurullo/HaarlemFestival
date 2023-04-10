@@ -2,17 +2,20 @@
 
 class festivalController
 {
-public function homepage(){
-    if (isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
-        require __DIR__ . '/../view/festival/admin_festival_homepage.php';
-    else
-        require"../view/festival/festival_homepage.php";
-}
+    public function homepage()
+    {
+        //switch between admin and user homepage depending on the role
+        if (isset($_SESSION['current_user']) && $_SESSION['current_user']->role == '3')
+            require __DIR__ . '/../view/festival/admin_festival_homepage.php';
+        else
+            require "../view/festival/festival_homepage.php";
+    }
 
-public function tokenPage(){
-    require"../view/management/getTokenPage.php";
+    public function tokenPage()
+    {
+        require "../view/management/getTokenPage.php";
 
-}
+    }
 
     public function generateToken()
     {

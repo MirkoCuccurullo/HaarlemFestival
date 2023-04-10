@@ -5,7 +5,6 @@ class venuesControllerAPI
 {
     private $eventService;
 
-    // initialize services
     function __construct()
     {
         $this->eventService = new eventService();
@@ -17,14 +16,11 @@ class venuesControllerAPI
         header('Access-Control-Allow-Headers: *');
         header('Access-Control-Allow-Methods: *');
 
-        // Respond to a GET request to /api/article
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-            // your code here
             $cards = $this->eventService->getVenues();
             header('Content-Type: application/json');
             echo json_encode($cards);
-            // return all articles in the database as JSON
 
         }
 
@@ -34,7 +30,6 @@ class venuesControllerAPI
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // your code here
             $body = file_get_contents('php://input');
             $obj = json_decode($body);
             $this->eventService->deleteVenue($obj->id);
@@ -45,15 +40,11 @@ class venuesControllerAPI
         header('Access-Control-Allow-Headers: *');
         header('Access-Control-Allow-Methods: *');
 
-        // Respond to a GET request to /api/article
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-            // your code here
             $cards = $this->eventService->getVenueByID($id);
             header('Content-Type: application/json');
             echo json_encode($cards);
-            // return all articles in the database as JSON
-
         }
 
     }
