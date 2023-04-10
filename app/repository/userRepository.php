@@ -9,7 +9,6 @@ class userRepository extends baseRepository
 
     public function getUser($id)
     {
-
         $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(['id' => $id]);
@@ -71,14 +70,15 @@ class userRepository extends baseRepository
 
     public function getUserByEmail(string $email)
     {
-        //change star to field names once we know what they are
         $sql = "SELECT id, email, password, picture, registration_date, role, date_of_birth, name FROM users WHERE email = :email";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([':email' => $email]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
         $result = $stmt->fetch();
+
         return $result;
     }
+
 
 
     public function resetUserPassword($id, $newPassword)

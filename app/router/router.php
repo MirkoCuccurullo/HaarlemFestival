@@ -220,19 +220,6 @@ class router
                 $controller->sendResetLink();
                 break;
 
-//            case '/manage/orders':
-//                require __DIR__ . '/../controller/invoiceController.php';
-//                $controller = new \invoiceController();
-//                $order_id = $_POST['order_id'];
-//                $controller->displayInvoice($order_id);
-//                break;
-            case '/invoice/download':
-                require __DIR__ . '/../controller/invoiceController.php';
-                $controller = new \invoiceController();
-                $order_id = $_POST['order_id'];
-                $controller->convertHTMLToPDF($order_id);
-                break;
-
             case '/history':
                 require __DIR__ . '/../controller/historyEventController.php';
                 $controller = new \historyEventController();
@@ -614,7 +601,7 @@ class router
                 require __DIR__ . '/../controller/invoiceController.php';
                 $invoiceController = new invoiceController();
                 $order_id = $_POST['order_id'];
-                $invoiceController->displayInvoice($order_id);
+                $invoiceController->convertHTMLToPDF($order_id);
                 break;
             case 'edit/order':
             case '/edit/order':

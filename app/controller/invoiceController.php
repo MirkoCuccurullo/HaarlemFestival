@@ -14,10 +14,6 @@ class invoiceController {
         $this->invoiceService = new invoiceService();
     }
 
-    public function displayInvoice($order_id){
-        $this->convertHTMLToPDF($order_id);
-    }
-
     public function convertHTMLToPDF($order_id){
         $this->invoiceService->convertHTMLToPDF($order_id);
     }

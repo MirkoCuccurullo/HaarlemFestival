@@ -74,7 +74,6 @@ include __DIR__ . '/../header.php'; ?>
                 editForm.action = '/edit/order';
                 editForm.method = "POST";
                 //Set the action and method for the invoice button
-                // invoiceForm.action = '/invoice';
                 invoiceForm.method = "POST";
                 idInput3.type = "hidden";
                 idInput3.value = order.id;

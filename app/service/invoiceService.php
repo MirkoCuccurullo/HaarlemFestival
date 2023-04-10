@@ -16,45 +16,21 @@ class invoiceService
         $this->invoiceRepository = new InvoiceRepository();
     }
 
-    public function getAllInformationForInvoice(){
-        return $this->invoiceRepository->getAllInformationForInvoice();
-    }
-
-    public function downloadInvoice(array $invoiceInfo)
-    {
-        if (!empty($_GET['downloadInvoice'])) {
-            $fileName = basename($_GET['downloadInvoice']);
-            //$filePath = "/HaarlemFestival/app/view/invoice/invoice_pdf/" . $fileName;
-            $filePath = "destination/" . $fileName;
-
-            if (!empty($fileName) && file_exists($filePath)) {
-                header('Cache-Control: public');
-                header('Content-Description: File Transfer');
-                header('Content-Disposition: attachment; filename=$fileName');
-                header('Content-Type: application/zip');
-                header('Content-Transfer-Encoding: binary');
-
-                readfile($filePath);
-                exit;
-            } else {
-                echo "File does not exist";
-            }
-        }
-    }
-
-    public function loadHTMLToPDF($html){
+    public function loadHTMLToPDF($html, $order_id){
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'landscape');
+        ob_end_clean();
         $dompdf->render();
         $pdf_content = $dompdf->output();
-        $file_name = "invoice.pdf";
+        $file_name = "invoice_" . $order_id . ".pdf";
         file_put_contents($file_name, $pdf_content);
     }
 
-    public function convertHTMLToPDF($order_id){
+    public function convertHTMLToPDF($order_id) {
         $invoiceRepository = new invoiceRepository();
         $orderRepository = new orderRepository();
+        //get order by Id
         $order = $orderRepository->getOrder($order_id);
         $user = $invoiceRepository->getUserByOrderId($order_id);
         $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
@@ -99,9 +75,9 @@ class invoiceService
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Invoice Date:</strong><br>
-                                '.$invoice->invoiceDate.'<br><br>
+                                '.$invoice[0]->invoiceDate.'<br><br>
                                 <strong>Payment Date:</strong><br>
-                                '.$invoice->paymentDate.'<br><br>
+                                '.$invoice[0]->paymentDate.'<br><br>
                             </address>
                         </div>
                     </div>
@@ -137,20 +113,20 @@ class invoiceService
                                         <td class="thick-line"></td>
                                         <td class="thick-line text-center"><strong>Subtotal</strong></td>
                                         <td class="thick-line text-right">
-                                        '.$invoice->subTotalAmount.'
+                                        '.$invoice[0]->subTotalAmount.'
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>VAT</strong></td>
-                                        <td class="no-line text-right">'.$invoice->VAT.'</td>
+                                        <td class="no-line text-right">'.$invoice[0]->VAT.'</td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line text-right">'.$invoice->totalAmount.'</td>
+                                        <td class="no-line text-right">'.$invoice[0]->totalAmount.'</td>
                                     </tr>
                                     </tbody>
                                 </table>

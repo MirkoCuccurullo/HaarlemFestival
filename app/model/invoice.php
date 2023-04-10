@@ -1,7 +1,6 @@
 <?php
 
 class invoice {
-
     public string $clientName; //client name = username
     public int $invoiceNumber; //invoice number = order number
     public string $invoiceDate; //invoice date = order date
@@ -11,6 +10,9 @@ class invoice {
     public float $totalAmount; //total amount = subtotal amount + VAT
     public int $VAT; //VAT = 21% or 9% of subtotal amount
     public string $paymentDate;
+
+    public string $userName;
+    // Add any other properties you need here
 
     /**
      * @return string
@@ -146,7 +148,6 @@ class invoice {
     {
         $this->paymentDate = $paymentDate;
     }
-
 
 
 }

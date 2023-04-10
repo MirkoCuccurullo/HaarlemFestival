@@ -11,7 +11,6 @@
 
 <body>
 <br>
-<?php if(isset($ticketById))  { ?>
 <h3 class="heading" id="datendayHeading"><?php echo $ticketById['dateAndDay']?></h3> <br>
 <h3 class="heading" id="timeHeading">Time</h3> <br>
 <button id="timeBut"><?php echo $ticketById['time']?></button><br>
@@ -19,8 +18,6 @@
 <h3 class="heading" id="languageHeading">Language</h3> <br>
 <button id="languageBut"><?php echo $ticketById['language']?></button><br>
 <h3 class="heading" id="noOfTicketsSelectedHeading">Select number of tickets</h3>
-<?php } ?>
-
 
 <div class="table-wrapper">
     <table>

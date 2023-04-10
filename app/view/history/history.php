@@ -12,12 +12,12 @@
 <body>
 <div class="image-container">
     <img id="mainImg" alt="main image" src="/images/stbavokerk.jpg">
-    <h1 class="img-txt"><?php if(isset($content[0]->mainImageHeader)) echo $content[0]->mainImageHeader?></h1>
+    <h1 class="img-txt"><?php echo $content[0]->mainImageHeader?></h1>
     <div class="tour-card">
         <div class="card-body">
-            <h5 class="card-title"><?php if(isset($content[0]->tourCardHeader)) echo $content[0]->tourCardHeader?></h5>
-            <p class="card-text"> <?php if(isset($content[0]->tourCardParagraph)) echo $content[0]->tourCardParagraph?></p>
-            <a href="#schedule" class="btn"><?php if(isset($content[0]->tourCardButtonText)) echo $content[0]->tourCardButtonText?></a>
+            <h5 class="card-title"><?php echo $content[0]->tourCardHeader?></h5>
+            <p class="card-text"> <?php echo $content[0]->tourCardParagraph?></p>
+            <a href="#schedule" class="btn"><?php echo $content[0]->tourCardButtonText?></a>
         </div>
     </div>
 </div>
@@ -59,14 +59,14 @@ if (isset($historyTourTimetable)) {
             <thead>
             <tr>
                 <th scope="col">Time</th>
-                <th scope="col"><?php if(isset($language)) echo $language?></th>
+                <th scope="col"><?php echo $language?></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <th scope="row"><?php if(isset($time)) echo $time?></th>
                 <form action="historyCart" method="POST" >
-                    <td><button id="tickbut" name="id" value="<?= $timetable['id'];?>"><?php if(isset($ticketAmount)) echo $ticketAmount?> tickets available</button></td>
+                    <td><button id="tickbut" name="id" value="<?= $timetable['id'];?>"><?php echo $ticketAmount?> tickets available</button></td>
                 </form>
             </tr>
             </tbody>

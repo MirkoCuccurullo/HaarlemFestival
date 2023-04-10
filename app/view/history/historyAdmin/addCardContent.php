@@ -27,7 +27,7 @@
             <input type="text" class="form-control" id="content" name="content" placeholder="Content" required>
         </div>
         <button type="submit" class="btn btn-primary" id="submit" value="submit" name="submit" style="margin-top: 20px;">Add</button>
-        <div class="error"> <?php if (isset($addError)){ ?> <span id="error-msg"> <?=$addError?> </span> <?php } ?> </div>
+        <div class="error"> <span id="error-msg"> <?= $addError?> </span> </div>
     </form>
 </div>
 <script>
