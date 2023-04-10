@@ -14,6 +14,7 @@ class order
     public ?int $user_id;
     public int $no_of_items;
     public float $total_price;
+    //events array contains all the events in the order
     public $events = array();
     public string $status;
     public ?string $payment_id;
@@ -27,6 +28,7 @@ class order
 
     public function removeEvent($event)
     {
+        //remove last occurrence of event from events array, so shopping cart doesn't change the order of events
         $this->no_of_items--;
         $this->total_price -= $event->price;
         $reversedEvents = array_reverse($this->events);
@@ -38,6 +40,7 @@ class order
 
     public function removeEventByType($event)
     {
+        //remove all occurrences of event from events array
         foreach ($this->events as $key => $value) {
             if ($value == $event) {
                 $this->removeEvent($value);
@@ -48,6 +51,7 @@ class order
 
     public function countForEvent($event)
     {
+        //count all occurrences of event in events array
         $count = 0;
         foreach ($this->events as $e) {
             if ($e == $event) {
@@ -59,6 +63,7 @@ class order
 
     public function priceForEvent($event)
     {
+        //sum all occurrences of event in events array
         $price = 0;
         foreach ($this->events as $e) {
             if ($e == $event) {
@@ -70,6 +75,7 @@ class order
 
     public function getUniqueEvents()
     {
+        //return array of unique events to display in shopping cart
         $uniqueEvents = array();
         foreach ($this->events as $event) {
             if (!in_array($event, $uniqueEvents)) {
@@ -77,20 +83,5 @@ class order
             }
         }
         return $uniqueEvents;
-    }
-
-    public function ticketsSoldForDanceEvent($event_id)
-    {
-        $ticketService = new \ticketService();
-        $ticketsSold = $ticketService->noOfTicketsForDanceEvent($event_id);
-        return $ticketsSold;
-    }
-
-    public function capacityForDanceEvent($event)
-    {
-        $eventService = new \eventService();
-        $venue = $eventService->getVenueById($event->location);
-        $capacity = intval($venue->capacity);
-        return $capacity;
     }
 }

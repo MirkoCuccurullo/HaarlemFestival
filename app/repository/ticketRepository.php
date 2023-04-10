@@ -27,9 +27,12 @@ class ticketRepository extends \repository\baseRepository{
 
         public function insertTicket($ticket){
             $sql = "INSERT INTO tickets (quantity, price, ";
+
+            //update query with event type
             $sql .= $this->updateQueryWithEventType($ticket);
             $sql .= "status, order_id, user_id, vat_id) VALUES (:quantity, :price, ";
 
+            //update query with values
             $sql .= $this->updateQueryWithValues($ticket);
 
             $sql .= ":status, :order_id, :user_id, :vat_id)";
@@ -38,6 +41,7 @@ class ticketRepository extends \repository\baseRepository{
             $stmt->bindParam(':quantity', $ticket->quantity);
             $stmt->bindParam(':price', $ticket->price);
 
+            //update query with bind params
             $this->updateQueryWithBindParams($stmt, $ticket);
 
             $stmt->bindParam(':status', $ticket->status);
@@ -60,6 +64,7 @@ class ticketRepository extends \repository\baseRepository{
             return true;
         }
 
+        //get all sold tickets for a specific dance event
         public function noOfTicketsForDanceEvent($event_id){
             $sql = "SELECT COUNT(*) AS ticket_count FROM tickets WHERE dance_event_id = :event_id";
             $stmt = $this->connection->prepare($sql);

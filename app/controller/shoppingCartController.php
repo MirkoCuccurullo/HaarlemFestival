@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../model/order.php';
 require_once __DIR__ . '/../model/ticket.php';
-
 require_once __DIR__ . '/../service/eventService.php';
 require_once __DIR__ . '/../service/historyEventService.php';
 require_once __DIR__ . '/../service/orderService.php';
@@ -21,20 +20,24 @@ class shoppingCartController
 {
     public function index()
     {
+        //link shortener service
         $bitlyService = new BitlyService();
+
+        //order shared between users
         if(isset($_GET['order']) )
         {
+            //get order from url and set it to session
             $encodedOrder = $_GET['order'];
             $serializedOrder = json_decode(urldecode($encodedOrder), true);
             $order = unserialize($serializedOrder);
             $_SESSION['order'] = $order;
-            //echo json_encode($_SESSION['order']);
         }
         require_once __DIR__ . '/../view/shoppingCart/index.php';
     }
 
     public function addEvent()
     {
+        //check if order is already in session
         if (isset($_SESSION['order'])) {
             $order = $_SESSION['order'];
         } else {
@@ -52,6 +55,7 @@ class shoppingCartController
         $event = null;
         if(isset($_POST['addDanceEvent']))
         {
+            //get dance event from database
             $eventService = new EventService();
             $id = htmlspecialchars($_POST['danceEventId']);
             $event = $eventService->getEventByID($id);
@@ -60,10 +64,9 @@ class shoppingCartController
             $venue = $eventService->getVenueByID($event->location);
             $event->venue_name = $venue->name;
         }
-        else if(isset($_POST['addReservation'])) {
-            //$event = $reservation;
-        }
+
         else if(isset($_POST['addAccessPass'])) {
+            //get access pass from database
             $accessPassService = new AccessPassService();
             $id = htmlspecialchars($_POST['accessPassId']);
             $event = $accessPassService->getAccessPassByID($id);
@@ -128,14 +131,19 @@ class shoppingCartController
     public function removeEvent()
     {
         if (isset($_POST['remove_item_key'])) {
+            //shopping cart uses an array of unique events
             $key = $_POST['remove_item_key'];
             $uniqueEvents = $_SESSION['order']->getUniqueEvents();
+
+            //get which type of event to remove
             $event = $uniqueEvents[$key];
             if($event instanceof reservation)
             {
+                //if event is a reservation, deactivate it
                 $reservationService = new ReservationService();
                 $reservationService->deactivateReservation($event->id);
             }
+            //remove all events of that type from the order
             $_SESSION['order']->removeEventByType($event);
         }
         header('Location: /shoppingCart');
@@ -143,6 +151,7 @@ class shoppingCartController
 
     public function submitOrder()
     {
+        //if user is not logged in, redirect to login page
         if (!isset($_SESSION['current_user_id'])) {
             $router = new Router();
             $router->route('/login');
@@ -151,16 +160,20 @@ class shoppingCartController
 
                 $order = $_SESSION['order'];
 
+                //create order in database
                 $orderService = new OrderService();
                 $order_id = $orderService->createOrder($order);
                 $order->id = $order_id;
 
+                //create tickets from order
                 $ticketService = new TicketService();
                 $tickets = $ticketService->createTickets($order);
 
+                //go to payment page
                 $mollieService = new MollieService();
                 $mollieService->pay($order, $tickets);
 
+                //remove order from session
                 unset($_SESSION['order']);
             }
         }
@@ -168,6 +181,7 @@ class shoppingCartController
 
     public function confirmation($order_id)
     {
+        //display order confirmation page
         $orderService = new orderService();
         $order = $orderService->getOrder($order_id);
         $status = $order->status;
@@ -178,6 +192,7 @@ class shoppingCartController
     {
         if(isset($_GET['action'])) {
             $action = $_GET['action'];
+            //increase or decrease quantity of event in order
             if($action == 'add') {
                 $data = json_decode(file_get_contents('php://input'), true);
                 $event = unserialize($data['event']);

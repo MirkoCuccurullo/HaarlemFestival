@@ -18,9 +18,10 @@ class qrCodeGenerator
 
         $writer = new PngWriter();
 
+        //create url for qr code
         $url = "http://localhost/api/tickets/scan?id=" . $ticket->id;
 
-        // Create QR code
+        //create qr code for ticket
         $qrCode = QrCode::create($url)
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
@@ -30,20 +31,15 @@ class qrCodeGenerator
             ->setForegroundColor(new Color(0, 0, 0))
             ->setBackgroundColor(new Color(255, 255, 255));
 
-        // Create generic logo
-//        $logo = Logo::create(__DIR__. '/../public/doge.jpg')
-//            ->setResizeToWidth(50);
+
         $logo = NULL;
 
-        // Create generic label
         $label = Label::create('Scan me')
             ->setTextColor(new Color(255, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);
 
-        // Validate the result
-        //$writer->validateResult($result, 'Life is too short to be generating QR codes');
+        //return data uri
         return $result->getDataUri();
-        //return $result;
     }
 }
