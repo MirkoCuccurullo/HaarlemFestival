@@ -36,16 +36,17 @@ include __DIR__ . '/../header.php'; ?>
             as $key => $event) {
             ?>
                 <div class="col-1 mb-3">
+                    <img src="../images/<?php
                     //display event icon
-                    <img src="../images/<?php if ($event instanceof accessPass || $event instanceof dance)
+                    if ($event instanceof accessPass || $event instanceof dance)
                         echo "order-dance-event.svg";
                     else if ($event instanceof reservation)
                         echo "order-yummy-event.svg" ?>" alt="icon" style="width: 50px; height: 50px">
                 </div>
 
                 <div class="col-6">
-                    //display event name
                     <h3><?php
+                        //display event name
                         if ($event instanceof dance)
                             echo $event->artist_name . " @ " . $event->venue_name;
                         else if ($event instanceof accessPass)
