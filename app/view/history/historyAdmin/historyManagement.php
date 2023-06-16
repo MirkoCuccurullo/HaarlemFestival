@@ -72,47 +72,47 @@
         </button>
     </div>
 
-    <div class="table-container" style="height: 400px; overflow-y: scroll;">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Day and Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Language</th>
-                <th scope="col">Ticket Amount</th>
-                <th scope="col">Price (€) per ticket</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-            </thead>
-            <tbody id="mytable">
-            <?php foreach ($historyTourTimetable as $timetable) {?>
+        <div class="table-container" style="height: 400px; overflow-y: scroll;">
+            <table class="table">
+                <thead>
                 <tr>
-                    <form action="/historyManagement" method="POST">
-                        <input type="hidden" name="id" value="<?= $timetable['id'] ?>">
-                        <td name="id"> <?= $timetable['id'] ?></td>
-                        <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $timetable['dateAndDay']; ?>"></td>
-                        <td name="time"> <input type="text" name="time" value="<?= $timetable['time']; ?>"></td>
-                        <td name="language"> <input type="text" name="language" value="<?= $timetable['language']; ?>"></td>
-                        <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $timetable['ticketAmount']; ?>"></td>
-                        <td name="price"><input type="text" name="price" value="<?= $timetable['price']; ?>"></td>
-                        <td>
-                            <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
-                        </td>
-                    </form>
-                    <td>
-                        <form action="/historyManagement" method="POST">
-                            <input type="hidden" name="tableId" value="<?php echo $timetable['id'] ?>">
-                            <button type="submit" name="deleteSchedule"><i class="fas fa-trash-alt"></i></button>
-                        </form>
-                    </td>
+                    <th scope="col">Id</th>
+                    <th scope="col">Day and Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Ticket Amount</th>
+                    <th scope="col">Price (€) per ticket</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
-            <?php } ?>
-            </tbody>
+                </thead>
+                <tbody id="mytable">
+                <?php foreach ($historyTourTimetable as $timetable) {?>
+                    <tr>
+                        <form action="/historyManagement" method="POST">
+                            <input type="hidden" name="id" value="<?= $timetable['id'] ?>">
+                            <td name="id"> <?= $timetable['id'] ?></td>
+                            <td name="dateAndDay"> <input type="text" name="dateAndDay" value="<?= $timetable['dateAndDay']; ?>"></td>
+                            <td name="time"> <input type="text" name="time" value="<?= $timetable['time']; ?>"></td>
+                            <td name="language"> <input type="text" name="language" value="<?= $timetable['language']; ?>"></td>
+                            <td name="ticketAmount"> <input type="text" name="ticketAmount" value="<?= $timetable['ticketAmount']; ?>"></td>
+                            <td name="price"><input type="text" name="price" value="<?= $timetable['price']; ?>"></td>
+                            <td>
+                                <button type="submit" name="updateSchedule"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </form>
+                        <td>
+                            <form action="/historyManagement" method="POST">
+                                <input type="hidden" name="tableId" value="<?php echo $timetable['id'] ?>">
+                                <button type="submit" name="deleteSchedule"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
 
-        </table>
-    </div>
+            </table>
+        </div>
 </div>
 
 

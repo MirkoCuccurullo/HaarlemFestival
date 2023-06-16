@@ -44,9 +44,14 @@
     const dateInput = document.getElementById("dateAndDay");
     const selectedDay = document.getElementById("selectedDay");
 
+    // listens to the input event on the dateInput HTML element
     dateInput.addEventListener("input", function() {
+        // this.value refers to the value of the dateInput
+                // let: when you do need to reassign the variable,
+                // const: when you don't need to reassign the variable
         const date = new Date(this.value);
         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        // date: value of dateInput, getDay(): returns the day of the week
         selectedDay.textContent = daysOfWeek[date.getDay()];
     });
 

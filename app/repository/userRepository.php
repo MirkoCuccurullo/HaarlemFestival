@@ -21,6 +21,7 @@ class userRepository extends baseRepository
     {
         $sql = "INSERT INTO users (name, email, password, date_of_birth, registration_date, role) VALUES (:name, :email, :hashedSaltedPassword, :date_of_birth, now(), :role)";
         $stmt = $this->connection->prepare($sql);
+        // bind the values of the corresponding variables to these placeholders
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":email", $email);
         $role = "1";
@@ -32,11 +33,13 @@ class userRepository extends baseRepository
 
     public function isEmailAlreadyInUse($email): bool
     {
+        // COUNT(*), represents the number of rows that have the specified email address.
         $sql = "SELECT COUNT(*) FROM users WHERE email = :email";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindValue(':email', $email);
         $stmt->execute();
         $count = $stmt->fetchColumn();
+        // returns true if the email address is already in use, false otherwise
         return ($count > 0);
     }
 

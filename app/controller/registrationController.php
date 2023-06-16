@@ -62,7 +62,7 @@ class registrationController {
     /**
      * @throws Exception
      */
-    public function registerUser($data) :void{
+    public function registerUser($data) : void {
         try {
             $this->userService->registerUser($data);
         } catch (Exception $e) {

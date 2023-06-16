@@ -41,6 +41,9 @@
 
         <p>Already have an account? <a href="/login"> Login</a></p>
         <br />
+        <!-- server uses the site key to verify that the request is coming from a valid website, and then returns a response that
+        includes a success status and other relevant data -->
+        <!-- site key sent along with $response -->
         <div class="g-recaptcha" data-sitekey="6Lf1GqQkAAAAADa0inLw28QN3DXrXLsSN4g5kojc"></div> <br />
         <div class="success"> <?php if (isset($captchaMessage)){ ?> <span style="color: red"> <?=$captchaMessage?> </span> <?php } ?> </div>
         <button type="submit" id="submit" value="submit" name="submit">Submit</button><br /><br />

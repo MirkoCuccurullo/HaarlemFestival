@@ -30,6 +30,10 @@ class invoiceService
     public function convertHTMLToPDF($order_id) {
         $invoiceRepository = new invoiceRepository();
         $orderRepository = new orderRepository();
+
+        $invoice = new invoice();
+        $invoice->
+        $invoice->order_id = $order_id;
         //get order by Id
         $order = $orderRepository->getOrder($order_id);
         $user = $invoiceRepository->getUserByOrderId($order_id);
@@ -139,7 +143,7 @@ class invoiceService
     </body>
     </html>';
 
-        $this->loadHTMLToPDF($html);
+        $this->loadHTMLToPDF($html, $order_id);
     }
 
 }

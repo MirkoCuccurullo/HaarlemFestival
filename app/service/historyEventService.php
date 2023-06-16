@@ -78,6 +78,10 @@ class historyEventService{
     // Prepare methods
     private function prepareCardContentData(array $data): array
     {
+        // checks if the title key exists in the $data array and if it's not empty
+        // If the key exists and is not empty, it uses htmlspecialchars() to convert any special characters to their HTML
+        // entities and assigns the resulting value to the $title variable
+        /// If the key does not exist or is empty, $title is set to null.
         $title = isset($data['title']) && !empty($data['title']) ? htmlspecialchars($data['title']) : null;
         $image = isset($data['image']) && !empty($data['image']) ? htmlspecialchars($data['image']) : null;
         $content = isset($data['content']) && !empty($data['content']) ? htmlspecialchars($data['content']) : null;
@@ -91,6 +95,7 @@ class historyEventService{
             'image' => $image,
             'content' => $content,
         ];
+
     }
     private function prepareScheduleContentData(string $dateAndDay, string $time, string $language, int $ticketAmount, float $price): array
     {
