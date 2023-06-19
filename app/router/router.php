@@ -21,7 +21,7 @@ class router
      */
     public function route($url)
     {
-        error_reporting(E_ERROR | E_PARSE);
+//        error_reporting(E_ERROR | E_PARSE);
         switch ($url) {
             case '/shoppingCart?order=' . $_GET['order']:
                 require_once __DIR__ . '/../controller/shoppingCartController.php';
@@ -601,10 +601,6 @@ class router
                 require_once __DIR__ . '/../controller/orderController.php';
                 $controller = new orderController();
                 $controller->manageOrder();
-                require __DIR__ . '/../controller/invoiceController.php';
-                $invoiceController = new invoiceController();
-                $order_id = $_POST['order_id'];
-                $invoiceController->convertHTMLToPDF($order_id);
                 break;
             case 'edit/order':
             case '/edit/order':
@@ -631,7 +627,11 @@ class router
                 $controller = new \ExcelController();
                 $controller->exportExcel();
                 break;
-
+            case '/saveInPDF':
+                require __DIR__ . '/../controller/invoiceController.php';
+                $invoiceController = new invoiceController();
+                $invoiceController->convertHTMLToPDF($_POST['id']);
+                break;
             default:
                 if (isset($_GET['order'])) {
                     require_once __DIR__ . '/../controller/shoppingCartController.php';
@@ -640,6 +640,11 @@ class router
                     break;
                 } else
                     http_response_code(404);
+//          case '/saveInPDF':
+//               require __DIR__ . '/../controller/invoiceController.php';
+//               $invoiceController = new invoiceController();
+//               $invoiceController->convertHTMLToPDF(97); //TODO: HArdcoded
+//               break;
         }
     }
 }

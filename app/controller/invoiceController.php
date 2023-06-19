@@ -1,10 +1,5 @@
 <?php
-
-include_once __DIR__ . '/../model/invoice.php';
 require_once __DIR__ . '/../service/invoiceService.php';
-//
-require_once __DIR__ . '/../service/userService.php';
-require_once __DIR__ . '/../service/ticketService.php';
 
 class invoiceController {
 

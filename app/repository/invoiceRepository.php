@@ -2,6 +2,7 @@
 
 use Models\order;
 use repository\baseRepository;
+
 require_once 'baseRepository.php';
 require_once '../model/invoice.php';
 require_once '../model/order.php';
@@ -9,9 +10,12 @@ require_once '../model/order.php';
 require_once '../repository/orderRepository.php';
 require_once '../repository/userRepository.php';
 
-class InvoiceRepository extends baseRepository{
+class InvoiceRepository extends baseRepository
+{
 
-    public function getAllRowsUsingJoinForInvoice($order_id) {
+    public function getAllRowsUsingJoinForInvoice($order_id)
+    {
+
         $stmt = $this->connection->prepare("SELECT  invoice.name_of_client, 
                                               invoice.invoice_number, 
                                               invoice.invoice_date, 
@@ -27,9 +31,9 @@ class InvoiceRepository extends baseRepository{
                  INNER JOIN orders ON invoice.order_id = orders.id 
                  WHERE invoice.order_id = :order_id");
         $stmt->execute(['order_id' => $order_id]);
-        $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'invoice');
-
-            $invoices = [];
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll();
+        $invoices = [];
         if ($results) {
             foreach ($results as $result) {
                 $invoice = new Invoice();
@@ -44,19 +48,11 @@ class InvoiceRepository extends baseRepository{
                 $invoices[] = $invoice;
             }
         }
-
-        $orderRepo = new orderRepository();
-        $userRepo = new userRepository();
-        $order = $orderRepo->getOrder($order_id);
-        $user = $userRepo->getUser($order_id);
-//        $order = $this->getOrderById($order_id);
-//        $user = $this->getUserByOrderId($order_id);
-
-        $invoices[] = [$order, $user];
         return $invoices;
     }
 
-    public function getOrderById($order_id) {
+    public function getOrderById($order_id)
+    {
         $stmt = $this->connection->prepare("SELECT * FROM orders WHERE id = :id");
         $stmt->execute(['id' => $order_id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -68,25 +64,19 @@ class InvoiceRepository extends baseRepository{
         }
         return $order;
     }
-//    public function getOrderById($id){
-//        $sql = "SELECT * FROM orders where id = :id";
-//        $stmt = $this->connection->prepare($sql);
-//        $stmt->bindParam(":id", $id);
-//        $stmt->execute();
-//        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\order');
-//        $result = $stmt->fetch();
-//        return $result;
-//    }
-    public function getUserByOrderId($order_id) {
+
+    public function getUserByOrderId($order_id)
+    {
         $user = null; // Initialize $user to null
         $stmt = $this->connection->prepare("SELECT * FROM users WHERE id = (SELECT user_id FROM orders WHERE id = :id)");
         $stmt->execute(['id' => $order_id]);
-        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($result) {
             $user = new User();
             $user->setId($result['id']);
             $user->setName($result['name']);
+            $user->setEmail($result['email']);
         }
         return $user;
     }
