@@ -2,46 +2,53 @@
 
 // Include autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
+
 // Reference the Dompdf namespace
 use Dompdf\Dompdf;
-require __DIR__ . '/../repository/invoiceRepository.php';
-require __DIR__ . '/../repository/orderRepository.php';
-require __DIR__ . '/../service/userService.php';
+require_once __DIR__ . '/../repository/invoiceRepository.php';
 
 class invoiceService
 {
     public $invoiceRepository;
+
     public function __construct()
     {
         $this->invoiceRepository = new InvoiceRepository();
     }
 
-    public function loadHTMLToPDF($html, $order_id){
+    public function loadHTMLToPDF($html, $order_id)
+    {
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'landscape');
-        ob_end_clean();
+        $dompdf->setPaper('A4', 'Portrait');
         $dompdf->render();
         $pdf_content = $dompdf->output();
         $file_name = "invoice_" . $order_id . ".pdf";
+        // Save the PDF to a local file
+        // Save the PDF content to a local file
         file_put_contents($file_name, $pdf_content);
+        $dompdf->stream($file_name);// when clicked invoice it will download
     }
 
-    public function convertHTMLToPDF($order_id) {
+    public function convertHTMLToPDF($order_id)
+    {
         $invoiceRepository = new invoiceRepository();
-        $orderRepository = new orderRepository();
-
-        $invoice = new invoice();
-        $invoice->
-        $invoice->order_id = $order_id;
         //get order by Id
-        $order = $orderRepository->getOrder($order_id);
+        $order = $invoiceRepository->getOrderById($order_id);
         $user = $invoiceRepository->getUserByOrderId($order_id);
-        $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
+//        $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
+        $invoice = new Invoice();
+        $invoice->setClientName('Bijay');
+        $invoice->setInvoiceNumber('123');
+        $invoice->setInvoiceDate('2020-12-12');
+        $invoice->setSubTotalAmount('100');
+        $invoice->setTotalAmount('100');
+        $invoice->setVAT('100');
+        $invoice->setPaymentDate('2020-12-12');
 
         $html = '<!doctype html>
-    <html lang="en">
-    <head>
+          <html lang="en">
+         <head>
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -52,26 +59,26 @@ class invoiceService
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <title>Invoice</title>
-    </head>
-    <body>
+         </head>
+        <body>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="invoice-title">
-                        <h2>Invoice</h2><h3 class="pull-right">Order # '.$order->id.'</h3>
+                        <h2>Invoice</h2><h3 class="pull-right">Order # ' . $order->id . '</h3>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-xs-6">
                             <address>
                                 <strong>Client name:</strong><br>
-                                '.$user->name.'<br><br>
+                                ' . $user->name . '<br><br>
                             </address>
                         </div>
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Email:</strong><br>
-                                '.$user->email.'<br><br>
+                                ' . $user->email . '<br><br>
                             </address>
                         </div>
                     </div>
@@ -79,9 +86,9 @@ class invoiceService
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Invoice Date:</strong><br>
-                                '.$invoice[0]->invoiceDate.'<br><br>
+                                ' . $invoice->invoiceDate . '<br><br>
                                 <strong>Payment Date:</strong><br>
-                                '.$invoice[0]->paymentDate.'<br><br>
+                                ' . 'Payment Date'. '<br><br>
                             </address>
                         </div>
                     </div>
@@ -117,20 +124,20 @@ class invoiceService
                                         <td class="thick-line"></td>
                                         <td class="thick-line text-center"><strong>Subtotal</strong></td>
                                         <td class="thick-line text-right">
-                                        '.$invoice[0]->subTotalAmount.'
+                                        ' . $invoice->subTotalAmount . '
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>VAT</strong></td>
-                                        <td class="no-line text-right">'.$invoice[0]->VAT.'</td>
+                                        <td class="no-line text-right">' . $invoice->VAT . '</td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line text-right">'.$invoice[0]->totalAmount.'</td>
+                                        <td class="no-line text-right">' . $invoice->totalAmount . '</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -140,10 +147,9 @@ class invoiceService
                 </div>
             </div>
         </div>
-    </body>
-    </html>';
+       </body>
+        </html>';
 
         $this->loadHTMLToPDF($html, $order_id);
     }
-
 }

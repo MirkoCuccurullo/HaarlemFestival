@@ -12,7 +12,6 @@ class invoice {
     public string $paymentDate;
 
     public string $userName;
-    // Add any other properties you need here
 
     /**
      * @return string
