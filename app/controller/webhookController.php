@@ -70,7 +70,8 @@ class webhookController
                 $subject = "Your Ticket(s)";
                 $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) and Invoice is attached to this email. See you at the events!";
                 $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $ticketPdf, $invoicePdf);
-                unlink($pdf);
+                unlink($ticketPdf);
+                unlink($invoicePdf);
             }
         }
         catch (\Mollie\Api\Exceptions\ApiException $e) {
