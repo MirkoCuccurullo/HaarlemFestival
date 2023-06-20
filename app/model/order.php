@@ -19,6 +19,39 @@ class order
     public string $status;
     public ?string $payment_id;
 
+    /**
+     * @return float
+     */
+    public function getTotalPrice(): float
+    {
+        return $this->total_price;
+    }
+
+    /**
+     * @param float $total_price
+     */
+    public function setTotalPrice(float $total_price): void
+    {
+        $this->total_price = $total_price;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
     public function addEvent($event)
     {
         $this->events[] = $event;
