@@ -144,6 +144,7 @@ class userController
             unset($_SESSION['err_msg']);
         }
     }
+    public function sendInvoiceWithEmail()
 
     public function editUser($id)
     {

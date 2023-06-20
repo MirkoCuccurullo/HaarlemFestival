@@ -24,7 +24,6 @@ class invoiceService
         $dompdf->render();
         $pdf_content = $dompdf->output();
         $file_name = "invoice_" . $order_id . ".pdf";
-        // Save the PDF to a local file
         // Save the PDF content to a local file
         file_put_contents($file_name, $pdf_content);
         $dompdf->stream($file_name);// when clicked invoice it will download

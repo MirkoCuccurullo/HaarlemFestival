@@ -52,7 +52,11 @@ class webhookController
 
                 //create tickets pdf
                 $pdfGenerator = new \PDFGenerator();
-                $pdf = $pdfGenerator->createPDF($order_id, $user_id);
+                $ticketPdf = $pdfGenerator->createPDF($order_id, $user_id);
+
+                //create invoice pdf
+                $invoiceService = new \invoiceService();
+                $invoicePdf = $invoiceService->convertHTMLToPDF($order_id);
 
                 //get user data
                 $userService = new \userService();
@@ -64,8 +68,8 @@ class webhookController
                 $receiverEmail = $user->email;
                 $receiverName = $user->name;
                 $subject = "Your Ticket(s)";
-                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) are attached to this email. See you at the events!";
-                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf);
+                $message = "Hello " . $receiverName . ", thank you for your purchase! Your ticket(s) and Invoice is attached to this email. See you at the events!";
+                $mailService->sendEmail($receiverEmail, $receiverName, $message, $subject, $ticketPdf, $invoicePdf);
                 unlink($pdf);
             }
         }

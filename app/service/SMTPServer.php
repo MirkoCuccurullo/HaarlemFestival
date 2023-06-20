@@ -7,8 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class SMTPServer
 {
-    public function sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf = null){
-
+    public function sendEmail($receiverEmail, $receiverName, $message, $subject, $pdf = null, $invoicePdf = null){
 
         require __DIR__ . '/../vendor/PHPMailer/PHPMailer/src/Exception.php';
         require __DIR__ . '/../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
@@ -39,8 +38,14 @@ class SMTPServer
 
         $mail->MsgHTML($content);
 
+        // Ticket pdf
         if($pdf != null){
             $mail->AddAttachment($pdf);
+        }
+
+        // Invoice pdf
+        if($invoicePdf != null){
+            $mail->AddAttachment($invoicePdf);
         }
 
         //send email

@@ -25,7 +25,7 @@ class order
     public function getTotalPrice(): float
     {
         return $this->total_price;
-    }
+}
 
     /**
      * @param float $total_price
