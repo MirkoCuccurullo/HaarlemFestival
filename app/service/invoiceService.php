@@ -3,6 +3,19 @@
 // Include autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
 
+require_once __DIR__ . '/../model/ticket.php';
+require_once __DIR__ . '/../model/dance.php';
+require_once __DIR__ . '/../model/accessPass.php';
+require_once __DIR__ . '/../model/user.php';
+require_once __DIR__ . '/../model/order.php';
+require_once __DIR__ . '/../model/reservation.php';
+
+require_once __DIR__ . '/../service/eventService.php';
+require_once __DIR__ . '/../service/accessPassService.php';
+require_once __DIR__ . '/../service/userService.php';
+require_once __DIR__ . '/../service/qrCodeGenerator.php';
+require_once __DIR__ . '/../service/reservationService.php';
+
 // Reference the Dompdf namespace
 use Dompdf\Dompdf;
 require_once __DIR__ . '/../repository/invoiceRepository.php';

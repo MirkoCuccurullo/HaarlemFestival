@@ -9,6 +9,7 @@ require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../service/ticketService.php';
 require_once __DIR__ . '/../service/reservationService.php';
 require_once __DIR__ . '/../service/PDFGenerator.php';
+require_once __DIR__ . '/../service/InvoiceService.php';
 require_once __DIR__ . '/../service/SMTPServer.php';
 require_once __DIR__ . '/../service/userService.php';
 require_once __DIR__ . '/../router/router.php';
