@@ -640,11 +640,6 @@ class router
                     break;
                 } else
                     http_response_code(404);
-//            case '/saveInPDF':
-//               require __DIR__ . '/../controller/invoiceController.php';
-//               $invoiceController = new invoiceController();
-//               $invoiceController->convertHTMLToPDF(97); //TODO: HArdcoded
-//               break;
         }
     }
 }

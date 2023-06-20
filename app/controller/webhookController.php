@@ -2,6 +2,7 @@
 
 namespace controller;
 
+use Dompdf\Exception;
 use router\router;
 
 require_once __DIR__ . '/../service/MollieService.php';
@@ -9,7 +10,7 @@ require_once __DIR__ . '/../service/orderService.php';
 require_once __DIR__ . '/../service/ticketService.php';
 require_once __DIR__ . '/../service/reservationService.php';
 require_once __DIR__ . '/../service/PDFGenerator.php';
-require_once __DIR__ . '/../service/InvoiceService.php';
+require_once __DIR__ . '/../service/invoiceService.php';
 require_once __DIR__ . '/../service/SMTPServer.php';
 require_once __DIR__ . '/../service/userService.php';
 require_once __DIR__ . '/../router/router.php';
@@ -17,6 +18,13 @@ require_once __DIR__ . '/../router/router.php';
 
 class webhookController
 {
+    private $invoiceService;
+
+    function __construct()
+    {
+        $this->invoiceService = new \invoiceService();
+    }
+
     public function webhook()
     {
         try {
@@ -78,6 +86,5 @@ class webhookController
         catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
-
     }
 }

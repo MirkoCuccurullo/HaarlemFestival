@@ -14,9 +14,6 @@ require_once __DIR__ . '/../service/userService.php';
 require_once __DIR__ . '/../service/qrCodeGenerator.php';
 require_once __DIR__ . '/../service/reservationService.php';
 
-
-
-
 // Reference the Dompdf namespace
 use Dompdf\Dompdf;
 class PDFGenerator

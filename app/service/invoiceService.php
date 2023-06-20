@@ -1,24 +1,9 @@
 <?php
 
-// Include autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
-
-require_once __DIR__ . '/../model/ticket.php';
-require_once __DIR__ . '/../model/dance.php';
-require_once __DIR__ . '/../model/accessPass.php';
-require_once __DIR__ . '/../model/user.php';
-require_once __DIR__ . '/../model/order.php';
-require_once __DIR__ . '/../model/reservation.php';
-
-require_once __DIR__ . '/../service/eventService.php';
-require_once __DIR__ . '/../service/accessPassService.php';
-require_once __DIR__ . '/../service/userService.php';
-require_once __DIR__ . '/../service/qrCodeGenerator.php';
-require_once __DIR__ . '/../service/reservationService.php';
-
-// Reference the Dompdf namespace
-use Dompdf\Dompdf;
 require_once __DIR__ . '/../repository/invoiceRepository.php';
+
+use Dompdf\Dompdf;
 
 class invoiceService
 {
@@ -39,7 +24,7 @@ class invoiceService
         $file_name = "invoice_" . $order_id . ".pdf";
         // Save the PDF content to a local file
         file_put_contents($file_name, $pdf_content);
-        $dompdf->stream($file_name);// when clicked invoice it will download
+        $dompdf->stream($file_name);// when clicked, invoice will download
     }
 
     public function convertHTMLToPDF($order_id)
@@ -50,7 +35,7 @@ class invoiceService
         $user = $invoiceRepository->getUserByOrderId($order_id);
 //        $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
         $invoice = new Invoice();
-        $invoice->setClientName('Bijay');
+        $invoice->setClientName('Aizaz');
         $invoice->setInvoiceNumber('123');
         $invoice->setInvoiceDate('2020-12-12');
         $invoice->setSubTotalAmount('100');

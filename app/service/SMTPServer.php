@@ -38,7 +38,7 @@ class SMTPServer
 
         $mail->MsgHTML($content);
 
-        // Ticket pdf
+        // ticket pdf
         if($pdf != null){
             $mail->AddAttachment($pdf);
         }
