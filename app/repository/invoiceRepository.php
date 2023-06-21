@@ -6,7 +6,6 @@ use repository\baseRepository;
 require_once 'baseRepository.php';
 require_once '../model/invoice.php';
 require_once '../model/order.php';
-require_once '../model/vat.php';
 //
 require_once '../repository/orderRepository.php';
 require_once '../repository/userRepository.php';
@@ -27,21 +26,7 @@ class invoiceRepository extends baseRepository
         }
         return $order;
     }
-    public function getVatByTicketId($ticket_id)
-    {
-        $vat = null; // Initialize $vat to null
-        $stmt = $this->connection->prepare("SELECT v.* FROM vat v INNER JOIN tickets t ON t.vat_id = v.id WHERE t.id = :id");
-        $stmt->execute(['id' => $ticket_id]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $vat = new \Models\vat();
-        if ($result) {
-            $vat->setId($result['id']);
-            $vat->setValue($result['value']);
-        }
-
-        return $vat;
-    }
     public function getUserByOrderId($order_id)
     {
         $user = null; // Initialize $user to null

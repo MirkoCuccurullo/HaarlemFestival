@@ -36,7 +36,7 @@ class invoiceService
 
         $order = $invoiceRepository->getOrderById($order_id);
         $user = $invoiceRepository->getUserByOrderId($order_id);
-        $vat = $invoiceRepository->getVatByTicketId($order_id);
+
 
         $html = '<!doctype html>
           <html lang="en">
@@ -103,13 +103,6 @@ class invoiceService
                                     <tr>
                                         <td class="text-center">' . $order->getNoOfItems() . '</td>
                                     </tr>
-                                    <tr>
-                                        <td class="no-line"></td>
-                                        <td class="no-line"></td>
-                                        <td class="no-line text-center"><strong>VAT</strong></td>
-                                        <td class="no-line text-right">' . $vat->getValue() . '%'. '</td>
-                                    </tr>
-
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
