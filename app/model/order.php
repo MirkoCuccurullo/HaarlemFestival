@@ -51,6 +51,38 @@ class order
         $this->id = $id;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getPaymentId(): ?string
+    {
+        return $this->payment_id;
+    }
+
+    /**
+     * @param string|null $payment_id
+     */
+    public function setPaymentId(?string $payment_id): void
+    {
+        $this->payment_id = $payment_id;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
 
     public function addEvent($event)
     {

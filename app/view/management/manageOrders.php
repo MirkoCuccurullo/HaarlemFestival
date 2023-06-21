@@ -77,6 +77,7 @@ include __DIR__ . '/../header.php';
                 const changeDropdown = document.createElement("div");
                 const statusSelect = document.createElement("select");
 
+                const optionEmpty = document.createElement("option");
                 const optionOpen = document.createElement("option");
                 const optionPaid = document.createElement("option");
                 const optionPending = document.createElement("option");
@@ -104,14 +105,16 @@ include __DIR__ . '/../header.php';
                 editButton.innerHTML = "Edit";
                 invoiceButton.innerHTML = "Invoice";
 
-                optionOpen.value = "Open";
-                optionOpen.text = "Open";
-                optionPaid.value = "Paid";
-                optionPaid.text = "Paid";
-                optionPending.value = "Pending";
-                optionPending.text = "Pending";
-                optionFailed.value = "Failed";
-                optionFailed.text = "Failed";
+                optionEmpty.value = "";
+                optionEmpty.text = "";
+                optionOpen.value = "open";
+                optionOpen.text = "open";
+                optionPaid.value = "paid";
+                optionPaid.text = "paid";
+                optionPending.value = "pending";
+                optionPending.text = "pending";
+                optionFailed.value = "failed";
+                optionFailed.text = "failed";
 
                 deleteForm.action = '/delete/order';
                 deleteForm.method = "POST";
@@ -143,6 +146,10 @@ include __DIR__ . '/../header.php';
                 invoiceButtonCol.appendChild(invoiceForm);
 
                 changeButton.innerHTML = "Change";
+                statusWrapper.appendChild(statusCol);
+                statusWrapper.appendChild(changeButton);
+                statusWrapper.appendChild(changeDropdown);
+
                 changeButton.addEventListener("click", function() {
                     changeDropdown.style.display = "block";
                 });
@@ -154,16 +161,28 @@ include __DIR__ . '/../header.php';
                     updateOrderStatus(order.id, newStatus);
                 });
 
+                statusSelect.appendChild(optionEmpty);
                 statusSelect.appendChild(optionOpen);
                 statusSelect.appendChild(optionPaid);
                 statusSelect.appendChild(optionPending);
                 statusSelect.appendChild(optionFailed);
 
+                //shows currently selected status
+                // Set the selected attribute for the matching option
+                if (order.status === optionOpen.value) {
+                    optionOpen.selected = true;
+                } else if (order.status === optionPaid.value) {
+                    optionPaid.selected = true;
+                } else if (order.status === optionPending.value) {
+                    optionPending.selected = true;
+                } else if (order.status === optionFailed.value) {
+                    optionFailed.selected = true;
+                }
+
                 changeDropdown.style.display = "none";
+                optionEmpty.style.display = "none";
                 changeDropdown.appendChild(statusSelect);
-                statusWrapper.appendChild(statusCol);
-                statusWrapper.appendChild(changeButton);
-                statusWrapper.appendChild(changeDropdown);
+
                 newRow.appendChild(idCol);
                 newRow.appendChild(userIdCol);
                 newRow.appendChild(noOfItemsCol);
@@ -176,12 +195,13 @@ include __DIR__ . '/../header.php';
                 table.appendChild(newRow);
             }
 
+
             loadOrders();
 
             function updateOrderStatus(orderId, newStatus) {
                 const data = { id: orderId, status: newStatus };
 
-                fetch(`http://localhost/api/order?id=${orderId}`, { // Make a POST request to the API endpoint
+                fetch(`http://localhost/api/orders?id=${orderId}`, { // Make a POST request to the API endpoint
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
