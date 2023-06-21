@@ -195,7 +195,6 @@ include __DIR__ . '/../header.php';
                 table.appendChild(newRow);
             }
 
-
             loadOrders();
 
             function updateOrderStatus(orderId, newStatus) {
@@ -216,7 +215,6 @@ include __DIR__ . '/../header.php';
                         console.error('Error updating status:', error);
                     });
             }
-
 
             function deleteOrder(id) {
                 fetch('http://localhost/api/order/' + id, {

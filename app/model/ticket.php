@@ -18,6 +18,22 @@ class ticket
     /**
      * @return int
      */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
     public function getQuantity(): int
     {
         return $this->quantity;
@@ -45,6 +61,86 @@ class ticket
     public function setPrice(int $price): void
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDanceEventId(): ?int
+    {
+        return $this->dance_event_id;
+    }
+
+    /**
+     * @param int|null $dance_event_id
+     */
+    public function setDanceEventId(?int $dance_event_id): void
+    {
+        $this->dance_event_id = $dance_event_id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getYummyEventId(): ?int
+    {
+        return $this->yummy_event_id;
+    }
+
+    /**
+     * @param int|null $yummy_event_id
+     */
+    public function setYummyEventId(?int $yummy_event_id): void
+    {
+        $this->yummy_event_id = $yummy_event_id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getHistoryEventId(): ?int
+    {
+        return $this->history_event_id;
+    }
+
+    /**
+     * @param int|null $history_event_id
+     */
+    public function setHistoryEventId(?int $history_event_id): void
+    {
+        $this->history_event_id = $history_event_id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAccessPassId(): ?int
+    {
+        return $this->access_pass_id;
+    }
+
+    /**
+     * @param int|null $access_pass_id
+     */
+    public function setAccessPassId(?int $access_pass_id): void
+    {
+        $this->access_pass_id = $access_pass_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
     }
 
     /**

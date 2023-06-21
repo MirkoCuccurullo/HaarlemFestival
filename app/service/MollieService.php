@@ -25,7 +25,7 @@ class MollieService
                 //redirect to confirmation page
                 "redirectUrl" => "http://localhost/shoppingCart/confirmation?order_id={$orderId}" ,
                 //redirect to webhook
-                "webhookUrl" => "https://d5fb-2a02-a45b-9630-1-97d1-b19b-b460-9156.ngrok-free.app/webhook",
+                "webhookUrl" => "https://046e-2a02-a45b-9630-1-1897-e07e-7535-4a60.ngrok-free.app/webhook",
                 "method" => \Mollie\Api\Types\PaymentMethod::IDEAL,
                 "issuer" => !empty($_POST["issuer"]) ? $_POST["issuer"] : null,
                 "metadata" => [

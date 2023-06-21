@@ -52,6 +52,24 @@ class order
     }
 
     /**
+     * @return int
+     */
+    public function getNoOfItems(): int
+    {
+        return $this->no_of_items;
+    }
+
+    /**
+     * @param int $no_of_items
+     */
+    public function setNoOfItems(int $no_of_items): void
+    {
+        $this->no_of_items = $no_of_items;
+    }
+
+
+
+    /**
      * @return string|null
      */
     public function getPaymentId(): ?string

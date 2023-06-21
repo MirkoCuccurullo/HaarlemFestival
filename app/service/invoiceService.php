@@ -11,7 +11,7 @@ class invoiceService
 
     public function __construct()
     {
-        $this->invoiceRepository = new InvoiceRepository();
+        $this->invoiceRepository = new invoiceRepository();
     }
 
     public function loadHTMLToPDF($html, $order_id)
@@ -32,17 +32,11 @@ class invoiceService
     public function convertHTMLToPDF($order_id)
     {
         $invoiceRepository = new invoiceRepository();
-        //get order by Id
+        $invoice = new Invoice();
+
         $order = $invoiceRepository->getOrderById($order_id);
         $user = $invoiceRepository->getUserByOrderId($order_id);
-//        $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
-        $invoice = new Invoice();
-        $invoice->setClientName('Aizaz');
-        $invoice->setInvoiceDate('2020-12-12');
-        $invoice->setSubTotalAmount('100');
-        $invoice->setTotalAmount('100');
-        $invoice->setVAT('100');
-        $invoice->setPaymentDate('2020-12-12');
+
 
         $html = '<!doctype html>
           <html lang="en">
@@ -63,20 +57,20 @@ class invoiceService
             <div class="row">
                 <div class="col-xs-12">
                     <div class="invoice-title">
-                        <h2>Invoice</h2><h3 class="pull-right">Order # ' . $order->id . '</h3>
+                        <h2>Invoice</h2><h3 class="pull-right">Order # ' . $order->getId() . '</h3>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-xs-6">
                             <address>
                                 <strong>Client name:</strong><br>
-                                ' . $user->name . '<br><br>
+                                ' . $user->getName() . '<br><br>
                             </address>
                         </div>
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Email:</strong><br>
-                                ' . $user->email . '<br><br>
+                                ' . $user->getEmail() . '<br><br>
                             </address>
                         </div>
                     </div>
@@ -84,9 +78,7 @@ class invoiceService
                         <div class="col-xs-6 text-right">
                             <address>
                                 <strong>Invoice Date:</strong><br>
-                                ' . $invoice->invoiceDate . '<br><br>
-                                <strong>Payment Date:</strong><br>
-                                ' . 'Payment Date'. '<br><br>
+                                ' . $invoice->getInvoiceDate() . '<br><br>
                             </address>
                         </div>
                     </div>
@@ -104,38 +96,18 @@ class invoiceService
                                 <table class="table table-condensed">
                                     <thead>
                                     <tr>
-                                        <td><strong>Item</strong></td>
-                                        <td class="text-center"><strong>Price</strong></td>
                                         <td class="text-center"><strong>Quantity</strong></td>
-                                        <td class="text-right"><strong>Totals</strong></td>
                                     </tr>
                                     </thead>
                                     <tbody>                                    
                                     <tr>
-                                        <td>BS-1000</td>
-                                        <td class="text-center">$600.00</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-right">$600.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="thick-line"></td>
-                                        <td class="thick-line"></td>
-                                        <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                        <td class="thick-line text-right">
-                                        ' . $invoice->subTotalAmount . '
-                                        </td>
+                                        <td class="text-center">' . $order->getNoOfItems() . '</td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
-                                        <td class="no-line text-center"><strong>VAT</strong></td>
-                                        <td class="no-line text-right">' . $invoice->VAT . '</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="no-line"></td>
-                                        <td class="no-line"></td>
-                                        <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line text-right">' . $invoice->totalAmount . '</td>
+                                        <td class="no-line text-center"><strong>Total Price</strong></td>
+                                        <td class="no-line text-right">' . '$' . $order->getTotalPrice() . '</td>
                                     </tr>
                                     </tbody>
                                 </table>
