@@ -25,6 +25,8 @@ class invoiceService
         // Save the PDF content to a local file
         file_put_contents($file_name, $pdf_content);
         $dompdf->stream($file_name);// when clicked, invoice will download
+
+        return $file_name;
     }
 
     public function convertHTMLToPDF($order_id)
@@ -36,7 +38,6 @@ class invoiceService
 //        $invoice = $invoiceRepository->getAllRowsUsingJoinForInvoice($order_id);
         $invoice = new Invoice();
         $invoice->setClientName('Aizaz');
-        $invoice->setInvoiceNumber('123');
         $invoice->setInvoiceDate('2020-12-12');
         $invoice->setSubTotalAmount('100');
         $invoice->setTotalAmount('100');
@@ -147,6 +148,6 @@ class invoiceService
        </body>
         </html>';
 
-        $this->loadHTMLToPDF($html, $order_id);
+        return $this->loadHTMLToPDF($html, $order_id);
     }
 }

@@ -2,7 +2,7 @@
 
 class invoice {
     public string $clientName; //client name = username
-    public int $invoiceNumber; //invoice number = order number
+//    public int $invoiceNumber; //invoice number = order number
     public string $invoiceDate; //invoice date = order date
 
     public string $email;
@@ -43,14 +43,6 @@ class invoice {
     public function getClientName(): string
     {
         return $this->clientName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getInvoiceNumber(): int
-    {
-        return $this->invoiceNumber;
     }
 
     /**
@@ -99,14 +91,6 @@ class invoice {
     public function setClientName(string $clientName): void
     {
         $this->clientName = $clientName;
-    }
-
-    /**
-     * @param int $invoiceNumber
-     */
-    public function setInvoiceNumber(int $invoiceNumber): void
-    {
-        $this->invoiceNumber = $invoiceNumber;
     }
 
     /**

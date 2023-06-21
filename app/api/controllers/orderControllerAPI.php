@@ -66,4 +66,23 @@ class orderControllerAPI extends controller
 
         $this->respond($order);
     }
+
+    //  to change order status
+    public function update($id)
+    {
+        $order = $this->orderService->getOrder($id);
+
+        if (!$order) {
+            $this->respondWithError(404, "Order not found");
+            return;
+        }
+
+        $newStatus = $this->getPostData("status");
+
+        // Update the status of the order
+        $order->setStatus($newStatus);
+        $updatedOrder = $this->orderService->updateOrder($order);
+
+        $this->respond($updatedOrder);
+    }
 }

@@ -126,6 +126,7 @@ class router
                 $controller = new userControllerAPI();
                 $controller->delete();
                 break;
+
             case'/generate/token':
                 require("../api/controllers/JwtGeneratorController.php");
                 $controller = new \JwtGeneratorController();
@@ -529,6 +530,10 @@ class router
 
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $controller->getOne($id);
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $controller->update($id);
                 }
                 break;
 
